@@ -1,0 +1,37 @@
+@startuml
+actor algo3
+participant Jugador as jugador
+participant Mano as mano 
+participant Jugada as jugada
+participant Puntaje as puntaje
+participant "I: modificador" as modificador
+
+algo3 -> jugador : calcular_puntaje()
+jugador -> mano : calcular_puntaje() 
+mano -> jugada : crearJugada( this.cartas_seleccionadas)
+jugada -> puntaje : <<create>>
+
+
+  jugada -> generadorDeCombinaciones : crearCombinacion(cartas)
+loop  para las distintas categorias de combinaciones
+  generadorDeCombinaciones -> categoria : validarCartas(cartasElegidas) 
+  participant Carta as carta
+  categoria -> carta : 
+  carta --> categoria : bool 
+  categoria -> Combinacion : <<Create>> 
+  categoria --> generadorDeCombinaciones : unaCombinacion
+end
+generadorDeCombinaciones --> jugada : unaCombinacion
+jugada -> puntaje : sumar(unaCombinacion)
+
+
+jugada --> mano : un_puntaje
+
+mano -> modificador : modificar(un_puntaje)
+modificador --> mano : un_puntaje
+mano --> jugador : un_puntaje
+jugador -> modificador :modificar(un_puntaje)
+modificador -> puntaje : multiplicar( unValor)
+modificador --> jugador : un_puntaje
+jugador -> algo3 : un_puntaje
+@enduml
