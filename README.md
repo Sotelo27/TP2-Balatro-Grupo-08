@@ -8,9 +8,9 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [integrante1](https://github.com/integrante1)
 * **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [https://github.com/BSerrantes](https://github.com/integrante4)
-* **Integrante 5** - [https://github.com/Sotelo27](https://github.com/integrante5)
+* **Integrante 3** - [Joaquin hernandez](https://github.com/joaquin-her)
+* **Integrante 4** - [https://github.com/BSerrantes](https://github.com/BSerrantes)
+* **Integrante 5** - [https://github.com/Sotelo27](https://github.com/Sotelo27)
 
 Corrector: **{Maia Naftali}**
 
