@@ -7,17 +7,18 @@ public class Mano {
     private List<Card> mano;
 
     public Mano() {
-        mano = new ArrayList<>();
+        this.mano = new ArrayList<>();
     }
 
     public void recibirCard(Card card) {
-        if(mano.size() >= 8)
-            return;
-
-        mano.add(card);
+        this.mano.add(card);
     }
 
-    public void generarJugada(List<Integer> listaDeCartas) {
+    public boolean puedoAgregarCard(){
+        return (this.mano.size() >= 8);
+    }
+
+    public Jugada generarJugada(List<Integer> listaDeCartas) {
 
         List cartasAJugar = new ArrayList<Cards>();
 
@@ -25,6 +26,7 @@ public class Mano {
             cartasAJugar.add(this.mano.get(listaDeCartas.get(i)));
         }
         Jugada jugada = new Jugada(cartasAJugar);
+        return jugada;
 
 
     }

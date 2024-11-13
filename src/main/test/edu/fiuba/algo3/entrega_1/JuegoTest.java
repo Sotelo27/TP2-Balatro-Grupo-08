@@ -5,8 +5,7 @@ import edu.fiuba.algo3.modelo.*;
 
 import org.junit.Test;
 
-import java.util.List;
-import java.util.ArrayList;
+
 
 public class JuegoTest {
     @Test
@@ -19,16 +18,16 @@ public class JuegoTest {
     }
 
     @Test
-    public void test02JugadorSeLeRepartenOchoCartasEnSuMazo(){
+    public void test02JugadorSeLeRepartenOchoCartasEnSuMano(){
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
         Mano manoMock =  mock(Mano.class);
 
         mazo.repartir(manoMock);
 
-
-
+        verify(manoMock, times(8)).recibirCard(any(Card.class));
 
     }
+
 
 }
