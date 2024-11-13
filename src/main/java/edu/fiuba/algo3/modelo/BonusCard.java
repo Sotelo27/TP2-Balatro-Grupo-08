@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-
+/*
 public class BonusCard extends Enhancement {
 
     @Override
@@ -8,3 +8,4 @@ public class BonusCard extends Enhancement {
 
     }
 }
+*/

@@ -4,28 +4,34 @@ import static org.mockito.Mockito.*;
 import edu.fiuba.algo3.modelo.*;
 
 import org.junit.Test;
-
+import org.mockito.Mockito;
 
 
 public class JuegoTest {
     @Test
     public void test01MazoTieneSufucientesCartasParaComenzar(){
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
-        Mazo mazoMock = spy(creadorCartas.crearMazo());
+        Mazo mazo = creadorCartas.crearMazo();
 
-        verify(mazoMock, times(52)).addCard(any(Card.class));
+        assert (mazo.tieneCartasSuficientes());
 
     }
 
     @Test
-    public void test02JugadorSeLeRepartenOchoCartasEnSuMano(){
+    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMas(){
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
-        Mano manoMock =  mock(Mano.class);
+        Mano mano = new Mano();
 
-        mazo.repartir(manoMock);
 
-        verify(manoMock, times(8)).recibirCard(any(Card.class));
+        mazo.repartir(mano);
+
+        assert(!mano.puedoAgregarCard());
+
+
+
+
+
 
     }
 

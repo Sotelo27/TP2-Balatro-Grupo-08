@@ -25,5 +25,9 @@ public class Mazo {
         }
     }
 
+    public boolean tieneCartasSuficientes() {
+        return (cards.size() == 52);
+    }
+
 
 }

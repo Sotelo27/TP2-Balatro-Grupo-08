@@ -11,23 +11,25 @@ public class Mano {
     }
 
     public void recibirCard(Card card) {
-        this.mano.add(card);
+        if(this.puedoAgregarCard()) {
+            this.mano.add(card);
+        }
+
     }
 
     public boolean puedoAgregarCard(){
         return (this.mano.size() >= 8);
     }
 
-    public Jugada generarJugada(List<Integer> listaDeCartas) {
+    public void seleccionarCarta(Jugada jugada, int cartaElegida){
+        jugada.agregarCarta(mano.remove(cartaElegida));
+    }
 
-        List cartasAJugar = new ArrayList<Cards>();
-
-        for(int i = 0; i < listaDeCartas.size(); i++) {
-            cartasAJugar.add(this.mano.get(listaDeCartas.get(i)));
-        }
-        Jugada jugada = new Jugada(cartasAJugar);
-        return jugada;
-
+    public void deseleccionarCarta(Jugada jugada, int cartaElegida){
 
     }
+
+
+
+
 }
