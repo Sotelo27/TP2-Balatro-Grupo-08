@@ -44,37 +44,59 @@ public class JuegoTest {
     }
 
     @Test
-    public void test04ValorCorrespondiente(){
-        Jugador jugador = new Jugador();
-        Puntuacion puntacionJugada = new Puntuacion (); //
-        //crear mano Alta
-        List <Card> cartas = new ArrayList<>();
+    public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
-        for (int i = 0; i < 8 ; i ++){
-            mano.recibirCard(cartas[i]);
-        }
-        //jugadaJugador = mano.generarJugada(cartas);
-        jugadaJugador = jugador.realizarJugada(mano);
-        int valor = puntuacionJugada.obtenerValor(jugadaJugador);
+        // Crear una mano de "Carta Alta" (ejemplo con un 5 como carta alta)
+        mano.agregarCarta(new Card("5", new Hearts()));
+        mano.agregarCarta(new Card("3", new Spades()));
+        mano.agregarCarta(new Card("2", new Diamonds()));
+        mano.agregarCarta(new Card("4", new Clubs()));
+        mano.agregarCarta(new Card("7", new Hearts())); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
 
-        assertEquals(5, valor);
+        // Realizar la jugada
+        Jugada jugada = mano.realizarJugada();
+
+        // Obtener el valor de la jugada
+        int puntuacionObtenida = jugada.obtenerValor();
+
+        // Valor esperado para una "Carta Alta" en este caso, digamos que vale 5 puntos
+        int valorEsperado = 5;
+
+        // Comprobar que la puntuación obtenida coincide con la esperada
+        assertEquals(valorEsperado, puntuacionObtenida);
     }
+
     @Test
-    public void test05VerificiarOrdenPuntuacionCartas(){
-        Puntuacion puntacionJugada = new Puntuacion (); //
-        Jugada jugadaJugador = new Jugada();//
-        Combinacion combinacion = new Combinacion();
-        //crear mano Alta y otra mano para comparar, habria que cambiar el valor de mano y despues compararlo en el assert.
-        List <Card> cartas = new ArrayList<>();
-        Mano mano = new Mano();
-        for (int i = 0; i < 8 ; i ++){
-            mano.recibirCard(cartas[i]);
-        }
-        //jugadaJugador = mano.generarJugada(cartas);
-        jugadaJugador = jugador.realizarJugada(mano);
-        combinacion.verificarJugada(jugadaJugador); //dentro de este metodo se deberia llamar a categoria o especial y ver si es una jugada especial.
-        // sino crear 5 instancias de mano y hacer el assert.
+    public void test05VerificarOrdenPuntuacionCartas() {
+        // Crear la primera mano con un orden específico
+        Mano mano1 = new Mano();
+        mano1.recibirCard(new Card("10", new Hearts()));
+        mano1.recibirCard(new Card("9", new Hearts()));
+        mano1.recibirCard(new Card("8", new Hearts()));
+        mano1.recibirCard(new Card("7", new Hearts()));
+        mano1.recibirCard(new Card("6", new Hearts()));
+
+        // Realizar la primera jugada y obtener su puntaje
+        Jugada jugada1 = mano1.realizarJugada();
+        int puntajeJugada1 = jugada1.obtenerValor(); //Luego , preferiblemente, crear una CLASE Puntaje para delegar.
+
+        // Crear la segunda mano con las mismas cartas en un orden diferente
+        Mano mano2 = new Mano();
+        mano2.recibirCard(new Card("6", new Hearts()));
+        mano2.recibirCard(new Card("7", new Hearts()));
+        mano2.recibirCard(new Card("8", new Hearts()));
+        mano2.recibirCard(new Card("9", new Hearts()));
+        mano2.recibirCard(new Card("10", new Hearts()));
+
+        // Realizar la segunda jugada y obtener su puntaje
+        Jugada jugada2 = mano2.realizarJugada();
+        int puntajeJugada2 = jugada2.obtenerValor();
+
+        // Comparar ambos puntajes
+        assertEquals(puntajeJugada1, puntajeJugada2);
     }
+
+
 
 
 }
