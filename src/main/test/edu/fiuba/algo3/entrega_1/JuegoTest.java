@@ -47,11 +47,11 @@ public class JuegoTest {
     public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
         // Crear una mano de "Carta Alta" (ejemplo con un 5 como carta alta)
-        mano.agregarCarta(new Card("5", new Hearts()));
-        mano.agregarCarta(new Card("3", new Spades()));
-        mano.agregarCarta(new Card("2", new Diamonds()));
-        mano.agregarCarta(new Card("4", new Clubs()));
-        mano.agregarCarta(new Card("7", new Hearts())); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
+        mano.recibirCard(new Card("5", new Hearts()));
+        mano.recibirCard(new Card("3", new Spades()));
+        mano.recibirCard(new Card("2", new Diamonds()));
+        mano.recibirCard(new Card("4", new Clubs()));
+        mano.recibirCard(new Card("7", new Hearts())); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
 
         // Realizar la jugada
         Jugada jugada = mano.realizarJugada();
@@ -96,7 +96,35 @@ public class JuegoTest {
         assertEquals(puntajeJugada1, puntajeJugada2);
     }
 
+    @Test
+    public void test06ModificarCartaConTarot() {
+        // Crear una carta de valor bajo, por ejemplo un 5 de Corazones
+        Card cartaMejorada = new Card("5", new Hearts());
+        // Crear el efecto tarot que cambiará el valor de la carta a 10 puntos
+        Enhancement tarot = new Enhancement(10);
+        // Aplicar el tarot a la carta
+        cartaMejorada.aplicarEnhancement(tarot);
+        Mano mano = new Mano();
+        mano.recibirCard(cartaMejorada);
+        mano.recibirCard(new Card("3", new Spades()));
+        mano.recibirCard(new Card("2", new Diamonds()));
+        mano.recibirCard(new Card("4", new Clubs()));
+        mano.recibirCard(new Card("7", new Hearts()));
 
+        // Realizar la jugada
+        Jugada jugada = mano.realizarJugada();
 
+        // Obtener el valor de la jugada
+        int puntuacionObtenida = jugada.obtenerValor();
 
+        // Valor esperado ya con el efecto del Tator
+        int valorEsperado = 15;
+
+        // Comprobar que la puntuación obtenida coincide con la esperada
+        assertEquals(valorEsperado, puntuacionObtenida);
+    }
+    @Test
+    public void test07MultiplicadorCartaConTarot() {
+
+    }
 }
