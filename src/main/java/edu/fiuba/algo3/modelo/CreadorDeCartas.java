@@ -8,7 +8,7 @@ public class CreadorDeCartas {
         Mazo mazo = new Mazo();
         for(Suit suit: SUITNAME) {
             for (String rank: RANK) {
-                mazo.addCard(new Card(rank, suit));
+                mazo.addCard(new Card(rank, suit, 2, 1));
 
 
             }

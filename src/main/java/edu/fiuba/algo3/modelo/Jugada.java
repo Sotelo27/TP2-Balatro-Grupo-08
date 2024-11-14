@@ -4,15 +4,25 @@ import java.util.List;
 
 public class Jugada {
 
-    private List <Card> cartas = new ArrayList <> ();
+    private List <Card> cartas;
 
-    public Jugada( List <Card> cartasAJugar ){
-        cartas = cartasAJugar;
+
+    public Jugada(){
+        this.cartas = new ArrayList();
+        this.puntaje = new Puntaje();
     };
 
 
     public void agregarCarta(Card card){
-
+        cartas.add(card);
     }
+
+    public PuntajeJugada jugarJugada(){
+        for(int i = 0; i < cartas.size(); i++){
+            cartas.get(i).aplicarResultadoDeCarta(puntaje);
+        }
+    }
+
+
 
 }
