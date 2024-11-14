@@ -28,10 +28,18 @@ public class JuegoTest {
 
         assert(!mano.puedoAgregarCard());
 
+    }
 
+    @Test
+    public void test03SePuedeHacerUnaJugada(){
 
-
-
+        CreadorDeCartas creadorCartas = new CreadorDeCartas();
+        Mazo mazo = creadorCartas.crearMazo();
+        Mano mano = new Mano();
+        mazo.repartir(mano);
+        mano.seleccionarCarta(0);
+        mano.seleccionarCarta(1);
+        assert((mano.realizarJugada()) instanceof Jugada );
 
     }
 
