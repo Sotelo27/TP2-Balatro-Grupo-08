@@ -19,7 +19,17 @@ class FaseDePreparacion extends Fase{
 }
 Main o- BalatroAlgo3
 FaseDePreparacion o-- Tienda
-
+BalatroAlgo3 --> ILectorDeJSON
+interface ILectorDeJSON{
+    + leerRonda(): List<Ronda>
+    + leerCartas(): list<Carta>
+    + leerTienda() List<Tienda>
+    + leerComodines(): List<Comodin>
+    + leerTarot(): List<Tarot>
+}
+class LectorDeJson implements ILectorDeJSON{
+    - source: string
+}
 class FaseDeRonda extends Fase{ }
 class FaseDeFinalizacion extends Fase{ }
 Class Tienda {
