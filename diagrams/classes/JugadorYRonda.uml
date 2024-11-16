@@ -1,0 +1,79 @@
+sinterminar.uml
+@startuml
+
+interface IMejorable 
+class MazoDeJSON implements GeneraCartas{
+    + generarMazo(): Mazo
+}
+class Ronda{
+    + Ronda(int numero, int manos, int descartes, int puntajeASuperar, Tienda tienda)
+}
+Class Tienda{
+    + mostrarCartas() : List<Cartas>
+}
+MazoDeJSON --> Gson
+interface IRecibible{
+    + recibircarta(Carta carta)
+}
+interface IEntregaCartas{
+    + darCarta(IRecibible irecibible)
+}
+Class Main {
+    
+}
+class Mazo implements IEntregaCartas{
+
+}
+Main o-- "*" Ronda
+Main o-- Jugador
+Main o-- Mazo
+Class Jugador implements IRecibible{
+    + jugarCartas(Ronda ronda)
+    + aplicarTarot(IMejorable mejorable)
+}
+Jugador ..> IMejorable
+Ronda o-- "*..5" Comodin
+Jugador .> Ronda : "conoce"
+Ronda o-- Tienda
+Mazo ..> Cartas 
+
+abstract Cartas{
+    - nombre  : string 
+    + getNombre()
+}
+Class Ronda{
+    -nro: int 
+    -manos: manos 
+    -descartes : int 
+    + agregarAccion(IAccion accionDelJugador)
+}
+interface IAccion {
+    + aplicarEfectoDeComodin(Efecto efecto )
+}
+IAccion <|.. Jugada 
+IAccion <|.. Descarte
+Jugador --> IAccion
+
+class Descarte{
+    + Descarte(Carta carta)
+}
+class Jugada{
+    + Jugada(List<Carta> cartasSeleccionadas)
+}
+
+Ronda o-- "0..5*" IAccion
+Class Jugada{
+    - cartasJugadas: List<Carta>
+    - comodinesActivos: List<Comodin>
+}
+class Comodin{
+    - condicion : ICondicion
+    - efecto : Efecto
+    + Comodin(Efecto efecto, ICondicion condicion)
+    + aplicarEfecto(IAccion accion) :
+}
+Class AplicarTarot implements IAccion{
+    + AplicarTarot(Tarot tarot)
+    + equalsTo(IAccion accion) : bool
+}
+@enduml
