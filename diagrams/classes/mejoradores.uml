@@ -1,0 +1,38 @@
+@startuml
+
+class Jugada {
+    + agregarCarta(Carta carta)
+    + agregarMejorador(Mejorador mejorador)
+    + descartarCarta(Carta)
+}
+
+class Comodin implements IMejorador, IActivacion{
+    - nombre : string 
+    - descripcion : string
+}
+
+Class Tarot implements IMejorador {
+    - nombre : string 
+    - descripcion : string 
+}
+IMejorador .> IMejorable
+Tarot o-- IRestriccion
+
+abstract Efecto{
+    - puntos : Int
+    - multiplicador: int 
+    + calcularPuntaje(int puntosBase, int multiplicadorBase)
+    + agregarEfecto(Efecto otroEfecto)
+}
+class SoloCartas implements IRestriccion{
+    - restriccion : string 
+}
+class soloCombinacion implements IRestriccion{
+    - restriccion: Combinacion
+}
+interface IRestriccion{
+    + validarRestriccion(Mejorable mejorable): bool
+}
+
+Tarot o-- Efecto 
+@enduml
