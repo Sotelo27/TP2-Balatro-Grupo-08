@@ -1,0 +1,66 @@
+
+@startuml
+
+abstract class Verificador{
+    -proximoVerificador: Verificador
+    +verificar( Lista <Carta> cartas): CombinacionDePoker
+    +esDeTipo (Lista <Carta> cartas): boolean
+
+}
+
+class VerificadorStraightFlush extends Verificador{
+    +verificar( Lista <Carta> cartas): CombinacionDePoker
+    +esDeTipo(): boolean
+
+
+}
+
+class VerificadorRoyalFlush extends Verificador{
+    +verificar( Lista <Carta> cartas): CombinacionDePoker
+    +esDeTipo(): boolean
+
+}
+
+
+class VerificadorFourOfAKind extends Verificador{
+    
+    +verificar( Lista <Carta> cartas): CombinacionDePoker
+    +esDeTipo(): boolean
+}
+
+Verificador ..> CombinacionDePoker
+
+abstract CombinacionDePoker{
+    -nombreCombinacion: string
+    -puntos: int
+    -multiplicador: int
+    -cartas: List <Carta>
+    +devolverPuntaje(): int
+
+}
+
+class RoyalFlush extends CombinacionDePoker{
+
+    +devolverPuntaje(): int
+    
+}
+
+class StraightFlush extends CombinacionDePoker{
+
+    +devolverPuntaje(): int
+    
+}
+
+class FourOfAKind extends CombinacionDePoker{
+
+    +devolverPuntaje(): int
+    
+}
+
+Interface IMejorable{
+    + mejorar(Efecto efecto)
+}
+
+CombinacionDePoker .up.|> IMejorable
+
+@enduml
