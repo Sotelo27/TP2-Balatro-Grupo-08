@@ -1,0 +1,14 @@
+@startuml
+title se crea una jugada
+
+Algo3 -> Jugador: realizarJugada(unaRonda)
+Jugador -> Mazo : realizarJugada(unaRonda) 
+Mazo -> Jugada : Jugada(this.seleccionadas)
+Jugada -> Verificador : obtenerCombinacion(seleccionadas)
+Verificador --> Jugada : unaCombinacion 
+Jugada -> Jugada : guardar(unaCombinacion)
+Jugada --> Mazo : unaJugada 
+Mazo ->  Mazo: usadas.agregar(this.seleccionadas)
+Mazo -> Mazo : seleccionadas.vaciar()
+Mazo -> Ronda : agregar(unaJugada)
+@enduml 
