@@ -45,11 +45,11 @@ public class JuegoTest {
     public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
         // Crear una mano de "Carta Alta" (ejemplo con un 5 como carta alta)
-        mano.recibirCard(new Card("5", new Hearts(), 5, 1));
-        mano.recibirCard(new Card("3", new Spades(), 3, 1));
-        mano.recibirCard(new Card("2", new Diamonds(), 2, 1));
-        mano.recibirCard(new Card("4", new Clubs(), 4, 1));
-        mano.recibirCard(new Card("7", new Hearts(), 7, 1)); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
+        mano.recibirCard(new Carta("5", new Hearts(), 5, 1));
+        mano.recibirCard(new Carta("3", new Spades(), 3, 1));
+        mano.recibirCard(new Carta("2", new Diamonds(), 2, 1));
+        mano.recibirCard(new Carta("4", new Clubs(), 4, 1));
+        mano.recibirCard(new Carta("7", new Hearts(), 7, 1)); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
 
         // Realizar la jugada
         Jugada jugada = mano.realizarJugada();
@@ -68,11 +68,11 @@ public class JuegoTest {
     public void test05VerificarOrdenPuntuacionCartas() {
         // Crear la primera mano con un orden específico
         Mano mano1 = new Mano();
-        mano1.recibirCard(new Card("10", new Hearts(), 10, 1));
-        mano1.recibirCard(new Card("9", new Hearts(), 9, 1));
-        mano1.recibirCard(new Card("8", new Hearts(), 8, 1));
-        mano1.recibirCard(new Card("7", new Hearts(), 7, 1));
-        mano1.recibirCard(new Card("6", new Hearts(), 6, 1));
+        mano1.recibirCard(new Carta("10", new Hearts(), 10, 1));
+        mano1.recibirCard(new Carta("9", new Hearts(), 9, 1));
+        mano1.recibirCard(new Carta("8", new Hearts(), 8, 1));
+        mano1.recibirCard(new Carta("7", new Hearts(), 7, 1));
+        mano1.recibirCard(new Carta("6", new Hearts(), 6, 1));
 
         // Realizar la primera jugada y obtener su puntaje
         Jugada jugada1 = mano1.realizarJugada();
@@ -80,11 +80,11 @@ public class JuegoTest {
 
         // Crear la segunda mano con las mismas cartas en un orden diferente
         Mano mano2 = new Mano();
-        mano2.recibirCard(new Card("6", new Hearts(), 6, 1));
-        mano2.recibirCard(new Card("7", new Hearts(), 7, 1));
-        mano2.recibirCard(new Card("8", new Hearts(), 8, 1));
-        mano2.recibirCard(new Card("9", new Hearts(), 9, 1));
-        mano2.recibirCard(new Card("10", new Hearts(), 10, 1));
+        mano2.recibirCard(new Carta("6", new Hearts(), 6, 1));
+        mano2.recibirCard(new Carta("7", new Hearts(), 7, 1));
+        mano2.recibirCard(new Carta("8", new Hearts(), 8, 1));
+        mano2.recibirCard(new Carta("9", new Hearts(), 9, 1));
+        mano2.recibirCard(new Carta("10", new Hearts(), 10, 1));
 
         // Realizar la segunda jugada y obtener su puntaje
         Jugada jugada2 = mano2.realizarJugada();
@@ -97,17 +97,17 @@ public class JuegoTest {
     @Test
     public void test06ModificarCartaConTarot() {
         // Crear una carta de valor bajo, por ejemplo un 5 de Corazones
-        Card cartaMejorada = new Card("5", new Hearts(), 5, 1);
+        Carta cartaMejorada = new Carta("5", new Hearts(), 5, 1);
         // Crear el efecto tarot que cambiará el valor de la carta a 10 puntos
-        TarotDeCarta tarot = new TarotDeCarta("La Emperatriz", "Mejora 1 carta seleccionada y la convierte ne multicarta",1, 4, "cualquiera" );
+        CartaDeTarot tarot = new CartaDeTarot("La Emperatriz", "Mejora 1 carta seleccionada y la convierte ne multicarta",1, 4, "cualquiera" );
         // Aplicar el tarot a la carta
         cartaMejorada.aplicarEnhancement(tarot);
         Mano mano = new Mano();
         mano.recibirCard(cartaMejorada);
-        mano.recibirCard(new Card("3", new Spades(), 3, 1));
-        mano.recibirCard(new Card("2", new Diamonds(), 2, 1));
-        mano.recibirCard(new Card("4", new Clubs(), 4, 1));
-        mano.recibirCard(new Card("7", new Hearts(), 7, 1));
+        mano.recibirCard(new Carta("3", new Spades(), 3, 1));
+        mano.recibirCard(new Carta("2", new Diamonds(), 2, 1));
+        mano.recibirCard(new Carta("4", new Clubs(), 4, 1));
+        mano.recibirCard(new Carta("7", new Hearts(), 7, 1));
 
         // Realizar la jugada
         Jugada jugada = mano.realizarJugada();

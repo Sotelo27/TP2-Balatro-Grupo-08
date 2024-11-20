@@ -8,11 +8,10 @@ public class PuntajeJugada {
 
     }
 
-    public void sumarPuntos(int puntos){
+    public void agregarPuntosYMultiplicador(int puntos, int multiplicador) {
         this.puntos += puntos;
-    }
-
-    public void sumarMultiplicador(int multiplicador){
         this.multiplicador += multiplicador;
     }
+
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Jugada {
 
-    private List <Card> cartas;
+    private List <Carta> cartas;
 
 
     public Jugada(){
@@ -13,13 +13,12 @@ public class Jugada {
     };
 
 
-    public void agregarCarta(Card card){
-        cartas.add(card);
-    }
+
 
     public PuntajeJugada jugarJugada(){
-        for(int i = 0; i < cartas.size(); i++){
-            cartas.get(i).aplicarResultadoDeCarta(puntaje);
+        PuntajeJugada puntaje = new PuntajeJugada();
+        for(Carta carta: this.cartas){
+            carta.aplicarResultadoAPuntaje(puntaje);
         }
     }
 

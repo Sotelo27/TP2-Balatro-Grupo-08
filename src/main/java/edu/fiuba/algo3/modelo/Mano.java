@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 
 public class Mano {
-    private List<Card> mano;
-    private List<Card> seleccion;
+    private List<Carta> mano;
+    private List<Carta> seleccion;
 
     public Mano() {
         this.mano = new ArrayList<>();
         this.seleccion = new ArrayList<>();
     }
 
-    public void recibirCard(Card card) {
+    public void recibirCard(Carta carta) {
         if(this.puedoAgregarCard()) {
-            this.mano.add(card);
+            this.mano.add(carta);
         }
 
     }
@@ -27,9 +27,8 @@ public class Mano {
         this.seleccion.add(mano.remove(cartaElegida));
     }
 
-    public void deseleccionarCarta(Jugada jugada, int cartaElegida){
 
-    }
+
 
     public Jugada realizarJugada(){
         return new Jugada(seleccion);

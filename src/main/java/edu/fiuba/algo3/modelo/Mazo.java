@@ -5,28 +5,28 @@ import java.util.Random;
 
 
 public class Mazo {
-    private List<Card> cards;
+    private List<Carta> cartas;
 
     public Mazo() {
-        cards = new ArrayList<>();
+        cartas = new ArrayList<>();
     }
 
-    public void addCard(Card card) {
-        cards.add(card);
+    public void addCard(Carta carta) {
+        cartas.add(carta);
     }
 
 
 
     public void repartir(Mano mano) {
-        int randomCard = new Random().nextInt(cards.size());
+        int randomCard = new Random().nextInt(cartas.size());
 
         while(mano.puedoAgregarCard()){
-            mano.recibirCard(cards.remove(randomCard));
+            mano.recibirCard(cartas.remove(randomCard));
         }
     }
 
     public boolean tieneCartasSuficientes() {
-        return (cards.size() == 52);
+        return (cartas.size() == 52);
     }
 
 
