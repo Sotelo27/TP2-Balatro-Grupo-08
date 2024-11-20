@@ -28,12 +28,13 @@ Algo3Balatro o-- "*" Ronda
 Algo3Balatro o-- Jugador
 Algo3Balatro o-- Mazo
 Class Jugador implements IRecibible{
-    - cartasElegidas: List<Carta>
-    - ficha : Ficha
-    + jugarCartas(Ronda ronda)
-    + aplicarTarot(IMejorable mejorable)
-    + seleccionarCarta(Carta unaCarta)
-    + realizarDescarte(Ronda ronda)
+  - cartasElegidas: List<Carta>
+  - cartasEnMano: List<Carta>
+  - ficha : Ficha
+  + seleccionarCarta(Carta unaCarta)
+  + jugarCartasSeleccionadas(Ronda ronda)
+  + aplicarTarotASeleccionada(IMejorable mejorable)
+  + realizarDescarteDeSeleccionada(Ronda ronda)
 }
 Jugador ..> IMejorable
 Jugador o-- "*..5" Comodin
@@ -50,6 +51,7 @@ Class Ronda{
     -manos: manos 
     -descartes : int 
     + agregarAccion(IAccion accionDelJugador)
+    + calcularPuntaje() : Puntaje
 }
 interface IAccion {
     + aplicarEfectoDeComodin(Efecto efecto )
@@ -61,10 +63,25 @@ Jugador --> IAccion
 class Descarte{
     + Descarte(Carta carta)
 }
-class Jugada{
+class Jugada {
     + Jugada(List<Carta> cartasSeleccionadas)
+    + calcularPuntaje() : Puntaje
+    - calcularPuntajePorCartas() : Puntaje 
 }
-
+Jugada --> Puntaje 
+class Puntaje{
+  - puntaje: Int 
+  - multiplicador : Int 
+  + Puntaje(Int puntosBase, Int multiplicador)
+  + sumarAPuntaje(Puntaje puntaje)
+  + sumar(Int puntosBase, Int multiplicador)
+}
+abstract Efecto {}
+abstract CombinacionDePoker{}
+Efecto "0..5" -o Jugada
+abstract Verificador
+Verificador <- CombinacionDePoker
+Jugada o-- CombinacionDePoker
 Ronda o-- "0..5*" IAccion
 Class Jugada{
     - cartasJugadas: List<Carta>
