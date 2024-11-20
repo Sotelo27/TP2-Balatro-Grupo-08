@@ -6,6 +6,7 @@ participant "j: Jugada" as jugada
 participant "p:Puntaje" as puntaje
 participant "Carta" as carta
 participant "Efecto" as efecto
+participant "c:CombinacionDePoker" as combinacion
 
 algo -> ronda : obtenerPuntaje()
 ronda -> jugada : obtenerPuntaje()
@@ -16,7 +17,8 @@ loop para cada carta jugada
   carta -> efecto : aplicarEfecto(p)
   efecto --> puntaje : sumar(this.puntaje, this.multiplicador)
 end loop
-jugada -> puntaje :  sumar(this.puntaje, this.multiplicador)
+jugada -> combinacion :  sumarAPuntaje(p)
+combinacion -> puntaje : sumar(this.puntaje, this.multiplicador)
 loop para cada efecto de comodin aplicado
   jugada -> efecto : aplicarEfecto(p)
   efecto -> puntaje : sumar(this.puntaje, this.multiplicador)
