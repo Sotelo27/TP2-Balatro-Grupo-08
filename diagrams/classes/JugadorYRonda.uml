@@ -1,4 +1,3 @@
-sinterminar.uml
 @startuml
 
 interface IMejorable 
@@ -9,7 +8,8 @@ class Ronda{
     + Ronda(int numero, int manos, int descartes, int puntajeASuperar, Tienda tienda)
 }
 Class Tienda{
-    + mostrarCartas() : List<Cartas>
+    + mostrarCartas() : List<Carta>
+    + tomarSeleccion(Ficha fichas) : Carta
 }
 MazoDeJSON --> Gson
 interface IRecibible{
@@ -18,21 +18,25 @@ interface IRecibible{
 interface IEntregaCartas{
     + darCarta(IRecibible irecibible)
 }
-Class Main {
+Class Algo3Balatro {
     
 }
 class Mazo implements IEntregaCartas{
 
 }
-Main o-- "*" Ronda
-Main o-- Jugador
-Main o-- Mazo
+Algo3Balatro o-- "*" Ronda
+Algo3Balatro o-- Jugador
+Algo3Balatro o-- Mazo
 Class Jugador implements IRecibible{
+    - cartasElegidas: List<Carta>
+    - ficha : Ficha
     + jugarCartas(Ronda ronda)
     + aplicarTarot(IMejorable mejorable)
+    + seleccionarCarta(Carta unaCarta)
+    + realizarDescarte(Ronda ronda)
 }
 Jugador ..> IMejorable
-Ronda o-- "*..5" Comodin
+Jugador o-- "*..5" Comodin
 Jugador .> Ronda : "conoce"
 Ronda o-- Tienda
 Mazo ..> Cartas 
