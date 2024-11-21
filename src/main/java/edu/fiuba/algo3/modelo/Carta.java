@@ -31,6 +31,15 @@ public class Carta implements IMejorable{
 
     }
 
+    public String devolverPalo(){
+        return suit;
+    }
+
+    public String devolverRank(){
+        return rank;
+    }
+
+
     public void aplicarResultadoAPuntaje(PuntajeJugada puntajeJugada){
 
         estadoDeCarta.aplicarResultadoAPuntaje(efecto, puntajeJugada);

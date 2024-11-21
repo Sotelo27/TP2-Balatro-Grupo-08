@@ -1,3 +1,5 @@
+package edu.fiuba.algo3.modelo;
+
 import java.util.*;
 
 public abstract class  CombinacionDePoker {
