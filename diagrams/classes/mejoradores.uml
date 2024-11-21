@@ -1,29 +1,78 @@
+@enduml
+
 @startuml
 
-class Jugada {
-    + agregarCarta(Carta carta)
-    + agregarMejorador(Mejorador mejorador)
-    + descartarCarta(Carta)
+class Jugada{
+    + Jugada(List<Carta> cartas)
+    + calculcarPuntaje() : PuntajeJugada
+}
+class Descarte{}
+class Carta{
+}
+Descarte ..|> IMejorable
+Carta ..|> IMejorable
+Jugada ..|> IMejorable
+CombinacionDePoker ..|> IMejorable
+
+Descarte ..|> IAccion
+Jugada ..|> IAccion
+interface IAccion {
+  + actualizarJugadasRestantes(Int jugadasRestantes)
+  + actualizarDescartesRestantes(Int DescartesRestantes)
 }
 
-class Comodin implements IMejorador, IActivacion{
+interface IMejorable{
+  + aplicarEfecto(Efecto efecto) 
+}
+class Comodin implements IMejorador{
     - nombre : string 
     - descripcion : string
 }
 
-Class Tarot implements IMejorador {
+Class Tarot implements IMejorador{
     - nombre : string 
     - descripcion : string 
 }
-IMejorador .> IMejorable
-Tarot o-- IRestriccion
 
-abstract Efecto{
+interface IMejorador {
+  + mejorar( IMejorable mejorable)
+}
+
+Jugador o- "0..5" IMejorador
+IAccion <-- Comodin
+class Comodin {
+    + aplicarEfecto(IAccion accion) :
+}
+class Efecto{
     - puntos : Int
     - multiplicador: int 
     + calcularPuntaje(int puntosBase, int multiplicadorBase)
     + agregarEfecto(Efecto otroEfecto)
 }
+
+Comodin o-- ICondicion 
+Comodin o- Efecto
+
+class ActivarAlAzar implements ICondicion{
+    - probabilidad: int 
+    + ActivarAlAzar(int probabilidad)
+}
+class EsDescarte implements ICondicion{
+
+}
+class EsUnaJugada implements ICondicion{
+    
+}
+IRestriccion --o EsUnaJugada
+interface ICondicion {
+    + aplicarEfecto(IAccion accion, Efecto efecto)
+}
+
+@enduml 
+IMejorable <.. IMejorador 
+Tarot o-- IRestriccion
+
+Efecto -o Tarot
 class SoloCartas implements IRestriccion{
     - restriccion : string 
 }
@@ -34,5 +83,5 @@ interface IRestriccion{
     + validarRestriccion(Mejorable mejorable): bool
 }
 
-Tarot o-- Efecto 
+
 @enduml
