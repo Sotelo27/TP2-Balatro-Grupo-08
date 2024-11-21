@@ -1,0 +1,13 @@
+vrearMazoYJugador.uml
+@startuml
+title se crea el mazo y se le otroga al jugador para comenzar el juego
+
+Algo3 -> ILectorDeJSON : leerCartas() 
+ILectorDeJSON --> Algo3 : cartas 
+Algo3 -> Mazo : Mazo(cartas) 
+Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
+
+Algo3 -> Jugador : Jugador(unNombre, unMazo) 
+Jugador -> Jugador : this.mazo = unMazo
+
+@enduml 
