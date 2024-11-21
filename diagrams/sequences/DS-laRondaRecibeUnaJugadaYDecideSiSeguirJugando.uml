@@ -1,0 +1,42 @@
+
+@startuml
+title la ronda recibe una jugada y decide si seguir jugando o no (tentativo)
+Mazo -> Ronda : agregar(unaJugada)
+Ronda -> Jugada : actualizarJugadasRestantes(this.jugadasRestantes)
+Jugada --> Ronda : unaCantidad
+
+Ronda -> Ronda : jugadasRestantes = unaCantidad
+Ronda -> Jugada: actualizarDescartesRestantes(this.descartesRestantes)
+Jugada --> Ronda : otraCantidad
+Ronda -> Ronda : descartesRestantes = otraCantidad
+
+
+Ronda -> Jugada : obtenerPuntaje(new Puntaje o puntajeActual)
+Jugada -> Ronda : unPuntaje
+Ronda -> Ronda : validarContinuado(unPuntaje)
+
+alt 1)puede seguir jugando
+Ronda -> Jugada : obtenerFichas()
+Jugada -->  Ronda : unasFichas
+Ronda -> Algo3 : otorgarAJugador(unasFichas)
+Algo3 -> Jugador : agregarFichas(unasFichas)
+Ronda -> Algo3 : jugadorContinuaJugando(unPuntaje)
+Algo3 -> Jugador : continuar(unPuntaje)
+Jugador -> Mazo : continuar()
+Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
+end alt
+
+alt 2)no consiguio llegar al puntaje y no le quedan mas turnos
+Ronda -> ExceptionPuntajeNoAlcanzado : signal
+
+end alt
+
+alt 3)alcanzo el puntaje esperado
+Ronda -> Algo3 : continuarASiguienteRonda(unPuntaje)
+participant "ronda2:Ronda" as Ronda2
+Algo3 -> Ronda2 : Ronda(2)
+Algo3 -> Algo3 : actualizarRonda(ronda2)
+
+end alt
+
+@enduml

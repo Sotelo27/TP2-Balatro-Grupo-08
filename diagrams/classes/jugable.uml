@@ -1,0 +1,53 @@
+@startuml
+
+abstract Cartas{
+    - nombre  : string 
+    + getNombre() : string 
+    {abstract}+ equalsTo(Cartas carta): bool
+}
+
+Efecto --o Cartas
+
+abstract Efecto{
+    - puntos : Int
+    - multiplicador: int 
+    + calcularPuntaje(int puntosBase, int multiplicadorBase)
+    + agregarEfecto(Efecto otroEfecto)
+}
+Interface ISumaPuntos {
+    + calcularPuntaje()
+}
+class CartaComodin extends Cartas{
+    - descripcion: string
+}
+class CartaDePoker extends Cartas {
+    - palo: string
+    - numero : string
+    + mejorar(Efecto efecto)
+}
+class ManoDePoker extends Cartas {
+    - descripcion: string
+    + ManoDePoker(List<CartaDePoker> cartas)
+    + mejorar(Efecto efecto)
+}
+Class Tarot extends Cartas{
+     descripcion: string
+    + mejorar(Mejorable mejorable)
+}
+Tarot ..|> IMejorador
+
+IMejorable <. IMejorador : "conoce"
+
+Interface IMejorable{
+    + mejorar(Efecto efecto)
+}
+CartaDePoker ..|> IMejorable
+ManoDePoker ..|> IMejorable
+Tarot o-- IRestriccion
+Interface IMejorador{
+    + mejorar(Mejorable mejorable)
+}
+interface IRestriccion{
+    + validarRestriccion(Mejorable mejorable): bool
+}
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class Jugador{
+    
+}
+Jugador o-- "0..5" Comodin
+class Comodin {
+    + aplicarEfecto(IAccion accion) :
+}
+abstract Efecto{
+    - puntos : Int
+    - multiplicador: int 
+    + calcularPuntaje(int puntosBase, int multiplicadorBase)
+    + agregarEfecto(Efecto otroEfecto)
+}
+Comodin --> IAccion
+Comodin o-- ICondicion 
+Comodin o- Efecto
+
+interface IAccion {
+    + aplicarEfectoDeComodin(Efecto efecto )
+}
+class ActivarAlAzar implements ICondicion{
+    - probabilidad: int 
+    + ActivarAlAzar(int probabilidad)
+}
+class EsDescarte implements ICondicion{
+
+}
+class EsUnaJugada implements ICondicion{
+    
+}
+interface ICondicion {
+    + aplicarEfecto(IAccion accion, Efecto efecto)
+}
+
+@enduml 

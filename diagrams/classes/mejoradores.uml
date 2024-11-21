@@ -1,0 +1,73 @@
+
+
+class Comodin implements IMejorador{
+    - nombre : string 
+    - descripcion : string
+}
+
+Class Tarot implements IMejorador{
+    - nombre : string 
+    - descripcion : string 
+}
+
+interface IMejorador {
+  + mejorar( IMejorable mejorable)
+}
+class Comodin {
+    + aplicarEfecto(IMejorable mejorable) :
+}
+class Efecto{
+    - puntos : Int
+    - multiplicador: int 
+    + sumarPuntaje(Puntaje puntaje): Puntaje
+    + agregarEfecto(Efecto otroEfecto)
+}
+
+Comodin o-- "1..*" ICondicion 
+Comodin o- "1..*" Efecto
+
+
+IMejorable <.. IMejorador 
+Tarot o-- ICondicion
+
+
+class ActivarAlAzar implements ICondicion{
+    - probabilidad: int 
+    + ActivarAlAzar(int probabilidad)
+}
+class EsDescarte implements ICondicion{
+
+}
+class EsUnaJugada implements ICondicion{
+}
+
+interface ICondicion {
+    + validarCondicion(IMejorable mejorable) : bool
+}
+
+
+Efecto -o Tarot
+
+class RestriccionACarta implements ICondicion{
+    + RestriccionACarta(String nombreDeLaCarta)
+    - restriccion : string 
+}
+class RestriccionACombinacion implements ICondicion{
+    - restriccion: Combinacion
+}
+interface IMejorable{
+  + aplicarEfecto(Efecto efecto) 
+}
+interface IComparablePorTipo {
+  + esDeTipo(Object objeto): bool
+}
+interface IComparablePorNombre {
+  + tieneNombre(String nombre): bool
+}
+EsDescarte ..> IComparablePorTipo :utiliza
+EsUnaJugada ..> IComparablePorTipo  :utiliza 
+
+RestriccionACombinacion ..> IComparablePorTipo  :utiliza
+RestriccionACarta ..> IComparablePorNombre :utiliza
+
+@enduml
