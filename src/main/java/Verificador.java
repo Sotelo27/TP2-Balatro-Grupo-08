@@ -1,0 +1,44 @@
+
+import java.util.List;
+import java.util.ArrayList;
+
+
+
+
+public abstract class Verificador implements MetodosLista {
+    private Verificador proximoVerificador;
+    private CombinacionDePoker combinacionCorrespondiente;
+
+    public Verificador() {
+
+    }
+
+    public CombinacionDePoker pasarAlSiguiente(List <Carta> cartas) {
+        if (proximoVerificador != null) {
+            proximoVerificador.verificar(cartas);
+        }
+        else {
+            return new HighCard(cartas);
+        }
+
+    };
+
+    public CombinacionDePoker verificar(List <Carta> cartas){
+        if (esDeTipo(cartas)){
+            return combinacionCorrespondiente;
+        }
+        else {
+            return pasarAlSiguiente(cartas);
+        }
+
+
+    };
+
+    public boolean esDeTipo (List <Carta> cartas){
+
+
+    };
+
+
+
+}
