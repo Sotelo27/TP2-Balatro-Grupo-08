@@ -1,0 +1,25 @@
+DS-seSeleccionaUnaCarta.uml
+@startuml
+title se seleciona una carta (tentativo)
+
+actor Algo3 
+participant "unaRonda:Ronda" as Ronda
+participant "j:Jugador" as Jugador
+participant "m:Mazo" as Mazo
+participant "Carta" as Carta
+
+Algo3 -> Ronda : Ronda("1")
+Algo3 -> Jugador : mostrarCartasEnMano()
+Jugador -> Mazo : mostrarCartasEnMano()
+Mazo --> Jugador : this.seleccionadas
+Jugador --> Algo3 : seleccionadas o seleccionadas.mostrarNombre()
+
+Algo3 -> Jugador : seleccionarCarta("as de trebol")
+Jugador -> Mazo : seleccionarCarta("as de trebol")
+loop para cada carta en cartas (modificable)
+Mazo ->  Carta : tieneNombre("as de trebol")
+Carta --> Mazo : true 
+Mazo -> Mazo : moverASeleccionadas(unaCarta)
+end loop
+
+@enduml 
