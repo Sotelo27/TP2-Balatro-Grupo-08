@@ -21,15 +21,22 @@ interface IEntregaCartas{
 Class Algo3Balatro {
     
 }
-class Mazo implements IEntregaCartas{
 
+class Mazo{
+  - cartas: List<Carta>
+  - seleccionadas: List<Carta>
+  - usadas: List<Carta>
+  + seleccionar(Carta unaCarta)
+  + quitarDeSeleccion(Carta unaCarta)
+  + realizarDescarte(Ronda unaRonda)
+  + realizarJugada(Ronda unaRonda)
+  - clonarCarta(Carta unaCarta)  
 }
+
 Algo3Balatro o-- "*" Ronda
 Algo3Balatro o-- Jugador
 Algo3Balatro o-- Mazo
-Class Jugador implements IRecibible{
-  - cartasElegidas: List<Carta>
-  - cartasEnMano: List<Carta>
+Class Jugador{
   - ficha : Ficha
   + seleccionarCarta(Carta unaCarta)
   + jugarCartasSeleccionadas(Ronda ronda)
@@ -40,7 +47,8 @@ Jugador ..> IMejorable
 Jugador o-- "*..5" Comodin
 Jugador .> Ronda : "conoce"
 Ronda o-- Tienda
-Mazo ..> Cartas 
+Jugador o- Mazo 
+Mazo o- Cartas 
 
 abstract Cartas{
     - nombre  : string 
