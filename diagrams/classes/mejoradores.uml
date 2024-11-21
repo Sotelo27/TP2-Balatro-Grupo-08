@@ -1,29 +1,5 @@
-@enduml
 
-@startuml
 
-class Jugada{
-    + Jugada(List<Carta> cartas)
-    + calculcarPuntaje() : PuntajeJugada
-}
-class Descarte{}
-class Carta{
-}
-Descarte ..|> IMejorable
-Carta ..|> IMejorable
-Jugada ..|> IMejorable
-CombinacionDePoker ..|> IMejorable
-
-Descarte ..|> IAccion
-Jugada ..|> IAccion
-interface IAccion {
-  + actualizarJugadasRestantes(Int jugadasRestantes)
-  + actualizarDescartesRestantes(Int DescartesRestantes)
-}
-
-interface IMejorable{
-  + aplicarEfecto(Efecto efecto) 
-}
 class Comodin implements IMejorador{
     - nombre : string 
     - descripcion : string
@@ -37,21 +13,23 @@ Class Tarot implements IMejorador{
 interface IMejorador {
   + mejorar( IMejorable mejorable)
 }
-
-Jugador o- "0..5" IMejorador
-IAccion <-- Comodin
 class Comodin {
-    + aplicarEfecto(IAccion accion) :
+    + aplicarEfecto(IMejorable mejorable) :
 }
 class Efecto{
     - puntos : Int
     - multiplicador: int 
-    + calcularPuntaje(int puntosBase, int multiplicadorBase)
+    + sumarPuntaje(Puntaje puntaje): Puntaje
     + agregarEfecto(Efecto otroEfecto)
 }
 
-Comodin o-- ICondicion 
-Comodin o- Efecto
+Comodin o-- "1..*" ICondicion 
+Comodin o- "1..*" Efecto
+
+
+IMejorable <.. IMejorador 
+Tarot o-- ICondicion
+
 
 class ActivarAlAzar implements ICondicion{
     - probabilidad: int 
@@ -61,27 +39,35 @@ class EsDescarte implements ICondicion{
 
 }
 class EsUnaJugada implements ICondicion{
-    
-}
-IRestriccion --o EsUnaJugada
-interface ICondicion {
-    + aplicarEfecto(IAccion accion, Efecto efecto)
 }
 
-@enduml 
-IMejorable <.. IMejorador 
-Tarot o-- IRestriccion
+interface ICondicion {
+    + validarCondicion(IMejorable mejorable) : bool
+}
+
 
 Efecto -o Tarot
-class SoloCartas implements IRestriccion{
+
+class RestriccionACarta implements ICondicion{
+    + RestriccionACarta(String nombreDeLaCarta)
     - restriccion : string 
 }
-class soloCombinacion implements IRestriccion{
+class RestriccionACombinacion implements ICondicion{
     - restriccion: Combinacion
 }
-interface IRestriccion{
-    + validarRestriccion(Mejorable mejorable): bool
+interface IMejorable{
+  + aplicarEfecto(Efecto efecto) 
 }
+interface IComparablePorTipo {
+  + esDeTipo(Object objeto): bool
+}
+interface IComparablePorNombre {
+  + tieneNombre(String nombre): bool
+}
+EsDescarte ..> IComparablePorTipo :utiliza
+EsUnaJugada ..> IComparablePorTipo  :utiliza 
 
+RestriccionACombinacion ..> IComparablePorTipo  :utiliza
+RestriccionACarta ..> IComparablePorNombre :utiliza
 
 @enduml

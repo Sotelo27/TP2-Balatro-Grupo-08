@@ -11,38 +11,34 @@ Mazo -> Jugada : aplicarTarots(this.tarotsActivos)
 loop para cada tarot 
 loop para cada carta seleccionada que cumpla con la restriccion
 Jugada -> Tarot : mejorar(cartaSeleccionada)
-Tarot -> IRestriccion : validarRestriccion(carta)
-IRestriccion --> Tarot : true 
+Tarot -> ICondicion : validarRestriccion(carta)
+ICondicion --> Tarot : true 
 Tarot ->Carta : aplicarEfecto(this.efecto)
 Carta -> Efecto : agregarEfecto(efecto)
 end loop
 Jugada -> Tarot : mejorar(unaCombinacion)
-Tarot -> IRestriccion : validarRestriccion(combinacion)
-IRestriccion --> Tarot : true 
+Tarot -> ICondicion : validarRestriccion(combinacion)
+ICondicion --> Tarot : true 
 Tarot -> Combinacion : aplicarEfecto(this.efecto)
 Combinacion -> Efecto : agregarEfecto(efecto)
 
 end loop
 Jugada --> Mazo : unaJugada 
-loop para cada comodin disponible que tenga el jugador en juego y que cumpla las condiciones
+
+loop para cada comodin disponible que tenga el jugador en juego y que cumpla todas sus condiciones
 Mazo -> Comodin : aplicarEfecto(jugada)
-Comodin -> ICondicion : aplicarEfecto(this.efecto, jugada)
-ICondicion -> Jugada : aplicarEfecto(efecto)
+loop para cada ICondicion que tenga
+Comodin -> ICondicion : validarRestriccion(jugada)
+ICondicion --> Comodin :true
+end loop 
+alt si todas fueron true:
+Comodin -> Jugada : aplicarEfecto(efecto)
+end alt 
+
 end loop
 
 Mazo ->  Mazo: usadas.agregar(this.seleccionadas)
 Mazo -> Mazo : seleccionadas.vaciar()
 Mazo -> Ronda : agregar(unaJugada)
-Ronda -> Ronda : restarAJugadasRestantes()
-Ronda -> Jugada : obtenerPuntaje(new Puntaje o puntajeActual)
-Jugada -> Ronda : unPuntaje
-alt 1)puede seguir jugando
 
-Ronda -> Mazo : rellenarMano()
-Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
-end alt
-alt 2)no consiguio llegar al puntaje 
-Ronda -> ExceptionPuntajeNoAlcanzado : signal
-
-end alt
 @enduml 
