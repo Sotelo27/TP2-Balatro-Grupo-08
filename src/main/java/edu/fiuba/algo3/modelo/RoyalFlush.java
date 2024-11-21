@@ -4,13 +4,11 @@ import java.util.List;
 
 
 public class RoyalFlush extends CombinacionDePoker {
-    String nombre;
-    int puntos;
-    int multiplicador;
-    List <Carta> cartas;
 
 
-    public RoyalFlush(List<Carta> cartas) {
+
+    public RoyalFlush(List<CartaDePoker> cartas) {
         super(cartas);
+        this.puntos
     }
-}
+};

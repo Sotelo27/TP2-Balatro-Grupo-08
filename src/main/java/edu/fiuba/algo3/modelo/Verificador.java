@@ -11,14 +11,14 @@ public abstract class Verificador implements MetodosLista {
 
     }
 
-    public CombinacionDePoker pasarAlSiguiente(List <Carta> cartas) {
+    public CombinacionDePoker pasarAlSiguiente(List <CartaDePoker> cartas) {
         if (proximoVerificador != null) {
             proximoVerificador.verificar(cartas);
         }
         return new HighCard(cartas);
     };
 
-    public CombinacionDePoker verificar(List <Carta> cartas){
+    public CombinacionDePoker verificar(List <CartaDePoker> cartas){
         if (esDeTipo(cartas)){
             return combinacionCorrespondiente;
         }
