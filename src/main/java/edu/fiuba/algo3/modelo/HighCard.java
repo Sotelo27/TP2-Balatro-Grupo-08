@@ -6,7 +6,7 @@ public class HighCard extends CombinacionDePoker {
 
 
 
-    public HighCard(List<Carta> cartas) {
+    public HighCard(List<CartaDePoker> cartas) {
         super(cartas);
         this.puntos = 5;
         this.multiplicador = 1;

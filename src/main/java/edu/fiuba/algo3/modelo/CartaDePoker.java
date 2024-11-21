@@ -24,6 +24,12 @@ public class CartaDePoker implements IMejorable {
         }
         return Integer.parseInt(this.numero);
     }
+
+    public String devolverPalo(){
+      return this.palo;
+    };
+
+
     @Override
     public void recibirMejora(Mejora mejora) {
         //

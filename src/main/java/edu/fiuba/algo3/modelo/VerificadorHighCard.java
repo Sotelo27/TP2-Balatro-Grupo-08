@@ -5,13 +5,9 @@ import java.util.List;
 public class VerificadorHighCard extends Verificador {
 
 
-    @Override
-    public boolean esDeTipo(List<Carta> cartas) {
-        return new
-    }
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        return new HighCard();
+        return new HighCard(cartas);
     }
 }

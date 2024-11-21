@@ -4,8 +4,8 @@ import java.util.List;
 
 
 public abstract class Verificador implements MetodosLista {
-    private Verificador proximoVerificador;
-    private CombinacionDePoker combinacionCorrespondiente;
+    protected Verificador proximoVerificador;
+    protected CombinacionDePoker combinacionCorrespondiente;
 
     public Verificador() {
 
@@ -29,7 +29,7 @@ public abstract class Verificador implements MetodosLista {
 
     };
 
-    public boolean esDeTipo (List <Carta> cartas){
+    public boolean esDeTipo (List <CartaDePoker> cartas){
 
         return true;
     };
