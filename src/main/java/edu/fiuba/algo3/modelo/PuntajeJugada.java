@@ -10,7 +10,7 @@ public class PuntajeJugada {
 
     public void agregarPuntosYMultiplicador(int puntos, int multiplicador) {
         this.puntos += puntos;
-        this.multiplicador = multiplicador;
+        this.multiplicador += multiplicador;
     }
     public void calcularPuntosCombinacion(){
 

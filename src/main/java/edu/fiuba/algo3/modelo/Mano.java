@@ -22,6 +22,7 @@ public class Mano {
     public void seleccionarCarta(CartaDePoker cartaElegida){
         this.seleccion.add(cartaElegida);
     }
+
     public Jugada realizarJugada(){
         if (this. seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
