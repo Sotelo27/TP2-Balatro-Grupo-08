@@ -1,0 +1,40 @@
+participant "comodin:" as Comodin
+
+' "nombre": "Comodin Astuto",
+'                 "descripcion": "+50  fichas si la mano jugada contiene un par",
+'                 "activacion": { "Mano Jugada": "par" },
+'                 "efecto": {
+'                     "puntos": 50,
+'                     "multiplicador": 1}
+
+title se usa un comodin sobre un par de cuatros 
+
+actor test 
+participant "efecto:Efecto" as Efecto
+participant "restriccion:RestriccionACombinacion" as Condicion
+participant "comodin:Comodin" as Comodin
+participant "carta1:Carta" as Carta1
+participant "carta2:Carta" as Carta2
+participant "par:Par" as Par
+participant "efectoPar:Par" as efectoPar
+test -> Efecto : Efecto( "ficha",50, 1)
+test -> Condicion : RestriccionACombinacion("par")
+test -> Comodin : Comodin("Comodin Astuto",descripcion, efecto, restriccion)
+test -> Carta1 : Carta("4 de Trebol", "Trebol", new Efecto("puntos", 4, 1))
+test -> Carta2 : Carta("4 de Picas", "Picas", new Efecto("puntos", 4, 1))
+
+test -> Combinacion : verificar(List(Carta1, Carta2))
+Combinacion -> Par : <<Create>>
+Par -> efectoPar : Efecto("puntos", 10, 2)
+Combinacion --> test : Par
+test -> Comodin : mejorar(par) 
+Comodin -> Condicion : validarRestriccion(par)
+Condicion -> Par : esDeTipo(new Par)
+Par --> Condicion : true
+Condicion -> Comodin : true 
+Comodin -> Par: aplicarEfecto(efecto)
+Par -> efectoPar: agregarEfecto(efecto) 
+efectoPar -> Efecto : getPuntos()
+Efecto --> efectoPar : 
+efectoPar -> Efecto : getMultiplicador()
+@enduml
