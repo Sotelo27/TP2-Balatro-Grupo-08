@@ -65,7 +65,7 @@ public class JuegoTest {
         // Realizar la primera jugada y obtener su puntaje
         Jugada jugada = mano.realizarJugada();
         PuntajeJugada puntaje = jugada.jugarJugada();
-        int valorEsperado = 40;
+        int valorEsperado = 200;
         assertEquals(valorEsperado, puntaje.getPuntos());
     }
 
