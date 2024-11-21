@@ -16,10 +16,12 @@ Jugada -> Ronda : unPuntaje
 Ronda -> Ronda : validarContinuado(unPuntaje)
 
 alt 1)puede seguir jugando
-
+Ronda -> Jugada : obtenerFichas()
+Jugada -->  Ronda : unasFichas
+Ronda -> Algo3 : otorgarAJugador(unasFichas)
+Algo3 -> Jugador : agregarFichas(unasFichas)
 Ronda -> Algo3 : jugadorContinuaJugando(unPuntaje)
 Algo3 -> Jugador : continuar(unPuntaje)
-Jugador -> Puntaje : obtenerFichas(this.fichas) 
 Jugador -> Mazo : continuar()
 Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
 end alt
