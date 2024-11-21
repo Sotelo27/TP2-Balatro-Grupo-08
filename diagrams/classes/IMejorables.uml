@@ -1,0 +1,53 @@
+@startuml
+
+class Jugada{
+  + Jugada(List<Carta> cartas)
+  + aplicarTarots(List<Tarot> tarotsActivos)
+  + calcularPuntaje() : PuntajeJugada
+}
+interface IMejorador
+Jugada ...> IMejorador
+Jugada o- "0..5" Carta : tiene
+CombinacionDePoker -o Jugada : tiene
+Carta -o "1..*" Descarte :tiene
+
+class Descarte{}
+class Carta{
+}
+Descarte ...|> IMejorable
+Carta ...|> IMejorable
+Jugada ...|> IMejorable
+CombinacionDePoker ...|> IMejorable
+
+Descarte ...|> IAccion
+Jugada ...|> IAccion
+
+interface IComparablePorTipo {
+  + esDeTipo(Object unObjeto): bool
+}
+IComparablePorTipo <|... Jugada
+IComparablePorTipo <|... Descarte
+IComparablePorTipo <|... Carta
+IComparablePorTipo <|... CombinacionDePoker
+
+interface IComparablePorNombre{
+  + tieneNombre(String unNombre) :
+}
+IComparablePorNombre <|... CombinacionDePoker
+IComparablePorNombre <|... Carta
+
+Efecto .> Puntaje 
+Efecto --o Jugada
+Efecto --o Descarte
+Efecto --o Carta
+Efecto --o CombinacionDePoker
+
+interface IAccion {
+  + actualizarJugadasRestantes(Int jugadasRestantes)
+  + actualizarDescartesRestantes(Int DescartesRestantes)
+}
+
+interface IMejorable{
+  + aplicarEfecto(Efecto efecto) 
+}
+@enduml

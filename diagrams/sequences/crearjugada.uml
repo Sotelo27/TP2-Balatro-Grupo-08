@@ -1,0 +1,26 @@
+@startuml
+title se crea una jugada
+
+Algo3 -> Jugador: realizarJugada(unaRonda)
+Jugador -> Mazo : realizarJugada(unaRonda) 
+Mazo -> Jugada : Jugada(this.seleccionadas)
+Jugada -> Verificador : obtenerCombinacion(seleccionadas)
+Verificador --> Jugada : unaCombinacion 
+Jugada -> Jugada : guardar(unaCombinacion)
+Jugada --> Mazo : unaJugada 
+Mazo ->  Mazo: usadas.agregar(this.seleccionadas)
+Mazo -> Mazo : seleccionadas.vaciar()
+Mazo -> Ronda : agregar(unaJugada)
+Ronda -> Ronda : restarAJugadasRestantes()
+Ronda -> Jugada : obtenerPuntaje(new Puntaje o puntajeActual)
+Jugada -> Ronda : unPuntaje
+alt puede seguir jugando
+
+Ronda -> Mazo : rellenarMano()
+Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
+end alt
+alt no consiguio llegar al puntaje 
+Ronda -> ExceptionPuntajeNoAlcanzado : signal
+
+end alt
+@enduml 

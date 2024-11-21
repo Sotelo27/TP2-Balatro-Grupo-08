@@ -6,11 +6,11 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [https://github.com/Joaquin-her](https://github.com/Joaquin-her)
-* **Integrante 2** - [https://github.com/GasparJAmato](https://github.com/GasparJAmato)
-* **Integrante 3** - [https://github.com/pabloblopa](https://github.com/pabloblopa)
-* **Integrante 4** - [https://github.com/BSerrantes](https://github.com/BSerrantes)
-* **Integrante 5** - [https://github.com/Sotelo27](https://github.com/Sotelo27)
+* **Integrante 1** - [Joaquin hernandez](https://github.com/joaquin-her)
+* **Integrante 2** - [Gaspar Jose Amato](https://github.com/GasparJAmato)
+* **Integrante 3** - [Pablo Alcocer](https://github.com/pabloblopa)
+* **Integrante 4** - [Bryan Serrantes](https://github.com/BSerrantes)
+* **Integrante 5** - [Lautaro Martin Sotelo](https://github.com/Sotelo27)
 
 Corrector: **{Maia Naftali}**
 

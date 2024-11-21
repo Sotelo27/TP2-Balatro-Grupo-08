@@ -1,0 +1,24 @@
+@startuml
+class Carta
+class Categoria
+class Jugador
+class Mano 
+class Jugada
+class Puntaje
+Interface Modificador
+Abstract class Combinacion
+class GeneradorDeCombinaciones
+
+Jugador o-- Mano
+Mano o--> "0..5" Carta
+Jugador ..> Jugada
+Puntaje <- Jugada
+Jugada -> Modificador
+Mano <-- Jugada
+Jugada --> GeneradorDeCombinaciones
+GeneradorDeCombinaciones --> Categoria
+Categoria --> Combinacion
+Categoria --> Carta
+Combinacion <..> Puntaje
+
+@enduml

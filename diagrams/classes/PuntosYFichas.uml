@@ -1,0 +1,27 @@
+
+class Efecto{
+    + agregarEfecto(Efecto otroEfecto)
+    + sumarAPuntaje(Puntaje puntaje)
+    + sumarAFichas(Fichas ficha)
+}
+
+class Puntaje{
+  - puntos : Int
+  - multiplicador: int 
+  + Puntaje()
+  + Puntaje(Int puntos,Int multiplicador)
+  + agregarPuntos(Int puntos)
+  + agregarMultiplicador(Int multiplicador)
+  + esMenorQue(Puntaje otroPuntaje): bool
+}
+
+class Fichas {
+  - fichas :Int
+  + Fichas(Int cantidad)
+  + agregarFichas(Fichas fichas)
+  + quitarFichas(Fichas fichas)
+  + esMenorQue(Fichas fichas): bool 
+}
+
+Efecto o-- Puntaje
+Puntaje o-- Fichas

@@ -1,0 +1,28 @@
+@startuml
+title se pide el puntaje de una mano jugada
+actor "algo3" as algo 
+participant "r:Ronda" as ronda 
+participant "j: Jugada" as jugada
+participant "p:Puntaje" as puntaje
+participant "Carta" as carta
+participant "Efecto" as efecto
+participant "c:CombinacionDePoker" as combinacion
+
+algo -> ronda : obtenerPuntaje()
+ronda -> jugada : obtenerPuntaje()
+jugada -> jugada : calcularPuntosPorCartas()
+jugada -> puntaje : <<create>>
+loop para cada carta jugada
+  jugada -> carta : sumarAPuntaje(p)
+  carta -> efecto : aplicarEfecto(p)
+  efecto --> puntaje : sumar(this.puntaje, this.multiplicador)
+end loop
+jugada -> combinacion :  sumarAPuntaje(p)
+combinacion -> puntaje : sumar(this.puntaje, this.multiplicador)
+loop para cada efecto de comodin aplicado
+  jugada -> efecto : aplicarEfecto(p)
+  efecto -> puntaje : sumar(this.puntaje, this.multiplicador)
+end loop
+jugada --> ronda : p 
+ronda --> algo : p
+@enduml 

@@ -1,0 +1,43 @@
+@startuml
+
+interface Fase{
+    + iniciar(Jugador jugador)
+}
+
+class FaseInicial{
+    + registrarJugador(string nombre)
+}
+
+Class BalatroAlgo3{
+    + BalatroAlgo3(string nombreDelJugador)
+    + inicar()
+    - pasarAFaseSiquiente()
+}
+BalatroAlgo3 o-- "3" Fase
+class FaseDePreparacion extends Fase{
+    
+}
+Main o- BalatroAlgo3
+FaseDePreparacion o-- Tienda
+BalatroAlgo3 --> ILectorDeJSON
+interface ILectorDeJSON{
+    + leerRonda(): List<Ronda>
+    + leerCartas(): list<Carta>
+    + leerTienda() List<Tienda>
+    + leerComodines(): List<Comodin>
+    + leerTarot(): List<Tarot>
+}
+class LectorDeJson implements ILectorDeJSON{
+    - source: string
+}
+class FaseDeRonda extends Fase{ }
+class FaseDeFinalizacion extends Fase{ }
+Class Tienda {
+    + Tienda(Lista<Carta> cartasAOfrecer)
+    + mostrarCartas(): List<Carta>
+}
+FaseDeRonda o-- Ronda
+class Ronda{
+
+}
+@enduml 
