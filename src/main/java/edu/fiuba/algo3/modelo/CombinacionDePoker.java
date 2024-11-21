@@ -14,6 +14,11 @@ public class  CombinacionDePoker {
 
     }
 
+    public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
+        puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
+
+    }
+
     public int devolverPuntaje(){
         return this.puntos * this.multiplicador;
     }

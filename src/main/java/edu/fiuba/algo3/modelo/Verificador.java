@@ -20,7 +20,7 @@ public abstract class Verificador implements MetodosLista {
 
     public CombinacionDePoker verificar(List <CartaDePoker> cartas){
         if (esDeTipo(cartas)){
-            return combinacionCorrespondiente;
+            return this.combinacionCorrespondiente;
         }
         else {
             return pasarAlSiguiente(cartas);

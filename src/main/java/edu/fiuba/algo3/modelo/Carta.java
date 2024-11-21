@@ -20,16 +20,7 @@ public class Carta implements IMejorable{
         this.efecto.recibirMejora(mejorador);
     }
 
-    public void seleccionarCartaEn(Mano mano){
 
-
-
-    }
-    public void deseleccionarCarta(Mano mano){
-
-
-
-    }
 
     public String devolverPalo(){
         return suit;

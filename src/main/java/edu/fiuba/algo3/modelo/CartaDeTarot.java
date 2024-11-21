@@ -7,10 +7,10 @@ public class CartaDeTarot implements IMejorador {
     String tipo;
 
 
-    public CartaDeTarot(String nombre, String description, int puntos, int multiplicador, String tipo){
+    public CartaDeTarot(String nombre, String description, Mejora mejora, String tipo){
         this.nombre = nombre;
         this.description = description;
-
+        this.mejora = mejora;
         this.tipo = tipo;
     }
 
