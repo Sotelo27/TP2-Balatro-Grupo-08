@@ -1,0 +1,44 @@
+@startuml
+title se crea una jugada con tarots y comodines
+
+Algo3 -> Jugador: realizarJugada(unaRonda)
+Jugador -> Mazo : realizarJugada(unaRonda, tarots) 
+Mazo -> Jugada : Jugada(this.seleccionadas, tarots)
+loop para cada tarot 
+loop para cada carta seleccionada que cumpla con la restriccion
+Jugada -> Tarot : mejorar(cartaSeleccionada)
+Tarot -> IRestriccion : validarRestriccion(carta)
+IRestriccion --> Tarot : true 
+Tarot ->Carta : aplicarEfecto(this.efecto)
+Carta -> Efecto : agregarEfecto(efecto)
+end loop
+end loop
+Jugada -> Verificador : obtenerCombinacion(seleccionadas)
+Verificador --> Jugada : unaCombinacion 
+Jugada -> Jugada : guardar(unaCombinacion)
+loop para cada tarot 
+Jugada -> Tarot : mejorar(unaCombinacion)
+end loop
+Jugada --> Mazo : unaJugada 
+loop para cada comodin disponible que tenga el jugador en juego y que cumpla las condiciones
+Mazo -> Comodin : aplicarEfecto(jugada)
+Comodin -> ICondicion : aplicarEfecto(this.efecto, jugada)
+ICondicion -> Jugada : aplicarEfecto(efecto)
+end loop
+
+Mazo ->  Mazo: usadas.agregar(this.seleccionadas)
+Mazo -> Mazo : seleccionadas.vaciar()
+Mazo -> Ronda : agregar(unaJugada)
+Ronda -> Ronda : restarAJugadasRestantes()
+Ronda -> Jugada : obtenerPuntaje(new Puntaje o puntajeActual)
+Jugada -> Ronda : unPuntaje
+alt 1)puede seguir jugando
+
+Ronda -> Mazo : rellenarMano()
+Mazo -> Mazo : moverHastaLlegarA8(cartas, mano)
+end alt
+alt 2)no consiguio llegar al puntaje 
+Ronda -> ExceptionPuntajeNoAlcanzado : signal
+
+end alt
+@enduml 
