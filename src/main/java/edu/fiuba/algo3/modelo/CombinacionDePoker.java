@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.*;
 
-public abstract class  CombinacionDePoker {
+public class  CombinacionDePoker {
 
     String nombre;
     int puntos;
@@ -11,6 +11,7 @@ public abstract class  CombinacionDePoker {
 
     public CombinacionDePoker(List <CartaDePoker> cartas) {
         this.cartas = cartas;
+
     }
 
     public int devolverPuntaje(){
