@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class VerificadorRoyalFlush extends Verificador {
-
+    /*
     @Override
     public CombinacionDePoker verificar(List<Carta> cartas) {
         if (esDeTipo(cartas)){
@@ -14,6 +14,8 @@ public class VerificadorRoyalFlush extends Verificador {
     @Override
     public boolean esDeTipo(CombinacionDePoker combinacion) {
 
-
+        return true;
     }
+    */
+
 }

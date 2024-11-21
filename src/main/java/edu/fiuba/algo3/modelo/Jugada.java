@@ -1,27 +1,26 @@
 package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Jugada {
 
-    private List <Carta> cartas;
+    private final List <CartaDePoker> cartas;
 
 
-    public Jugada(){
-        this.cartas = new ArrayList();
-        this.puntaje = new Puntaje();
+    public Jugada( List <CartaDePoker> seleccion){
+        this.cartas = seleccion;
     };
 
 
 
 
-    public PuntajeJugada jugarJugada(){
+    public  PuntajeJugada jugarJugada(){
         PuntajeJugada puntaje = new PuntajeJugada();
-        for(Carta carta: this.cartas){
-            carta.aplicarResultadoAPuntaje(puntaje);
+        for(CartaDePoker carta: this.cartas) {
+            puntaje.agregarPuntosYMultiplicador(carta.devolverValor(),1);
         }
+        return puntaje;
     }
-
-
 
 }

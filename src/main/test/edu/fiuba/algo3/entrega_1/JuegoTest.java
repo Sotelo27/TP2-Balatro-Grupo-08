@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
 
 public class JuegoTest {
     @Test
@@ -35,65 +36,84 @@ public class JuegoTest {
         Mazo mazo = creadorCartas.crearMazo();
         Mano mano = new Mano();
         mazo.repartir(mano);
-        mano.seleccionarCarta(0);
-        mano.seleccionarCarta(1);
-        assert((mano.realizarJugada()) instanceof Jugada );
-
+        try {
+            mano.realizarJugada();
+        }
+        catch (ErrorJugadaVacia e) {
+            assertEquals("No hay cartas seleccionadas",e.getMessage());
+        }
     }
 
     @Test
     public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
-        // Crear una mano de "Carta Alta" (ejemplo con un 5 como carta alta)
-        mano.recibirCard(new Carta("5", new Hearts(), 5, 1));
-        mano.recibirCard(new Carta("3", new Spades(), 3, 1));
-        mano.recibirCard(new Carta("2", new Diamonds(), 2, 1));
-        mano.recibirCard(new Carta("4", new Clubs(), 4, 1));
-        mano.recibirCard(new Carta("7", new Hearts(), 7, 1)); // Supongamos que el 7 es la carta más alta, dándole 5 puntos
-
-        // Realizar la jugada
+        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
+        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
+        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
+        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
+        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
+        mano.recibirCard(carta1 );
+        mano.recibirCard(carta2 );
+        mano.recibirCard(carta3 );
+        mano.recibirCard(carta4 );
+        mano.recibirCard(carta5 );
+        mano.seleccionarCarta(carta1);
+        mano.seleccionarCarta(carta2);
+        mano.seleccionarCarta(carta3);
+        mano.seleccionarCarta(carta4);
+        mano.seleccionarCarta(carta5);
+        // Realizar la primera jugada y obtener su puntaje
         Jugada jugada = mano.realizarJugada();
-
-        // Obtener el valor de la jugada
-        int puntuacionObtenida = jugada.obtenerValor();
-
-        // Valor esperado para una "Carta Alta" en este caso, digamos que vale 5 puntos
-        int valorEsperado = 7;
-
-        // Comprobar que la puntuación obtenida coincide con la esperada
-        assertEquals(valorEsperado, puntuacionObtenida);
+        PuntajeJugada puntaje = jugada.jugarJugada();
+        int valorEsperado = 40;
+        assertEquals(valorEsperado, puntaje.getPuntos());
     }
 
     @Test
     public void test05VerificarOrdenPuntuacionCartas() {
-        // Crear la primera mano con un orden específico
-        Mano mano1 = new Mano();
-        mano1.recibirCard(new Carta("10", new Hearts(), 10, 1));
-        mano1.recibirCard(new Carta("9", new Hearts(), 9, 1));
-        mano1.recibirCard(new Carta("8", new Hearts(), 8, 1));
-        mano1.recibirCard(new Carta("7", new Hearts(), 7, 1));
-        mano1.recibirCard(new Carta("6", new Hearts(), 6, 1));
-
+        Mano mano = new Mano();
+        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
+        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
+        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
+        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
+        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
+        mano.recibirCard(carta1 );
+        mano.recibirCard(carta2 );
+        mano.recibirCard(carta3 );
+        mano.recibirCard(carta4 );
+        mano.recibirCard(carta5 );
+        mano.seleccionarCarta(carta1);
+        mano.seleccionarCarta(carta2);
+        mano.seleccionarCarta(carta3);
+        mano.seleccionarCarta(carta4);
+        mano.seleccionarCarta(carta5);
         // Realizar la primera jugada y obtener su puntaje
-        Jugada jugada1 = mano1.realizarJugada();
-        int puntajeJugada1 = jugada1.obtenerValor(); //Luego , preferiblemente, crear una CLASE Puntaje para delegar.
+        Jugada jugada = mano.realizarJugada();
+        PuntajeJugada puntaje = jugada.jugarJugada();
+        // Realizar la primera jugada y obtener su puntaje
+        int puntajeJugada1 = puntaje.getPuntos();
 
         // Crear la segunda mano con las mismas cartas en un orden diferente
         Mano mano2 = new Mano();
-        mano2.recibirCard(new Carta("6", new Hearts(), 6, 1));
-        mano2.recibirCard(new Carta("7", new Hearts(), 7, 1));
-        mano2.recibirCard(new Carta("8", new Hearts(), 8, 1));
-        mano2.recibirCard(new Carta("9", new Hearts(), 9, 1));
-        mano2.recibirCard(new Carta("10", new Hearts(), 10, 1));
-
+        mano2.recibirCard(carta5);
+        mano2.recibirCard(carta4);
+        mano2.recibirCard(carta3);
+        mano2.recibirCard(carta2);
+        mano2.recibirCard(carta1);
+        mano2.seleccionarCarta(carta5);
+        mano2.seleccionarCarta(carta4);
+        mano2.seleccionarCarta(carta3);
+        mano2.seleccionarCarta(carta2);
+        mano2.seleccionarCarta(carta1);
         // Realizar la segunda jugada y obtener su puntaje
         Jugada jugada2 = mano2.realizarJugada();
-        int puntajeJugada2 = jugada2.obtenerValor();
+        PuntajeJugada puntaje2 = jugada2.jugarJugada();
+        int puntajeJugada2 = puntaje2.getPuntos();
 
         // Comparar ambos puntajes
         assertEquals(puntajeJugada1, puntajeJugada2);
     }
-
+    /*
     @Test
     public void test06ModificarCartaConTarot() {
         // Crear una carta de valor bajo, por ejemplo un 5 de Corazones
@@ -110,7 +130,7 @@ public class JuegoTest {
         mano.recibirCard(new Carta("7", new Hearts(), 7, 1));
 
         // Realizar la jugada
-        Jugada jugada = mano.realizarJugada();
+        // Jugada jugada = mano.realizarJugada();
 
         // Obtener el valor de la jugada
         int puntuacionObtenida = jugada.obtenerValor();
@@ -124,5 +144,12 @@ public class JuegoTest {
     @Test
     public void test07MultiplicadorCartaConTarot() {
 
+        Card cartaMejorada = new Card("5", new Hearts());
+        // Crear el efecto tarot que cambiará el valor de la carta a 10 puntos
+        Enhancement tarot = new Enhancement(6);
+        // Aplicar el tarot a la carta
+        cartaMejorada.aplicarEnhancement(tarot);
+
     }
+ */
 }

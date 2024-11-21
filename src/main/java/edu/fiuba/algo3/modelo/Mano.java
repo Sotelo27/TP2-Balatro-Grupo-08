@@ -4,15 +4,11 @@ import java.util.ArrayList;
 
 
 public class Mano {
-    private List<Carta> mano;
-    private List<Carta> seleccion;
+    private ArrayList<CartaDePoker> mano = new ArrayList<>();
+    private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
-    public Mano() {
-        this.mano = new ArrayList<>();
-        this.seleccion = new ArrayList<>();
-    }
 
-    public void recibirCard(Carta carta) {
+    public void recibirCard(CartaDePoker carta) {
         if(this.puedoAgregarCard()) {
             this.mano.add(carta);
         }
@@ -23,15 +19,14 @@ public class Mano {
         return (this.mano.size() <= 8);
     }
 
-    public void seleccionarCarta(int cartaElegida){
-        this.seleccion.add(mano.remove(cartaElegida));
+    public void seleccionarCarta(CartaDePoker cartaElegida){
+        this.seleccion.add(cartaElegida);
     }
-
-
-
-
     public Jugada realizarJugada(){
-        return new Jugada(seleccion);
+        if (this. seleccion.isEmpty()) {
+            throw new ErrorJugadaVacia("No hay cartas seleccionadas");
+        }
+        return new Jugada(this.seleccion);
     };
 
 

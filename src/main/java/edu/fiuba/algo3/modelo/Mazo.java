@@ -5,13 +5,13 @@ import java.util.Random;
 
 
 public class Mazo {
-    private List<Carta> cartas;
+    private List<CartaDePoker> cartas;
 
     public Mazo() {
         cartas = new ArrayList<>();
     }
 
-    public void addCard(Carta carta) {
+    public void addCard(CartaDePoker carta) {
         cartas.add(carta);
     }
 

@@ -15,10 +15,7 @@ public abstract class Verificador implements MetodosLista {
         if (proximoVerificador != null) {
             proximoVerificador.verificar(cartas);
         }
-        else {
-            return new HighCard(cartas);
-        }
-
+        return new HighCard(cartas);
     };
 
     public CombinacionDePoker verificar(List <Carta> cartas){
@@ -34,7 +31,7 @@ public abstract class Verificador implements MetodosLista {
 
     public boolean esDeTipo (List <Carta> cartas){
 
-
+        return true;
     };
 
 
