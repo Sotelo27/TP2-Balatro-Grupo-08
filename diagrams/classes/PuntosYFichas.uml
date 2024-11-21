@@ -1,19 +1,18 @@
 
 class Efecto{
-    + sumarPuntaje(Puntaje puntaje): Puntaje
     + agregarEfecto(Efecto otroEfecto)
+    + sumarAPuntaje(Puntaje puntaje)
+    + sumarAFichas(Fichas ficha)
 }
 
 class Puntaje{
   - puntos : Int
   - multiplicador: int 
-  +Puntaje()
-  + Puntaje(Int puntos,Int multiplicador, Int fichas)
+  + Puntaje()
+  + Puntaje(Int puntos,Int multiplicador)
   + agregarPuntos(Int puntos)
   + agregarMultiplicador(Int multiplicador)
-  + agregarFichas(Int fichas)
   + esMenorQue(Puntaje otroPuntaje): bool
-  + obtenerFichas() : Fichas
 }
 
 class Fichas {
@@ -21,7 +20,7 @@ class Fichas {
   + Fichas(Int cantidad)
   + agregarFichas(Fichas fichas)
   + quitarFichas(Fichas fichas)
-  + greaterTo(Fichas fichas): bool 
+  + esMenorQue(Fichas fichas): bool 
 }
 
 Efecto o-- Puntaje
