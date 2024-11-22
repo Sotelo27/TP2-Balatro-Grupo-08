@@ -19,7 +19,7 @@ public class PuntajeJugada {
     public void multiplicarMultiplicador(int multiplicador) {
         this.multiplicador *= multiplicador;
     }
-    public void calcularPuntosCombinacion(){
+    public void calcularPuntosCombinacion(CombinacionDePoker combinacionDePoker){
 
     }
 

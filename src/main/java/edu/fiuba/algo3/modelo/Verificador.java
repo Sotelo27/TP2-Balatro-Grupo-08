@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 
-public abstract class Verificador implements MetodosLista {
+public class Verificador implements MetodosLista {
     protected Verificador proximoVerificador;
     protected CombinacionDePoker combinacionCorrespondiente;
 

@@ -11,7 +11,7 @@ public class Efecto{
 
     public Efecto(int puntos) {
         this.puntos = puntos;
-        this.multiplicador = 0;
+        this.multiplicador = 1;
         this.mejoras = new ArrayList<>();
     }
 

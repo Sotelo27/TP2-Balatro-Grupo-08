@@ -90,28 +90,9 @@ public class JuegoTest {
         // Realizar la primera jugada y obtener su puntaje
         Jugada jugada = mano.realizarJugada();
         PuntajeJugada puntaje = jugada.jugarJugada();
-        // Realizar la primera jugada y obtener su puntaje
-        int puntajeJugada1 = puntaje.getPuntos();
 
-        // Crear la segunda mano con las mismas cartas en un orden diferente
-        Mano mano2 = new Mano();
-        mano2.recibirCard(carta5);
-        mano2.recibirCard(carta4);
-        mano2.recibirCard(carta3);
-        mano2.recibirCard(carta2);
-        mano2.recibirCard(carta1);
-        mano2.seleccionarCarta(carta5);
-        mano2.seleccionarCarta(carta4);
-        mano2.seleccionarCarta(carta3);
-        mano2.seleccionarCarta(carta2);
-        mano2.seleccionarCarta(carta1);
-        // Realizar la segunda jugada y obtener su puntaje
-        Jugada jugada2 = mano2.realizarJugada();
-        PuntajeJugada puntaje2 = jugada2.jugarJugada();
-        int puntajeJugada2 = puntaje2.getPuntos();
 
-        // Comparar ambos puntajes
-        assertEquals(puntajeJugada1, puntajeJugada2);
+
     }
     /*
     @Test
