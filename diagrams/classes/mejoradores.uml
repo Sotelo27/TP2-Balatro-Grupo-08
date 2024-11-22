@@ -8,6 +8,7 @@ class Comodin implements IMejorador{
 Class Tarot implements IMejorador{
     - nombre : string 
     - descripcion : string 
+    + Tarot(nombre, descripcion, Efecto efecto, ICondicion condicion)
 }
 
 interface IMejorador {
@@ -15,6 +16,7 @@ interface IMejorador {
 }
 class Comodin {
     + aplicarEfecto(IMejorable mejorable) :
+    + Comodin(nombre, descripcion, IEfecto efecto, ICondicion condicion)
 }
 class Efecto{
     - puntos : Int
@@ -45,7 +47,12 @@ interface ICondicion {
     + validarCondicion(IMejorable mejorable) : bool
 }
 
-
+class CombinacionDeComodines  implements IMejorador{
+  + nombre : string 
+  + descripcion : string 
+  + CombinacionDeComodines(nombre, descripcion, List<Comodin>)
+}
+CombinacionDeComodines o- "1..2" Comodin 
 Efecto -o Tarot
 
 class RestriccionACarta implements ICondicion{
