@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class JuegoTest {
@@ -93,6 +95,12 @@ public class JuegoTest {
 
 
 
+    }
+
+    @Test
+    public void verificarJsonReader() throws IOException {
+        JsonReader jsonReader = new JsonReader();
+        jsonReader.readMazo();
     }
     /*
     @Test
