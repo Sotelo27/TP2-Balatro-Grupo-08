@@ -2,12 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.*;
 public class StraightFlush extends CombinacionDePoker {
-    puntos = 100;
-    mul
 
 
-    public StraightFlush(List<Carta> cartas) {
+    public StraightFlush(List<CartaDePoker> cartas) {
         super(cartas);
+        this.puntos = 100;
+        this.multiplicador = 8;
     }
 
 }
