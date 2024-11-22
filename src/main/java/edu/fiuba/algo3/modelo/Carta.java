@@ -1,44 +1,52 @@
 package edu.fiuba.algo3.modelo;
+public class Carta {
+    private String nombre;
+    private String palo;
+    private String numero;
+    private int puntos;
+    private int multiplicador;
 
-
-public class Carta implements IMejorable{
-    private String rank;
-    private String suit;
-    private Efecto efecto;
-    private EstadoDeCarta estadoDeCarta;
-
-    public Carta(String rank, String suit, int puntos) {
-        this.rank = rank;
-        this.suit = suit;
-        this.efecto = new Efecto(puntos);
-        this.estadoDeCarta = new NoSeleccionada();
-
+    // Getters y Setters
+    public String getNombre() {
+        return nombre;
     }
 
-    @Override
-    public void recibirMejora(Mejora mejorador) {
-        this.efecto.recibirMejora(mejorador);
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-
-
-    public String devolverPalo(){
-        return suit;
+    public String getPalo() {
+        return palo;
     }
 
-    public String devolverRank(){
-        return rank;
+    public void setPalo(String palo) {
+        this.palo = palo;
     }
 
-
-    public void aplicarResultadoAPuntaje(PuntajeJugada puntajeJugada){
-
-        estadoDeCarta.aplicarResultadoAPuntaje(efecto, puntajeJugada);
-
-
-
+    public String getNumero() {
+        return numero;
     }
 
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
+    public int getPuntos() {
+        return puntos;
+    }
 
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public int getMultiplicador() {
+        return multiplicador;
+    }
+
+    public void setMultiplicador(int multiplicador) {
+        this.multiplicador = multiplicador;
+    }
 }
+
+
+
