@@ -7,7 +7,17 @@ public class Flush extends CombinacionDePoker{
     public Flush(List<CartaDePoker> cartas) {
         super(cartas);
         this.nombre = "Flush";
-        this.puntos = 35;
-        this.multiplicador = 4;
+        this.efecto = new Efecto(35, 4);
+
+
+        for(CartaDePoker carta : cartas){
+            carta.changeState(new Puntuable());
+        }
+
+
+
+
+
+
     }
 }

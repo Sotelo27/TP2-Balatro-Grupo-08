@@ -10,8 +10,11 @@ public class Mano {
     //agregar constructor
 
     public void recibirCard(CartaDePoker carta) {
+
         if(this.puedoAgregarCard()) {
             this.mano.add(carta);
+        }else{
+            throw new RuntimeException("No se puede agregar una carta");
         }
 
     }

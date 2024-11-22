@@ -15,6 +15,14 @@ public class Efecto{
         this.mejoras = new ArrayList<>();
     }
 
+    public Efecto(int puntos, int multiplicador) {
+        this.puntos = puntos;
+        this.multiplicador = multiplicador;
+        this.mejoras = new ArrayList<>();
+    }
+
+
+
 
 
     public void recibirMejora(Mejora mejora) {

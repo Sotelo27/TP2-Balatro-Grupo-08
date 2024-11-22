@@ -6,12 +6,14 @@ public class CartaDePoker implements IMejorable {
     String numero;
     Efecto efecto;
     String palo;
+    EstadoDeCarta estado;
 
 
     public CartaDePoker(String palo, String numero) {
         this.palo = palo;
         this.numero = numero;
         this.efecto = new Efecto(this.devolverValor());
+        this.estado = new NoSeleccionada();
     }
 
     public int devolverValor() {
@@ -34,13 +36,28 @@ public class CartaDePoker implements IMejorable {
     }
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
-        efecto.calcularPuntajeCarta(puntajeJugada);
+        this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
 
     }
 
     //esto tambien vuela por violar encapsulamiento.
     public String devolverPalo(){
         return palo;
+    }
+
+
+
+    public boolean soyDelMismoPaloQueOtraCarta(CartaDePoker cartaDePoker) {
+        return cartaDePoker.soyDelMismoPaloQueOtraCarta(this.palo);
+
+    }
+
+    public boolean soyDelMismoPaloQueOtraCarta(String palo) {
+        return this.palo.equals(palo);
+    }
+
+    public void changeState(EstadoDeCarta estadoDeCarta){
+        this.estado = estadoDeCarta;
     }
 
     // Recomendación: Deberíamos tener un metodo que me compare una carta con otra para saber si son la misma o al menos del mismo tipo.
