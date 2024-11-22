@@ -7,6 +7,7 @@ public class Mano {
     private ArrayList<CartaDePoker> mano = new ArrayList<>();
     private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
+    //agregar constructor
 
     public void recibirCard(CartaDePoker carta) {
         if(this.puedoAgregarCard()) {
