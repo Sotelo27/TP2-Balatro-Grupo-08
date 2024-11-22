@@ -2,6 +2,7 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -101,6 +102,12 @@ public class JuegoTest {
     public void verificarJsonReader() throws IOException {
         JsonReader jsonReader = new JsonReader();
         jsonReader.readMazo();
+    }
+
+    @Test
+    public void verificarTarotReader() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        jsonReader.readTarots();
     }
     /*
     @Test
