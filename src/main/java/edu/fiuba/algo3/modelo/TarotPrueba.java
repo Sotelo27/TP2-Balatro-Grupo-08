@@ -26,26 +26,9 @@ public class TarotPrueba {
     }
 
     public String getNombre() {return nombre;}
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    public EfectoPrueba getEfecto() {
-        return efecto;
-    }
-    public void setEfecto(EfectoPrueba efecto) {
-        this.efecto = efecto;
-    }
-    public String getSobre() {
-        return sobre;
-    }
-    public void setSobre(String sobre) {
-        this.sobre = sobre;
-    }
+    public String getDescripcion() {return descripcion;}
+    public EfectoPrueba getEfecto() {return efecto;}
+    public String getSobre() {return sobre;}
+    public String getEjemplar() {return ejemplar;}
 
 }

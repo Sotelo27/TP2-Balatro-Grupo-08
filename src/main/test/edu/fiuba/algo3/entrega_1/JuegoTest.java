@@ -109,6 +109,12 @@ public class JuegoTest {
         JsonTarotReader jsonReader = new JsonTarotReader();
         jsonReader.readTarots();
     }
+    @Test
+    public void verificarTarot() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        MazoTarots mazo = jsonReader.readTarots();
+        assertEquals(MazoTarots.class, mazo.getClass());
+    }
     /*
     @Test
     public void test06ModificarCartaConTarot() {
