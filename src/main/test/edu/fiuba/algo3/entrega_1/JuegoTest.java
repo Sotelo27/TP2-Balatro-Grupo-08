@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.*;
 
 import edu.fiuba.algo3.repositorios.JsonComodinReader;
+import edu.fiuba.algo3.repositorios.JsonComodinReaderV2;
 import edu.fiuba.algo3.repositorios.JsonMazoReader;
 import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
@@ -111,10 +112,22 @@ public class JuegoTest {
         jsonReader.readTarots();
     }
     @Test
-
     public void verificarComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
         jsonReader.readComodines();
+    }
+
+    @Test
+    public void verificarComodinReaderV2() throws IOException {
+        JsonComodinReaderV2 jsonReader = new JsonComodinReaderV2();
+        AlPuntaje ptj = jsonReader.readAlPuntaje();
+        System.out.println(ptj.getDescripcion());
+        List<Comodin> comodines = ptj.getComodines();
+        for (Comodin comodin : comodines) {
+            System.out.println(comodin.getNombre());
+            System.out.println(comodin.getDescripcion());
+            System.out.println(comodin.getActivacion());
+        }
     }
 
 
