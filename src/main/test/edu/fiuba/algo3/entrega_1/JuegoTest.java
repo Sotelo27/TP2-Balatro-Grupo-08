@@ -126,7 +126,19 @@ public class JuegoTest {
             }
         }
     }
-
+    @Test
+    public void verificarComodineader() throws IOException {
+        JsonComodinReader jsonReader = new JsonComodinReader();
+        CategoriaComodin mazo = new AlPuntaje();
+        mazo =  jsonReader.readCategoriaAlPuntaje();
+        System.out.println(mazo.getDescripcion());
+        List<Comodin> combinaciones = mazo.getComodines();
+        for (Comodin combinacion : combinaciones) {
+            System.out.println(combinacion.getDescripcion());
+            System.out.println(combinacion.getNombre());
+            }
+        }
+    }
 
     /*
     @Test
@@ -167,4 +179,4 @@ public class JuegoTest {
 
     }
  */
-}
+

@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class AlPuntaje extends CategoriaComodin {
-    @Override
-    public String getNombreCategoria() {
-        return "al puntaje";
-    }
+    private String descripcion;
+    private List<Comodin> comodines;
 }
 

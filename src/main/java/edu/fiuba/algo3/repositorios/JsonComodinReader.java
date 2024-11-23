@@ -10,102 +10,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class JsonComodinReader {
+    List <CategoriaComodin> categorias;
 
-    // Mapa para asociar nombres de categoría con las clases concretas
-    private static final Map<String, Class<? extends CategoriaComodin>> CATEGORIAS_MAP = new HashMap<>();
-
-    private List<Comodin> procesarComodinesAnidados(JsonNode nodo, ObjectMapper mapper) {
-        List<Comodin> comodines = new ArrayList<>();
-
-        for (JsonNode comodinNode : nodo) {
-            Comodin comodin = mapper.convertValue(comodinNode, Comodin.class);
-
-            // Si el comodín tiene una lista anidada, procesarla recursivamente
-            JsonNode subComodinesNode = comodinNode.get("comodines");
-            if (subComodinesNode != null && subComodinesNode.isArray()) {
-                List<Comodin> subComodines = procesarComodinesAnidados(subComodinesNode, mapper);
-                comodin.setComodines(subComodines); // Asumimos que la clase Comodin tiene un atributo para esto
-            }
-
-            comodines.add(comodin);
-        }
-
-        return comodines;
-    }
-
-
-    public List<CategoriaComodin> readComodines() throws IOException {
-        // Ruta al archivo
-        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(file);
-
-        // Lista para almacenar las instancias de CategoriaComodin
-        List<CategoriaComodin> categorias = new ArrayList<>();
-
-        // Iterar sobre las categorías
-        Iterator<Map.Entry<String, JsonNode>> fields = root.fields();
-        while (fields.hasNext()) {
-            Map.Entry<String, JsonNode> field = fields.next();
-            String categoriaNombre = field.getKey().toLowerCase();
-            System.out.println("Categoría nombre es: " + categoriaNombre);
-
-            try {
-                CategoriaComodin categoria;
-
-                // Caso especial para "Combinación"
-                if ("combinación".equals(categoriaNombre)) {
-                    categoria = new Combinacion();
-
-                    // Configurar descripción
-                    if (field.getValue().has("descripcion")) {
-                        categoria.setDescripcion(field.getValue().get("descripcion").asText());
-                    }
-
-                    // Procesar comodines anidados
-                    JsonNode comodinesNode = field.getValue().get("comodines");
-                    if (comodinesNode != null && comodinesNode.isArray()) {
-                        List<Comodin> comodinesAnidados = procesarComodinesAnidados(comodinesNode, mapper);
-                        ((Combinacion) categoria).setComodines(comodinesAnidados);
-                    }
-                } else {
-                    // Crear la instancia para otras categorías
-                    categoria = CategoriaComodin.crearDesdeNombre(categoriaNombre);
-
-                    // Configurar descripción
-                    if (field.getValue().has("descripcion")) {
-                        categoria.setDescripcion(field.getValue().get("descripcion").asText());
-                    }
-
-                    // Leer comodines
-                    JsonNode comodinesNode = field.getValue().get("comodines");
-                    if (comodinesNode != null && comodinesNode.isArray()) {
-                        List<Comodin> comodines = mapper.convertValue(comodinesNode, new TypeReference<List<Comodin>>() {});
-                        categoria.setComodines(comodines);
-                    }
-                }
-
-                categorias.add(categoria);
-
-                // Depuración
-                System.out.println("Categoría creada: " + categoria.getNombreCategoria());
-                if (categoria instanceof Combinacion) {
-                    List<Comodin> comodinesAnidados = ((Combinacion) categoria).getComodines();
-                    comodinesAnidados.forEach(comodin -> System.out.println(" - " + comodin.getNombre()));
-                } else if (categoria.getComodines() != null) {
-                    categoria.getComodines().forEach(comodin -> System.out.println(" - " + comodin.getNombre()));
-                }
-                System.out.println("--------------------------------------");
-
-            } catch (Exception e) {
-                System.err.println("Error al crear la categoría: " + categoriaNombre);
-                e.printStackTrace();
-            }
-        }
-
-        return categorias;
-    }
+    public JsonComodinReader() {categorias = new ArrayList <>();}
 
     public MazoCombinacion readCombinaciones() throws IOException {
         File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
@@ -115,6 +22,42 @@ public class JsonComodinReader {
         return mapper.convertValue(mixNode, MazoCombinacion.class);
     }
 
+    public AlPuntaje readCategoriaAlPuntaje() throws IOException {
+        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode puntajeNode = root.get("Al Puntaje");
+        categorias.add(mapper.treeToValue(puntajeNode, AlPuntaje.class));
+        return mapper.convertValue(puntajeNode,AlPuntaje.class);
+    }
+    public BonusPorDescarte readCategoriaDescarte() throws IOException {
+        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode mixNode = root.get("Bonus por Descarte");
+        categorias.add(mapper.treeToValue(mixNode, BonusPorDescarte.class));
+        return mapper.convertValue(mixNode, BonusPorDescarte.class);
+    }
+    public ComodinAleatorio readCategoriaAleatorio() throws IOException {
+        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode mixNode = root.get("Chance de activarse aleatoriamente");
+        categorias.add(mapper.treeToValue(mixNode, ComodinAleatorio.class));
+        return mapper.convertValue(mixNode, ComodinAleatorio.class);
+    }
+    public BonusPorManoJugada readCategoriaManoJugada() throws IOException {
+        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode mixNode = root.get("Bonus por Mano Jugada");
+        categorias.add(mapper.treeToValue(mixNode, BonusPorManoJugada.class));
+        return mapper.convertValue(mixNode, BonusPorManoJugada.class);
+    }
+
+    public List<CategoriaComodin> getCategorias() {
+        return categorias;
+    }
 }
 
 
