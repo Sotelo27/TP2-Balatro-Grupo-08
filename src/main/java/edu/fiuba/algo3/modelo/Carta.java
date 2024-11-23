@@ -15,6 +15,7 @@ public class Carta implements IMejorable{
 
     }
 
+
     @Override
     public void recibirMejora(Mejora mejorador) {
         this.efecto.recibirMejora(mejorador);

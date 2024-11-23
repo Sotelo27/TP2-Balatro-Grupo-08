@@ -1,39 +1,27 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.List;
+import java.util.Map;
 
 
 public abstract class Verificador implements MetodosLista {
-    private Verificador proximoVerificador;
-    private CombinacionDePoker combinacionCorrespondiente;
+    protected Verificador proximoVerificador;
 
     public Verificador() {
-
     }
 
     public CombinacionDePoker pasarAlSiguiente(List <CartaDePoker> cartas) {
         if (proximoVerificador != null) {
-            proximoVerificador.verificar(cartas);
+            return proximoVerificador.verificar(cartas);
         }
         return new HighCard(cartas);
     };
 
-    public CombinacionDePoker verificar(List <CartaDePoker> cartas){
-        if (esDeTipo(cartas)){
-            return combinacionCorrespondiente;
-        }
-        else {
-            return pasarAlSiguiente(cartas);
-        }
+    public abstract CombinacionDePoker verificar(List <CartaDePoker> cartas);
 
+    public abstract boolean esDeTipo (List <CartaDePoker> cartas);
 
-    };
-
-    public boolean esDeTipo (List <Carta> cartas){
-
-        return true;
-    };
-
+    public abstract List <CartaDePoker> agregarPuntuables(List <CartaDePoker> cartasAPuntuar);
 
 
 }

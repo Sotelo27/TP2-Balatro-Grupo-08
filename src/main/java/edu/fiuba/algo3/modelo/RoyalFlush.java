@@ -9,6 +9,10 @@ public class RoyalFlush extends CombinacionDePoker {
 
     public RoyalFlush(List<CartaDePoker> cartas) {
         super(cartas);
-        this.puntos
+        this.puntos = 100;
+        this.multiplicador = 8;
+        this.nombre = "Royal Flush";
     }
+
+
 };

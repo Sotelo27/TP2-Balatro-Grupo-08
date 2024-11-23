@@ -4,14 +4,19 @@ import java.util.List;
 
 public class VerificadorHighCard extends Verificador {
 
-
-    @Override
-    public boolean esDeTipo(List<Carta> cartas) {
-        return new
+    public VerificadorHighCard() {
+        super();
+        this.proximoVerificador = null;
     }
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        return new HighCard();
+        return new HighCard(cartas);
     }
+
+    @Override
+    public boolean esDeTipo(List<CartaDePoker> cartas) {
+        return true;
+    }
+
 }
