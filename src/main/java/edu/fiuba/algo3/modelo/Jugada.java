@@ -39,6 +39,15 @@ public class Jugada extends IMejorable, IAccion{
             }
         }
     }
+    @Override 
+    public void actualizarAcciones(AccionesDisponibles limites){
+        limites.redicirManosDisponibles();
+    }
+
+    @Override
+    public boolean superaLimites(AccionesDisponibles limites){
+        return !limites.quedanManosDisponibles();
+    }
     @Override
     public void aplicarEfecto(Efecto efecto){
         // aplica el efecto que llega por parametro a la jugada
