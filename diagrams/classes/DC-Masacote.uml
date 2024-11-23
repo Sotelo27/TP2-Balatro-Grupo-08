@@ -21,8 +21,6 @@ Class Algo3Balatro {
 class Mazo{
   - CartaDePokers: List<CartaDePoker>
   - usadas: List<CartaDePoker>
-  + seleccionar(CartaDePoker unaCartaDePoker)
-  + quitarDeSeleccion(CartaDePoker unaCartaDePoker)
   + realizarDescarte(Ronda unaRonda)
   + realizarJugada(Ronda unaRonda)
   - clonarCartaDePoker(CartaDePoker unaCartaDePoker)  
@@ -31,34 +29,54 @@ class Mazo{
 Class Jugador{
   - ficha : Ficha
   + seleccionarCartaDePoker(CartaDePoker unaCartaDePoker)
-  + jugarCartaDePokersSeleccionadas(Ronda ronda)
-  + apliCartaDePokerrotASeleccionada(IMejorable mejorable)
-  + aplicarComodinASeleccionada(IMejorable mejorable)
-  + realizarDescarteDeSeleccionada(Ronda ronda)
+  + realizarJugada(Ronda ronda)
+  + activarTarot(Tarot cartaTarot)
+  + activarComodin(Comodin comodin )
+  + realizarDescarte(Ronda ronda)
 }
 class Mano{
   - cartasDePokerDisponibles: List<CartaDePoker>
   - seleccionadas: List<CartaDePoker>
+  + aplicarTarots(List<Tarot>)
   + recibirCartaDePoker(CartaDePoker carta)
+  + seleccionar(CartaDePoker unaCartaDePoker)
+  + quitarDeSeleccion(CartaDePoker unaCartaDePoker)
 }
 
 class CartaDePoker{
     - nombre  : string 
+    - palo : string
+    - numero : int 
     + getNombre()
+    +
+    + recibirMejora(Mejora mejora)
+    
 }
 Class Ronda{
-    -nro: int 
-    -manos: manos 
-    -descartes : int 
-    + agregarAccion(IAccion accionDelJugador)
-    + calcularPuntaje() : Puntaje
+  -nro: int 
+  + agregarAccion(IAccion accionDelJugador)
+  + calcularPuntaje() : Puntaje
 }
+class AccionesDisponibles{
+  -manos: manos 
+  -descartes : int 
+  + accionesDisponibles(int manos, int descartes)
+  + superaLimiteDeDescartes(int descartes)
+  + reducirDescartesEn(int cantidad)
+  + quedanManosDisponibles():bool
+  + redicirManosDisponibles()
+}
+
+
+
 interface IAccion {
+  + actualizarLimites(AccionesDisponibles limites)  
+  + superaLimites(accionesDisponibles): bool
     + sumarAPuntaje(Puntaje unPuntaje)
     + sumarAFichas(Fichas fichas)
 }
 class Descarte{
-    + Descarte(CartaDePoker CartaDePoker)
+    + Descarte(List<CartaDePoker> cartasDescartadas)
 }
 class Jugada {
     + Jugada(List<CartaDePoker> CartasDePokerSeleccionadas)
@@ -70,7 +88,7 @@ class Puntaje{
   - multiplicador : Int 
   + Puntaje(Int puntosBase, Int multiplicador)
   + sumarAPuntaje(Puntaje puntaje)
-  + sumar(Int puntosBase, Int multiplicador)
+  + esMenorQue(Puntaje otroPuntaje): bool
 }
 abstract Efecto {
 }
@@ -113,11 +131,10 @@ Ronda o-- "0..*" IAccion
 
 Algo3Balatro o-- "*" Ronda
 Algo3Balatro o-- Jugador
-Algo3Balatro o-- Mazo
 Jugada --> Puntaje 
 Jugador o-- Mano 
 ITieneCartas <.. Mano : utiliza
-
+Ronda o- accionesDisponibles
 
 interface IMejorable
 interface IMejorador
