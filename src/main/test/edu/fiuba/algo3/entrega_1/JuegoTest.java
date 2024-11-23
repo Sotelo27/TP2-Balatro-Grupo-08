@@ -128,6 +128,16 @@ public class JuegoTest {
             System.out.println(comodin.getDescripcion());
             System.out.println(comodin.getActivacion());
         }
+
+        PorManoJugada pmj = jsonReader.readManoJugada();
+        System.out.println(pmj.getDescripcion());
+        List<Comodin> comodines2 = pmj.getComodines();
+        for (Comodin comodin : comodines2) {
+            System.out.println(comodin.getNombre());
+            System.out.println(comodin.getDescripcion());
+            System.out.println(comodin.getActivacion());
+        }
+
     }
 
 
