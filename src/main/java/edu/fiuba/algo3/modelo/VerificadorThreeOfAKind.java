@@ -14,7 +14,7 @@ public class VerificadorThreeOfAKind extends Verificador {
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
         ordenarPorNumero(cartas);
         if (esDeTipo(cartas)){
-            return new ThreeOfAKind(cartas);
+            return new ThreeOfAKind(listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
@@ -22,22 +22,19 @@ public class VerificadorThreeOfAKind extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
+        boolean cumpleLaCondicion = false;
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
         for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
             if (entry.getValue() == 3){
-                cartas = agregarPuntuables(entry.getKey());
-                return true;
+                agregarPuntuables(entry.getKey());
+                cumpleLaCondicion = true;
+            }
+            else{
+                this.listaPuntuables.addAll(entry.getKey());
             }
         }
-        return false;
+        return cumpleLaCondicion;
     }
 
-    @Override
-    public List<CartaDePoker> agregarPuntuables(List<CartaDePoker> cartasAPuntuar) {
-        for (CartaDePoker carta : cartasAPuntuar){
-            carta.changeState(new Puntuable());
-        }
-        return cartasAPuntuar;
 
-    }
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 public abstract class Verificador implements MetodosLista {
     protected Verificador proximoVerificador;
+    protected List <CartaDePoker> listaPuntuables;
 
     public Verificador() {
     }
@@ -21,7 +22,13 @@ public abstract class Verificador implements MetodosLista {
 
     public abstract boolean esDeTipo (List <CartaDePoker> cartas);
 
-    public abstract List <CartaDePoker> agregarPuntuables(List <CartaDePoker> cartasAPuntuar);
+    public void agregarPuntuables(List <CartaDePoker> cartasAPuntuar) {
+        for (CartaDePoker carta : cartasAPuntuar) {
+            carta.changeState(new Puntuable());
+            this.listaPuntuables.addAll(cartasAPuntuar);
+        }
+        ;
+    }
 
 
 }

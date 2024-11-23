@@ -12,19 +12,27 @@ public class VerificadorFourOfAKind extends Verificador{
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
         if (esDeTipo(cartas)){
-            return new FourOfAKind(cartas);
+            return new FourOfAKind(this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
+        boolean cumpleLaCondicion = false;
+        Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
+        for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
+            if (entry.getValue() == 4){
+                agregarPuntuables(entry.getKey());
+                cumpleLaCondicion = true;
+
+            }
+            else{
+                this.listaPuntuables.addAll(entry.getKey());
+            }
+        }
         return false;
     }
 
-    @Override
-    public List<CartaDePoker> agregarPuntuables(List<CartaDePoker> cartasAPuntuar) {
-        return List.of();
-    };
 
 }

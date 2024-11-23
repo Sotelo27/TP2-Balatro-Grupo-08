@@ -14,10 +14,7 @@ public class VerificadorStraightFlush extends Verificador {
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
         if (esDeTipo(cartas)){
-            for (CartaDePoker carta : cartas) {
-                carta.changeState(new Puntuable());
-            }
-            return new StraightFlush (cartas);
+            return new StraightFlush (this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
@@ -27,19 +24,13 @@ public class VerificadorStraightFlush extends Verificador {
         ordenarPorNumero(cartas);
         System.out.println(cartas);
         if (sonDelMismoTipo(cartas) && esSecuencia(cartas)) {
+            agregarPuntuables(cartas);
             return true;
         }
         return false;
     }
 
 
-
-    public List <CartaDePoker> agregarPuntuables(List <CartaDePoker> cartasAPuntuar){
-        for (CartaDePoker carta : cartasAPuntuar) {
-            carta.changeState(new Puntuable());
-        }
-        return cartasAPuntuar;
-    };
 
 
 }

@@ -14,7 +14,7 @@ public class VerificadorStraight extends Verificador {
         ordenarPorNumero(cartas);
 
         if (esDeTipo(cartas)){
-            return new Straight(cartas);
+            return new Straight(this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
@@ -24,16 +24,11 @@ public class VerificadorStraight extends Verificador {
         System.out.println(esSecuencia(cartas));
         System.out.println(cartas);
         if (esSecuencia(cartas)){
+            agregarPuntuables(cartas);
             return true;
         }
         return false;
     }
 
-    @Override
-    public List <CartaDePoker> agregarPuntuables(List <CartaDePoker> cartasAPuntuar){
-        for (CartaDePoker carta : cartasAPuntuar) {
-            carta.changeState(new Puntuable());
-        }
-        return cartasAPuntuar;
-    };
+
 }

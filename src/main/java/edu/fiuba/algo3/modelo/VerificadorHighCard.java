@@ -11,11 +11,12 @@ public class VerificadorHighCard extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        return new HighCard(cartas);
+        return new HighCard(listaPuntuables);
     }
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
+        agregarPuntuables(cartas);
         return true;
     }
 

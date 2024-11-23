@@ -14,7 +14,7 @@ public class VerificadorFullHouse extends Verificador {
 
         if (esDeTipo(cartas)){
 
-            return new FullHouse(agregarPuntuables(cartas));
+            return new FullHouse(this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
@@ -26,8 +26,10 @@ public class VerificadorFullHouse extends Verificador {
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
         for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
             if (entry.getValue() == 3){
+                agregarPuntuables(entry.getKey());
                 seEncuentraTrio = true;
             } else if (entry.getValue() == 2) {
+                agregarPuntuables(entry.getKey());
                 seEncuentraPar = true;
             }
 
@@ -37,14 +39,6 @@ public class VerificadorFullHouse extends Verificador {
         }
         return false;
     }
-
-    @Override
-    public List <CartaDePoker> agregarPuntuables(List <CartaDePoker> cartasAPuntuar){
-        for (CartaDePoker carta : cartasAPuntuar) {
-            carta.changeState(new Puntuable());
-        }
-        return cartasAPuntuar;
-    };
 
 
 }
