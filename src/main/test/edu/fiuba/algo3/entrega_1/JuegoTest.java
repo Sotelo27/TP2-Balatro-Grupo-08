@@ -118,7 +118,12 @@ public class JuegoTest {
         System.out.println(mazo.getDescripcion());
         List<Combinacion> combinaciones = mazo.getCombinaciones();
         for (Combinacion combinacion : combinaciones) {
+            List<Comodin> comodines = combinacion.getComodines();
             System.out.println(combinacion.getDescripcion());
+            for (Comodin comodin : comodines) {
+                System.out.println(comodin.getDescripcion());
+                System.out.println(comodin.getNombre());
+            }
         }
     }
 
