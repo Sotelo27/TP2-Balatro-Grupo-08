@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 import java.util.ArrayList;
 
-class Ronda{
+public class Ronda{
 	private LimiteRonda limites;
 	private Tienda tienda;
 	private List<IAccion> accionesRalizadas;
@@ -23,6 +23,7 @@ class Ronda{
 		if (accion.superaLimites(this.Limites)){
 			return false
 		}
+		accion.actualizarAcciones(this.Limites);
 		this.accionesRalizadas.add()
 		return true
 	}

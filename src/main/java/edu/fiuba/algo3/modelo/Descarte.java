@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-class Descarte implements IAccion {
+public class Descarte implements IAccion {
 	private final List <CartaDePoker> cartas;
 	private Efecto efecto;
 
