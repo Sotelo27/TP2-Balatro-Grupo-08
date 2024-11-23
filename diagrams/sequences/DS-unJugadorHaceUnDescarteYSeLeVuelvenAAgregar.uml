@@ -1,0 +1,22 @@
+
+title un jugador hace un descarte y se le vuelven a agregar cartas
+actor algo3 
+participant BalatroAlgo3
+participant Jugador 
+participant Mazo 
+
+BalatroAlgo3 -> Jugador : descartarSeleccion(unaRonda)
+Jugador -> Mazo : descartarSeleccion(mano, unaRonda)
+Mazo -> Mano : descartar(unaRonda)
+Mano -> Descarte : Descarte(cartasSeleccionadas)
+Mano -> Ronda : agregarAccion(descarte)
+Ronda -> Ronda : validarAccion(descarte)
+Ronda --> Mano : bool 
+Mano --> Mazo : cartasSeleccionadas
+Mazo -> Mazo : usadas.add(cartasSeleccionadas)
+
+Jugador -> Mano : recargarMano(mazo)
+loop hasta llegar a 8 cartas 
+Mano -> Mazo : tomarCarta()
+Mazo --> Mano : unaCarta
+end loop
