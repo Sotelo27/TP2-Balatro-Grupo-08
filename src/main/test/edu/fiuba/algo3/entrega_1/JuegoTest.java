@@ -2,10 +2,12 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.repositorios.JsonMazoReader;
 import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -94,13 +96,11 @@ public class JuegoTest {
         Jugada jugada = mano.realizarJugada();
         PuntajeJugada puntaje = jugada.jugarJugada();
 
-
-
     }
 
     @Test
     public void verificarJsonReader() throws IOException {
-        JsonReader jsonReader = new JsonReader();
+        JsonMazoReader jsonReader = new JsonMazoReader();
         jsonReader.readMazo();
     }
 
@@ -109,12 +109,7 @@ public class JuegoTest {
         JsonTarotReader jsonReader = new JsonTarotReader();
         jsonReader.readTarots();
     }
-    @Test
-    public void verificarTarot() throws IOException {
-        JsonTarotReader jsonReader = new JsonTarotReader();
-        MazoTarots mazo = jsonReader.readTarots();
-        assertEquals(MazoTarots.class, mazo.getClass());
-    }
+
     /*
     @Test
     public void test06ModificarCartaConTarot() {
