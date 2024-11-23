@@ -90,12 +90,13 @@ public class CartaDePoker implements IMejorable {
 
     public boolean suValorEsSiguiente(int indiceOtraCarta) {
         int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
-        return  indiceOtraCarta == thisIndex + 1;
+        return  indiceOtraCarta == thisIndex - 1;
     }
 
     @Override
     public String toString() {
-        return this.numero + " of " + this.palo; // Assuming `rank` and `suit` are fields in the Card class
+
+        return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable ;
     }
 
     public void changeState(EstadoDeCarta estadoDeCarta){

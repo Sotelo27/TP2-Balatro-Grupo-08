@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.List;
+import java.util.Map;
 
 public class VerificadorHighCard extends Verificador {
 
@@ -11,13 +12,28 @@ public class VerificadorHighCard extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        return new HighCard(listaPuntuables);
-    }
+        if (esDeTipo(cartas)){
+            return new HighCard(this.listaPuntuables);
+        }
+        else {
+            return null;
+        }
+    };
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        agregarPuntuables(cartas);
-        return true;
+        boolean condicionSeCumple = false;
+        Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
+        for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
+            if(!condicionSeCumple){
+                condicionSeCumple = true;
+                agregarPuntuables(entry.getKey());
+            }
+            else{
+                this.listaPuntuables.addAll(entry.getKey());
+            }
+        }
+        return condicionSeCumple;
     }
 
 }

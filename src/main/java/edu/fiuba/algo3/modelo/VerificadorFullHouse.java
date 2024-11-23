@@ -32,7 +32,6 @@ public class VerificadorFullHouse extends Verificador {
                 agregarPuntuables(entry.getKey());
                 seEncuentraPar = true;
             }
-
             if (seEncuentraTrio && seEncuentraPar){
                 return true;
             }

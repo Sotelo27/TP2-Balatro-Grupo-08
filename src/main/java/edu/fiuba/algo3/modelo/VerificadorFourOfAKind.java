@@ -25,13 +25,12 @@ public class VerificadorFourOfAKind extends Verificador{
             if (entry.getValue() == 4){
                 agregarPuntuables(entry.getKey());
                 cumpleLaCondicion = true;
-
             }
             else{
                 this.listaPuntuables.addAll(entry.getKey());
             }
         }
-        return false;
+        return cumpleLaCondicion;
     }
 
 

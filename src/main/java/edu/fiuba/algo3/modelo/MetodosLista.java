@@ -35,7 +35,7 @@ public interface MetodosLista {
         cartas.sort(new Comparator<CartaDePoker>() {
             @Override
             public int compare(CartaDePoker card1, CartaDePoker card2) {
-                return card1.compararNumero(card2);
+                return card2.compararNumero(card1);
             }
         });
     }
@@ -58,17 +58,17 @@ public interface MetodosLista {
 
 
 
-   default Map<List<CartaDePoker>, Integer> contarPorNumero(List<CartaDePoker> cards) {
+   default Map<List<CartaDePoker>, Integer> contarPorNumero(List<CartaDePoker> cartas) {
         Map<List<CartaDePoker>, Integer> gruposDeNumeros = new LinkedHashMap<>();
 
         // grupos de cartas por rango
         List<CartaDePoker> grupoActual = new ArrayList<>();
 
-        for (int i = 0; i < cards.size(); i++) {
-            CartaDePoker card = cards.get(i);
+        for (int i = 0; i < cartas.size(); i++) {
+            CartaDePoker card = cartas.get(i);
 
             // si es la primer carta o matchea el numero anterior, se agrega al grupo
-            if (i == 0 || card.compararNumero(cards.get(i - 1)) == 0) {
+            if (i == 0 || card.compararNumero(cartas.get(i - 1)) == 0) {
                 grupoActual.add(card);
             } else {
                 // cuando el rango cambia, se guarda el grupo anterior y se empieza uno nuevo
