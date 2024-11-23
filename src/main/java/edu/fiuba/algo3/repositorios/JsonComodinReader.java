@@ -107,6 +107,14 @@ public class JsonComodinReader {
         return categorias;
     }
 
+    public MazoCombinacion readCombinaciones() throws IOException {
+        File file = new File(getClass().getClassLoader().getResource("json/comodines.json").getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode mixNode = root.get("Combinación");
+        return mapper.convertValue(mixNode, MazoCombinacion.class);
+    }
+
 }
 
 

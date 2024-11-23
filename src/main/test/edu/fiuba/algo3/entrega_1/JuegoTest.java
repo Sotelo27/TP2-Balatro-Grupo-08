@@ -8,6 +8,7 @@ import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -112,7 +113,13 @@ public class JuegoTest {
     @Test
     public void verificarComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-        jsonReader.readComodines();
+        //jsonReader.readComodines();
+        MazoCombinacion mazo = jsonReader.readCombinaciones();
+        System.out.println(mazo.getDescripcion());
+        List<Combinacion> combinaciones = mazo.getCombinaciones();
+        for (Combinacion combinacion : combinaciones) {
+            System.out.println(combinacion.getDescripcion());
+        }
     }
 
 
