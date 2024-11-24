@@ -10,12 +10,6 @@ public class Comodin implements IMejorador{
     private ICondicionMejora condicionDeMejora;
     private Efecto efecto;
 
-    public String getNombre() {
-        return nombre;
-
-    public String getDescripcion() {
-        return descripcion;
-    }
     
     @Override
     public void mejorar(Jugada jugada){

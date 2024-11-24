@@ -18,7 +18,7 @@ public class Descarte implements IAccion {
 	}
 	@Override
 	public boolean superaLimites(AccionesDisponibles limites){
-		return limites.superaLimiteDescartes(this.cartas.size())
+		return limites.superaLimiteDescartes(this.cartas.size());
 	}
 
     @Override
@@ -28,10 +28,10 @@ public class Descarte implements IAccion {
     }
     @Override
     public int actualizarJugadasRestantes(int cantidadDeJugadas){
-        return cantidadDeJugadas
+        return cantidadDeJugadas;
     }
     @Override
     public int actualizarDescartesRestantes(int cantidadDeDescartes){
-        return cantidadDeDescartes -1
+        return cantidadDeDescartes -1;
     }
 }

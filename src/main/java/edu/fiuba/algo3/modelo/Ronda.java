@@ -17,16 +17,16 @@ public class Ronda{
         for(IAccion accion : this.accionesRalizadas){
             accion.sumarAPuntaje(puntaje);
         }
-        return puntaje
+        return puntaje;
     }
 
     public boolean agregarAccion(IAccion accion){
         if (accion.superaLimites(this.Limites)){
-            return false
+            return false;
         }
         accion.actualizarAcciones(this.Limites);
-        this.accionesRalizadas.add()
-        return true
+        this.accionesRalizadas.add();
+        return true;
     }
 
     @JsonProperty("nro")

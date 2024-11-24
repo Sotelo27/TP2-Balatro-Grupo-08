@@ -55,7 +55,7 @@ public class Mano {
 
         jugada.aplicarTarots(cartasDeTarot);
         for(Comodin comodin : comodines){
-            comodon.mejorar(jugada)
+            comodin.mejorar(jugada);
         }
         return true;
     };

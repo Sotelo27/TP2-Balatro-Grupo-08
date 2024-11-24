@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Jugador {
     private String nombre;
     private Ficha fichas;
-    private Mano mano
+    private Mano mano;
     private List<Comodin> comodinesActivos;
     private List<Tarot> tarotsActivos;
 
@@ -22,7 +22,7 @@ public class Jugador {
         this.mano.realizarJugada(ronda, tarotsActivos, comodinesActivos);
     }
     public void realizarDescarte(Ronda ronda){
-        this.mano.realizarDescarte(Ronda ronda);
+        this.mano.realizarDescarte( ronda);
     }
     public void activarTarot(Tarot tarot){
         this.tarotsActivos.add(tarot);
