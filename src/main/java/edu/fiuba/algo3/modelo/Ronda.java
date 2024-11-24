@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Ronda {
+    @JsonProperty("nro")
     private int numero;
     private int manos;
     private int descartes;

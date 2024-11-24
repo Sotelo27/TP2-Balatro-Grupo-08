@@ -2,13 +2,13 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.repositorios.JsonBalatroReader;
 import edu.fiuba.algo3.repositorios.JsonComodinReader;
 import edu.fiuba.algo3.repositorios.JsonMazoReader;
 import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -116,20 +116,11 @@ public class JuegoTest {
         JsonComodinReader jsonReader = new JsonComodinReader();
         MazoComodines mazo = jsonReader.readCategorias();
     }
-}
 
-/*
     @Test
-    public void verificarComodineader() throws IOException {
-        JsonComodinReader jsonReader = new JsonComodinReader();
-        CategoriaComodin mazo = new AlPuntaje();
-        mazo = jsonReader.readCategoriaAlPuntaje();
-        System.out.println(mazo.getDescripcion());
-        List<Comodin> combinaciones = mazo.getComodines();
-        for (Comodin combinacion : combinaciones) {
-            System.out.println(combinacion.getDescripcion());
-            System.out.println(combinacion.getNombre());
-        }
+    public void verificarBalatroReader() throws IOException {
+        JsonBalatroReader jsonReader = new JsonBalatroReader();
+        Balatro juego = jsonReader.readBalatro();
     }
 }
 

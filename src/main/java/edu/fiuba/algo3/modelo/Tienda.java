@@ -1,9 +1,36 @@
 package edu.fiuba.algo3.modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Tienda {
+    @JsonProperty("comodines")
     List<Comodin> comodines;
     List<TarotPrueba> tarots;
     Carta carta;
+
+    public List<Comodin> getComodines() {
+        return comodines;
+    }
+
+    public void setComodines(List<Comodin> comodines) {
+        this.comodines = comodines;
+    }
+
+    public List<TarotPrueba> getTarots() {
+        return tarots;
+    }
+
+    public void setTarots(List<TarotPrueba> tarots) {
+        this.tarots = tarots;
+    }
+
+    public Carta getCarta() {
+        return carta;
+    }
+
+    public void setCarta(Carta carta) {
+        this.carta = carta;
+    }
 }
