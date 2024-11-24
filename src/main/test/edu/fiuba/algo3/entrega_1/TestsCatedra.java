@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito; 
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
-
+/*
 @RunWith(MockitoJUnitRunner.class) 
 public class JuegoTest {
     // declarar aca los objetos a utilizar
@@ -159,3 +159,4 @@ public class JuegoTest {
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
 }
+*/

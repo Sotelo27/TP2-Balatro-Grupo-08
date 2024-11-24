@@ -1,40 +1,31 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.List;
-import java.util.Map;
 
 public class Comodin implements IMejorador{
-
     private String nombre;
     private String descripcion;
-    private ICondicionMejora condicionDeMejora;
-    private Efecto efecto;
+    private Object activacion; // parsear a IcondicionMejora
+    private Mejora efecto;
+    private List<Comodin> comodines;
 
-    public String getNombre() {
-        return nombre;
+    public Comodin() {}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-    
     @Override
-    public void mejorar(Jugada jugada){
-        jugada.recibirEfecto(this.efecto);
-    }
+    public void mejorar(IMejorable mejorable){mejorable.recibirMejora(this.efecto);}
+    //Setters
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public void setActivacion(Object activacion) {
-        this.condicionDeMejora = activacion;
-    }
+    public void setActivacion(Object activacion) { this.activacion = activacion; }
 
-    public void setEfecto(EfectoPrueba efecto) {
-        this.efecto = efecto;
-    }
+    public void setEfecto(Mejora efecto) { this.efecto = efecto; }
+
+    public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
+
 }
+
+
+

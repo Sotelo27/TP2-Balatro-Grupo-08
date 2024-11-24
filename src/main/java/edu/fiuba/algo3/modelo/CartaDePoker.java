@@ -9,13 +9,17 @@ public class CartaDePoker implements IMejorable {
     protected Efecto efecto;
     protected String palo;
     protected EstadoDeCarta estado;
+    protected String nombre;
+    protected int multiplicador;
+    protected int puntos;
 
     private static final List<String> ORDEN_NUMEROS = Arrays.asList(
             "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
     );
 
     //Setters
-    public CartaDePoker() {}
+    public CartaDePoker() {
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -25,16 +29,20 @@ public class CartaDePoker implements IMejorable {
         this.palo = palo;
     }
 
-    public void setNumero(String numero) {this.numero = numero;}
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
-    public void setPuntos(int puntos) {this.puntos = puntos;}
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
 
-    public void setMultiplicador(int multiplicador) {this.multiplicador = multiplicador;}
+    public void setMultiplicador(int multiplicador) {
+        this.multiplicador = multiplicador;
+    }
 
     @Override
-    public void recibirMejora(Mejora mejora) {
-        efecto.recibirMejora(mejora);
-    }
+    public void recibirMejora(Mejora mejora) {efecto.recibirMejora(mejora);}
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
         this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
@@ -50,7 +58,7 @@ public class CartaDePoker implements IMejorable {
         return this.palo.equals(palo);
     }
 
-    public boolean soyDelMismoNumero (String numero) {
+    public boolean soyDelMismoNumero(String numero) {
         return this.numero.equals(numero);
     }
 
@@ -77,15 +85,17 @@ public class CartaDePoker implements IMejorable {
 
     public boolean suValorEsSiguiente(int indiceOtraCarta) {
         int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
-        return  indiceOtraCarta == thisIndex - 1;
+        return indiceOtraCarta == thisIndex - 1;
     }
 
     @Override
     public String toString() {
 
-        return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable ;
+        return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable;
     }
 
-    public void changeState(EstadoDeCarta estadoDeCarta){
+    public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;
     }
+}
+
