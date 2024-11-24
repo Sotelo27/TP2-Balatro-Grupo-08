@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
-import java.util.List;
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
 
+import java.util.List;
 
 
 public class Jugada {

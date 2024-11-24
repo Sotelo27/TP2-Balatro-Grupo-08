@@ -4,10 +4,10 @@ import java.util.Objects;
 import java.util.*;
 
 public class CartaDePoker implements IMejorable {
-    String numero;
-    Efecto efecto;
-    String palo;
-    EstadoDeCarta estado;
+    protected String numero;
+    protected Efecto efecto;
+    protected String palo;
+    protected EstadoDeCarta estado;
 
     private static final List<String> ORDEN_NUMEROS = Arrays.asList(
             "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"

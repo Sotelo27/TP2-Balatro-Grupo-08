@@ -1,10 +1,15 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Verificadores;
+import edu.fiuba.algo3.modelo.CartaDePoker;
+import edu.fiuba.algo3.modelo.CombinacionDePoker;
+import edu.fiuba.algo3.modelo.CombinacionesDePoker.OnePair;
+import edu.fiuba.algo3.modelo.Verificador;
+
 import java.util.*;
 
-public class VerificadorFourOfAKind extends Verificador{
-    public VerificadorFourOfAKind() {
+public class VerificadorOnePair extends Verificador {
+    public VerificadorOnePair() {
         super();
-        this.proximoVerificador = new VerificadorFullHouse();
+        this.proximoVerificador = new VerificadorHighCard();
 
 
     }
@@ -12,7 +17,7 @@ public class VerificadorFourOfAKind extends Verificador{
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
         if (esDeTipo(cartas)){
-            return new FourOfAKind(this.listaPuntuables);
+            return new OnePair(listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
@@ -22,12 +27,12 @@ public class VerificadorFourOfAKind extends Verificador{
         boolean cumpleLaCondicion = false;
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
         for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
-            if (entry.getValue() == 4){
+            if (entry.getValue() == 2 ){
                 agregarPuntuables(entry.getKey());
                 cumpleLaCondicion = true;
             }
             else{
-                this.listaPuntuables.addAll(entry.getKey());
+                listaPuntuables.addAll(entry.getKey());
             }
         }
         return cumpleLaCondicion;

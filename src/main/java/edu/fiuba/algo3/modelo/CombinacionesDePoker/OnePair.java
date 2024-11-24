@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.CombinacionesDePoker;
 
-import javafx.util.Pair;
+import edu.fiuba.algo3.modelo.CartaDePoker;
+import edu.fiuba.algo3.modelo.CombinacionDePoker;
 
 import java.util.List;
 

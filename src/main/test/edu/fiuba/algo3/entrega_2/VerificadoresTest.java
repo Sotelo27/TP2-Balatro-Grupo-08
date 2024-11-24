@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.entrega_2;
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class VerificadoresTest {
         cartas.add(carta3);
         cartas.add(carta4);
         cartas.add(carta5);
-        combinacionEncontrada = new VerificadorRoyalFlush ().verificar(cartas);
+        combinacionEncontrada = new VerificadorRoyalFlush().verificar(cartas);
         System.out.println(combinacionEncontrada.devolverNombreCombinacion());
     }
 
