@@ -18,12 +18,12 @@ public class TestsDeLecturaDeJson {
         jsonReader.readTarots();
     }
 
-
     @Test
     public void verificaComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<Comodin> mazo = jsonReader.readComodines();
     }
+
     @Test
     public void verificarBalatroReader() throws IOException {
         JsonBalatroReader jsonReader = new JsonBalatroReader();
