@@ -3,10 +3,10 @@ package edu.fiuba.algo3.modelo;
 import java.util.Objects;
 
 public class CartaDePoker implements IMejorable {
-    String numero;
-    Efecto efecto;
-    String palo;
-    EstadoDeCarta estado;
+    protected String numero;
+    protected Efecto efecto;
+    protected String palo;
+    protected EstadoDeCarta estado;
 
 
     public CartaDePoker(String palo, String numero) {

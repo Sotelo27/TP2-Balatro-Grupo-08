@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.CombinacionesDePoker;
+
+import edu.fiuba.algo3.modelo.CartaDePoker;
+import edu.fiuba.algo3.modelo.CombinacionDePoker;
 
 import java.util.*;
 public class StraightFlush extends CombinacionDePoker {
