@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class JuegoTest {
     @Test
-    public void test01MazoTieneSufucientesCartasParaComenzar(){
+    public void test01MazoTieneSufucientesCartasParaComenzar() {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
 
@@ -23,7 +23,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMas(){
+    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMas() {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
         Mano mano = new Mano();
@@ -31,12 +31,12 @@ public class JuegoTest {
 
         mazo.repartir(mano);
 
-        assert(!mano.puedoAgregarCard());
+        assert (!mano.puedoAgregarCard());
 
     }
 
     @Test
-    public void test03SePuedeHacerUnaJugada(){
+    public void test03SePuedeHacerUnaJugada() {
 
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
@@ -44,25 +44,24 @@ public class JuegoTest {
         mazo.repartir(mano);
         try {
             mano.realizarJugada();
-        }
-        catch (ErrorJugadaVacia e) {
-            assertEquals("No hay cartas seleccionadas",e.getMessage());
+        } catch (ErrorJugadaVacia e) {
+            assertEquals("No hay cartas seleccionadas", e.getMessage());
         }
     }
 
     @Test
     public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
-        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
-        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
-        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
-        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
-        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
-        mano.recibirCard(carta1 );
-        mano.recibirCard(carta2 );
-        mano.recibirCard(carta3 );
-        mano.recibirCard(carta4 );
-        mano.recibirCard(carta5 );
+        CartaDePoker carta1 = new CartaDePoker("Corazones", "10");
+        CartaDePoker carta2 = new CartaDePoker("Corazones", "9");
+        CartaDePoker carta3 = new CartaDePoker("Corazones", "8");
+        CartaDePoker carta4 = new CartaDePoker("Corazones", "7");
+        CartaDePoker carta5 = new CartaDePoker("Corazones", "6");
+        mano.recibirCard(carta1);
+        mano.recibirCard(carta2);
+        mano.recibirCard(carta3);
+        mano.recibirCard(carta4);
+        mano.recibirCard(carta5);
         mano.seleccionarCarta(carta1);
         mano.seleccionarCarta(carta2);
         mano.seleccionarCarta(carta3);
@@ -78,16 +77,16 @@ public class JuegoTest {
     @Test
     public void test05VerificarOrdenPuntuacionCartas() {
         Mano mano = new Mano();
-        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
-        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
-        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
-        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
-        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
-        mano.recibirCard(carta1 );
-        mano.recibirCard(carta2 );
-        mano.recibirCard(carta3 );
-        mano.recibirCard(carta4 );
-        mano.recibirCard(carta5 );
+        CartaDePoker carta1 = new CartaDePoker("Corazones", "10");
+        CartaDePoker carta2 = new CartaDePoker("Corazones", "9");
+        CartaDePoker carta3 = new CartaDePoker("Corazones", "8");
+        CartaDePoker carta4 = new CartaDePoker("Corazones", "7");
+        CartaDePoker carta5 = new CartaDePoker("Corazones", "6");
+        mano.recibirCard(carta1);
+        mano.recibirCard(carta2);
+        mano.recibirCard(carta3);
+        mano.recibirCard(carta4);
+        mano.recibirCard(carta5);
         mano.seleccionarCarta(carta1);
         mano.seleccionarCarta(carta2);
         mano.seleccionarCarta(carta3);
@@ -110,35 +109,30 @@ public class JuegoTest {
         JsonTarotReader jsonReader = new JsonTarotReader();
         jsonReader.readTarots();
     }
+
+
     @Test
-    public void verificarComodinReader() throws IOException {
+    public void verificaComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-        //jsonReader.readComodines();
-        MazoCombinacion mazo = jsonReader.readCombinaciones();
-        System.out.println(mazo.getDescripcion());
-        List<Combinacion> combinaciones = mazo.getCombinaciones();
-        for (Combinacion combinacion : combinaciones) {
-            List<Comodin> comodines = combinacion.getComodines();
-            System.out.println(combinacion.getDescripcion());
-            for (Comodin comodin : comodines) {
-                System.out.println(comodin.getDescripcion());
-                System.out.println(comodin.getNombre());
-            }
-        }
+        MazoComodines mazo = jsonReader.readCategorias();
     }
+}
+
+/*
     @Test
     public void verificarComodineader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
         CategoriaComodin mazo = new AlPuntaje();
-        mazo =  jsonReader.readCategoriaAlPuntaje();
+        mazo = jsonReader.readCategoriaAlPuntaje();
         System.out.println(mazo.getDescripcion());
         List<Comodin> combinaciones = mazo.getComodines();
         for (Comodin combinacion : combinaciones) {
             System.out.println(combinacion.getDescripcion());
             System.out.println(combinacion.getNombre());
-            }
         }
     }
+}
+
 
     /*
     @Test
