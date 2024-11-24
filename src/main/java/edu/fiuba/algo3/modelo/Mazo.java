@@ -11,6 +11,12 @@ public class Mazo {
         cartas = new ArrayList<>();
     }
 
+    //Setters
+
+    public void setMazo(List<CartaDePoker> mazo) {
+        this.cartas = mazo;
+    }
+
     public void addCard(CartaDePoker carta) {
         cartas.add(carta);
     }

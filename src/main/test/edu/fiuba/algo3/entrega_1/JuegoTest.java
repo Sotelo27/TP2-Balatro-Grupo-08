@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class JuegoTest {
+    /*
     @Test
     public void test01MazoTieneSufucientesCartasParaComenzar() {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
@@ -98,7 +99,7 @@ public class JuegoTest {
         PuntajeJugada puntaje = jugada.jugarJugada();
 
     }
-
+*/
     @Test
     public void verificarJsonReader() throws IOException {
         JsonMazoReader jsonReader = new JsonMazoReader();

@@ -3,30 +3,30 @@ package edu.fiuba.algo3.modelo;
 import java.util.Objects;
 
 public class CartaDePoker implements IMejorable {
-    String numero;
-    Efecto efecto;
+    String nombre;
     String palo;
+    String numero;
+    private int puntos;
+    private int multiplicador;
+    Efecto efecto;
 
 
-    public CartaDePoker(String palo, String numero) {
+    //Setters
+    public CartaDePoker() {}
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPalo(String palo) {
         this.palo = palo;
-        this.numero = numero;
-        this.efecto = new Efecto(this.devolverValor());
     }
 
-    public int devolverValor() {
-        // esto debería volar al usar factory
-        int valor = 0;
-        if (Objects.equals(this.numero, "J") || Objects.equals(this.numero, "Q") || Objects.equals(this.numero, "K")) {
-            valor = 10;
-            return valor;
-        }
-        if (Objects.equals(this.numero, "A")) {
-            valor = 11;
-            return valor;
-        }
-        return Integer.parseInt(this.numero);
-    }
+    public void setNumero(String numero) {this.numero = numero;}
+
+    public void setPuntos(int puntos) {this.puntos = puntos;}
+
+    public void setMultiplicador(int multiplicador) {this.multiplicador = multiplicador;}
 
     @Override
     public void recibirMejora(Mejora mejora) {

@@ -8,7 +8,7 @@ import java.util.List;
 public class Tienda {
     List<Comodin> comodines;
     List<TarotPrueba> tarots;
-    Carta carta;
+    CartaDePoker carta;
 
     public List<Comodin> getComodines() {
         return comodines;
@@ -26,11 +26,11 @@ public class Tienda {
         this.tarots = tarots;
     }
 
-    public Carta getCarta() {
+    public CartaDePoker getCarta() {
         return carta;
     }
 
-    public void setCarta(Carta carta) {
+    public void setCarta(CartaDePoker carta) {
         this.carta = carta;
     }
 }

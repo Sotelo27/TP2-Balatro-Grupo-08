@@ -2,7 +2,6 @@ package edu.fiuba.algo3.repositorios;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.modelo.Balatro;
-import edu.fiuba.algo3.modelo.MazoPrueba;
 
 import java.io.File;
 import java.io.IOException;
