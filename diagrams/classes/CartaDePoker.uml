@@ -1,0 +1,37 @@
+class CartaDePoker{
+  - nombre: string
+  - suit : string 
+  - numero: int 
+  + CartaDePoker(String nombre, String suit, Int number)
+  + sumarPuntaje(Puntaje unPuntaje)
+  + cambiarAEstado(IEstadoCarta unEstado)
+  + sonDelMismoPalo(CartaDePoker otraCarta): bool
+  + sonDelMismoNumero(CartaDePoker otraCarta: bool
+}
+class Efecto {
+  - puntaje : Int 
+  - multiplicador : Int
+  - beneficio : String 
+  + Efecto(String beneficio, Int puntaje, Int multiplicador)
+  + aplicarEfecto(Efecto efecto)
+  + sumarPuntaje(Puntaje unPuntaje)
+}
+
+CartaDePoker o- Efecto 
+CartaDePoker o-- IEstadoCarta
+interface IEstadoCarta{
+  + aplicarResultadoAPuntaje(Efecto efecto, Puntaje puntaje)
+  
+}
+
+class Puntuable implements IEstadoCarta{
+}
+
+class Utilizada implements IEstadoCarta{
+}
+class NoUtilizada implements IEstadoCarta{
+}
+
+class NoSeleccionada implements IEstadoCarta{
+}
+

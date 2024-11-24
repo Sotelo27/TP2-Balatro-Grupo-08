@@ -1,8 +1,13 @@
 
 class Efecto{
+    - puntos : Int
+    - multiplicador : Int
+    - multiplicadorDeMultiplicador: Int
+    + Efecto(puntos, multiplicador)
+    + Efecto(puntos, multiplicador, multiplicadorDeMultiplicador)
     + agregarEfecto(Efecto otroEfecto)
-    + sumarAPuntaje(Puntaje puntaje)
-    + sumarAFichas(Fichas ficha)
+    + aplicarAPuntaje(Puntaje puntaje)
+    + aplicarAFichas(Fichas ficha) (necesario?)
 }
 
 class Puntaje{
