@@ -9,30 +9,22 @@ public class Comodin implements IMejorador{
     private Mejora efecto;
     private List<Comodin> comodines;
 
+    public Comodin() {}
+
     @Override
     public void mejorar(IMejorable mejorable){mejorable.recibirMejora(this.efecto);}
     //Setters
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setActivacion(Object activacion) { this.activacion = activacion; }
 
-
-    public void setActivacion(Object activacion) {
-        this.activacion = activacion;
-    }
-
-
-    public void setEfecto(Mejora efecto) {
-        this.efecto = efecto;
-    }
+    public void setEfecto(Mejora efecto) { this.efecto = efecto; }
 
     public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
+
 }
 
 

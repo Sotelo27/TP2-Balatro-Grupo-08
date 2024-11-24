@@ -9,6 +9,8 @@ public class Balatro {
     List<Ronda> rondas;
     Mazo mazo;
 
+    public Balatro() {};
+
     public List<Ronda> getRondas() {
         return rondas;
     }

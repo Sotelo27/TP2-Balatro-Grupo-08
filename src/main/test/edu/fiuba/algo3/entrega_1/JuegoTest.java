@@ -125,26 +125,15 @@ public class JuegoTest {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<Comodin> mazo = jsonReader.readComodines();
     }
-}
-/*
+
     @Test
     public void verificarBalatroReader() throws IOException {
         JsonBalatroReader jsonReader = new JsonBalatroReader();
         Balatro juego = jsonReader.readBalatro();
-
         List<Ronda> rondas = juego.getRondas();
-        Ronda ronda1 = rondas.get(0);
-        Tienda tienda1 =ronda1.getTienda();
-        for (Comodin comodin : tienda1.getComodines()) {
-            System.out.println("Comodín: " + comodin.getNombre());
-            System.out.println("Descripción: " + comodin.getDescripcion());
-            System.out.println("Activación: " + comodin.getActivacion());
-            System.out.println("Efecto: " + comodin.getEfecto());
-            System.out.println();  // Línea en blanco para separar comodines
-        }
     }
 }
-
+/*
     @Test
     public void verificarTarot() throws IOException {
         JsonTarotReader jsonReader = new JsonTarotReader();
