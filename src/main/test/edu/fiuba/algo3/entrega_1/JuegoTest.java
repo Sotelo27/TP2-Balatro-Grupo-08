@@ -115,7 +115,7 @@ public class JuegoTest {
     @Test
     public void verificaComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-        MazoComodines mazo = jsonReader.readCategorias();
+        List<Comodin> mazo = jsonReader.readComodines();
     }
 }
 /*
