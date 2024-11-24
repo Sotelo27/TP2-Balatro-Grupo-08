@@ -7,15 +7,16 @@ public class Jugador {
     private Ficha fichas;
     private Mano mano;
     private List<Comodin> comodinesActivos;
-    private List<Tarot> tarotsActivos;
+    private List<CartaDeTarot> tarotsActivos;
+    private Mazo mazo;
 
     public Jugador(String nombre, Mazo mazo){
         this.nombre = nombre;
         this.mazo = mazo;
         this.mano = new Mano(mazo);
     }
-    public void seleccionarCarta(Carta cartasSeleccionada){
-        this.mazo.seleccionarCarta(cartasSeleccionada);
+    public void seleccionarCarta(CartaDePoker cartasSeleccionada){
+        this.mano.seleccionarCarta(cartasSeleccionada);
     }
 
     public void realizarJugada(Ronda ronda){
@@ -24,7 +25,7 @@ public class Jugador {
     public void realizarDescarte(Ronda ronda){
         this.mano.realizarDescarte( ronda);
     }
-    public void activarTarot(Tarot tarot){
+    public void activarTarot(CartaDeTarot tarot){
         this.tarotsActivos.add(tarot);
     }
     public void activarComodin(Comodin comodin){

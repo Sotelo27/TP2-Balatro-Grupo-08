@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Ronda{
-    private LimiteRonda limites;
+    private AccionesDisponibles limites;
     private Tienda tienda;
     private List<IAccion> accionesRalizadas;
+    @JsonProperty("nro")
+    private int numero;
+    private int puntajeASuperar;
 
     public Ronda(int numero, int manos, int descartes){
 
@@ -28,12 +31,6 @@ public class Ronda{
         this.accionesRalizadas.add();
         return true;
     }
-
-    @JsonProperty("nro")
-    private int numero;
-    private AccionesJugada limites;
-    private int puntajeASuperar;
-    private Tienda tienda;
 
     public void setNumero(int numero) {
         this.numero = numero;

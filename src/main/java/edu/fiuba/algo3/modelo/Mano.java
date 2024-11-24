@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Mano {
     private ArrayList<CartaDePoker> mano = new ArrayList<>();
     private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
-    public Mano(ITieneCartas mazo){
+    public Mano(Mazo mazo){
         this.recargarManoConMazo(mazo);
     }
 
@@ -46,7 +47,7 @@ public class Mano {
         return ronda.agregarAccion(descarte);
     }
 
-    public bool realizarJugada(Ronda ronda, List<CartaDeTarot> cartasDeTarot, List<Comodin> comodines){
+    public boolean realizarJugada(Ronda ronda, List<CartaDeTarot> cartasDeTarot, List<Comodin> comodines){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
             return false;

@@ -8,13 +8,11 @@ public class Comodin implements IMejorador{
     private String nombre;
     private String descripcion;
     private ICondicionMejora condicionDeMejora;
-    private Efecto efecto;
+    private Mejora efecto;
 
     
     @Override
-    public void mejorar(Jugada jugada){
-        jugada.recibirEfecto(this.efecto);
-    }
+    public void mejorar(IMejorable mejorable){mejorable.recibirMejora(this.efecto);}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -24,11 +22,11 @@ public class Comodin implements IMejorador{
         this.descripcion = descripcion;
     }
 
-    public void setActivacion(Object activacion) {
+    public void setActivacion(ICondicionMejora activacion) {
         this.condicionDeMejora = activacion;
     }
 
-    public void setEfecto(EfectoPrueba efecto) {
-        this.efecto = efecto;
-    }
+    //public void setEfecto(EfectoPrueba efecto) {
+        //this.efecto = efecto;
+    //}
 }

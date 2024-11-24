@@ -7,6 +7,8 @@ public abstract class CombinacionDePoker implements IMejorable {
     protected String nombre;
     protected Efecto efecto;
     protected List <CartaDePoker> cartas;
+    protected int multiplicador;
+    protected int puntos;
 
     public CombinacionDePoker(List <CartaDePoker> cartas) {
         this.cartas = cartas;

@@ -9,6 +9,9 @@ public class CartaDePoker implements IMejorable {
     protected Efecto efecto;
     protected String palo;
     protected EstadoDeCarta estado;
+    protected String nombre;
+    protected int multiplicador;
+    protected int puntos;
 
     private static final List<String> ORDEN_NUMEROS = Arrays.asList(
             "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
@@ -39,9 +42,7 @@ public class CartaDePoker implements IMejorable {
     }
 
     @Override
-    public void recibirMejora(Mejora mejora) {
-        efecto.recibirMejora(mejora);
-    }
+    public void recibirMejora(Mejora mejora) {efecto.recibirMejora(mejora);}
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
         this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
