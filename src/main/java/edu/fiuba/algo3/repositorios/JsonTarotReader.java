@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JsonTarotReader {
     private static final String PATH = "json/tarots.json";
-    public List<TarotPrueba> readTarots() throws IOException {
+    public List<CartaDeTarot> readTarots() throws IOException {
         // Ruta al archivo
         File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
 
@@ -20,7 +20,7 @@ public class JsonTarotReader {
         JsonNode tarotsNode = root.get("tarots");
         if (tarotsNode.isArray()) {
             // Mapea el JSON directamente a una lista de objetos Tarot
-            List<TarotPrueba> tarots = mapper.convertValue(tarotsNode, new TypeReference<List<TarotPrueba>>() {});
+            List<CartaDeTarot> tarots = mapper.convertValue(tarotsNode, new TypeReference<List<CartaDeTarot>>() {});
 
             return tarots;
         }
