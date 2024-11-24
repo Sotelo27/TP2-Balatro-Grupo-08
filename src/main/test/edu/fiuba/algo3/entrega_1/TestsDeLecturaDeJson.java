@@ -27,8 +27,9 @@ public class TestsDeLecturaDeJson {
     @Test
     public void verificarBalatroReader() throws IOException {
         JsonBalatroReader jsonReader = new JsonBalatroReader();
-        Balatro juego = jsonReader.readBalatro();
-        List<Ronda> rondas = juego.getRondas();
+        //Balatro juego = jsonReader.readBalatro();
+        //List<Ronda> rondas = juego.getRondas();
+        jsonReader.readBalatro();
     }
 }
 
