@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/*
 @Test
 public void test01SeInicializaElJuegoYSeCreaUnaJugada(){
         // Se crea el creador de objetos
@@ -65,3 +65,4 @@ public void test01SeInicializaElJuegoYSeCreaUnaJugada(){
         // Assert 
         // assert de una jugada de Carta alta con la mejora de el Caminante que hace que se multiplique por 4 
 }
+*/

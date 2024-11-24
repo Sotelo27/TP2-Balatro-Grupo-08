@@ -33,7 +33,7 @@ public class Mazo implements ITieneCartas {
         List<CartaDePoker> yaUtilizadas = mano.realizarDescarte(ronda);
         
         for(CartaDePoker carta : yaUtilizadas) {
-            mano.recibirCard(cartas.remove(randomCard));
+            //mano.recibirCard(cartas.remove(carta));
             this.utilizadas.add(carta);
         }
     }

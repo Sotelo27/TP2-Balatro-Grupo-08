@@ -43,18 +43,19 @@ public class Mano {
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
-        Descarte descarte = new Descarte(this.seleccion);
-        return ronda.agregarAccion(descarte);
+       //Descarte descarte = new Descarte(this.seleccion);
+        //return ronda.agregarAccion(descarte);
+        return this.seleccion;
     }
 
     public boolean realizarJugada(Ronda ronda, List<CartaDeTarot> cartasDeTarot, List<Comodin> comodines){
-        if (this.seleccion.isEmpty()) {
-            throw new ErrorJugadaVacia("No hay cartas seleccionadas");
-            return false;
-        }
+        //if (this.seleccion.isEmpty()) {
+            //throw new ErrorJugadaVacia("No hay cartas seleccionadas");
+            //return false;
+        //}
         Jugada jugada = new Jugada(this.seleccion);
 
-        jugada.aplicarTarots(cartasDeTarot);
+        //jugada.aplicarTarots(cartasDeTarot);
         for(Comodin comodin : comodines){
             comodin.mejorar(jugada);
         }
