@@ -7,10 +7,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class JsonBalatroReader {
-
+    private static final String PATH = "json/balatro.json";
     public Balatro readBalatro() throws IOException{
 
-        File file = new File(getClass().getClassLoader().getResource("json/balatro.json").getFile());
+        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
         ObjectMapper objectMapper = new ObjectMapper();
         return  objectMapper.readValue(file, Balatro.class);
     }
