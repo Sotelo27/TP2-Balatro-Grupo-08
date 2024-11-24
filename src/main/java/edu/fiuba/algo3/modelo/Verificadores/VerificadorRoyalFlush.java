@@ -26,6 +26,7 @@ public class VerificadorRoyalFlush extends Verificador {
             };
             contadorSecuencia++;
         }
+        agregarPuntuables(cartas);
         return sonDelMismoTipo(cartas);
     }
 
@@ -35,7 +36,6 @@ public class VerificadorRoyalFlush extends Verificador {
             return new RoyalFlush(this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
-
     }
 
 

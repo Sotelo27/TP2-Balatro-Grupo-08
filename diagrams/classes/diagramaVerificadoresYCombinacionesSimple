@@ -34,3 +34,5 @@ abstract class CombinacionDePoker implements IMejorable{
 Verificador ...> CombinacionDePoker
 Verificador o-- " *  " CartaDePoker
 CombinacionDePoker o-- " *  "CartaDePoker
+
+@enduml
