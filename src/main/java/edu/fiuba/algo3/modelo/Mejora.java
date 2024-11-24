@@ -4,11 +4,17 @@ public class Mejora {
     private int sumarPuntos;
     private int sumarMultiplicador;
     private int multMultiplicador;
+    private int puntos;
+    private int multiplicador;
 
-    public Mejora(int puntos, int multiplicador, int multMultiplicador) {
-        this.sumarPuntos = puntos;
-        this.sumarMultiplicador = multiplicador;
-        this.multMultiplicador = multMultiplicador;
+    public Mejora() {}
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public void setMultiplicador(int multiplicador) {
+        this.multiplicador = multiplicador;
     }
 
     public void seAplicaAPuntaje(PuntajeJugada puntajeJugada){

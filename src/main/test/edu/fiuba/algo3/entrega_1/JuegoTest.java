@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.entrega_1;
-
+import edu.fiuba.algo3.repositorios.*;
 import edu.fiuba.algo3.modelo.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-//import edu.fiuba.algo3.repositorios.JsonTarotReader;
+import edu.fiuba.algo3.repositorios.*;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -109,7 +109,7 @@ public class JuegoTest {
 */
     @Test
     public void verificarJsonReader() throws IOException {
-        JsonReader jsonReader = new JsonReader();
+        JsonMazoReader jsonReader = new JsonMazoReader();
         jsonReader.readMazo();
     }
 

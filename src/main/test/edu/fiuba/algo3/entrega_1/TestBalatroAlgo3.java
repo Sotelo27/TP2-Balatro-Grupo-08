@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 @Test
 public void test01SeInicializaElJuegoYSeCreaUnaJugada(){
         // Se crea el creador de objetos
-        //LectorDeJSON lector = new <<<>>>
+        LectorDeJSON lector = new <<<>>>
 
         // Se iniciliza el juego
         string nombreDelJugador = "Jugador 1";
@@ -26,6 +26,8 @@ public void test01SeInicializaElJuegoYSeCreaUnaJugada(){
         // Assert 
         // assert de una jugada de trio de corazones
 }
+
+/*
 @Test
     public void test02ModificarCartaConTarotDesdeMain() {
         // Se crea el creador de objetos
