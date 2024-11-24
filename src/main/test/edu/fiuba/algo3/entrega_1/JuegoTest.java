@@ -9,6 +9,7 @@ import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -121,6 +122,12 @@ public class JuegoTest {
     public void verificarBalatroReader() throws IOException {
         JsonBalatroReader jsonReader = new JsonBalatroReader();
         Balatro juego = jsonReader.readBalatro();
+
+        List<Ronda> rondas = juego.getRondas();
+        Ronda ronda1 = rondas.get(0);
+        Tienda tienda1 =ronda1.getTienda();
+        Carta carta1 = tienda1.getCarta();
+        System.out.println(carta1.getNombre());
     }
 }
 

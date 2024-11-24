@@ -19,6 +19,26 @@ public class Carta {
         this.palo = palo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPalo() {
+        return palo;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public int getMultiplicador() {
+        return multiplicador;
+    }
+
     public void setNumero(String numero) {this.numero = numero;}
 
     public void setPuntos(int puntos) {this.puntos = puntos;}

@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+@JsonIgnoreProperties("comodines")
 public class Tienda {
-    @JsonProperty("comodines")
     List<Comodin> comodines;
     List<TarotPrueba> tarots;
     Carta carta;
