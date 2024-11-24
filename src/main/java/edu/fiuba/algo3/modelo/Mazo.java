@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Mazo {
+public class Mazo implements ITieneCartas {
     private List<CartaDePoker> cartas;
+    private List<CartaDePoker> utilizadas;
 
     public Mazo() {
-        cartas = new ArrayList<>();
+        this.cartas = new ArrayList<>();
     }
 
     public void addCard(CartaDePoker carta) {
@@ -16,12 +17,20 @@ public class Mazo {
     }
 
 
+    @Override
+    public void tomarCarta(Mano mano) {
+        int randomCard = new Random().nextInt(cartas.size());
+        mano.recibirCard(cartas.remove(randomCard));
 
-    public void repartir(Mano mano) {
+    }
+
+    public void registrarUtilizadas(Mano mano, List<CartaDePoker> yaUtilizadas) {
         int randomCard = new Random().nextInt(cartas.size());
 
-        while(mano.puedoAgregarCard()){
+        for(CartaDePoker carta : yaUtilizadas) {
             mano.recibirCard(cartas.remove(randomCard));
+            this.utilizadas.add(carta);
+
         }
     }
 

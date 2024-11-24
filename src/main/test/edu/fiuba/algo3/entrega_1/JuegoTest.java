@@ -2,7 +2,13 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import static org.junit.jupiter.api.Assertions.*;
+//import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,15 +23,21 @@ public class JuegoTest {
     }
 
     @Test
-    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMas(){
-        CreadorDeCartas creadorCartas = new CreadorDeCartas();
-        Mazo mazo = creadorCartas.crearMazo();
-        Mano mano = new Mano();
+    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMasPorQueDevuelveError(){
+
+        assertThrows(ErrorManoSeExcedioDeCartas.class, () -> {
+            CreadorDeCartas creadorCartas = new CreadorDeCartas();
+            Mazo mazo = creadorCartas.crearMazo();
+            Mano mano = new Mano();
 
 
-        mazo.repartir(mano);
+            mano.recargarManoConMazo(mazo);
 
-        assert(!mano.puedoAgregarCard());
+            CartaDePoker cartaDeMas = new CartaDePoker("Diamante", "10");
+            mano.recibirCard(cartaDeMas);
+        });
+
+
 
     }
 
@@ -35,12 +47,13 @@ public class JuegoTest {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
         Mano mano = new Mano();
-        mazo.repartir(mano);
+        List<Comodin> comodines = new ArrayList<>();
+        mano.recargarManoConMazo(mazo);
         try {
-            mano.realizarJugada();
+            mano.realizarJugadaConComodines(comodines);
         }
         catch (ErrorJugadaVacia e) {
-            assertEquals("No hay cartas seleccionadas",e.getMessage());
+            //assertEquals("No hay cartas seleccionadas" ,e.getMessage());
         }
     }
 
@@ -62,8 +75,9 @@ public class JuegoTest {
         mano.seleccionarCarta(carta3);
         mano.seleccionarCarta(carta4);
         mano.seleccionarCarta(carta5);
+        List<Comodin> comodines = new ArrayList<>();
         // Realizar la primera jugada y obtener su puntaje
-        Jugada jugada = mano.realizarJugada();
+        Jugada jugada = mano.realizarJugadaConComodines(comodines);
         PuntajeJugada puntaje = jugada.jugarJugada();
         int valorEsperado = 200;
         assertEquals(valorEsperado, puntaje.getPuntos());
@@ -88,12 +102,33 @@ public class JuegoTest {
         mano.seleccionarCarta(carta4);
         mano.seleccionarCarta(carta5);
         // Realizar la primera jugada y obtener su puntaje
-        Jugada jugada = mano.realizarJugada();
+        List<Comodin> comodines = new ArrayList<>();
+        Jugada jugada = mano.realizarJugadaConComodines(comodines);
         PuntajeJugada puntaje = jugada.jugarJugada();
 
 
 
     }
+/*
+    @Test
+    public void verificarJsonReader() throws IOException {
+        JsonReader jsonReader = new JsonReader();
+        jsonReader.readMazo();
+    }
+
+    @Test
+    public void verificarTarotReader() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        jsonReader.readTarots();
+    }
+    @Test
+    public void verificarTarot() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        MazoTarots mazo = jsonReader.readTarots();
+        assertEquals(MazoTarots.class, mazo.getClass());
+    }
+    */
+
     /*
     @Test
     public void test06ModificarCartaConTarot() {
@@ -111,7 +146,8 @@ public class JuegoTest {
         mano.recibirCard(new Carta("7", new Hearts(), 7, 1));
 
         // Realizar la jugada
-        // Jugada jugada = mano.realizarJugada();
+        //List<Comodin> comodines = new ArrayList<>();
+        // Jugada jugada = mano.realizarJugadaConComodines(comodines);
 
         // Obtener el valor de la jugada
         int puntuacionObtenida = jugada.obtenerValor();

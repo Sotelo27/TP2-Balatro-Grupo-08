@@ -22,7 +22,7 @@ public abstract class CombinacionDePoker implements IMejorable {
     };
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
-        puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
+        this.efecto.aplicarEfectoAPuntaje(puntajeJugada);
 
     }
 
