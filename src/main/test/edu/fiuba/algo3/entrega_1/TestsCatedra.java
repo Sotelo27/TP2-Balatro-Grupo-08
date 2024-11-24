@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito; 
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
-/*
+
 @RunWith(MockitoJUnitRunner.class) 
 public class JuegoTest {
     // declarar aca los objetos a utilizar
@@ -23,15 +23,15 @@ public class JuegoTest {
     @Before
     public void setup(){
         // inicializar los objetos aca adentro 
-        CartaDePoker cartaMock1 = new CartaDePoker("As de Trebol");
-        CartaDePoker cartaMock2 = new CartaDePoker("2 de Trebol");
-        CartaDePoker cartaMock3 = new CartaDePoker("3 de Trebol");
-        CartaDePoker cartaMock4 = new CartaDePoker("4 de Trebol");
-        CartaDePoker cartaMock5 = new CartaDePoker("5 de Trebol");
-        CartaDePoker cartaMock6 = new CartaDePoker("6 de Trebol");
-        CartaDePoker cartaMock7 = new CartaDePoker("7 de Trebol");
-        CartaDePoker cartaMock8 = new CartaDePoker("8 de Trebol");
-        CartaDePoker cartaMock9 = new CartaDePoker("9 de Trebol");
+        CartaDePoker cartaMock1 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock2 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock3 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock4 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock5 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock6 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock7 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock8 = Mock(CartaDePoker().class());
+        CartaDePoker cartaMock9 = Mock(CartaDePoker().class());
 
         Mazo mazoMock = New Mazo();
 
@@ -60,13 +60,12 @@ public class JuegoTest {
     public void test01SeCreaElMazoYEsteRecibeAlMenos8CartasParaComenzar() {
         // arrange
         // instanciar al encargado de darle cartas al mazo;
-        LectorDeJSON constructor = new LectorDeJSON(); // ?
+        LectorDeJSON constructorMock = mock(JsonMazoReader.class)();
         // act
-        // hacer el llamado a la funcion que genera el otorgado de cartas al mazo
-        Mazo mazoParaJugador = constructor.getCartas(); // ?
+        Mazo mazoParaJugador = new Mazo();
+        mazoParaJugador.setMazo(constructorMock.readMazo());
         // assert
-        // poner el objeto mazo y su metodo para contar cuantos llamados
-        verify(objeto, atLeast(8) ).funcion(); // ?
+        assert(mazoParaJugador.tieneCartasSuficientes() == true);
     }
 
     // . Verificar que un jugador posea cartas suficientes para empezar el juego en su mazo.
@@ -83,13 +82,18 @@ public class JuegoTest {
     public void test03ElJugadorRecibeCiertasCartasYPuedeHacerUnaJugada() {
         // arrange
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        PuntajeJugada puntajeEnCero = new PuntajeJugada();
+        PuntajeJugada dosPuntos = new PuntajeJugada();
+        puntajeEnCero.agregarPuntosYMultiplicador(0,1);
+        dosPuntos.agregarPuntosYMultiplicador(2,1);
+        when(cartaMock1, sumarAPuntajeJugada())thenReturn(dosPuntos);
         // act
-        Jugador1.seleccionarCarta("As de Trebol");
+        Jugador1.seleccionarCarta(cartaMock1);
         Jugador1.activarComodin(comodinSuma100);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
         // assert
-        assert(puntajeObtenido.esMayorA(new Puntaje(0)));
+        assert(puntajeObtenido.esMayorA(puntajeEnCero));
     }
 
     // . Verificar que al jugar una mano, se aplique el valor correspondiente
@@ -97,13 +101,15 @@ public class JuegoTest {
     public void test04ElJugadorHaceUnaJugadaYSeLeObtieneElPuntajeCorrectamente(){
         // arrange
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        PuntajeJugada dosPuntos = new PuntajeJugada(2,1);
+        when(cartaMock1, sumarAPuntajeJugada())thenReturn(dosPuntos);
         // act
-        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.seleccionarCarta(cartaMock1);
         Jugador1.activarComodin(comodinSuma100);
         Jugador1.activarComodin(comodinX4);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
-        // [[(2 de Trebol = 2puntosX1) + (CartaAlta = 5 puntos X1)]+100]x4 = 428 puntos
+        // [[(2puntosX1) + (CartaAlta = 5 puntos X1)]+100]x4 = 428 puntos
         Puntaje puntajeEsperado = new Puntaje(428) ;
         // assert
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
@@ -114,14 +120,18 @@ public class JuegoTest {
     public void test05SeHaceLaMismaJugadaYSuPuntajeAlConstruirseDependeDeElOrdenDeLasCartas(){
         // arrange
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        PuntajeJugada puntajeEnCero = new PuntajeJugada(0,1);
+        PuntajeJugada dosPuntos = new PuntajeJugada(2,1);
+        when(cartaMock1, sumarAPuntajeJugada())thenReturn(dosPuntos);
         // act
-        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.seleccionarCarta(cartaMock1);
         Jugador1.activarComodin(comodinX4);
         Jugador1.activarComodin(comodinSuma100);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
-        // [[(2 de Trebol = 2puntosX1) + (CartaAlta = 5 puntos X1)]*4]+100 = 128 puntos
-        Puntaje puntajeEsperado = new Puntaje(128) ;
+        // [[(2puntosX1) + (CartaAlta = 5 puntos X1)]*4]+100 = 128 puntos
+        Puntaje puntajeEsperado = new Puntaje();
+        puntajeEsperado.agregarPuntosYMultiplicador(128,1)
         // assert
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
@@ -131,13 +141,18 @@ public class JuegoTest {
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente(){
         // arrange
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        PuntajeJugada puntajeEnCero = new PuntajeJugada();
+        PuntajeJugada dosPuntos = new PuntajeJugada();
+        puntajeEnCero.agregarPuntosYMultiplicador(0,1);
+        dosPuntos.agregarPuntosYMultiplicador(2,1);
         // act
-        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.seleccionarCarta(cartaMock2);
         Jugador1.activarTarot(tarotX2);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
-        // (2 de Trebol = 2puntosX1)*2 + (CartaAlta = 5 puntos X1) = 9
-        Puntaje puntajeEsperado = new Puntaje(4) ;
+        // (2puntosX1)*2 + (CartaAlta = 5 puntos X1) = 9
+        Puntaje puntajeEsperado = new Puntaje() ;
+        puntajeEsperado.agregarPuntosYMultiplicador(9,1);
         // assert
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
@@ -158,5 +173,39 @@ public class JuegoTest {
         // assert
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
+    // Verificar que al tener un comodín que sume 8 al multiplicador se aplique correctamente 
+    @Test
+    public void test08SeActivaUnComodinQueMultiplicaX8YFuncionaCorrectamente(){
+        // arrange
+        Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        Comodin comodinx8 = new Comodin("X8", new Efecto(1, 1, 8), new SinRestriccion() );
+    }
+    
+    //  Verificar que el jugador recibe un aumento correspondiente si tiene el comodín que aumenta el multiplicador por 3 si juega una escalera 
+    @Test
+    public void test09SeUsaUnComodinQueSeActivaCuandoSeJuegaUnaEscaleraYElPuntajeEsCorrecto(){
+
+
+    }
+
+    //  Verificar que el jugador si posee un comodin que suma 10 puntos por descarte, al descartar sume la cantidad correcta. 
+    @Test 
+    public void test10SeUsaUnComodinQueSuma10PuntosPorDescarteYFuncionaCorrectamente(){
+    }
+    
+    //  Verificar que si el jugador posee un comodin que tiene chance 1 sobre 1000 de activarse se activa correctamente. 
+    @Test
+    public void test11SeUsaUnComodinQueSeActiva1DeCada1000YFuncionaCorrectamente(){
+    }
+
+    //  El jugador activa un comodín con una combinación de efectos bonus de mano jugada + puntaje aumentado + activación aleatoria 
+    @Test
+    public void test12SeUsaUnComodinDeEfectosCombinadoDeActivacionAleatoriaYFuncionaCorrectamente(){
+    }
+
+    //  Verificar la lectura y posterior conversión a unidades del modelo de dominio del JSON 
+    //  <Crear un tests de constructor de objetos>
+
+    //  Planteo inicial de interfaz gráfica (mockups/dibujos), pantalla donde se muestra una ronda
+
 }
-*/
