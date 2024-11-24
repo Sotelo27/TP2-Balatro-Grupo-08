@@ -2,6 +2,7 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.repositorios.JsonBalatroReader;
 import edu.fiuba.algo3.repositorios.JsonComodinReader;
 import edu.fiuba.algo3.repositorios.JsonMazoReader;
 import edu.fiuba.algo3.repositorios.JsonTarotReader;
@@ -117,18 +118,21 @@ public class JuegoTest {
         MazoComodines mazo = jsonReader.readCategorias();
     }
 }
-
 /*
     @Test
-    public void verificarComodineader() throws IOException {
-        JsonComodinReader jsonReader = new JsonComodinReader();
-        CategoriaComodin mazo = new AlPuntaje();
-        mazo = jsonReader.readCategoriaAlPuntaje();
-        System.out.println(mazo.getDescripcion());
-        List<Comodin> combinaciones = mazo.getComodines();
-        for (Comodin combinacion : combinaciones) {
-            System.out.println(combinacion.getDescripcion());
-            System.out.println(combinacion.getNombre());
+    public void verificarBalatroReader() throws IOException {
+        JsonBalatroReader jsonReader = new JsonBalatroReader();
+        Balatro juego = jsonReader.readBalatro();
+
+        List<Ronda> rondas = juego.getRondas();
+        Ronda ronda1 = rondas.get(0);
+        Tienda tienda1 =ronda1.getTienda();
+        for (Comodin comodin : tienda1.getComodines()) {
+            System.out.println("Comodín: " + comodin.getNombre());
+            System.out.println("Descripción: " + comodin.getDescripcion());
+            System.out.println("Activación: " + comodin.getActivacion());
+            System.out.println("Efecto: " + comodin.getEfecto());
+            System.out.println();  // Línea en blanco para separar comodines
         }
     }
 }

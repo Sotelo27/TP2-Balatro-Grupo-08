@@ -41,7 +41,7 @@ public class JsonComodinReader {
             System.out.println("Categoría creada: " + categoriaNombre);
 
             // Verificar que no sea la categoría "Combinacion"
-            if (!categoriaNombre.equals("Combinación")) {
+            if (!categoriaNombre.equals("Combinacion")) {
                 // Extraer la descripción de la categoría
                 descripcionMazo = categoriaNode.get("descripcion").asText();
                 JsonNode tarotsNode = categoriaNode.get("comodines");
@@ -51,12 +51,6 @@ public class JsonComodinReader {
 
                 // Imprimir detalles de cada Comodin
                 for (Comodin comodin : tarots) {
-                    //System.out.println("Comodín: " + comodin.getNombre());
-                    //System.out.println("Descripción: " + comodin.getDescripcion());
-                    //System.out.println("Activación: " + comodin.getActivacion());
-                    //System.out.println("Efecto: " + comodin.getEfecto());
-
-                    // Añadir cada comodín a la lista de todos los comodines
                     allComodines.add(comodin);
                 }
             }
@@ -66,14 +60,6 @@ public class JsonComodinReader {
         MazoComodines mazo = new MazoComodines();
         mazo.setDescripcion(descripcionMazo);  // Asignar la descripción de la categoría
         mazo.setComodines(allComodines);  // Asignar la lista de todos los comodines
-        System.out.println("Comodines en el mazo:");
-        for (Comodin comodin : mazo.getComodines()) {
-            System.out.println("Comodín: " + comodin.getNombre());
-            System.out.println("Descripción: " + comodin.getDescripcion());
-            System.out.println("Activación: " + comodin.getActivacion());
-            System.out.println("Efecto: " + comodin.getEfecto());
-            System.out.println();  // Línea en blanco para separar comodines
-        }
         return mazo;
     }
 
