@@ -8,8 +8,9 @@ public class Comodin {
     private String descripcion;
     private Object activacion; // Puede ser String o Map<String, Object>
     private EfectoPrueba efecto;
+    private List<Comodin> comodines;
 
-    // Getters y Setters
+    //Setters
     public String getNombre() {
         return nombre;
     }
@@ -42,7 +43,9 @@ public class Comodin {
         this.efecto = efecto;
     }
 
+    public List<Comodin> getComodines() {return comodines;}
 
+    public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 }
 
 

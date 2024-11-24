@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-@JsonIgnoreProperties("comodines")
 public class Tienda {
     List<Comodin> comodines;
     List<TarotPrueba> tarots;

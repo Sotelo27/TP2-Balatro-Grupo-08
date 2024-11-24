@@ -18,9 +18,6 @@ public class JsonMazoReader {
 
         MazoPrueba mazo = objectMapper.readValue(file, MazoPrueba.class);
 
-        // Imprimir las cartas para verificar la lectura
-       // mazo.getMazo().forEach(carta -> System.out.println(carta.getNumero()));
-
         return mazo;
     }
 }
