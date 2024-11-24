@@ -5,8 +5,6 @@ import java.util.*;
 public abstract class CombinacionDePoker implements IMejorable {
 
     protected String nombre;
-    protected int puntos;
-    protected int multiplicador;
     protected Efecto efecto;
     protected List <CartaDePoker> cartas;
 
@@ -22,14 +20,9 @@ public abstract class CombinacionDePoker implements IMejorable {
     };
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
-        puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
+        this.efecto.aplicarEfectoAPuntaje(puntajeJugada);
 
     }
-
-    public int devolverPuntaje(){
-        return this.puntos * this.multiplicador;
-    }
-
 
     public String devolverNombreCombinacion(){
         return this.nombre;

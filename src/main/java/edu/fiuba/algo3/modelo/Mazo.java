@@ -4,26 +4,31 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Mazo {
+public class Mazo implements ITieneCartas {
     private List<CartaDePoker> cartas;
+    private List<CartaDePoker> utilizadas;
 
     public Mazo() {
-        cartas = new ArrayList<>();
+        this.cartas = new ArrayList<>();
     }
 
     public void addCard(CartaDePoker carta) {
         cartas.add(carta);
     }
 
-    public List<CartaDePoker> getCartas() {
-        return cartas;
+    @Override
+    public CartaDePoker tomarCarta() {
+        int randomCard = new Random().nextInt(cartas.size());
+        return cartas.remove(randomCard);
     }
 
-    public void repartir(Mano mano) {
-        int randomCard = new Random().nextInt(cartas.size());
-
-        while(mano.puedoAgregarCard()){
+    public void realizarDescarte(Ronda ronda, Mano mano) {
+        
+        List<CartaDePoker> yaUtilizadas = mano.realizarDescarte(Ronda ronda);
+        
+        for(CartaDePoker carta : yaUtilizadas) {
             mano.recibirCard(cartas.remove(randomCard));
+            this.utilizadas.add(carta);
         }
     }
 

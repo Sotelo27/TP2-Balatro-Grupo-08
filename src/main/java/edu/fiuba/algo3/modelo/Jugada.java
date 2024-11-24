@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
 
 import java.util.List;
-import java.util.ArrayList;
 
 
 public class Jugada extends IMejorable, IAccion{
@@ -11,10 +10,10 @@ public class Jugada extends IMejorable, IAccion{
     private CombinacionDePoker combinacion :
     private List<Efecto> efectos;
 
-    public Jugada( List<CartaDePoker> seleccion){
+    public Jugada( List<CartaDePoker> seleccion) {
         this.cartas = seleccion;
         Verificador verificador = new VerificadorRoyalFlush();
-        this.efecto = new Efecto(0,1); // efecto base
+        this.efecto = new Efecto(0,1); // efecto nulo
         this.combinacion =  verificador.verificar(this.cartas);
     };
     
@@ -28,7 +27,6 @@ public class Jugada extends IMejorable, IAccion{
         for(Efecto efecto ; this.efectos){
             this.efecto.aplicarAPuntaje(puntaje);
         }
-        
         return puntaje;
     }
     public void aplicarTarots(List<IMejorable> tarots){

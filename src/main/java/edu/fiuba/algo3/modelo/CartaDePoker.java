@@ -21,20 +21,6 @@ public class CartaDePoker implements IMejorable {
         this.estado = new NoSeleccionada();
     }
 
-    public int devolverValor() {
-        // esto debería volar al usar factory
-        int valor = 0;
-        if (Objects.equals(this.numero, "J") || Objects.equals(this.numero, "Q") || Objects.equals(this.numero, "K")) {
-            valor = 10;
-            return valor;
-        }
-        if (Objects.equals(this.numero, "A")) {
-            valor = 11;
-            return valor;
-        }
-        return Integer.parseInt(this.numero);
-    }
-
     @Override
     public void recibirMejora(Mejora mejora) {
         efecto.recibirMejora(mejora);
