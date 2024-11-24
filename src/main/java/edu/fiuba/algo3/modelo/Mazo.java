@@ -15,7 +15,9 @@ public class Mazo {
         cartas.add(carta);
     }
 
-
+    public List<CartaDePoker> getCartas() {
+        return cartas;
+    }
 
     public void repartir(Mano mano) {
         int randomCard = new Random().nextInt(cartas.size());

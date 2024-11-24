@@ -1,0 +1,400 @@
+{
+    "Al Puntaje": { 
+        "descripcion": "Ya sea afectando al multiplicador o a los puntos",
+        "comodines": [
+            {
+                "nombre": "Comodin",
+                "descripcion": "x4",
+                "activacion": "Siempre",
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 4
+                }
+            },
+            {
+                "nombre": "Caminante",
+                "descripcion": "+100 puntos",
+                "activacion": "Siempre",
+                "efecto": {
+                    "puntos": 100,
+                    "multiplicador": 1
+                }
+            }
+        ]
+    },
+    "Bonus por Mano Jugada": { 
+        "descripcion": "Se modifica los puntos y/o el multiplicador dependiendo de qué mano se jugó.",
+        "comodines": [
+            {
+                "nombre": "Comodin Astuto",
+                "descripcion": "+50  fichas si la mano jugada contiene un par",
+                "activacion": { "Mano Jugada": "par" },
+                "efecto": {
+                    "puntos": 50,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin Astuto",
+                "descripcion": "+100  fichas si la mano jugada contiene un trio",
+                "activacion": { "Mano Jugada": "trio" },
+                "efecto": {
+                    "puntos": 100,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin loco",
+                "descripcion": "+12  Multiplicador si la mano jugada contiene una Escalera",
+                "activacion" : {"Mano Jugada": "escalera"},
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 12
+                }
+            },
+            {
+                "nombre": "Comodin Generoso",
+                "descripcion": "+100 fichas si la mano jugada contiene un trio",
+                "activacion": { "Mano Jugada": "trio" },
+                "efecto": {
+                    "puntos": 100,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin Arriesgado",
+                "descripcion": "+200 fichas si la mano jugada contiene color",
+                "activacion": { "Mano Jugada": "color" },
+                "efecto": {
+                    "puntos": 200,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin Abundante",
+                "descripcion": "+8 al multiplicador si la mano jugada contiene un full",
+                "activacion": { "Mano Jugada": "full" },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 8
+                }
+            },
+            {
+                "nombre": "Comodin Poderoso",
+                "descripcion": "+300 fichas si la mano jugada contiene un poker",
+                "activacion": { "Mano Jugada": "poker" },
+                "efecto": {
+                    "puntos": 300,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin Afortunado",
+                "descripcion": "+15 al multiplicador si la mano jugada contiene una escalera de color",
+                "activacion": { "Mano Jugada": "escalera de color" },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 15
+                }
+            },
+            {
+                "nombre": "Comodin Real",
+                "descripcion": "+500 fichas si la mano jugada contiene una escalera real",
+                "activacion": { "Mano Jugada": "escalera real" },
+                "efecto": {
+                    "puntos": 500,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Comodin Épico",
+                "descripcion": "+20 al multiplicador si la mano jugada contiene una escalera real",
+                "activacion": { "Mano Jugada": "escalera real" },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 20
+                }
+            }
+        ]
+    },
+    "Bonus por Descarte": { 
+        "descripcion":"Se modifica los puntos y/o el multiplicador dependiendo si se realizo un descarte.",
+        "comodines": [
+            {
+                "nombre": "Bandera",
+                "descripcion": "+30  fichas por cada descarte",
+                "activacion": "Descarte",
+                "efecto":{
+                    "puntos": 30,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Cumbre Mistica",
+                "descripcion": "x15 multiplicacion por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 15
+                }
+            },
+            {
+                "nombre": "Descarte Dorado",
+                "descripcion": "+50 fichas por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 50,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Eco de Montaña",
+                "descripcion": "x10 multiplicación por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 10
+                }
+            },
+            {
+                "nombre": "Ritual del Valle",
+                "descripcion": "+75 fichas por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 75,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Descarte Sagrado",
+                "descripcion": "x20 multiplicación por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 20
+                }
+            },
+            {
+                "nombre": "Talisman de Descarte",
+                "descripcion": "+100 fichas por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 100,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Portal del Infinito",
+                "descripcion": "x25 multiplicación por cada descarte",
+                "activacion": "Descarte",
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 25
+                }
+            }
+        ]
+    },
+    "Chance de activarse aleatoriamente": { 
+        "descripcion":"Se aplica el efecto de forma aleatoria.",
+        "comodines": [
+            {
+                "nombre": "Gros Michel",
+                "descripcion": "x15  Mult. 1 en 6 de probabilidad",
+                "activacion": {"1 en": 6 },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 15
+                }
+            },
+            {
+                "nombre": "Cavendish",
+                "descripcion": "+1000 puntos. 1 en 1000 de probabilidad",
+                "activacion": {"1 en": 1000 },
+                "efecto": {
+                    "puntos": 1000,
+                    "multiplicador": 15
+                }
+            },
+            {
+                "nombre": "Manzano Dorado",
+                "descripcion": "+500 puntos. 1 en 20 de probabilidad",
+                "activacion": { "1 en": 20 },
+                "efecto": {
+                    "puntos": 500,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Estrella Fugaz",
+                "descripcion": "x10 Mult. 1 en 50 de probabilidad",
+                "activacion": { "1 en": 50 },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 10
+                }
+            },
+            {
+                "nombre": "Tigre de Bengal",
+                "descripcion": "+2000 puntos. 1 en 500 de probabilidad",
+                "activacion": { "1 en": 500 },
+                "efecto": {
+                    "puntos": 2000,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Tornado de Suerte",
+                "descripcion": "x30 Mult. 1 en 100 de probabilidad",
+                "activacion": { "1 en": 100 },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 30
+                }
+            },
+            {
+                "nombre": "Flor del Cerezo",
+                "descripcion": "+1500 puntos. 1 en 250 de probabilidad",
+                "activacion": { "1 en": 250 },
+                "efecto": {
+                    "puntos": 1500,
+                    "multiplicador": 1
+                }
+            },
+            {
+                "nombre": "Rayo de Fortuna",
+                "descripcion": "x50 Mult. 1 en 500 de probabilidad",
+                "activacion": { "1 en": 500 },
+                "efecto": {
+                    "puntos": 1,
+                    "multiplicador": 50
+                }
+            }
+        ]
+    },
+    "Combinación": { 
+        "descripcion":"Cualquier combinación de efectos anteriores.",
+        "comodines": [
+            {
+                "nombre": "Locura",
+                "descripcion": "x15  Mult. 1 en 6 de probabilidad y +100  fichas si la mano jugada contiene un trio",
+                "comodines": [
+                    {
+                        "nombre": "Gros Michel",
+                        "descripcion": "x15  Mult. 1 en 6 de probabilidad",
+                        "activacion": {"1 en": 6 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 15
+                        }
+                    },
+                    {
+                        "nombre": "Comodin Astuto",
+                        "descripcion": "+100  fichas si la mano jugada contiene un trio",
+                        "activacion": { "Mano Jugada": "trio" },
+                        "efecto": {
+                            "puntos": 100,
+                            "multiplicador": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "nombre": "Bananas",
+                "descripcion": "x15  Mult. 1 en 6 de probabilidad y +1000 puntos. 1 en 1000 de probabilidad",
+                "comodines": [
+                    {
+                        "nombre": "Gros Michel",
+                        "descripcion": "x15  Mult. 1 en 6 de probabilidad",
+                        "activacion": {"1 en": 6 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 15
+                        }
+                    },
+                    {
+                        "nombre": "Cavendish",
+                        "descripcion": "+1000 puntos. 1 en 1000 de probabilidad",
+                        "activacion": {"1 en": 1000 },
+                        "efecto": {
+                            "puntos": 1000,
+                            "multiplicador": 15
+                        }
+                    }
+                ]
+            },
+            {
+                "nombre": "Destino Explosivo",
+                "descripcion": "+500 fichas si la mano jugada contiene color y x10 Mult. 1 en 50 de probabilidad",
+                "comodines": [
+                    {
+                        "nombre": "Descarte Dorado",
+                        "descripcion": "+500 fichas si la mano jugada contiene color",
+                        "activacion": { "Mano Jugada": "color" },
+                        "efecto": {
+                            "puntos": 500,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Estrella Fugaz",
+                        "descripcion": "x10 Mult. 1 en 50 de probabilidad",
+                        "activacion": { "1 en": 50 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 10
+                        }
+                    }
+                ]
+            },
+            {
+                "nombre": "Suerte Suprema",
+                "descripcion": "+2000 puntos. 1 en 500 de probabilidad y +30 fichas por cada descarte",
+                "comodines": [
+                    {
+                        "nombre": "Tigre de Bengal",
+                        "descripcion": "+2000 puntos. 1 en 500 de probabilidad",
+                        "activacion": { "1 en": 500 },
+                        "efecto": {
+                            "puntos": 2000,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Bandera",
+                        "descripcion": "+30 fichas por cada descarte",
+                        "activacion": "Descarte",
+                        "efecto": {
+                            "puntos": 30,
+                            "multiplicador": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "nombre": "Éxtasis Salvaje",
+                "descripcion": "+300 fichas si la mano jugada contiene un póker y x20 Mult. 1 en 500 de probabilidad",
+                "comodines": [
+                    {
+                        "nombre": "Comodin Poderoso",
+                        "descripcion": "+300 fichas si la mano jugada contiene un póker",
+                        "activacion": { "Mano Jugada": "poker" },
+                        "efecto": {
+                            "puntos": 300,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Rayo de Fortuna",
+                        "descripcion": "x20 Mult. 1 en 500 de probabilidad",
+                        "activacion": { "1 en": 500 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 20
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    
+}

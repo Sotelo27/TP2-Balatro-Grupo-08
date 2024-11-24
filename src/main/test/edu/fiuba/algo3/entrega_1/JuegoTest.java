@@ -2,7 +2,13 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.repositorios.JsonComodinReader;
+import edu.fiuba.algo3.repositorios.JsonMazoReader;
+import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -91,9 +97,49 @@ public class JuegoTest {
         Jugada jugada = mano.realizarJugada();
         PuntajeJugada puntaje = jugada.jugarJugada();
 
-
-
     }
+
+    @Test
+    public void verificarJsonReader() throws IOException {
+        JsonMazoReader jsonReader = new JsonMazoReader();
+        jsonReader.readMazo();
+    }
+
+    @Test
+    public void verificarTarotReader() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        jsonReader.readTarots();
+    }
+    @Test
+    public void verificarComodinReader() throws IOException {
+        JsonComodinReader jsonReader = new JsonComodinReader();
+        //jsonReader.readComodines();
+        MazoCombinacion mazo = jsonReader.readCombinaciones();
+        System.out.println(mazo.getDescripcion());
+        List<Combinacion> combinaciones = mazo.getCombinaciones();
+        for (Combinacion combinacion : combinaciones) {
+            List<Comodin> comodines = combinacion.getComodines();
+            System.out.println(combinacion.getDescripcion());
+            for (Comodin comodin : comodines) {
+                System.out.println(comodin.getDescripcion());
+                System.out.println(comodin.getNombre());
+            }
+        }
+    }
+    @Test
+    public void verificarComodineader() throws IOException {
+        JsonComodinReader jsonReader = new JsonComodinReader();
+        CategoriaComodin mazo = new AlPuntaje();
+        mazo =  jsonReader.readCategoriaAlPuntaje();
+        System.out.println(mazo.getDescripcion());
+        List<Comodin> combinaciones = mazo.getComodines();
+        for (Comodin combinacion : combinaciones) {
+            System.out.println(combinacion.getDescripcion());
+            System.out.println(combinacion.getNombre());
+            }
+        }
+    }
+
     /*
     @Test
     public void test06ModificarCartaConTarot() {
@@ -133,4 +179,4 @@ public class JuegoTest {
 
     }
  */
-}
+
