@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Objects;
+import edu.fiuba.algo3.modelo.Estados.EstadoDeCarta;
+
 import java.util.*;
 
 public class CartaDePoker implements IMejorable {

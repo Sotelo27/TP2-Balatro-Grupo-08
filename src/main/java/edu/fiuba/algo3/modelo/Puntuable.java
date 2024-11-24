@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class Puntuable extends EstadoDeCarta{
+import edu.fiuba.algo3.modelo.Estados.EstadoDeCarta;
+
+public class Puntuable extends EstadoDeCarta {
 
     public Puntuable(){
         this.esPuntuable = true;

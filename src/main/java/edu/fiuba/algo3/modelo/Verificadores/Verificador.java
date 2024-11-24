@@ -1,8 +1,12 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Verificadores;
+
+import edu.fiuba.algo3.modelo.CartaDePoker;
+import edu.fiuba.algo3.modelo.MetodosLista;
+import edu.fiuba.algo3.modelo.Puntuable;
+import edu.fiuba.algo3.modelo.CombinacionesDePoker.CombinacionDePoker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public abstract class Verificador implements MetodosLista {
