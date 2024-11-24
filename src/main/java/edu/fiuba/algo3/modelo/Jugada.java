@@ -1,56 +1,54 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
 import java.util.List;
 
 
-public class Jugada{
+public class Jugada implements IMejorable, IAccion{
 
     private final List <CartaDePoker> cartas;
-    private List<Efecto> efectosDeComodines;
-
-
+    private CombinacionDePoker combinacion ;
+    private List<Efecto> efectos;
+    private Efecto efecto;
 
     public Jugada( List<CartaDePoker> seleccion) {
         this.cartas = seleccion;
+        Verificador verificador = new VerificadorRoyalFlush();
+        this.efecto = new Efecto(0,1); // efecto nulo
+        this.combinacion =  verificador.verificar(this.cartas);
     };
 
-    public  PuntajeJugada jugarJugada(){
+    public  PuntajeJugada sumarAPuntaje(PuntajeJugada puntaje){
 
-        // agregar por cuestion de dependencia fuerte, se deberian pasar por parametros y crear afuera
-        //usar new object dentro de cada metodo evita que luego podemos usar mocking
-        Verificador verificador = new Verificador();
-
-        CombinacionDePoker combinacion =  verificador.verificar(this.cartas);
-
-
-        PuntajeJugada puntaje = new PuntajeJugada();
-
-
-
-        combinacion.aplicarPuntajeAPuntajeJugada(puntaje);
         for(CartaDePoker carta: this.cartas) {
             carta.sumarAPuntajeJugada(puntaje);
         }
-
-
+        combinacion.aplicarPuntajeAPuntajeJugada(puntaje);
+        for(Efecto efecto : this.efectos){
+            this.efecto.aplicarEfectoAPuntaje(puntaje);
+        }
         return puntaje;
     }
-
-    /*
-    Esta la lista de comodines pero no las cartas seleccionadas, habria que ver cuales cartas
-    o cual carta es la seleccionada para este paso
-    public void aplicarTarots(List<CartaDeTarot> cartasDeTarot){
-        for(CartaDeTarot cartaDeTarot: cartasDeTarot) {
-            cartaDeTarot.mejorar();
-
+    public void aplicarTarots(List<IMejorable> tarots){
+        // para cada tarot que llegue, aplicarselo a la combinacicon y a las cartas seleccionadas usar tarots.mejorar()
+        for (IMejorable tarot : tarots){
+            //tarot.mejorar(this.combinacion);
+            for (IMejorable carta : this.cartas){
+                //tarot.mejorar(carta);
+            }
         }
-
-
     }
-    */
-    public void recibirEfecto(Efecto efecto) {
-        this.efectosDeComodines.add(efecto);
 
-
+    @Override 
+    public void actualizarAcciones(AccionesDisponibles limites){
+        limites.reducirManosDisponibles();
     }
+
+    @Override
+    public boolean superaLimites(AccionesDisponibles limites){
+        //return !limites.quedanManosDisponibles();
+        return false;
+    }
+    @Override
+    public void recibirMejora(Mejora mejora){ }
 
 }

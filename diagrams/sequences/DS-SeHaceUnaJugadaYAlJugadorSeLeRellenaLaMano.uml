@@ -1,0 +1,22 @@
+
+@startuml
+title se hace una jugada y al jugador se le rellena la mano de cartas
+
+Algo3 -> Jugador : realizarJugada() 
+Jugador -> Mano : realizarJugada(ronda, tarots, comodines)
+Mano -> Ronda : aniadirAccion(unaJugada) 
+Ronda -> Ronda : validarAccion()
+Ronda --> Mano : bool 
+Mano --> Jugador : bool 
+
+note right 
+"el bool se usa para eliminar las cartas seleccionadas antes de volver"
+end note
+
+Jugador -> Mano : tomarCartasDe(mazo)
+
+loop para cada carta que haya usado en la jugada
+Mano -> Mazo : tomarCarta()
+Mazo --> Mano : carta
+end loop
+@enduml 

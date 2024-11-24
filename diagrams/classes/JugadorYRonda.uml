@@ -1,9 +1,7 @@
 @startuml
 
 interface IMejorable 
-class MazoDeJSON implements GeneraCartas{
-    + generarMazo(): Mazo
-}
+
 class Ronda{
     + Ronda(int numero, int manos, int descartes, int puntajeASuperar, Tienda tienda)
 }
@@ -11,7 +9,6 @@ Class Tienda{
     + mostrarCartas() : List<Carta>
     + tomarSeleccion(Ficha fichas) : Carta
 }
-MazoDeJSON --> Gson
 interface IRecibible{
     + recibircarta(Carta carta)
 }

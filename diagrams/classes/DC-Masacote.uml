@@ -1,0 +1,142 @@
+
+@startuml
+
+class Ronda{
+    + Ronda(int numero, int manos, int descartes, int puntajeASuperar, Tienda tienda)
+}
+Class Tienda{
+    + mostrarCartaDePoker() : List<CartaDePoker>
+    + tomarSeleccion(Ficha fichas) : CartaDePoker
+}
+Class Algo3Balatro {
+  + Algo3Balatro(String NombreJugador, LectorDeJSON lectorDeJSON)
+  + iniciar()
+  + seleccionarCartaDePoker(string nombreDeCarta)
+  + activarTarotSobreSeleccionada(string nombreDelTarot)
+  + activarComodinSobreSeleccionada(string nombreDelComodin)
+  + verPuntajeDeRonda() : Puntaje
+  + realizarJugada()
+  + realizarDescarte()
+}
+class Mazo{
+  - CartaDePokers: List<CartaDePoker>
+  - usadas: List<CartaDePoker>
+  + realizarDescarte(Ronda unaRonda)
+  + realizarJugada(Ronda unaRonda)
+  - clonarCartaDePoker(CartaDePoker unaCartaDePoker)  
+}
+
+Class Jugador{
+  - ficha : Ficha
+  + seleccionarCartaDePoker(CartaDePoker unaCartaDePoker)
+  + realizarJugada(Ronda ronda)
+  + activarTarot(Tarot cartaTarot)
+  + activarComodin(Comodin comodin )
+  + realizarDescarte(Ronda ronda)
+}
+class Mano{
+  - cartasDePokerDisponibles: List<CartaDePoker>
+  - seleccionadas: List<CartaDePoker>
+  + aplicarTarots(List<Tarot>)
+  + recibirCartaDePoker(CartaDePoker carta)
+  + seleccionar(CartaDePoker unaCartaDePoker)
+  + quitarDeSeleccion(CartaDePoker unaCartaDePoker)
+}
+
+class CartaDePoker{
+    - nombre  : string 
+    - palo : string
+    - numero : int 
+    + getNombre()
+    +
+    + recibirMejora(Mejora mejora)
+    
+}
+Class Ronda{
+  -nro: int 
+  + agregarAccion(IAccion accionDelJugador)
+  + calcularPuntaje() : Puntaje
+}
+class AccionesDisponibles{
+  -manos: manos 
+  -descartes : int 
+  + accionesDisponibles(int manos, int descartes)
+  + superaLimiteDeDescartes(int descartes)
+  + reducirDescartesEn(int cantidad)
+  + quedanManosDisponibles():bool
+  + redicirManosDisponibles()
+}
+
+
+
+interface IAccion {
+  + actualizarLimites(AccionesDisponibles limites)  
+  + superaLimites(accionesDisponibles): bool
+    + sumarAPuntaje(Puntaje unPuntaje)
+    + sumarAFichas(Fichas fichas)
+}
+class Descarte{
+    + Descarte(List<CartaDePoker> cartasDescartadas)
+}
+class Jugada {
+    + Jugada(List<CartaDePoker> CartasDePokerSeleccionadas)
+    + calcularPuntaje() : Puntaje
+    
+}
+class Puntaje{
+  - puntaje: Int 
+  - multiplicador : Int 
+  + Puntaje(Int puntosBase, Int multiplicador)
+  + sumarAPuntaje(Puntaje puntaje)
+  + esMenorQue(Puntaje otroPuntaje): bool
+}
+abstract Efecto {
+}
+abstract CombinacionDePoker implements IMejorable{
+  + obtenerCombinacion(List<CartaDePoker>): CombinacionDePoker
+  + sumarAPutaje(Puntaje unPuntaje)
+  - calcularPuntajePorCartaDePokers() : Puntaje 
+}
+abstract Verificador{
+}
+Class Jugada{
+    - CartaDePokersJugadas: List<CartaDePoker>
+    - comodinesActivos: List<Comodin>
+}
+interface ITieneCartas{
+  + tomarCarta() : CartaDePoker
+}
+
+
+Jugador o---"*..5" IMejorador
+
+Ronda o-- Tienda
+Jugador o- Mazo 
+Mazo o- CartaDePoker
+Mazo ..|> ITieneCartas : implementa
+CartaDePoker ..|> IMejorable
+IMejorable <|.. Jugada
+
+IAccion <|.. Jugada 
+IAccion <|.. Descarte
+
+Jugada o-- Efecto
+CombinacionDePoker o-- Efecto 
+
+Jugada ..>  Verificador: utiliza
+CombinacionDePoker <.. Verificador : conoce
+CombinacionDePoker -o Jugada
+
+Ronda o-- "0..*" IAccion
+
+Algo3Balatro o-- "*" Ronda
+Algo3Balatro o-- Jugador
+Jugada --> Puntaje 
+Jugador o-- Mano 
+ITieneCartas <.. Mano : utiliza
+Ronda o- accionesDisponibles
+
+interface IMejorable
+interface IMejorador
+
+@enduml

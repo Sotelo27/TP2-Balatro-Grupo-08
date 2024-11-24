@@ -1,0 +1,154 @@
+{
+    "tarots": [
+        {
+            "nombre": "El Tonto",
+            "descripcion": "Mejora la mano carta mas alta",
+            "efecto": {
+                "puntos": 10,
+                "multiplicador": 2
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        },
+        {
+            "nombre": "El Mago",
+            "descripcion": "Mejora la mano par",
+            "efecto": {
+                "puntos": 15,
+                "multiplicador": 2
+            },
+            "sobre": "mano",
+            "ejemplar": "par"
+        },
+        {
+            "nombre": "La Suma Sacerdotisa",
+            "descripcion": "Mejora la mano doble par",
+            "efecto": {
+                "puntos": 20,
+                "multiplicador": 2
+            },
+            "sobre": "mano",
+            "ejemplar": "doble par"
+        },
+        {
+            "nombre": "La Emperatriz",
+            "descripcion": "Mejora 1 carta seleccionada y la convierte en una multicarta.",
+            "efecto": {
+                "puntos": 1,
+                "multiplicador": 4
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        },
+        {
+            "nombre": "El Emperador",
+            "descripcion": "Mejora la mano trio",
+            "efecto": {
+                "puntos": 20,
+                "multiplicador": 2
+            },
+            "sobre": "mano",
+            "ejemplar": "trio"
+        },
+        {
+            "nombre": "El Hierofante",
+            "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta bonificacion",
+            "efecto": {
+                "puntos": 40,
+                "multiplicador": 1
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        },
+        {
+            "nombre": "Los Amantes",
+            "descripcion": "Mejora la mano escalera",
+            "efecto": {
+                "puntos": 30,
+                "multiplicador": 3
+            },
+            "sobre": "mano",
+            "ejemplar": "escalera"
+        },
+        {
+            "nombre": "El Carro",
+            "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de acero.",
+            "efecto": {
+                "puntos": 1,
+                "multiplicador": 1.5
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        },
+        {
+            "nombre": "Justicia",
+            "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de cristal",
+            "efecto": {
+                "puntos": 1,
+                "multiplicador": 2
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        },
+        {
+            "nombre": "El Ermitano",
+            "descripcion": "Mejora la mano color",
+            "efecto": {
+                "puntos": 15,
+                "multiplicador": 2
+            },
+            "sobre": "mano",
+            "ejemplar": "color"
+        },
+        {
+            "nombre": "La rueda de la fortuna",
+            "descripcion": "Mejora la mano full",
+            "efecto": {
+                "puntos": 25,
+                "multiplicador": 2
+            },
+            "sobre": "mano",
+            "ejemplar": "full"
+        },
+        {
+            "nombre": "Fuerza",
+            "descripcion": "Mejora la mano poker",
+            "efecto": {
+                "puntos": 30,
+                "multiplicador": 3
+            },
+            "sobre": "mano",
+            "ejemplar": "poker"
+        },
+        {
+            "nombre": "El Ahorcado",
+            "descripcion": "Mejora la mano escalera de color",
+            "efecto": {
+                "puntos": 40,
+                "multiplicador": 4
+            },
+            "sobre": "mano",
+            "ejemplar": "escalera de color"
+        },
+        {
+            "nombre": "Muerte",
+            "descripcion": "Mejora la mano escalera real",
+            "efecto": {
+                "puntos": 50,
+                "multiplicador": 5
+            },
+            "sobre": "mano",
+            "ejemplar": "escalera real"
+        },
+        {
+            "nombre": "La Torre",
+            "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de piedra.",
+            "efecto": {
+                "puntos": 50,
+                "multiplicador": 1
+            },
+            "sobre": "carta",
+            "ejemplar": "cualquiera"
+        }
+    ]
+}

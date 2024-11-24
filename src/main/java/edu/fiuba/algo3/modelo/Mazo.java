@@ -12,25 +12,29 @@ public class Mazo implements ITieneCartas {
         this.cartas = new ArrayList<>();
     }
 
+    //Setters
+
+    public void setMazo(List<CartaDePoker> mazo) {
+        this.cartas = mazo;
+    }
+
     public void addCard(CartaDePoker carta) {
         cartas.add(carta);
     }
 
-
     @Override
-    public void tomarCarta(Mano mano) {
+    public CartaDePoker tomarCarta() {
         int randomCard = new Random().nextInt(cartas.size());
-        mano.recibirCard(cartas.remove(randomCard));
-
+        return cartas.remove(randomCard);
     }
 
-    public void registrarUtilizadas(Mano mano, List<CartaDePoker> yaUtilizadas) {
-        int randomCard = new Random().nextInt(cartas.size());
-
+    public void realizarDescarte(Ronda ronda, Mano mano) {
+        
+        List<CartaDePoker> yaUtilizadas = mano.realizarDescarte(ronda);
+        
         for(CartaDePoker carta : yaUtilizadas) {
-            mano.recibirCard(cartas.remove(randomCard));
+            //mano.recibirCard(cartas.remove(carta));
             this.utilizadas.add(carta);
-
         }
     }
 

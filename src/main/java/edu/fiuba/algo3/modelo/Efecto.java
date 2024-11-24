@@ -22,11 +22,12 @@ public class Efecto{
     }
 
 
-
-
-
     public void recibirMejora(Mejora mejora) {
         this.mejoras.add(mejora);
+    }
+
+    public void aplicarEfect(Efecto efecto){
+
     }
 
     public void aplicarEfectoAPuntaje(PuntajeJugada puntajeJugada){

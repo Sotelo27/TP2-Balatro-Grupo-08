@@ -3,12 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Mano {
     private ArrayList<CartaDePoker> mano = new ArrayList<>();
     private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
-
-    //agregar constructor
+    public Mano(Mazo mazo){
+        this.recargarManoConMazo(mazo);
+    }
 
     public void recibirCard(CartaDePoker carta) {
 
@@ -22,7 +24,7 @@ public class Mano {
 
     public void recargarManoConMazo(Mazo mazo){
         while(this.puedoAgregarCard()){
-            mazo.tomarCarta(this);
+            this.mano.add(mazo.tomarCarta());
         }
     }
 
@@ -37,31 +39,27 @@ public class Mano {
 
         this.seleccion.add(cartaElegida);
     }
-
-
-
-    public Jugada realizarJugadaConComodines(List<Comodin> comodines){
+    public List<CartaDePoker> realizarDescarte(Ronda ronda){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
+       //Descarte descarte = new Descarte(this.seleccion);
+        //return ronda.agregarAccion(descarte);
+        return this.seleccion;
+    }
 
-
-
-
-        return new Jugada(this.seleccion);
-    };
-
-    public Jugada realizarJugada(Ronda ronda,List<Comodin> comodines, List<CartaDeTarot> cartasDeTarot){
-        if (this.seleccion.isEmpty()) {
-            throw new ErrorJugadaVacia("No hay cartas seleccionadas");
-        }
+    public boolean realizarJugada(Ronda ronda, List<CartaDeTarot> cartasDeTarot, List<Comodin> comodines){
+        //if (this.seleccion.isEmpty()) {
+            //throw new ErrorJugadaVacia("No hay cartas seleccionadas");
+            //return false;
+        //}
         Jugada jugada = new Jugada(this.seleccion);
 
-        jugada.aplicarTarots(cartasDeTarot);
-
-
-
-        return jugada;
+        //jugada.aplicarTarots(cartasDeTarot);
+        for(Comodin comodin : comodines){
+            //comodin.mejorar(jugada);
+        }
+        return true;
     };
 
 

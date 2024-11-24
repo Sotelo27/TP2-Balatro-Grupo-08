@@ -2,12 +2,14 @@
 title se crea una jugada con tarots y comodines
 
 Algo3 -> Jugador: realizarJugada(unaRonda)
-Jugador -> Mazo : realizarJugada(unaRonda) 
-Mazo -> Jugada : Jugada(this.seleccionadas)
+Jugador -> Mano : realizarJugada(ronda, tarots, comodines)
+
+Mano -> Jugada : Jugada(this.seleccionadas)
 Jugada -> Verificador : obtenerCombinacion(seleccionadas)
 Verificador --> Jugada : unaCombinacion 
 Jugada -> Jugada : guardar(unaCombinacion)
-Mazo -> Jugada : aplicarTarots(this.tarotsActivos)
+
+Mano -> Jugada : aplicarTarots(tarotsActivos)
 loop para cada tarot 
 loop para cada carta seleccionada que cumpla con la restriccion
 Jugada -> Tarot : mejorar(cartaSeleccionada)
@@ -23,10 +25,10 @@ Tarot -> Combinacion : aplicarEfecto(this.efecto)
 Combinacion -> Efecto : agregarEfecto(efecto)
 
 end loop
-Jugada --> Mazo : unaJugada 
+
 
 loop para cada comodin disponible que tenga el jugador en juego y que cumpla todas sus condiciones
-Mazo -> Comodin : aplicarEfecto(jugada)
+Mano -> Comodin : aplicarEfecto(jugada)
 loop para cada ICondicion que tenga
 Comodin -> ICondicion : validarRestriccion(jugada)
 ICondicion --> Comodin :true
@@ -36,9 +38,6 @@ Comodin -> Jugada : aplicarEfecto(efecto)
 end alt 
 
 end loop
-
-Mazo ->  Mazo: usadas.agregar(this.seleccionadas)
-Mazo -> Mazo : seleccionadas.vaciar()
-Mazo -> Ronda : agregar(unaJugada)
+Mano -> Ronda : aniadirAccion(unaJugada) 
 
 @enduml 

@@ -1,0 +1,547 @@
+{
+    "rondas": [
+        {
+            "nro": 1,
+            "manos": 3,
+            "descartes": 3,
+            "puntajeASuperar": 3000,
+            "tienda": {
+                "comodines": [
+                    {
+                        "nombre": "Comodin Astuto",
+                        "descripcion": "+50 fichas si la mano jugada contiene un par",
+                        "activacion": { "Mano Jugada": "par" },
+                        "efecto": {
+                            "puntos": 50,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Cumbre Mistica",
+                        "descripcion": "x15 multiplicación por cada descarte",
+                        "activacion": "Descarte",
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 15
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "El Mago",
+                        "descripcion": "Mejora la mano par",
+                        "efecto": {
+                            "puntos": 15,
+                            "multiplicador": 2
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "par"
+                    },
+                    {
+                        "nombre": "El Carro",
+                        "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de acero.",
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 1.5
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    }
+                ],
+                "carta":{ 
+                    "nombre": "10 de Corazones",
+                    "palo": "Corazones",
+                    "numero": "10",
+                    "puntos": 10,
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 2,
+            "manos": 4,
+            "descartes": 4,
+            "puntajeASuperar": 3600,
+            "tienda": {
+                "comodines": [
+                    {
+                        "nombre": "Gros Michel",
+                        "descripcion": "x15 Mult. 1 en 6 de probabilidad",
+                        "activacion": { "1 en": 6 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 15
+                        }
+                    },
+                    {
+                        "nombre": "Ritual del Valle",
+                        "descripcion": "+75 fichas por cada descarte",
+                        "activacion": "Descarte",
+                        "efecto": {
+                            "puntos": 75,
+                            "multiplicador": 1
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "Fuerza",
+                        "descripcion": "Mejora la mano poker",
+                        "efecto": {
+                            "puntos": 30,
+                            "multiplicador": 3
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "poker"
+                    },
+                    {
+                        "nombre": "Justicia",
+                        "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de cristal",
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 2
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    }
+                ],
+                "carta": {         
+                    "nombre": "8 de Diamantes", 
+                    "palo": "Diamantes", 
+                    "numero": "8", 
+                    "puntos": 8, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 3,
+            "manos": 4,
+            "descartes": 4,
+            "puntajeASuperar": 4320,
+            "tienda": {
+                "comodines": [
+                    {
+                        "nombre": "Comodin Arriesgado",
+                        "descripcion": "+200 fichas si la mano jugada contiene color",
+                        "activacion": { "Mano Jugada": "color" },
+                        "efecto": {
+                            "puntos": 200,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Talisman de Descarte",
+                        "descripcion": "+100 fichas por cada descarte",
+                        "activacion": "Descarte",
+                        "efecto": {
+                            "puntos": 100,
+                            "multiplicador": 1
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "La Emperatriz",
+                        "descripcion": "Mejora 1 carta seleccionada y la convierte en una multicarta.",
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 4
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    },
+                    {
+                        "nombre": "El Tonto",
+                        "descripcion": "Mejora la mano carta mas alta",
+                        "efecto": {
+                            "puntos": 10,
+                            "multiplicador": 2
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    }
+                ],
+                "carta": { 
+                    "nombre": "Reina de Picas", 
+                    "palo": "Picas",
+                    "numero": "Reina", 
+                    "puntos": 10, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 4,
+            "manos": 4,
+            "descartes": 4,
+            "puntajeASuperar": 5184,
+            "tienda": {
+                "comodines": [   
+                    {
+                        "nombre": "Comodin Abundante",
+                        "descripcion": "+8 al multiplicador si la mano jugada contiene un full",
+                        "activacion": { "Mano Jugada": "full" },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 8
+                        }
+                    },
+                    {
+                        "nombre": "Flor del Cerezo",
+                        "descripcion": "+1500 puntos. 1 en 250 de probabilidad",
+                        "activacion": { "1 en": 250 },
+                        "efecto": {
+                            "puntos": 1500,
+                            "multiplicador": 1
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "El Hierofante",
+                        "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta bonificacion",
+                        "efecto": {
+                            "puntos": 40,
+                            "multiplicador": 1
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    },
+                    {
+                        "nombre": "La Suma Sacerdotisa",
+                        "descripcion": "Mejora la mano doble par",
+                        "efecto": {
+                            "puntos": 20,
+                            "multiplicador": 2
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "doble par"
+                    }
+                ],
+                "carta": { 
+                    "nombre": "10 de Trebol", 
+                    "palo": "Trebol", 
+                    "numero": "10", 
+                    "puntos": 10, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 5,
+            "manos": 4,
+            "descartes": 5,
+            "puntajeASuperar": 6220,
+            "tienda": {
+                "comodines": [      
+                    {
+                        "nombre": "Comodin Poderoso",
+                        "descripcion": "+300 fichas si la mano jugada contiene un póker",
+                        "activacion": { "Mano Jugada": "poker" },
+                        "efecto": {
+                            "puntos": 300,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Estrella Fugaz",
+                        "descripcion": "x10 Mult. 1 en 50 de probabilidad",
+                        "activacion": { "1 en": 50 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 10
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "El Emperador",
+                        "descripcion": "Mejora la mano trio",
+                        "efecto": {
+                            "puntos": 20,
+                            "multiplicador": 2
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "trio"
+                    },
+                    {
+                        "nombre": "Los Amantes",
+                        "descripcion": "Mejora la mano escalera",
+                        "efecto": {
+                            "puntos": 30,
+                            "multiplicador": 3
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "escalera"
+                    }
+                ],
+                "carta": { 
+                    "nombre": "Rey de Corazones", 
+                    "palo": "Corazones", 
+                    "numero": "Rey", 
+                    "puntos": 10, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 6,
+            "manos": 4,
+            "descartes": 6,
+            "puntajeASuperar": 7465,
+            "tienda": {
+                "comodines": [
+                    {
+                        "nombre": "Bandera",
+                        "descripcion": "+30 fichas por cada descarte",
+                        "activacion": "Descarte",
+                        "efecto": {
+                            "puntos": 30,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Destino Explosivo",
+                        "descripcion": "+500 fichas si la mano jugada contiene color y x10 Mult. 1 en 50 de probabilidad",
+                        "comodines": [
+                            {
+                                "nombre": "Descarte Dorado",
+                                "descripcion": "+500 fichas si la mano jugada contiene color",
+                                "activacion": { "Mano Jugada": "color" },
+                                "efecto": {
+                                    "puntos": 500,
+                                    "multiplicador": 1
+                                }
+                            },
+                            {
+                                "nombre": "Estrella Fugaz",
+                                "descripcion": "x10 Mult. 1 en 50 de probabilidad",
+                                "activacion": { "1 en": 50 },
+                                "efecto": {
+                                    "puntos": 1,
+                                    "multiplicador": 10
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "La Torre",
+                        "descripcion": "Mejora 1 carta seleccionada y la convierte en una carta de piedra.",
+                        "efecto": {
+                            "puntos": 50,
+                            "multiplicador": 1
+                        },
+                        "sobre": "carta",
+                        "ejemplar": "cualquiera"
+                    },
+                    {
+                        "nombre": "La rueda de la fortuna",
+                        "descripcion": "Mejora la mano full",
+                        "efecto": {
+                            "puntos": 25,
+                            "multiplicador": 2
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "full"
+                    }
+                ],
+                "carta": { 
+                    "nombre": "9 de Trebol", 
+                    "palo": "Trebol", 
+                    "numero": "9", 
+                    "puntos": 9, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 7,
+            "manos": 4,
+            "descartes": 7,
+            "puntajeASuperar": 8959,
+            "tienda": {
+                "comodines": [
+                    {
+                        "nombre": "Comodin Real",
+                        "descripcion": "+500 fichas si la mano jugada contiene una escalera real",
+                        "activacion": { "Mano Jugada": "escalera real" },
+                        "efecto": {
+                            "puntos": 500,
+                            "multiplicador": 1
+                        }
+                    },
+                    {
+                        "nombre": "Suerte Suprema",
+                        "descripcion": "+2000 puntos. 1 en 500 de probabilidad y +30 fichas por cada descarte",
+                        "comodines": [
+                            {
+                                "nombre": "Tigre de Bengal",
+                                "descripcion": "+2000 puntos. 1 en 500 de probabilidad",
+                                "activacion": { "1 en": 500 },
+                                "efecto": {
+                                    "puntos": 2000,
+                                    "multiplicador": 1
+                                }
+                            },
+                            {
+                                "nombre": "Bandera",
+                                "descripcion": "+30 fichas por cada descarte",
+                                "activacion": "Descarte",
+                                "efecto": {
+                                    "puntos": 30,
+                                    "multiplicador": 1
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "Muerte",
+                        "descripcion": "Mejora la mano escalera real",
+                        "efecto": {
+                            "puntos": 50,
+                            "multiplicador": 5
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "escalera real"
+                    },
+                    {
+                        "nombre": "El Ahorcado",
+                        "descripcion": "Mejora la mano escalera de color",
+                        "efecto": {
+                            "puntos": 40,
+                            "multiplicador": 4
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "escalera de color"
+                    }
+                ],
+                "carta": { 
+                    "nombre": "8 de Picas", 
+                    "palo": "Picas", 
+                    "numero": "8", 
+                    "puntos": 8, 
+                    "multiplicador": "1" 
+                }
+            }
+        },
+        {
+            "nro": 8,
+            "manos": 4,
+            "descartes": 8,
+            "puntajeASuperar": 10750,
+            "tienda": {
+                "comodines" : [
+                    {
+                        "nombre": "Comodin Épico",
+                        "descripcion": "+20 al multiplicador si la mano jugada contiene una escalera real",
+                        "activacion": { "Mano Jugada": "escalera real" },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 20
+                        }
+                    },
+                    {
+                        "nombre": "Rayo de Fortuna",
+                        "descripcion": "x50 Mult. 1 en 500 de probabilidad",
+                        "activacion": { "1 en": 500 },
+                        "efecto": {
+                            "puntos": 1,
+                            "multiplicador": 50
+                        }
+                    }
+                ],
+                "tarots": [
+                    {
+                        "nombre": "El Ermitano",
+                        "descripcion": "Mejora la mano color",
+                        "efecto": {
+                            "puntos": 15,
+                            "multiplicador": 2
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "color"
+                    },
+                    {
+                        "nombre": "Fuerza",
+                        "descripcion": "Mejora la mano poker",
+                        "efecto": {
+                            "puntos": 30,
+                            "multiplicador": 3
+                        },
+                        "sobre": "mano",
+                        "ejemplar": "poker"
+                    }
+                ],
+                "carta":{
+                    "nombre": "As de Corazones", 
+                    "palo": "Corazones", 
+                    "numero": "As", 
+                    "puntos": 10,
+                    "multiplicador": "1" 
+                }
+            }
+        }
+    ],
+    "mazo": [
+        { "nombre": "As de Trebol", "palo": "Trebol", "numero": "As", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "2 de Trebol", "palo": "Trebol", "numero": "2", "puntos": 2, "multiplicador": "1" },
+        { "nombre": "3 de Trebol", "palo": "Trebol", "numero": "3", "puntos": 3, "multiplicador": "1" },
+        { "nombre": "4 de Trebol", "palo": "Trebol", "numero": "4", "puntos": 4, "multiplicador": "1" },
+        { "nombre": "5 de Trebol", "palo": "Trebol", "numero": "5", "puntos": 5, "multiplicador": "1" },
+        { "nombre": "6 de Trebol", "palo": "Trebol", "numero": "6", "puntos": 6, "multiplicador": "1" },
+        { "nombre": "7 de Trebol", "palo": "Trebol", "numero": "7", "puntos": 7, "multiplicador": "1" },
+        { "nombre": "8 de Trebol", "palo": "Trebol", "numero": "8", "puntos": 8, "multiplicador": "1" },
+        { "nombre": "9 de Trebol", "palo": "Trebol", "numero": "9", "puntos": 9, "multiplicador": "1" },
+        { "nombre": "10 de Trebol", "palo": "Trebol", "numero": "10", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Jota de Trebol", "palo": "Trebol", "numero": "Jota", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Reina de Trebol", "palo": "Trebol", "numero": "Reina", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Rey de Trebol", "palo": "Trebol", "numero": "Rey", "puntos": 10, "multiplicador": "1" },
+
+        { "nombre": "As de Corazones", "palo": "Corazones", "numero": "As", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "2 de Corazones", "palo": "Corazones", "numero": "2", "puntos": 2, "multiplicador": "1" },
+        { "nombre": "3 de Corazones", "palo": "Corazones", "numero": "3", "puntos": 3, "multiplicador": "1" },
+        { "nombre": "4 de Corazones", "palo": "Corazones", "numero": "4", "puntos": 4, "multiplicador": "1" },
+        { "nombre": "5 de Corazones", "palo": "Corazones", "numero": "5", "puntos": 5, "multiplicador": "1" },
+        { "nombre": "6 de Corazones", "palo": "Corazones", "numero": "6", "puntos": 6, "multiplicador": "1" },
+        { "nombre": "7 de Corazones", "palo": "Corazones", "numero": "7", "puntos": 7, "multiplicador": "1" },
+        { "nombre": "8 de Corazones", "palo": "Corazones", "numero": "8", "puntos": 8, "multiplicador": "1" },
+        { "nombre": "9 de Corazones", "palo": "Corazones", "numero": "9", "puntos": 9, "multiplicador": "1" },
+        { "nombre": "10 de Corazones", "palo": "Corazones", "numero": "10", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Jota de Corazones", "palo": "Corazones", "numero": "Jota", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Reina de Corazones", "palo": "Corazones", "numero": "Reina", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Rey de Corazones", "palo": "Corazones", "numero": "Rey", "puntos": 10, "multiplicador": "1" },
+
+        { "nombre": "As de Picas", "palo": "Picas", "numero": "As", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "2 de Picas", "palo": "Picas", "numero": "2", "puntos": 2, "multiplicador": "1" },
+        { "nombre": "3 de Picas", "palo": "Picas", "numero": "3", "puntos": 3, "multiplicador": "1" },
+        { "nombre": "4 de Picas", "palo": "Picas", "numero": "4", "puntos": 4, "multiplicador": "1" },
+        { "nombre": "5 de Picas", "palo": "Picas", "numero": "5", "puntos": 5, "multiplicador": "1" },
+        { "nombre": "6 de Picas", "palo": "Picas", "numero": "6", "puntos": 6, "multiplicador": "1" },
+        { "nombre": "7 de Picas", "palo": "Picas", "numero": "7", "puntos": 7, "multiplicador": "1" },
+        { "nombre": "8 de Picas", "palo": "Picas", "numero": "8", "puntos": 8, "multiplicador": "1" },
+        { "nombre": "9 de Picas", "palo": "Picas", "numero": "9", "puntos": 9, "multiplicador": "1" },
+        { "nombre": "10 de Picas", "palo": "Picas", "numero": "10", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Jota de Picas", "palo": "Picas", "numero": "Jota", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Reina de Picas", "palo": "Picas", "numero": "Reina", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Rey de Picas", "palo": "Picas", "numero": "Rey", "puntos": 10, "multiplicador": "1" },
+
+        { "nombre": "As de Diamantes", "palo": "Diamantes", "numero": "As", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "2 de Diamantes", "palo": "Diamantes", "numero": "2", "puntos": 2, "multiplicador": "1" },
+        { "nombre": "3 de Diamantes", "palo": "Diamantes", "numero": "3", "puntos": 3, "multiplicador": "1" },
+        { "nombre": "4 de Diamantes", "palo": "Diamantes", "numero": "4", "puntos": 4, "multiplicador": "1" },
+        { "nombre": "5 de Diamantes", "palo": "Diamantes", "numero": "5", "puntos": 5, "multiplicador": "1" },
+        { "nombre": "6 de Diamantes", "palo": "Diamantes", "numero": "6", "puntos": 6, "multiplicador": "1" },
+        { "nombre": "7 de Diamantes", "palo": "Diamantes", "numero": "7", "puntos": 7, "multiplicador": "1" },
+        { "nombre": "8 de Diamantes", "palo": "Diamantes", "numero": "8", "puntos": 8, "multiplicador": "1" },
+        { "nombre": "9 de Diamantes", "palo": "Diamantes", "numero": "9", "puntos": 9, "multiplicador": "1" },
+        { "nombre": "10 de Diamantes", "palo": "Diamantes", "numero": "10", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Jota de Diamantes", "palo": "Diamantes", "numero": "Jota", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Reina de Diamantes", "palo": "Diamantes", "numero": "Reina", "puntos": 10, "multiplicador": "1" },
+        { "nombre": "Rey de Diamantes", "palo": "Diamantes", "numero": "Rey", "puntos": 10, "multiplicador": "1" }
+    ]
+}

@@ -9,8 +9,8 @@ public class CreadorDeCartas {
         Mazo mazo = new Mazo();
         for (String palo : PALOS) {
             for (String numero : NUMEROS) {
-                CartaDePoker carta = new CartaDePoker(palo, numero);
-                mazo.addCard(carta);
+                //CartaDePoker carta = new CartaDePoker(palo, numero);
+                //mazo.addCard(carta);
             }
         }
         return mazo;
