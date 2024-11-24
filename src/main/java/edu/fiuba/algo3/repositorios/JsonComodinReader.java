@@ -10,59 +10,26 @@ import java.io.IOException;
 import java.util.*;
 
 public class JsonComodinReader {
-    private final String PATH = "json/comodines.json";
+    private static final String PATH = "json/comodines.json";
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public JsonComodinReader() {}
-
     private JsonNode readJsonNode() throws IOException {
-        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
-        return mapper.readTree(file);
+        return mapper.readTree(new File(getClass().getClassLoader().getResource(PATH).getFile()));
     }
 
-
-    public MazoCombinacion readCombinaciones() throws IOException {
+    public List<Comodin> readComodines() throws IOException {
         JsonNode root = readJsonNode();
-        JsonNode mixNode = root.get("Combinación");
-        return mapper.convertValue(mixNode, MazoCombinacion.class);
-    }
-
-    public MazoComodines readCategorias() throws IOException {
-        JsonNode root = readJsonNode();  // Cargar el JSON desde un archivo o fuente
-        Iterator<Map.Entry<String, JsonNode>> fields = root.fields();
         List<Comodin> allComodines = new ArrayList<>();
-        String descripcionMazo = "";
 
-        while (fields.hasNext()) {
-            Map.Entry<String, JsonNode> field = fields.next();
-            String categoriaNombre = field.getKey();
+        for (Iterator<Map.Entry<String, JsonNode>> it = root.fields(); it.hasNext(); ) {
+            Map.Entry<String, JsonNode> field = it.next();
             JsonNode categoriaNode = field.getValue();
-
-            System.out.println("Categoría creada: " + categoriaNombre);
-
-            // Verificar que no sea la categoría "Combinacion"
-            if (!categoriaNombre.equals("Combinacion")) {
-                // Extraer la descripción de la categoría
-                descripcionMazo = categoriaNode.get("descripcion").asText();
-                JsonNode tarotsNode = categoriaNode.get("comodines");
-
-                // Convertir la lista de comodines en objetos Comodin
-                List<Comodin> tarots = mapper.convertValue(tarotsNode, new TypeReference<List<Comodin>>() {});
-
-                // Imprimir detalles de cada Comodin
-                for (Comodin comodin : tarots) {
-                    allComodines.add(comodin);
-                }
-            }
+            List<Comodin> comodin = mapper.convertValue(categoriaNode.get("comodines"), new TypeReference<List<Comodin>>() {});
+            allComodines.addAll(comodin);
         }
 
-        // Crear el objeto MazoComodines con la lista de todos los comodines y la descripción
-        MazoComodines mazo = new MazoComodines();
-        mazo.setDescripcion(descripcionMazo);  // Asignar la descripción de la categoría
-        mazo.setComodines(allComodines);  // Asignar la lista de todos los comodines
-        return mazo;
+        return allComodines;
     }
-
 }
 
 

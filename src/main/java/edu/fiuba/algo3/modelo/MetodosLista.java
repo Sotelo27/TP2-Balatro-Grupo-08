@@ -5,7 +5,6 @@ import java.util.*;
 
 public interface MetodosLista {
 
-
     default boolean sonDelMismoTipo(List <CartaDePoker> cartas){
 
         CartaDePoker primerCarta = cartas.get(0);
@@ -15,11 +14,7 @@ public interface MetodosLista {
             }
         }
         return true;
-
     }
-
-
-
     default void ordenarPorNumero(List<CartaDePoker> cartas) {
         cartas.sort(new Comparator<CartaDePoker>() {
             @Override

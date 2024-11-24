@@ -14,12 +14,22 @@ public class CartaDePoker implements IMejorable {
             "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
     );
 
-    public CartaDePoker(String palo, String numero) {
-        this.palo = palo;
-        this.numero = numero;
-        this.efecto = new Efecto(this.devolverValor());
-        this.estado = new NoSeleccionada();
+    //Setters
+    public CartaDePoker() {}
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
+    public void setPalo(String palo) {
+        this.palo = palo;
+    }
+
+    public void setNumero(String numero) {this.numero = numero;}
+
+    public void setPuntos(int puntos) {this.puntos = puntos;}
+
+    public void setMultiplicador(int multiplicador) {this.multiplicador = multiplicador;}
 
     @Override
     public void recibirMejora(Mejora mejora) {

@@ -7,7 +7,7 @@ import java.util.List;
 @JsonIgnoreProperties("mazo")
 public class Balatro {
     List<Ronda> rondas;
-    MazoPrueba mazo;
+    Mazo mazo;
 
     public List<Ronda> getRondas() {
         return rondas;
@@ -17,11 +17,11 @@ public class Balatro {
         this.rondas = rondas;
     }
 
-    public MazoPrueba getMazo() {
+    public Mazo getMazo() {
         return mazo;
     }
 
-    public void setMazo(MazoPrueba mazo) {
+    public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
 }

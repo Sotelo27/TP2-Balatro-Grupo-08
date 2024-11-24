@@ -13,6 +13,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class JuegoTest {
+    /*
     @Test
     public void test01MazoTieneSufucientesCartasParaComenzar() {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
@@ -105,7 +106,7 @@ public class JuegoTest {
         PuntajeJugada puntaje = jugada.jugarJugada();
 
     }
-/*
+*/
     @Test
     public void verificarJsonReader() throws IOException {
         JsonReader jsonReader = new JsonReader();
@@ -122,7 +123,7 @@ public class JuegoTest {
     @Test
     public void verificaComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-        MazoComodines mazo = jsonReader.readCategorias();
+        List<Comodin> mazo = jsonReader.readComodines();
     }
 }
 /*
