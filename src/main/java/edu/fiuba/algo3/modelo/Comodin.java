@@ -8,7 +8,6 @@ public class Comodin implements IMejorador{
     private String descripcion;
     private Object activacion; // Puede ser String o Map<String, Object>
     private EfectoPrueba efecto;
-    private List<Comodin> comodines;
 
     // Getters y Setters
     public String getNombre() {
@@ -43,7 +42,5 @@ public class Comodin implements IMejorador{
         this.efecto = efecto;
     }
 
-    public void setComodines(List<Comodin> comodines) {
-        this.comodines = comodines;
-    }
+
 }
