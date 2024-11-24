@@ -26,7 +26,6 @@ public class VerificadorStraightFlush extends Verificador {
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
         ordenarPorNumero(cartas);
-        System.out.println(cartas);
         if (sonDelMismoTipo(cartas) && esSecuencia(cartas)) {
             agregarPuntuables(cartas);
             return true;

@@ -7,8 +7,6 @@ import java.util.List;
 
 public class HighCard extends CombinacionDePoker {
 
-
-
     public HighCard(List<CartaDePoker> cartas) {
         super(cartas);
         this.puntos = 5;

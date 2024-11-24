@@ -26,8 +26,6 @@ public class VerificadorStraight extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        System.out.println(esSecuencia(cartas));
-        System.out.println(cartas);
         if (esSecuencia(cartas)){
             agregarPuntuables(cartas);
             return true;

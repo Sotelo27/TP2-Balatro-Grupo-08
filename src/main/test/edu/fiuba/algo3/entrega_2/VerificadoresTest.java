@@ -14,16 +14,17 @@ public class VerificadoresTest {
         CombinacionDePoker combinacionEncontrada;
         List <CartaDePoker> cartas = new ArrayList <>();
         CartaDePoker carta1 = new CartaDePoker("Corazones","8" );
-        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
-        CartaDePoker carta3 = new CartaDePoker("Diamantes","6" );
-        CartaDePoker carta4 = new CartaDePoker("Treboles","2" );
-        CartaDePoker carta5 = new CartaDePoker("Corazones","4" );
+        CartaDePoker carta2 = new CartaDePoker("Corazones","2" );
+        CartaDePoker carta3 = new CartaDePoker("Treboles","8" );
+        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
+        CartaDePoker carta5 = new CartaDePoker("Diamantes","8" );
         cartas.add(carta1);
         cartas.add(carta2);
         cartas.add(carta3);
         cartas.add(carta4);
         cartas.add(carta5);
         combinacionEncontrada = new VerificadorRoyalFlush().verificar(cartas);
+        System.out.println(cartas);
         System.out.println(combinacionEncontrada.devolverNombreCombinacion());
     }
 
