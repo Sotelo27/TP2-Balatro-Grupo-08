@@ -10,26 +10,27 @@ import java.util.List;
 public class VerificadorFlush extends Verificador {
 
     public VerificadorFlush(){
-        this.proximoVerificador = new VerificadorStraight() {
-        };
+        this.proximoVerificador = new VerificadorStraight ();
+    }
 
+    @Override
+    public boolean esDeTipo(List<CartaDePoker> cartas) {
+        if (sonDelMismoTipo(cartas)){
+            agregarPuntuables(cartas);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
         if (esDeTipo(cartas)){
-            return new Flush(cartas);
+            return new Flush(this.listaPuntuables);
         }
-        else{
-            return proximoVerificador.verificar(cartas);
-
-        }
+        return pasarAlSiguiente(cartas);
     }
 
-    @Override
-    public boolean esDeTipo(List<CartaDePoker> cartas) {
-        //que cada carta le pregunte a la siguiente que sea de igual palo
-        CartaDePoker primerCarta = cartas.get(0);
-        return cartas.stream().allMatch(card -> card.soyDelMismoPaloQueOtraCarta(primerCarta));
-    }
+
+
+
 }

@@ -8,18 +8,15 @@ import java.io.IOException;
 import java.util.List;
 
 public class JsonMazoReader {
-
-    public MazoPrueba readMazo() throws IOException {
+    private static final String PATH = "json/mazo.json";
+    public Mazo readMazo() throws IOException {
         // Usamos la ruta relativa para acceder al archivo
 
-        File file = new File(getClass().getClassLoader().getResource("json/mazo.json").getFile());
+        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        MazoPrueba mazo = objectMapper.readValue(file, MazoPrueba.class);
-
-        // Imprimir las cartas para verificar la lectura
-       // mazo.getMazo().forEach(carta -> System.out.println(carta.getNumero()));
+        Mazo mazo = objectMapper.readValue(file, Mazo.class);
 
         return mazo;
     }

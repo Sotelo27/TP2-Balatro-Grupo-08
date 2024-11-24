@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import java.util.List;
 
-public class Combinacion extends CategoriaComodin {
+public class Combinacion extends MazoComodines {
     String nombre;
     private List<Comodin> comodinesAnidados;
 

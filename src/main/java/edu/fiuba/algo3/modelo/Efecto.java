@@ -29,7 +29,7 @@ public class Efecto{
         this.mejoras.add(mejora);
     }
 
-    public void calcularPuntajeCarta(PuntajeJugada puntajeJugada){
+    public void aplicarEfectoAPuntaje(PuntajeJugada puntajeJugada){
         puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
 
         for(Mejora mejora : mejoras){

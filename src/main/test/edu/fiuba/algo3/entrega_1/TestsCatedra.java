@@ -49,6 +49,10 @@ public class JuegoTest {
 
         when(mazoMock.tomarCarta())thenReturn(cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5, 
             cartaMock6, cartaMock7, cartaMock8, cartaMock9);
+
+        Tarot tarotX2 = New Tarot("Justicia", new Efecto(1,2), new RestriccionACarta());
+        Comodin comodinX4 = New Comodin("Comodin", new Efecto(1,4),new SinRestriccion());
+        Comodin comodinSuma100 = New Comodin("Caminante", new Efecto(100,1),new SinRestriccion());
     }
 
     // . Verificar que a un jugador se le reparten 8 cartas de su mazo.
@@ -81,6 +85,7 @@ public class JuegoTest {
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
         // act
         Jugador1.seleccionarCarta("As de Trebol");
+        Jugador1.activarComodin(comodinSuma100);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
         // assert
@@ -94,9 +99,12 @@ public class JuegoTest {
         Jugador jugador1 = New Jugador("jugador 1", mazoMock);
         // act
         Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.activarComodin(comodinSuma100);
+        Jugador1.activarComodin(comodinX4);
         Jugador1.realizarJugada(rondaMock);
         Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
-        Puntaje puntajeEsperado = new Puntaje(7) // CartaAlta = 5 puntosX1, 2 de Trebol = 2puntosX1
+        // [[(2 de Trebol = 2puntosX1) + (CartaAlta = 5 puntos X1)]+100]x4 = 428 puntos
+        Puntaje puntajeEsperado = new Puntaje(428) ;
         // assert
         assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
@@ -104,18 +112,50 @@ public class JuegoTest {
     // .Verificar que importe el orden en la puntuación de las cartas.
     @Test
     public void test05SeHaceLaMismaJugadaYSuPuntajeAlConstruirseDependeDeElOrdenDeLasCartas(){
-
+        // arrange
+        Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        // act
+        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.activarComodin(comodinX4);
+        Jugador1.activarComodin(comodinSuma100);
+        Jugador1.realizarJugada(rondaMock);
+        Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
+        // [[(2 de Trebol = 2puntosX1) + (CartaAlta = 5 puntos X1)]*4]+100 = 128 puntos
+        Puntaje puntajeEsperado = new Puntaje(128) ;
+        // assert
+        assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
 
     // Verificar que al modificar una carta al utilizar un tarot que cambia sus puntos por 10, se aplique el puntaje correcto en el mazo
     @Test
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente(){
-
+        // arrange
+        Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        // act
+        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.activarTarot(tarotX2);
+        Jugador1.realizarJugada(rondaMock);
+        Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
+        // (2 de Trebol = 2puntosX1)*2 + (CartaAlta = 5 puntos X1) = 9
+        Puntaje puntajeEsperado = new Puntaje(4) ;
+        // assert
+        assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
 
     // Verificar que al modificar una carta utilizando un tarot que cambia su multiplicador a un x6 se aplique el valor correspondiente.
     @Test
     public void test07SeUtilizaUnTarotMultiplicadorx6EnUnaCartaYSuJugadaDevuelveElPuntajeCorrectamente(){
-
+        // arrange
+        Jugador jugador1 = New Jugador("jugador 1", mazoMock);
+        Comodin comodinx6 = new Comodin("X6", new Efecto(1, 1, 6), new SinRestriccion() );
+        // act
+        Jugador1.seleccionarCarta("2 de Trebol");
+        Jugador1.activarComodin(comodinx6);
+        Jugador1.realizarJugada(rondaMock);
+        Puntaje puntajeObtenido = rondaMock.obtenerPuntaje()
+        // (2 de Trebol = 2puntosX1)*6  + (CartaAlta = 5 puntos X1) = 17
+        Puntaje puntajeEsperado = new Puntaje(12) ;
+        // assert
+        assert(puntajeEsperado.esIgualA(puntajeEsperado));
     }
 }

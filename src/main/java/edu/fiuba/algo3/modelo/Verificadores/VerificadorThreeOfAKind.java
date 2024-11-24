@@ -12,7 +12,6 @@ public class VerificadorThreeOfAKind extends Verificador {
     public VerificadorThreeOfAKind() {
         super();
         this.proximoVerificador = new VerificadorTwoPair();
-
     }
 
     @Override

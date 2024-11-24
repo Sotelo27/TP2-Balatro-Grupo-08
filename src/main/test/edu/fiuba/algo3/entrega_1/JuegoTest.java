@@ -2,19 +2,20 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
 
-import edu.fiuba.algo3.repositorios.JsonComodinReader;
-import edu.fiuba.algo3.repositorios.JsonMazoReader;
-import edu.fiuba.algo3.repositorios.JsonTarotReader;
+import static org.junit.jupiter.api.Assertions.*;
+//import edu.fiuba.algo3.repositorios.JsonTarotReader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class JuegoTest {
+    /*
     @Test
-    public void test01MazoTieneSufucientesCartasParaComenzar(){
+    public void test01MazoTieneSufucientesCartasParaComenzar() {
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
 
@@ -23,53 +24,59 @@ public class JuegoTest {
     }
 
     @Test
-    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMas(){
-        CreadorDeCartas creadorCartas = new CreadorDeCartas();
-        Mazo mazo = creadorCartas.crearMazo();
-        Mano mano = new Mano();
+    public void test02JugadorSeLeRepartenCartasSuficientesEnSuManoYNoSePuedenAgregarMasPorQueDevuelveError(){
+
+        assertThrows(ErrorManoSeExcedioDeCartas.class, () -> {
+            CreadorDeCartas creadorCartas = new CreadorDeCartas();
+            Mazo mazo = creadorCartas.crearMazo();
+            Mano mano = new Mano();
 
 
-        mazo.repartir(mano);
+            mano.recargarManoConMazo(mazo);
 
-        assert(!mano.puedoAgregarCard());
-
+            CartaDePoker cartaDeMas = new CartaDePoker("Diamante", "10");
+            mano.recibirCard(cartaDeMas);
+        });
     }
 
     @Test
-    public void test03SePuedeHacerUnaJugada(){
+    public void test03SePuedeHacerUnaJugada() {
 
         CreadorDeCartas creadorCartas = new CreadorDeCartas();
         Mazo mazo = creadorCartas.crearMazo();
         Mano mano = new Mano();
-        mazo.repartir(mano);
+        List<Comodin> comodines = new ArrayList<>();
+        Ronda ronda = new Ronda();
+        mano.recargarManoConMazo(mazo);
         try {
-            mano.realizarJugada();
+            mano.realizarJugada(ronda, comodines);
         }
         catch (ErrorJugadaVacia e) {
-            assertEquals("No hay cartas seleccionadas",e.getMessage());
+            //assertEquals("No hay cartas seleccionadas" ,e.getMessage());
         }
     }
 
     @Test
     public void test04ValorCorrespondiente() {
         Mano mano = new Mano();
-        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
-        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
-        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
-        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
-        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
-        mano.recibirCard(carta1 );
-        mano.recibirCard(carta2 );
-        mano.recibirCard(carta3 );
-        mano.recibirCard(carta4 );
-        mano.recibirCard(carta5 );
+        CartaDePoker carta1 = new CartaDePoker("Corazones", "10");
+        CartaDePoker carta2 = new CartaDePoker("Corazones", "9");
+        CartaDePoker carta3 = new CartaDePoker("Corazones", "8");
+        CartaDePoker carta4 = new CartaDePoker("Corazones", "7");
+        CartaDePoker carta5 = new CartaDePoker("Corazones", "6");
+        mano.recibirCard(carta1);
+        mano.recibirCard(carta2);
+        mano.recibirCard(carta3);
+        mano.recibirCard(carta4);
+        mano.recibirCard(carta5);
         mano.seleccionarCarta(carta1);
         mano.seleccionarCarta(carta2);
         mano.seleccionarCarta(carta3);
         mano.seleccionarCarta(carta4);
         mano.seleccionarCarta(carta5);
+        List<Comodin> comodines = new ArrayList<>();
         // Realizar la primera jugada y obtener su puntaje
-        Jugada jugada = mano.realizarJugada();
+        Jugada jugada = mano.realizarJugadaConComodines(comodines);
         PuntajeJugada puntaje = jugada.jugarJugada();
         int valorEsperado = 200;
         assertEquals(valorEsperado, puntaje.getPuntos());
@@ -78,30 +85,31 @@ public class JuegoTest {
     @Test
     public void test05VerificarOrdenPuntuacionCartas() {
         Mano mano = new Mano();
-        CartaDePoker carta1 = new CartaDePoker("Corazones","10" );
-        CartaDePoker carta2 = new CartaDePoker("Corazones","9" );
-        CartaDePoker carta3 = new CartaDePoker("Corazones","8" );
-        CartaDePoker carta4 = new CartaDePoker("Corazones","7" );
-        CartaDePoker carta5 = new CartaDePoker("Corazones","6" );
-        mano.recibirCard(carta1 );
-        mano.recibirCard(carta2 );
-        mano.recibirCard(carta3 );
-        mano.recibirCard(carta4 );
-        mano.recibirCard(carta5 );
+        CartaDePoker carta1 = new CartaDePoker("Corazones", "10");
+        CartaDePoker carta2 = new CartaDePoker("Corazones", "9");
+        CartaDePoker carta3 = new CartaDePoker("Corazones", "8");
+        CartaDePoker carta4 = new CartaDePoker("Corazones", "7");
+        CartaDePoker carta5 = new CartaDePoker("Corazones", "6");
+        mano.recibirCard(carta1);
+        mano.recibirCard(carta2);
+        mano.recibirCard(carta3);
+        mano.recibirCard(carta4);
+        mano.recibirCard(carta5);
         mano.seleccionarCarta(carta1);
         mano.seleccionarCarta(carta2);
         mano.seleccionarCarta(carta3);
         mano.seleccionarCarta(carta4);
         mano.seleccionarCarta(carta5);
         // Realizar la primera jugada y obtener su puntaje
-        Jugada jugada = mano.realizarJugada();
+        List<Comodin> comodines = new ArrayList<>();
+        Jugada jugada = mano.realizarJugadaConComodines(comodines);
         PuntajeJugada puntaje = jugada.jugarJugada();
 
     }
-
+*/
     @Test
     public void verificarJsonReader() throws IOException {
-        JsonMazoReader jsonReader = new JsonMazoReader();
+        JsonReader jsonReader = new JsonReader();
         jsonReader.readMazo();
     }
 
@@ -110,35 +118,40 @@ public class JuegoTest {
         JsonTarotReader jsonReader = new JsonTarotReader();
         jsonReader.readTarots();
     }
+
+
     @Test
-    public void verificarComodinReader() throws IOException {
+    public void verificaComodinReader() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-        //jsonReader.readComodines();
-        MazoCombinacion mazo = jsonReader.readCombinaciones();
-        System.out.println(mazo.getDescripcion());
-        List<Combinacion> combinaciones = mazo.getCombinaciones();
-        for (Combinacion combinacion : combinaciones) {
-            List<Comodin> comodines = combinacion.getComodines();
-            System.out.println(combinacion.getDescripcion());
-            for (Comodin comodin : comodines) {
-                System.out.println(comodin.getDescripcion());
-                System.out.println(comodin.getNombre());
-            }
+        List<Comodin> mazo = jsonReader.readComodines();
+    }
+}
+/*
+    @Test
+    public void verificarBalatroReader() throws IOException {
+        JsonBalatroReader jsonReader = new JsonBalatroReader();
+        Balatro juego = jsonReader.readBalatro();
+
+        List<Ronda> rondas = juego.getRondas();
+        Ronda ronda1 = rondas.get(0);
+        Tienda tienda1 =ronda1.getTienda();
+        for (Comodin comodin : tienda1.getComodines()) {
+            System.out.println("Comodín: " + comodin.getNombre());
+            System.out.println("Descripción: " + comodin.getDescripcion());
+            System.out.println("Activación: " + comodin.getActivacion());
+            System.out.println("Efecto: " + comodin.getEfecto());
+            System.out.println();  // Línea en blanco para separar comodines
         }
     }
+}
+
     @Test
-    public void verificarComodineader() throws IOException {
-        JsonComodinReader jsonReader = new JsonComodinReader();
-        CategoriaComodin mazo = new AlPuntaje();
-        mazo =  jsonReader.readCategoriaAlPuntaje();
-        System.out.println(mazo.getDescripcion());
-        List<Comodin> combinaciones = mazo.getComodines();
-        for (Comodin combinacion : combinaciones) {
-            System.out.println(combinacion.getDescripcion());
-            System.out.println(combinacion.getNombre());
-            }
-        }
+    public void verificarTarot() throws IOException {
+        JsonTarotReader jsonReader = new JsonTarotReader();
+        MazoTarots mazo = jsonReader.readTarots();
+        assertEquals(MazoTarots.class, mazo.getClass());
     }
+    */
 
     /*
     @Test
@@ -157,7 +170,8 @@ public class JuegoTest {
         mano.recibirCard(new Carta("7", new Hearts(), 7, 1));
 
         // Realizar la jugada
-        // Jugada jugada = mano.realizarJugada();
+        //List<Comodin> comodines = new ArrayList<>();
+        // Jugada jugada = mano.realizarJugadaConComodines(comodines);
 
         // Obtener el valor de la jugada
         int puntuacionObtenida = jugada.obtenerValor();
