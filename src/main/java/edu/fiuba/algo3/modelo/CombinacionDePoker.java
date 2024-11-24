@@ -4,11 +4,11 @@ import java.util.*;
 
 public abstract class CombinacionDePoker implements IMejorable {
 
-    String nombre;
-    int puntos;
-    int multiplicador;
-    Efecto efecto;
-    List <CartaDePoker> cartas;
+    protected String nombre;
+    protected int puntos;
+    protected int multiplicador;
+    protected Efecto efecto;
+    protected List <CartaDePoker> cartas;
 
     public CombinacionDePoker(List <CartaDePoker> cartas) {
         this.cartas = cartas;
@@ -31,4 +31,11 @@ public abstract class CombinacionDePoker implements IMejorable {
     }
 
 
+    public String devolverNombreCombinacion(){
+        return this.nombre;
+    }
+
+
 }
+
+

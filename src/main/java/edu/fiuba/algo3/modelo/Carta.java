@@ -15,8 +15,35 @@ public class Carta {
         this.nombre = nombre;
     }
 
-    public void setPalo(String palo) {
-        this.palo = palo;
+
+    @Override
+    public void recibirMejora(Mejora mejorador) {
+        this.efecto.recibirMejora(mejorador);
+    }
+
+    public void seleccionarCartaEn(Mano mano){
+
+
+
+    }
+    public void deseleccionarCarta(Mano mano){
+
+
+
+    }
+
+    public String devolverPalo(){
+        return suit;
+    }
+
+    public String devolverRank(){
+        return rank;
+    }
+
+
+    public void aplicarResultadoAPuntaje(PuntajeJugada puntajeJugada){
+
+        estadoDeCarta.aplicarResultadoAPuntaje(efecto, puntajeJugada);
     }
 
     public void setNumero(String numero) {this.numero = numero;}

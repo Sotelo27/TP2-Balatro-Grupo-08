@@ -4,9 +4,8 @@ import java.util.List;
 
 
 public class RoyalFlush extends CombinacionDePoker {
-    String nombre;
-    int puntos;
-    int multiplicador;
+    private String nombre;
+    private Efecto Efecto;
     List <CartaDePoker> cartas;
 
 

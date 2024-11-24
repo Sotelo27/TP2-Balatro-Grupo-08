@@ -1,13 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.Objects;
+import java.util.*;
 
 public class CartaDePoker implements IMejorable {
-    String numero;
-    Efecto efecto;
-    String palo;
-    EstadoDeCarta estado;
 
+    protected String numero;
+    protected Efecto efecto;
+    protected String palo;
+    protected EstadoDeCarta estado;
+
+    private static final List<String> ORDEN_NUMEROS = Arrays.asList(
+            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
+    );
 
     public CartaDePoker(String palo, String numero) {
         this.palo = palo;
@@ -40,13 +45,6 @@ public class CartaDePoker implements IMejorable {
 
     }
 
-    //esto tambien vuela por violar encapsulamiento.
-    public String devolverPalo(){
-        return palo;
-    }
-
-
-
     public boolean soyDelMismoPaloQueOtraCarta(CartaDePoker cartaDePoker) {
         return cartaDePoker.soyDelMismoPaloQueOtraCarta(this.palo);
 
@@ -56,17 +54,42 @@ public class CartaDePoker implements IMejorable {
         return this.palo.equals(palo);
     }
 
+    public boolean soyDelMismoNumero (String numero) {
+        return this.numero.equals(numero);
+    }
+
+    public boolean soyDelMismoNumero(CartaDePoker cartaDePoker) {
+        return cartaDePoker.soyDelMismoNumero(this.numero);
+
+    }
+
+    public int compararNumero(int indiceOtraCarta) {
+        int indiceEstaCarta = ORDEN_NUMEROS.indexOf(this.numero);
+        return Integer.compare(indiceOtraCarta, indiceEstaCarta);
+    }
+
+    public int compararNumero(CartaDePoker otraCarta) {
+        int indiceEstaCarta = ORDEN_NUMEROS.indexOf(this.numero);
+        return otraCarta.compararNumero(indiceEstaCarta);
+    }
+
+
+    public boolean suValorEsSiguiente(CartaDePoker otraCarta) {
+        int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
+        return otraCarta.suValorEsSiguiente(thisIndex);
+    }
+
+    public boolean suValorEsSiguiente(int indiceOtraCarta) {
+        int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
+        return  indiceOtraCarta == thisIndex - 1;
+    }
+
+    @Override
+    public String toString() {
+
+        return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable ;
+    }
+
     public void changeState(EstadoDeCarta estadoDeCarta){
         this.estado = estadoDeCarta;
     }
-
-    // Recomendación: Deberíamos tener un metodo que me compare una carta con otra para saber si son la misma o al menos del mismo tipo.
-
-    // esto tambien deberia volar.
-    public String devolverRank(){
-        return numero;
-    }
-}
-
-
-
