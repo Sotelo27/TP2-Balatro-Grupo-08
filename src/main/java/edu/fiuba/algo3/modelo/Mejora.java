@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Mejora {
+public class Mejora { //obsoleta
 
     private int puntos;
     private int multiplicador;
