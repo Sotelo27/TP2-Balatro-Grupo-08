@@ -1,80 +1,94 @@
 
+interface IAccion {
+  + actualizarLimites(AccionesDisponibles limites)  
+  + superaLimites(accionesDisponibles): bool
+  + sumarAPuntaje(Puntaje unPuntaje)
+  + sumarAFichas(Fichas fichas)
+}
+class Descarte implements IAccion{
+  - List<CartaDePoker> cartasDescartadas
+  + Descarte(List<CartaDePoker> cartasDescartadas)
+}
+class Jugada implements IAccion{
+  + Jugada(List<Carta> cartas)
+  + aplicarTarots(List<Tarot> tarotsActivos)
+  + calcularPuntaje() : PuntajeJugada
+  + contieneCombinacion(CombinacionDePoker combinacion):bool
+}
+
+
+interface IMejorador {
+  {abstract}+ mejorar( IMejorable mejorable)
+}
+
+class CombinacionDeComodines{
+  + nombre : string 
+  + descripcion : string 
+  + CombinacionDeComodines(nombre, descripcion, List<Comodin>)
+}
+Class Tarot implements IMejorador{
+    - nombre : string 
+    - descripcion : string 
+    + Tarot(nombre, descripcion, IMejora mejora, ICondicion condicion)
+}
+
 
 class Comodin implements IMejorador{
     - nombre : string 
     - descripcion : string
-}
-
-Class Tarot implements IMejorador{
-    - nombre : string 
-    - descripcion : string 
-    + Tarot(nombre, descripcion, Efecto efecto, ICondicion condicion)
-}
-
-interface IMejorador {
-  + mejorar( IMejorable mejorable)
-}
-class Comodin {
     + aplicarEfecto(IMejorable mejorable) :
-    + Comodin(nombre, descripcion, IEfecto efecto, ICondicion condicion)
+    + Comodin(nombre, descripcion, IMejora mejora, ICondicion condicion)
 }
-class Efecto{
-    - puntos : Int
-    - multiplicador: int 
-    + sumarPuntaje(Puntaje puntaje): Puntaje
-    + agregarEfecto(Efecto otroEfecto)
-}
-
-Comodin o-- "1..*" ICondicion 
-Comodin o- "1..*" Efecto
-
-
-IMejorable <.. IMejorador 
-Tarot o-- ICondicion
-
 
 class ActivarAlAzar implements ICondicion{
     - probabilidad: int 
     + ActivarAlAzar(int probabilidad)
 }
-class EsDescarte implements ICondicion{
 
+
+class RestriccionACarta implements ICondicion{
+    - contexto : string 
+    - elemento : string 
+    + RestriccionACarta(String nombreDeLaCarta)
+}
+class RestriccionACombinacion implements ICondicion{
+    - contexto : string 
+    - elemento : string 
+}
+class EsDescarte implements ICondicion{
+    - contexto : string 
+    - elemento : string 
+    + EsDescarte()
+    + EsDescarte(string elemento)
 }
 class EsUnaJugada implements ICondicion{
+    - contexto : string 
+    - elemento : string 
+    + EsUnaJugada(string elemento)
+}
+
+interface IMejorable{
+  {abstract}+ siContieneAplicarMejora(string contexto, string elemento, Mejora mejora)
+}
+
+interface IMejora{
+  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje)
 }
 
 interface ICondicion {
-    + validarCondicion(IMejorable mejorable) : bool
+    {abstract}+ aplicarMejora(IMejorable mejorable, Mejora mejora)
 }
 
-class CombinacionDeComodines  implements IMejorador{
-  + nombre : string 
-  + descripcion : string 
-  + CombinacionDeComodines(nombre, descripcion, List<Comodin>)
-}
+CombinacionDePoker ..|> IMejorable 
 CombinacionDeComodines o- "1..2" Comodin 
-Efecto -o Tarot
-
-class RestriccionACarta implements ICondicion{
-    + RestriccionACarta(String nombreDeLaCarta)
-    - restriccion : string 
-}
-class RestriccionACombinacion implements ICondicion{
-    - restriccion: Combinacion
-}
-interface IMejorable{
-  + aplicarEfecto(Efecto efecto) 
-}
-interface IComparablePorTipo {
-  + esDeTipo(Object objeto): bool
-}
-interface IComparablePorNombre {
-  + tieneNombre(String nombre): bool
-}
-EsDescarte ..> IComparablePorTipo :utiliza
-EsUnaJugada ..> IComparablePorTipo  :utiliza 
-
-RestriccionACombinacion ..> IComparablePorTipo  :utiliza
-RestriccionACarta ..> IComparablePorNombre :utiliza
+IMejora --o Tarot
+Descarte ..|> IMejorable
+CartaDePoker ..|> IMejorable
+IMejora "1..*"  --o Comodin 
+Jugada ..|> IMejorable
+Tarot o-- ICondicion
+Comodin o-- ICondicion
+IMejorable <.. IMejorador : conoce
 
 @enduml
+
