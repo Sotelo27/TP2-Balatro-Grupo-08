@@ -14,6 +14,8 @@ public class Jugador {
         this.nombre = nombre;
         this.mazo = mazo;
         this.mano = new Mano(mazo);
+        this.comodinesActivos = new ArrayList.<>();
+        this.tarotsActivos = new ArrayList.<>();
     }
     public void seleccionarCarta(CartaDePoker cartasSeleccionada){
         this.mano.seleccionarCarta(cartasSeleccionada);
