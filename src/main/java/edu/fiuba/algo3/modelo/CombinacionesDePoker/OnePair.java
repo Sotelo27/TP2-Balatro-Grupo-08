@@ -12,6 +12,6 @@ public class OnePair extends CombinacionDePoker {
         this.nombre =  "par";
         this.efecto = new Efecto(10,2);
     }
-    public boolean contiene(String contexto, String elemento){return true;};
+
 
 }

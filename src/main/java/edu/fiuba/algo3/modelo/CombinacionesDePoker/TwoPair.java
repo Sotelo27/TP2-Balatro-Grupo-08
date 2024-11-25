@@ -11,5 +11,5 @@ public class TwoPair extends CombinacionDePoker {
         this.nombre= "doble par";
 
     }
-    public boolean contiene(String contexto, String elemento){return true;};
+
 }

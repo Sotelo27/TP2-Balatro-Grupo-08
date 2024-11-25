@@ -11,5 +11,5 @@ public class FullHouse extends CombinacionDePoker {
         this.efecto = new Efecto(40,4);
         this.nombre = "full";
     }
-    public boolean contiene(String contexto, String elemento){return true;};
+
 }

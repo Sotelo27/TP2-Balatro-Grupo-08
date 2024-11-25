@@ -43,11 +43,25 @@ public class CartaDePoker implements IMejorable {
     public void setMultiplicador(int multiplicador) {
     }
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
+
+
     @Override
-    public void recibirMejora(Mejora mejora) {efecto.recibirMejora(mejora);}
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
+
+        if (elemento.equals(this.nombre)){
+            this.efecto.recibirMejora(mejora);
+        }
+
+    }
+
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
         this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
+
     }
 
     public boolean soyDelMismoPaloQueOtraCarta(CartaDePoker cartaDePoker) {
@@ -99,8 +113,5 @@ public class CartaDePoker implements IMejorable {
         this.estado = estadoDeCarta;
     }
 
-    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora) {};
-
-    public boolean contiene(String contexto, String elemento){return true;};
 }
 

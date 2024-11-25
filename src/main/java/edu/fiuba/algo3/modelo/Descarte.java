@@ -13,7 +13,11 @@ public class Descarte implements IAccion, IMejorable {
 		this.efecto = new Efecto(0,1);
 	}
 	@Override
-	public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){};
+	public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
+		if(contexto.equals("Descarte")){
+			this.efecto.recibirMejora(mejora);
+		}
+	};
 
     @Override 
     public void actualizarAcciones(AccionesDisponibles limites){
@@ -25,16 +29,5 @@ public class Descarte implements IAccion, IMejorable {
 	}
 
 
-	@Override
-	public void recibirMejora(Mejora mejora) {
-		this.efecto.recibirMejora(mejora);
-	}
 
-	@Override
-	public boolean contiene(String contexto, String elemento) {
-		if(contexto.equals("Descarte")){
-			return true;
-		}
-		return false;
-	}
 }

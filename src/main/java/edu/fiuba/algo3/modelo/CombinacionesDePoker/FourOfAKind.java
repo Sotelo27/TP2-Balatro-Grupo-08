@@ -11,5 +11,5 @@ public class FourOfAKind extends CombinacionDePoker {
         this.efecto = new Efecto(60,7);
         this.nombre = "poker";
     }
-    public boolean contiene(String contexto, String elemento){return true;};
+
 }

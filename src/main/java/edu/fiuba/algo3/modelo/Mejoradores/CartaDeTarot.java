@@ -3,17 +3,18 @@ import edu.fiuba.algo3.modelo.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
 public class CartaDeTarot implements IMejorador{
-    String nombre;
-    String descripcion;
-    Mejora mejora;
-    String sobre;
-    String ejemplar;
+    private String nombre;
+    private String descripcion;
+    private Mejora mejora;
+    private String sobre;
+    private String ejemplar;
+
 
     public CartaDeTarot() {}
 
     @Override
     public void mejorar(IMejorable mejorable){
-        //this.activacion.aplicarMejora(mejorable, this.mejora);{
+        mejorable.siContieneAplicarMejora(this.sobre, this.ejemplar, this.mejora);
     }
 
 
@@ -24,17 +25,12 @@ public class CartaDeTarot implements IMejorador{
 
     public void setDescripcion(String unaDescripcion) {this.descripcion = unaDescripcion;}
 
-    public void setEfecto(Mejora mejora) { 
-
-        //ParserDeMejora parser= new ParserDeMejora();
-
-        //this.mejora.setMejora(parser.parse(descripcion));
-
-    }
+    public void setEfecto(Mejora unaMejora) {this.mejora = unaMejora;}
 
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
     public void setEjemplar(String unEjemplar) {this.ejemplar = unEjemplar;}
+
 
 
 

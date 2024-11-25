@@ -27,7 +27,7 @@ public class Jugada implements IMejorable, IAccion{
         }
         CombinacionDePoker combinacionDePoker = this.verificador.verificar(this.cartas);
         combinacionDePoker.aplicarPuntajeAPuntajeJugada(puntaje);
-        //this.efectoDeComodinesYTarots.aplicarEfectoAPuntaje(puntaje);
+        this.efectoDeComodinesYTarots.aplicarAPuntaje(puntaje);
 
         return puntaje;
     }
@@ -43,7 +43,13 @@ public class Jugada implements IMejorable, IAccion{
     }
 
     @Override
-    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){};
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
+        if(contexto.equals("Jugada")){
+            this.combinacion.siContieneAplicarMejora(contexto, elemento, mejora);
+            this.efectoDeComodinesYTarots.recibirMejora(mejora);
+        }
+
+    };
 
     @Override 
     public void actualizarAcciones(AccionesDisponibles limites){
@@ -56,18 +62,7 @@ public class Jugada implements IMejorable, IAccion{
         return false;
     }
 
-    @Override
-    public void recibirMejora(Mejora mejora) {
-        this.efectoDeComodinesYTarots.recibirMejora(mejora);
 
-    }
 
-    @Override
-    public boolean contiene(String contexto, String elemento) {
-        if(contexto.equals("mano jugada")){
-            return (this.combinacion.contiene(contexto, elemento));
-        }
-        return false;
 
-    }
 }

@@ -46,7 +46,12 @@ public class Mano {
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
+
        //Descarte descarte = new Descarte(this.seleccion);
+        //for(Comodin comodin : comodines){
+        //            comodin.mejorar(descarte);
+        //}
+        //
         //return ronda.agregarAccion(descarte);
         return this.seleccion;
     }

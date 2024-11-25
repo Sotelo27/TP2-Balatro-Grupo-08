@@ -16,23 +16,17 @@ public abstract class CombinacionDePoker implements IMejorable {
 
     }
 
-    @Override
-    public void recibirMejora(Mejora mejora){
-        this.efecto.recibirMejora(mejora);
 
-    }
 
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
-        if(contexto.equals("mano") || contexto.equals("Mano jugada")){
             if (elemento.equals(this.nombre)){
                 this.efecto.recibirMejora(mejora);
             }
-        }
     }
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
-        //this.efecto.aplicarEfectoAPuntaje(puntajeJugada);
+        this.efecto.aplicarAPuntaje(puntajeJugada);
     }
 
     public String devolverNombreCombinacion(){
