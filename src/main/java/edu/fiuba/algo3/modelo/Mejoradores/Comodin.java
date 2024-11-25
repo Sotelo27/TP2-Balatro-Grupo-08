@@ -9,7 +9,6 @@ public class Comodin implements IMejorador{
     private String descripcion;
     private ICondicionMejora activacion; // parsear a IcondicionMejora
     private Mejora efecto;
-    private List<Comodin> comodines;
 
     public Comodin() {}
 
@@ -47,7 +46,7 @@ public class Comodin implements IMejorador{
        // this.mejora.setMejora(parser.parse(descripcion));
 
     }
-    public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
+    //public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 
 
 }
