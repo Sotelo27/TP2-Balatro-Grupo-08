@@ -9,7 +9,8 @@ public class Efecto{
     private List<Mejora> mejoras;
 
     public Efecto() {
-        this.multiplicador = 1;
+        this.puntos = 0;
+        this.multiplicador = 0;
         this.mejoras = new ArrayList<>();
     }
 

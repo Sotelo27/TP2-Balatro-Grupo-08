@@ -3,6 +3,7 @@ import edu.fiuba.algo3.modelo.Mejoras.IMejorable;
 
 import edu.fiuba.algo3.modelo.Estados.EstadoDeCarta;
 
+import java.util.Objects;
 import java.util.*;
 
 public class CartaDePoker implements IMejorable {
@@ -36,44 +37,17 @@ public class CartaDePoker implements IMejorable {
     }
 
     public void setPuntos(int puntos) {
-        this.puntos = puntos;
+        this.efecto = new Efecto(puntos);
     }
 
     public void setMultiplicador(int multiplicador) {
-        this.multiplicador = multiplicador;
-    }
-
-    public String getNombre() {
-        return this.nombre;
     }
 
     @Override
-    public void recibirMejora(Mejora mejora) {this.efecto.recibirMejora(mejora);}
-
-    @Override
-    public boolean contiene(String contexto, String elemento) {
-        if(contexto.equals("carta")){
-            if(elemento.equals(this.nombre)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    @Override
-    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
-        if(contexto.equals("mano") || contexto.equals("Mano jugada")){
-            if (elemento.equals(this.nombre)){
-                this.efecto.recibirMejora(mejora);
-            }
-        }
-    }
-
+    public void recibirMejora(Mejora mejora) {efecto.recibirMejora(mejora);}
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
         this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
-
     }
 
     public boolean soyDelMismoPaloQueOtraCarta(CartaDePoker cartaDePoker) {
@@ -124,6 +98,5 @@ public class CartaDePoker implements IMejorable {
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;
     }
-
 }
 
