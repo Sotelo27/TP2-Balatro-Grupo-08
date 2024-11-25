@@ -17,7 +17,7 @@
 
     Replace the line below by: <javafx-version>18.0.2</javafx-version>
     -->
-    <javafx-version>17.0.2</javafx-version>
+    <javafx-version>18.0.2</javafx-version>
     <main-class>edu.fiuba.algo3.Main</main-class>
   </properties>
   <dependencies>
@@ -74,7 +74,13 @@
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.30</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx-version}</version>
+    </dependency>
   </dependencies>
+
   <profiles>
     <profile>
       <id>package</id>
@@ -100,6 +106,7 @@
       </dependencies>
     </profile>
   </profiles>
+
   <build>
     <testSourceDirectory>src/main/test</testSourceDirectory>
     <plugins>
