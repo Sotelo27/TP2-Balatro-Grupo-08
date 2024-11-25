@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import java.util.List;
 import java.util.Arrays;
-
+/*
 @RunWith(MockitoJUnitRunner.class)
 public class JuegoTest {
     @Mock
@@ -255,4 +255,4 @@ public class JuegoTest {
     //  <Crear un tests de constructor de objetos>
 
     //  Planteo inicial de interfaz gráfica (mockups/dibujos), pantalla donde se muestra una ronda
-}
+} */

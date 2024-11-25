@@ -61,7 +61,14 @@ public class CartaDePoker implements IMejorable {
     }
 
 
-
+    @Override
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
+        if(contexto.equals("mano") || contexto.equals("Mano jugada")){
+            if (elemento.equals(this.nombre)){
+                this.efecto.recibirMejora(mejora);
+            }
+        }
+    }
 
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
@@ -117,5 +124,6 @@ public class CartaDePoker implements IMejorable {
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;
     }
+
 }
 

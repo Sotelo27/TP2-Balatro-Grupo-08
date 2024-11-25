@@ -11,4 +11,5 @@ public class Straight extends CombinacionDePoker {
         this.efecto = new Efecto(30,4);
         this.nombre = "escalera";
     }
+    public boolean contiene(String contexto, String elemento){return true;};
 }

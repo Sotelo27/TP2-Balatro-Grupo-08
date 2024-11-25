@@ -12,8 +12,8 @@ public class Descarte implements IAccion, IMejorable {
 		this.cartas = descartes;
 		this.efecto = new Efecto(0,1);
 	}
-
-
+	@Override
+	public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){};
 
     @Override 
     public void actualizarAcciones(AccionesDisponibles limites){

@@ -32,8 +32,7 @@ public abstract class CombinacionDePoker implements IMejorable {
     }
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
-        this.efecto.aplicarEfectoAPuntaje(puntajeJugada);
-
+        //this.efecto.aplicarEfectoAPuntaje(puntajeJugada);
     }
 
     public String devolverNombreCombinacion(){
