@@ -22,12 +22,12 @@ public abstract class CombinacionDePoker implements IMejorable {
     }
 
     @Override
-    public boolean contiene(String contexto, String elemento){
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
         if(contexto.equals("mano") || contexto.equals("Mano jugada")){
-            return (elemento.equals(this.nombre));
-
+            if (elemento.equals(this.nombre)){
+                this.efecto.recibirMejora(mejora);
+            }
         }
-        return false;
     }
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
