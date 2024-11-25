@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
 public class Balatro {
     List<Ronda> rondas;
     Mazo mazo;
+    EstadoJuego estado;
 
     public Balatro() {};
 
@@ -26,4 +28,15 @@ public class Balatro {
     public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
+
+    public void setEstado(EstadoJuego estadoAsignar) {
+        this.estado = estadoAsignar;
+    }
+
+
+
+
+
+
+
 }

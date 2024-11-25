@@ -1,0 +1,38 @@
+@startuml
+
+
+abstract class Verificador{
+    -proximoVerificador: Verificador
+    -listaPuntuables: List <CartaDePoker>
+    +pasarAlSiguiente (List <CartaDePoker>)
+    +verificar (List <CartaDePoker>)
+    +esDeTipo (List <CartaDePoker>)
+    +agregarPuntuables (List <CartaDePoker>)
+}
+
+class CartaDePoker{
+    -numero: String
+    -palo: String
+    -efecto: Efecto
+    -estado: EstadoDeCarta
+    +changeState(EstadoDeCarta estadoDeCarta): void
+    +suValorEsSiguiente(CartaDePoker otraCarta): boolean
+    +compararNumero(int indiceOtraCarta): int
+
+
+}
+
+abstract class CombinacionDePoker implements IMejorable{
+    -nombre: String
+    -efecto: Efecto
+    +recibirMejora(Mejora): void
+    +aplicarPuntajeAJugada(PuntajeJugada): void
+    +devolverNombreCombinacion(): String
+}
+
+
+Verificador ...> CombinacionDePoker
+Verificador o-- " *  " CartaDePoker
+CombinacionDePoker o-- " *  "CartaDePoker
+
+@enduml

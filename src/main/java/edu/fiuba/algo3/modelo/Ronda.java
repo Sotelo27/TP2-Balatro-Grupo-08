@@ -12,6 +12,7 @@ public class Ronda {
     private int puntajeASuperar;
     private Tienda tienda;
 
+
     public Ronda(){ }
 
     public Puntaje calcularPuntaje(){

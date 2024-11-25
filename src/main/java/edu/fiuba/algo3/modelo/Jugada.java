@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Verificadores.Verificador;
 import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
 import java.util.List;
 

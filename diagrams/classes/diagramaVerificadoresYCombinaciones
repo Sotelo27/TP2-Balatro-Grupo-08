@@ -1,0 +1,150 @@
+@startuml
+
+
+abstract class Verificador{
+    -proximoVerificador: Verificador
+    -listaPuntuables: List <CartaDePoker>
+    +pasarAlSiguiente()
+    +Verificar()
+    +esDeTipo()
+}
+
+
+class VerificadorRoyalFlush extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorStraightFlush extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorFourOfAKind extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorFullHouse extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+
+class VerificadorFlush extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorStraight extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorThreeOfAKind extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorOnePair extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorTwoPair extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+class VerificadorHighCard extends Verificador{
+
+    +Verificar()
+    +esDeTipo()
+}
+
+
+
+abstract class CombinacionDePoker{
+    -nombre: String
+    -efecto: Efecto
+    +recibirMejora(Mejora): void
+    +aplicarPuntajeAJugada(PuntajeJugada): void
+    +devolverNombreCombinacion(): String
+}
+
+class RoyalFlush {
+
+}
+
+class StraightFlush {
+
+}
+
+class FourOfAKind {
+
+}
+
+class FullHouse {
+
+}
+
+class Straight {
+
+}
+
+class Flush{
+
+}
+
+class ThreeOfAKind{
+
+}
+
+class TwoPair {
+
+}
+
+
+class OnePair {
+
+}
+
+
+class HighCard{
+
+}
+
+
+
+
+VerificadorRoyalFlush ..> RoyalFlush
+VerificadorStraightFlush ..> StraightFlush
+VerificadorFourOfAKind ..> FourOfAKind
+VerificadorFullHouse ..> FullHouse
+VerificadorStraight ..> Straight
+VerificadorThreeOfAKind ..> ThreeOfAKind
+VerificadorTwoPair ..> TwoPair
+VerificadorOnePair ..> OnePair
+VerificadorHighCard ..> HighCard
+VerificadorFlush ..> Flush
+RoyalFlush --down|>  CombinacionDePoker
+StraightFlush --down|>  CombinacionDePoker
+Straight --down|>  CombinacionDePoker
+FullHouse --down|>  CombinacionDePoker
+FourOfAKind --down|>  CombinacionDePoker
+Flush --down|>  CombinacionDePoker
+ThreeOfAKind --down|>  CombinacionDePoker
+TwoPair --down|>  CombinacionDePoker
+OnePair --down|>  CombinacionDePoker
+HighCard --down|>  CombinacionDePoker
+
+@enduml
