@@ -57,6 +57,10 @@ public class CartaDePoker implements IMejorable {
         return this.nombre;
     }
 
+    public String getNumero() {
+        return this.numero;
+    }
+
 
 
     @Override
