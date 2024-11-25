@@ -32,7 +32,7 @@ public class Efecto{
     }
     */
 
-    public void aplicarEfectoAPuntaje(PuntajeJugada puntajeJugada){
+    public void aplicarAPuntaje(PuntajeJugada puntajeJugada){
         puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
 
         for(Mejora mejora : mejoras){
