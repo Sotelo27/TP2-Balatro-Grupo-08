@@ -27,7 +27,7 @@ public class Jugada implements IMejorable, IAccion{
         }
         CombinacionDePoker combinacionDePoker = this.verificador.verificar(this.cartas);
         combinacionDePoker.aplicarPuntajeAPuntajeJugada(puntaje);
-        this.efectoDeComodinesYTarots.aplicarEfectoAPuntaje(puntaje);
+        //this.efectoDeComodinesYTarots.aplicarEfectoAPuntaje(puntaje);
 
         return puntaje;
     }
@@ -41,6 +41,9 @@ public class Jugada implements IMejorable, IAccion{
             }
         }
     }
+
+    @Override
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){};
 
     @Override 
     public void actualizarAcciones(AccionesDisponibles limites){

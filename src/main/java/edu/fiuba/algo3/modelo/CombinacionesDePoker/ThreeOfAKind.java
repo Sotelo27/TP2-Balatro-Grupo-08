@@ -10,4 +10,5 @@ public class ThreeOfAKind extends CombinacionDePoker {
         this.efecto = new Efecto(30,3);
         this.nombre = "trio";
     }
+    public boolean contiene(String contexto, String elemento){return true;};
 }

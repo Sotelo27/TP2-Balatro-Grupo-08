@@ -12,4 +12,5 @@ public class HighCard extends CombinacionDePoker {
         this.efecto = new Efecto(5,1);
         this.nombre = "carta alta";
     }
+    public boolean contiene(String contexto, String elemento){return true;};
 }

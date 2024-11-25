@@ -21,4 +21,5 @@ public class ActivarAlAzar implements ICondicionMejora{
         }
         return false;
     }
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora){};
 }

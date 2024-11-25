@@ -15,6 +15,7 @@ public class RoyalFlush extends CombinacionDePoker {
         this.efecto = new Efecto(100,8);
         this.nombre = "escalera real";
     }
+    public boolean contiene(String contexto, String elemento){return true;};
 
 
 };

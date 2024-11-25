@@ -15,5 +15,6 @@ public class StraightFlush extends CombinacionDePoker {
         this.nombre = "escalera de color";
 
     }
+    public boolean contiene(String contexto, String elemento){return true;};
 
 }

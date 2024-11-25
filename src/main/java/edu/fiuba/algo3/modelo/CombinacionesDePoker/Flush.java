@@ -13,4 +13,6 @@ public class Flush extends CombinacionDePoker {
         this.nombre = "color";
     }
 
+    public boolean contiene(String contexto, String elemento){return true;};
+
 }

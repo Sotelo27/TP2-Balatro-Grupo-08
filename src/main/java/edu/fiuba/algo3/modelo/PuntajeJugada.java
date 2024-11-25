@@ -47,6 +47,8 @@ public class PuntajeJugada {
         this.multiplicador += cantidad;
     }
 
+   // public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {}
+
     public boolean esMenorQue(PuntajeJugada otroPuntaje){
         return (this.puntos*this.multiplicador) > (otroPuntaje.getPuntos()); // no creo que funcione
     }
