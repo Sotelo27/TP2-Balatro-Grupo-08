@@ -1,0 +1,42 @@
+
+class Efecto{
+    - puntos : Int
+    - multiplicador : Int
+    - mejoras : List<Mejora>
+    + Efecto(puntos, multiplicador)
+    + Efecto(puntos, multiplicador, multiplicadorDeMultiplicador)
+    + aplicarAPuntaje(Puntaje puntaje)
+    + recibirMejora(mejora mejora)
+}
+
+class PuntajeJugada{
+  - puntos : Int
+  - multiplicador: int 
+  - fichas: int
+  + Puntaje()
+  + Puntaje(Int puntos,Int multiplicador)
+  + sumarFichas(int cantidad)
+  + sumarPuntos(Int cantidad)
+  + sumarAMultiplicador(Int cantidad)
+  + multiplicarPuntos(Int cantidad)
+  + multiplicarMultiplicador(int cantidad)
+  + esMenorQue(Puntaje otroPuntaje): bool
+}
+class Comodin{
+    - nombre : string 
+    - descripcion : string
+    + aplicarEfecto(IMejorable mejorable) :
+    + Comodin(nombre, descripcion, IEfecto efecto, ICondicion condicion)
+}
+
+
+interface IMejora{
+  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje)
+}
+
+interface IAccion {
+  + actualizarLimites(AccionesDisponibles limites)  
+  + superaLimites(accionesDisponibles): bool
+  + sumarAPuntaje(Puntaje unPuntaje)
+  + sumarAFichas(Fichas fichas)
+}
