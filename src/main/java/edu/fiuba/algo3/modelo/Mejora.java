@@ -9,6 +9,8 @@ public class Mejora{
 
     public Mejora() {}
 
+
+
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
