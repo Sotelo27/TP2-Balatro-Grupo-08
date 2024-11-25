@@ -1,4 +1,8 @@
 package edu.fiuba.algo3.entrega_1;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Mejoradores.*;
+import edu.fiuba.algo3.repositorios.*;
+import edu.fiuba.algo3.modelo.Mejoras.*;
 
 import edu.fiuba.algo3.modelo.*;
 import org.junit.Before;
@@ -12,7 +16,8 @@ import java.util.List;
 import java.util.Arrays;
 /*
 @RunWith(MockitoJUnitRunner.class)
-public class JuegoTest {
+
+public class TestCatedra {
     @Mock
     private Mazo mazoMock;
     
@@ -32,7 +37,7 @@ public class JuegoTest {
     private CartaDePoker cartaMock8;
     private CartaDePoker cartaMock9;
     
-    private Tarot tarotX2;
+    private CartaDeTarot tarotX2;
     private Comodin comodinX4;
     private Comodin comodinSuma100;
     
@@ -66,7 +71,7 @@ public class JuegoTest {
         dosPuntos.agregarPuntosYMultiplicador(2, 1);
         diezPuntos.agregarPuntosYMultiplicador(10, 1);
 
-        tarotX2 = new Tarot("Justicia", new Efecto(1, 2), new RestriccionACarta());
+        tarotX2 = new CartaDeTarot("Justicia", new Efecto(1, 2), new RestriccionACarta());
         comodinX4 = new Comodin("Comodin", new Efecto(1, 4), new SinRestriccion());
         comodinSuma100 = new Comodin("Caminante", new Efecto(100, 1), new SinRestriccion());
     }
@@ -228,9 +233,9 @@ public class JuegoTest {
     //  El jugador activa un comodín con una combinación de efectos bonus de mano jugada + puntaje aumentado + activación aleatoria 
     @Test
     public void test12SeUsaUnComodinDeEfectosCombinadoDeActivacionAleatoriaYFuncionaCorrectamente(){
-        ICondicion mockEsJugada = Mock(EsJugada.class);
-        ICondicion mockActivaSiempre = Mock(SinRestriccion.class);
-        ICondicion mockAleatorio = Mock(AlAzar.class);
+        ICondicionMejora mockEsJugada = Mock(EsJugada.class);
+        ICondicionMejora mockActivaSiempre = Mock(SinRestriccion.class);
+        ICondicionMejora mockAleatorio = Mock(AlAzar.class);
 
         IMejorador comodinDeJugada = new Comodin("Jugar Todos Los Dias", new Efecto(100,1), new EsJugada());
         IMejorador comodinDeSiempre = new Comodin("Racing Campeon", new Efecto(1,10), new SinRestriccion() );

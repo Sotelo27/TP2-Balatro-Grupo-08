@@ -7,7 +7,7 @@ public class SumaAMultiplicador{
 	}
 
 	public void aplicarAPuntaje(PuntajeJugada puntaje){
-		puntaje.sumarAMultiplicador(multiplicador);
+		//puntaje.sumarAMultiplicador(multiplicador);
 	}
 }
 

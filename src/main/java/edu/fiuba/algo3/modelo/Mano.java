@@ -69,7 +69,7 @@ public class Mano {
 
         if (this.seleccion.size() == 1) {
             CartaDePoker cartaAMejorar = this.seleccion.get(0);
-            cartaDeTarot.setEjemplar(cartaAMejorar.getNombre());
+            //cartaDeTarot.setEjemplar(cartaAMejorar.getNombre());
         }
 
     }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Mejoras.*;
 public class Mejora{ 
 
     private int puntos;
@@ -21,8 +22,7 @@ public class Mejora{
 
 
     public void seAplicaAPuntaje(PuntajeJugada puntajeJugada){
-        this.mejora.seAplicaAPuntaje(puntaje, this.puntos, this.multiplicador);
-
+        //this.mejora.seAplicaAPuntaje(puntaje, this.puntos, this.multiplicador);
     }
 
 

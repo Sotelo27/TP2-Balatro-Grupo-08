@@ -23,13 +23,29 @@ public class JsonComodinReader {
         List<Comodin> allComodines = new ArrayList<>();
 
         for (Iterator<Map.Entry<String, JsonNode>> it = root.fields(); it.hasNext(); ) {
-            Map.Entry<String, JsonNode> field = it.next();
-            JsonNode categoriaNode = field.getValue();
-            List<Comodin> comodin = mapper.convertValue(categoriaNode.get("comodines"), new TypeReference<List<Comodin>>() {});
-            allComodines.addAll(comodin);
+            Map.Entry<String,JsonNode> field = it.next();
+            if(!field.getKey().equals("Combinación")){
+                JsonNode categoriaNode = field.getValue();
+                List<Comodin> comodin = mapper.convertValue(categoriaNode.get("comodines"), new TypeReference<List<Comodin>>() {});
+                allComodines.addAll(comodin);
+            }
+        }
+        return allComodines;
+    }
+    public List<CombinacionDeComodines> readCombinaciones() throws IOException {
+        // Ruta al archivo
+        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(file);
+        JsonNode combinacionNode = root.get("Combinación").get("comodines");
+        if (combinacionNode != null && combinacionNode.isArray()) {
+            // Mapea el JSON directamente a una lista de objetos Tarot
+            List<CombinacionDeComodines> combinaciones = mapper.convertValue(combinacionNode,  new TypeReference<List<CombinacionDeComodines>>() {});
+
+            return combinaciones;
         }
 
-        return allComodines;
+        throw new IOException("El nodo 'combinaciones' no es un arreglo.");
     }
 }
 

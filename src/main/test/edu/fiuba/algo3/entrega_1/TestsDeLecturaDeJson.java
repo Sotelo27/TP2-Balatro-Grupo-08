@@ -23,6 +23,11 @@ public class TestsDeLecturaDeJson {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<Comodin> mazo = jsonReader.readComodines();
     }
+    @Test
+    public void verificaCombinacionesReader() throws IOException {
+        JsonComodinReader jsonReader = new JsonComodinReader();
+        List<CombinacionDeComodines> mazo = jsonReader.readCombinaciones();
+    }
 
     @Test
     public void verificarBalatroReader() throws IOException {

@@ -98,5 +98,9 @@ public class CartaDePoker implements IMejorable {
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;
     }
+
+    public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora) {};
+
+    public boolean contiene(String contexto, String elemento){return true;};
 }
 

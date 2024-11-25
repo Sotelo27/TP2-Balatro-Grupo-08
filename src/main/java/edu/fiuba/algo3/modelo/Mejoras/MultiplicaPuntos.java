@@ -8,7 +8,7 @@ public class MultiplicaPuntos{
 	}
 
 	public void aplicarAPuntaje(PuntajeJugada puntaje){
-		puntaje.multiplicarPuntos(multiplicador);
+		//puntaje.multiplicarPuntos(multiplicador);
 	}
 }
 
