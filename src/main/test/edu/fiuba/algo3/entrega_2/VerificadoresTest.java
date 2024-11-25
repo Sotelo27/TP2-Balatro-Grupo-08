@@ -55,4 +55,27 @@ public class VerificadoresTest {
         assertEquals(combinacionEsperada, combinacionEncontrada.devolverNombreCombinacion());
     }
 
+
+
+    @Test
+    public void test03EscaleraDeColorSeEncuentra(){
+        String combinacionEsperada = "escalera de color";
+        CombinacionDePoker combinacionEncontrada;
+        List <CartaDePoker> cartas = new ArrayList <>();
+        CartaDePoker carta1 = new CartaDePoker("2 de Corazones", "Corazones", "2", new Efecto(2,1));
+        CartaDePoker carta2 = new CartaDePoker("3 de Corazones", "Corazones", "3", new Efecto(3,1));
+        CartaDePoker carta3 = new CartaDePoker("6 de Corazones", "Corazones", "6", new Efecto(6,1));
+        CartaDePoker carta4 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,1));
+        CartaDePoker carta5 = new CartaDePoker("4 de Corazones", "Corazones", "4", new Efecto(4,1));
+        cartas.add(carta1);
+        cartas.add(carta2);
+        cartas.add(carta3);
+        cartas.add(carta4);
+        cartas.add(carta5);
+        combinacionEncontrada = new VerificadorRoyalFlush().verificar(cartas);
+        assertEquals(combinacionEsperada, combinacionEncontrada.devolverNombreCombinacion());
+    }
+
+
+
 }

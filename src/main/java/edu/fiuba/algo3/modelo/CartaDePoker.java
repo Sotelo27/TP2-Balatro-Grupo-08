@@ -25,11 +25,13 @@ public class CartaDePoker implements IMejorable {
     }
 
     public CartaDePoker(String nombre, String palo, String numero, Efecto efecto) {
+        this.estado = new NoSeleccionada();
         this.nombre = nombre;
         this.palo = palo;
-        this.numero = numero;
         this.efecto = efecto;
-        this.estado = new NoSeleccionada();
+        this.numero = numero;
+
+
     }
 
     public void setNombre(String nombre) {
