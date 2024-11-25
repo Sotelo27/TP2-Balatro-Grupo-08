@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.CombinacionesDePoker;
+import edu.fiuba.algo3.modelo.Mejoras.*;
 
 import edu.fiuba.algo3.modelo.*;
 

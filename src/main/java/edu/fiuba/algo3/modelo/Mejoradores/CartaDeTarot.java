@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Mejoradores;
+import edu.fiuba.algo3.modelo.Mejora;
+import edu.fiuba.algo3.modelo.Mejoras.*;
 
 public class CartaDeTarot implements IMejorador{
     String nombre;

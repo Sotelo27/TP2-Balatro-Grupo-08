@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Mejoras.IMejorable;
 
 import edu.fiuba.algo3.modelo.Estados.EstadoDeCarta;
 
