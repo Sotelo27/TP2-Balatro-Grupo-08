@@ -24,6 +24,7 @@ public class CartaDePoker implements IMejorable {
     public CartaDePoker() {
     }
 
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

@@ -12,6 +12,12 @@ public class Comodin implements IMejorador{
 
     public Comodin() {}
 
+    public Comodin(String nombre, Mejora mejora, ICondicionMejora activacion) {
+        this.nombre = nombre;
+        this.activacion = activacion;
+        this.efecto = mejora;
+    }
+
     @Override
     public void mejorar(IMejorable mejorable) {
         //Por ahi hay que modificar para que se haga directamente adentro mejorable (Jugada, Descarte, Comb o Carta), Refactorizable
@@ -34,8 +40,8 @@ public class Comodin implements IMejorador{
     public void setDescripcion(String descripcion) { this.descripcion = descripcion;}
 
     public void setActivacion(Object activacion) {
-        //CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
-        //this.activacion = parserAIcondicionDeMejora.parsear(activacion);
+        CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
+        this.activacion = parserAIcondicionDeMejora.parsear(activacion);
 
     }
 

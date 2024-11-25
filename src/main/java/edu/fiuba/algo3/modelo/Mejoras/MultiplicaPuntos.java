@@ -1,14 +1,15 @@
 package edu.fiuba.algo3.modelo.Mejoras;
 import edu.fiuba.algo3.modelo.PuntajeJugada;
 
-public class MultiplicaPuntos{
+public class MultiplicaPuntos implements IMejora{
 
 
 	public MultiplicaPuntos(){
 	}
 
-	public void aplicarAPuntaje(PuntajeJugada puntaje){
-		//puntaje.multiplicarPuntos(multiplicador);
+	@Override
+	public void seAplicaApuntaje(PuntajeJugada puntaje, int puntos, int multiplicador){
+		puntaje.multiplicarPuntos(multiplicador);
 	}
 }
 

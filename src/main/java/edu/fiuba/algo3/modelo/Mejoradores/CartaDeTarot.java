@@ -12,6 +12,13 @@ public class CartaDeTarot implements IMejorador{
 
     public CartaDeTarot() {}
 
+    public CartaDeTarot(String nombre, Mejora mejora, String sobre, String ejemplar) {
+        this.nombre = nombre;
+        this.mejora = mejora;
+        this.sobre = sobre;
+        this.ejemplar = ejemplar;
+    }
+
     @Override
     public void mejorar(IMejorable mejorable){
         mejorable.siContieneAplicarMejora(this.sobre, this.ejemplar, this.mejora);
