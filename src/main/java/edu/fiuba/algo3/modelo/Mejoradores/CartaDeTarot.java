@@ -9,15 +9,11 @@ public class CartaDeTarot implements IMejorador{
     String sobre;
     String ejemplar;
 
-
     public CartaDeTarot() {}
 
     @Override
     public void mejorar(IMejorable mejorable){
-        if(mejorable.contiene(this.sobre, this.ejemplar)){
-            mejorable.recibirMejora(this.mejora);
-        }
-
+        this.activacion.aplicarMejora(mejorable, this.mejora){
     }
 
 
@@ -28,7 +24,13 @@ public class CartaDeTarot implements IMejorador{
 
     public void setDescripcion(String unaDescripcion) {this.descripcion = unaDescripcion;}
 
-    public void setEfecto(Mejora unaMejora) {this.mejora = unaMejora;}
+    public void setEfecto(Mejora mejora) { 
+
+        ParserDeMejora parser= new ParserDeMejora();
+
+        this.mejora.setMejora(parser.parse(descripcion));
+
+    }
 
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 

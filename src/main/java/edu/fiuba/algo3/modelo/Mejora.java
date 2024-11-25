@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-public class Mejora { //obsoleta
+public class Mejora{ 
 
     private int puntos;
     private int multiplicador;
+    private IMejora mejora;
 
     public Mejora() {}
 
@@ -14,9 +15,13 @@ public class Mejora { //obsoleta
     public void setMultiplicador(int multiplicador) {
         this.multiplicador = multiplicador;
     }
+    public void setMejora(IMejora mejora) {
+        this.mejora = mejora;
+    }
+
 
     public void seAplicaAPuntaje(PuntajeJugada puntajeJugada){
-        puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
+        this.mejora.seAplicaAPuntaje(puntaje, this.puntos, this.multiplicador);
 
     }
 

@@ -8,6 +8,10 @@ public class Efecto{
     private int multiplicador;
     private List<Mejora> mejoras;
 
+    public Efecto() {
+        this.multiplicador = 1;
+        this.mejoras = new ArrayList<>();
+    }
 
     public Efecto(int puntos) {
         this.puntos = puntos;
@@ -25,12 +29,6 @@ public class Efecto{
     public void recibirMejora(Mejora mejora) {
         this.mejoras.add(mejora);
     }
-
-    /*
-    public void aplicarEfect(Efecto efecto){
-
-    }
-    */
 
     public void aplicarAPuntaje(PuntajeJugada puntajeJugada){
         puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);

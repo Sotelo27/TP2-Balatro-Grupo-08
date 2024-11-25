@@ -1,15 +1,13 @@
 package edu.fiuba.algo3.modelo.Mejoras;
 import edu.fiuba.algo3.modelo.PuntajeJugada;
 
-public class SumaPuntos{
-	private final int puntos;
+public class SumaPuntos implements IMejora{
 
-	public SumaPuntos(int puntos){
-		this.puntos = puntos;
+	public SumaPuntos(){
 	}
 
-	public void aplicarAPuntaje(PuntajeJugada puntaje){
-		puntaje.sumarPuntos(this.puntos);
+	public void seAplicaApuntaje(PuntajeJugada puntaje, int puntos, int multiplicador){
+		puntaje.sumarPuntos(puntos);
 	}
 }
 

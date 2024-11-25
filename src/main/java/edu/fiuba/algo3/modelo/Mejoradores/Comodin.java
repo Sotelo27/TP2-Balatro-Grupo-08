@@ -1,7 +1,4 @@
-package edu.fiuba.algo3.modelo.Mejoradores;
-import edu.fiuba.algo3.modelo.Mejoras.*;
-import edu.fiuba.algo3.modelo.ICondicionMejora;
-import edu.fiuba.algo3.modelo.Mejora;
+package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
@@ -9,7 +6,7 @@ public class Comodin implements IMejorador{
     private String nombre;
     private String descripcion;
     private ICondicionMejora activacion; // parsear a IcondicionMejora
-    private Mejora mejora;
+    private Mejora efecto;
     private List<Comodin> comodines;
 
     public Comodin() {}
@@ -17,16 +14,15 @@ public class Comodin implements IMejorador{
     @Override
     public void mejorar(IMejorable mejorable) {
         //Por ahi hay que modificar para que se haga directamente adentro mejorable (Jugada, Descarte, Comb o Carta), Refactorizable
-        this.activacion.aplicarMejora(mejorable, this.mejora);
-        {
-            // }
-            // for(Comodin comodin : this.comodines) { <-- Esto va en combinacionDeComodines
-            //     comodin.mejorar(mejorable);
-            // }
+        this.activacion.aplicarMejora(mejorable, this.mejora){
+        // }
+        // for(Comodin comodin : this.comodines) { <-- Esto va en combinacionDeComodines
+        //     comodin.mejorar(mejorable);
+        // }
 
 
-        }
     }
+
 
 
 
@@ -37,14 +33,18 @@ public class Comodin implements IMejorador{
     public void setDescripcion(String descripcion) { this.descripcion = descripcion;}
 
     public void setActivacion(Object activacion) {
-
-        //CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
-        //this.activacion = parserAIcondicionDeMejora.parsear(activacion);
+        CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
+        this.activacion = parserAIcondicionDeMejora.parsear(activacion);
 
     }
 
-    public void setEfecto(Mejora efecto) { this.mejora = efecto; }
+    public void setEfecto(Mejora mejora) { 
 
+        ParserDeMejora parser= new ParserDeMejora();
+
+        this.mejora.setMejora(parser.parse(descripcion));
+
+    }
     public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 
 
