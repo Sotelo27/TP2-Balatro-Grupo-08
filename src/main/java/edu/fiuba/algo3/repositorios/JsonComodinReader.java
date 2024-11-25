@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.repositorios;
+import edu.fiuba.algo3.modelo.Mejoradores.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;

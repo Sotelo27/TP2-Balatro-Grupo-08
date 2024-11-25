@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-
+import edu.fiuba.algo3.modelo.Mejoradores.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,8 +1,8 @@
-SumaPuntos
 package edu.fiuba.algo3.modelo.Mejoras;
+import edu.fiuba.algo3.modelo.PuntajeJugada;
 
 public class SumaPuntos{
-	private final int multiplicador;
+	private final int puntos;
 
 	public SumaPuntos(int puntos){
 		this.puntos = puntos;

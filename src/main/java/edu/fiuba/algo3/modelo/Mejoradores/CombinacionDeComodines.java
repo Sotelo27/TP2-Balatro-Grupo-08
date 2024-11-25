@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo.Mejoras;
+package edu.fiuba.algo3.modelo.Mejoradores;
+import edu.fiuba.algo3.modelo.Mejoras.*;
+import java.util.List;
 
 public class CombinacionDeComodines implements IMejorador{
 	private final List<Comodin> comodines;
@@ -10,7 +12,7 @@ public class CombinacionDeComodines implements IMejorador{
 	@Override
 	public void mejorar(IMejorable mejorable){
 		for (Comodin comodin: this.comodines){
-			comodin.mejorar(mejorable)
+			comodin.mejorar(mejorable);
 		}
 	}
 }
