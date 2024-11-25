@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Mejoras.IMejorable;
 
-import edu.fiuba.algo3.modelo.Estados.EstadoDeCarta;
+import edu.fiuba.algo3.modelo.EstadoDeCarta;
 
 import java.util.Objects;
 import java.util.*;
@@ -24,6 +24,15 @@ public class CartaDePoker implements IMejorable {
     public CartaDePoker() {
     }
 
+    public CartaDePoker(String nombre, String palo, String numero, Efecto efecto) {
+        this.estado = new NoSeleccionada();
+        this.nombre = nombre;
+        this.palo = palo;
+        this.efecto = efecto;
+        this.numero = numero;
+
+
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
