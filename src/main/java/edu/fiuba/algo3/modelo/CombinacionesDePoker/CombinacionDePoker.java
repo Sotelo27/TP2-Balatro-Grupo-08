@@ -13,7 +13,6 @@ public abstract class CombinacionDePoker implements IMejorable {
 
     public CombinacionDePoker(List <CartaDePoker> cartas) {
         this.cartas = cartas;
-
     }
 
 
