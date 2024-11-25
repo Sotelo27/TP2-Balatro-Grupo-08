@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Mejora {
-    private int sumarPuntos;
-    private int sumarMultiplicador;
-    private int multMultiplicador;
+
     private int puntos;
     private int multiplicador;
 
@@ -18,8 +16,8 @@ public class Mejora {
     }
 
     public void seAplicaAPuntaje(PuntajeJugada puntajeJugada){
-        puntajeJugada.agregarPuntosYMultiplicador(this.sumarPuntos, this.sumarMultiplicador);
-        puntajeJugada.multiplicarMultiplicador(this.multMultiplicador);
+        puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);
+
     }
 
 

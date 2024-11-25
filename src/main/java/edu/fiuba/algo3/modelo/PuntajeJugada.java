@@ -13,16 +13,17 @@ public class PuntajeJugada {
 
     public void agregarPuntosYMultiplicador(int puntos, int multiplicador) {
         this.puntos += puntos;
-        this.multiplicador += multiplicador;
+        this.multiplicador *= multiplicador;
     }
 
     public void multiplicarMultiplicador(int multiplicador) {
         this.multiplicador *= multiplicador;
     }
+    /*
     public void calcularPuntosCombinacion(CombinacionDePoker combinacionDePoker){
 
     }
-
+    */
     public int getPuntos() {
         return this.puntos * this.multiplicador;
     }

@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class Descarte implements IAccion,IMejorable {
+public class Descarte implements IAccion, IMejorable {
 	private final List <CartaDePoker> cartas;
 	private Efecto efecto;
 
@@ -11,6 +11,8 @@ public class Descarte implements IAccion,IMejorable {
 		this.cartas = descartes;
 		this.efecto = new Efecto(0,1);
 	}
+
+
 
     @Override 
     public void actualizarAcciones(AccionesDisponibles limites){
@@ -21,5 +23,17 @@ public class Descarte implements IAccion,IMejorable {
 		return limites.superaLimiteDeDescartes(this.cartas.size());
 	}
 
-    public void recibirMejora(Mejora mejora){ }
+
+	@Override
+	public void recibirMejora(Mejora mejora) {
+		this.efecto.recibirMejora(mejora);
+	}
+
+	@Override
+	public boolean contiene(String contexto, String elemento) {
+		if(contexto.equals("Descarte")){
+			return true;
+		}
+		return false;
+	}
 }

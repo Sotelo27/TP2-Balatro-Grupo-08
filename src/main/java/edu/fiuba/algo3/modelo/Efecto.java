@@ -26,9 +26,11 @@ public class Efecto{
         this.mejoras.add(mejora);
     }
 
+    /*
     public void aplicarEfect(Efecto efecto){
 
     }
+    */
 
     public void aplicarEfectoAPuntaje(PuntajeJugada puntajeJugada){
         puntajeJugada.agregarPuntosYMultiplicador(this.puntos, this.multiplicador);

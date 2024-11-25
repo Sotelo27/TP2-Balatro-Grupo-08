@@ -8,6 +8,7 @@ public class Mano {
     private ArrayList<CartaDePoker> mano = new ArrayList<>();
     private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
+
     public Mano(Mazo mazo){
         this.recargarManoConMazo(mazo);
     }
@@ -48,19 +49,30 @@ public class Mano {
         return this.seleccion;
     }
 
-    public boolean realizarJugada(Ronda ronda, List<CartaDeTarot> cartasDeTarot, List<Comodin> comodines){
-        //if (this.seleccion.isEmpty()) {
-            //throw new ErrorJugadaVacia("No hay cartas seleccionadas");
-            //return false;
-        //}
+    public boolean realizarJugada(Ronda ronda, List<IMejorador> cartasDeTarot, List<Comodin> comodines){
+        if (this.seleccion.isEmpty()) {
+            throw new ErrorJugadaVacia("No hay cartas seleccionadas");
+        }
         Jugada jugada = new Jugada(this.seleccion);
 
-        //jugada.aplicarTarots(cartasDeTarot);
+        jugada.aplicarTarots(cartasDeTarot);
         for(Comodin comodin : comodines){
-            //comodin.mejorar(jugada);
+            comodin.mejorar(jugada);
         }
         return true;
-    };
+    }
+
+
+    public void activarTarot(CartaDeTarot cartaDeTarot){
+
+        if (this.seleccion.size() == 1) {
+            CartaDePoker cartaAMejorar = this.seleccion.get(0);
+            cartaDeTarot.setEjemplar(cartaAMejorar.getNombre());
+        }
+
+    }
+
+
 
 
 

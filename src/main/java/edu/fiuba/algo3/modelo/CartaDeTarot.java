@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-public class CartaDeTarot implements IMejorador {
+public class CartaDeTarot implements IMejorador{
     String nombre;
     String descripcion;
     Mejora mejora;
-    String tipo;
     String sobre;
     String ejemplar;
 
@@ -13,9 +12,13 @@ public class CartaDeTarot implements IMejorador {
 
     @Override
     public void mejorar(IMejorable mejorable){
-        mejorable.recibirMejora(this.mejora);
+        if(mejorable.contiene(this.sobre, this.ejemplar)){
+            mejorable.recibirMejora(this.mejora);
+        }
 
     }
+
+
 
     //Setters
 
@@ -28,5 +31,8 @@ public class CartaDeTarot implements IMejorador {
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
     public void setEjemplar(String unEjemplar) {this.ejemplar = unEjemplar;}
+
+
+
 
 }

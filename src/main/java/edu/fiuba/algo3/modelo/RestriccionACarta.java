@@ -1,13 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-public class RestriccionACombinacion implements ICondicionMejora{
+public class RestriccionACarta implements ICondicionMejora{
 
-
-    private final String contexto = "Mano Jugada";
+    private final String contexto = "carta";
     private final String elemento;
 
-    public RestriccionACombinacion(String combinacion) {
-        this.elemento = combinacion;
+    public RestriccionACarta(String nombreDeCarta) {
+        this.elemento = nombreDeCarta;
 
     }
 
@@ -17,7 +16,4 @@ public class RestriccionACombinacion implements ICondicionMejora{
         return mejorable.contiene(this.contexto, this.elemento);
 
     }
-
-
-
 }

@@ -7,22 +7,22 @@ public class Jugador {
     private Ficha fichas;
     private Mano mano;
     private List<Comodin> comodinesActivos;
-    private List<CartaDeTarot> tarotsActivos;
+    private List<IMejorador> tarotsActivos;
     private Mazo mazo;
 
     public Jugador(String nombre, Mazo mazo){
         this.nombre = nombre;
         this.mazo = mazo;
         this.mano = new Mano(mazo);
-        this.comodinesActivos = new ArrayList.<>();
-        this.tarotsActivos = new ArrayList.<>();
+        this.comodinesActivos = new ArrayList<>();
+        this.tarotsActivos = new ArrayList<>();
     }
     public void seleccionarCarta(CartaDePoker cartasSeleccionada){
         this.mano.seleccionarCarta(cartasSeleccionada);
     }
 
     public void realizarJugada(Ronda ronda){
-        this.mano.realizarJugada(ronda, tarotsActivos, comodinesActivos);
+        this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos);
     }
     public void realizarDescarte(Ronda ronda){
         this.mano.realizarDescarte( ronda);

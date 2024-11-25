@@ -42,8 +42,26 @@ public class CartaDePoker implements IMejorable {
         this.multiplicador = multiplicador;
     }
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
     @Override
-    public void recibirMejora(Mejora mejora) {efecto.recibirMejora(mejora);}
+    public void recibirMejora(Mejora mejora) {this.efecto.recibirMejora(mejora);}
+
+    @Override
+    public boolean contiene(String contexto, String elemento) {
+        if(contexto.equals("carta")){
+            if(elemento.equals(this.nombre)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
 
     public void sumarAPuntajeJugada(PuntajeJugada puntajeJugada) {
         this.estado.aplicarResultadoAPuntaje(this.efecto, puntajeJugada);
