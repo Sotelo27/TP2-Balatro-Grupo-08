@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.*;
 
 import java.io.IOException;
@@ -38,4 +39,5 @@ public class BalatroAlgo3{
     public void realizarDescarte(){
         // this.jugador.realizarDescarte(this.ronda)
     }
+    public void setEstado(EstadoJuego estado){};
 }
