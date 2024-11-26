@@ -30,7 +30,7 @@ public class CartaDePoker implements IMejorable {
         this.palo = palo;
         this.efecto = efecto;
         this.numero = numero;
-        this.efecto.setMejora(new SumaPuntaje());
+        //this.efecto.setMejora(new SumaPuntaje());
     }
 
     public void setNombre(String nombre) {
@@ -125,6 +125,7 @@ public class CartaDePoker implements IMejorable {
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;
     }
+    public void aplicarMejora(Mejora mejora){}
 
 }
 

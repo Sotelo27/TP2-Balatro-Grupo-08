@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.CombinacionesDePoker;
 
 import edu.fiuba.algo3.modelo.CartaDePoker;
 import edu.fiuba.algo3.modelo.Efecto;
+import edu.fiuba.algo3.modelo.Mejora;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public class HighCard extends CombinacionDePoker {
         this.setSumaPuntos();
     }
 
+    public void aplicarMejora(Mejora mejora){}
 }

@@ -34,6 +34,7 @@ public class Descarte implements IAccion, IMejorable {
 
 	}
 
+	public void aplicarMejora(Mejora mejora){}
 
 
 }

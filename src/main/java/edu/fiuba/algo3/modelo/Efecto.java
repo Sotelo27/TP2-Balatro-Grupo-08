@@ -31,7 +31,7 @@ public class Efecto{
         this.mejoras.add(mejora);
     }
     public void setMejora(Mejora mejora){
-        this.mejora = mejora;
+        //this.mejora = mejora;
     }
 
     public void aplicarAPuntaje(PuntajeJugada puntajeJugada){

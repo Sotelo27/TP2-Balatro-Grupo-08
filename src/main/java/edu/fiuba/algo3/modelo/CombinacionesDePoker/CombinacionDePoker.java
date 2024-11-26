@@ -24,7 +24,7 @@ public abstract class CombinacionDePoker implements IMejorable {
     }
 
     protected void setSumaPuntos(){
-        this.efecto.setMejora(new SumaPuntaje());
+        //this.efecto.setMejora(new SumaPuntaje());
     }
 
     public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {

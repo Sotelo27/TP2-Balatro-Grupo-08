@@ -64,6 +64,7 @@ public class Jugada implements IMejorable, IAccion{
         return false;
     }
 
+    public void aplicarMejora(Mejora mejora){}
 
 
 

@@ -55,4 +55,13 @@ public class PuntajeJugada {
     public boolean esMenorQue(PuntajeJugada otroPuntaje){
         return (this.puntos*this.multiplicador) > (otroPuntaje.getPuntos()); // no creo que funcione
     }
+
+    public boolean esMayorQue(PuntajeJugada otroPuntaje){
+        return (this.puntos*this.multiplicador) < (otroPuntaje.getPuntos()); // no creo que funcione
+    }
+
+    public boolean esIgualQue(PuntajeJugada otroPuntaje){
+        return (this.puntos*this.multiplicador) == (otroPuntaje.getPuntos()); // no creo que funcione
+    }
+
 }
