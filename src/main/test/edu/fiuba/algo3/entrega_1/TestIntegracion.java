@@ -3,7 +3,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.repositorios.*;
 import edu.fiuba.algo3.modelo.Mejoras.*;
-import edu.fiuba.algo3.modelo.CondicionesDeMejora;
+import edu.fiuba.algo3.modelo.CondicionDeMejoraParser;
 import java.util.Random;
 
 import org.junit.Before;
@@ -190,7 +190,7 @@ public class TestIntegracion {
         CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
         jugador1.seleccionarCarta(this.cartaMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(20,1);
-        CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta());
+        CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(""),""); // modificar las restricciones
         
         
         // act
