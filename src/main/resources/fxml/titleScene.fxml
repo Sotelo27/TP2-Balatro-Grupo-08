@@ -1,43 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.fiuba.algo3.controllers.TitleScene">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TitleScene">
    <children>
-      <TextField id="unerNameInput" alignment="CENTER" layoutX="209.0" layoutY="188.0" prefHeight="25.0" prefWidth="174.0" promptText="Ingresa tu nombre">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </TextField>
-      <Button layoutX="266.0" layoutY="244.0" mnemonicParsing="false" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP" onAction="#click">
+      <Button id="playBtn" layoutX="270.0" layoutY="229.0" mnemonicParsing="false" onAction="#click" styleClass="Button" stylesheets="@../css/style.css" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="276.0" layoutY="305.0" mnemonicParsing="false" text="SALIR" textAlignment="CENTER">
+      <Button fx:id="exitBtn" id="exitBtn" contentDisplay="CENTER" layoutX="291.0" layoutY="320.0" mnemonicParsing="false" onAction="#exitClicked" styleClass="Button" stylesheets="@../css/style.css" text="SALIR" textAlignment="CENTER">
          <font>
             <Font name="Impact" size="13.0" />
          </font>
       </Button>
-      <Text id="gameTitle" fill="WHITE" layoutX="185.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BALATRO" textAlignment="CENTER" wrappingWidth="230.0">
-         <font>
-            <Font name="Impact" size="55.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Algoritmos 3 - FIUBA">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Text>
+      <Label id="gameTitle" alignment="CENTER" layoutX="-19.0" layoutY="86.0" prefHeight="86.0" prefWidth="643.0" stylesheets="@../css/style.css" text="BALATRO" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="369.0" styleClass="algo3CornerMsg" stylesheets="@../css/style.css" text="Algoritmos 3 - FIUBA" />
    </children>
 </AnchorPane>

@@ -1,0 +1,48 @@
+.Button{
+    -fx-background-color: tranparent;
+    -fx-font-size: 10px;
+    -fx-font-family: Impact;
+    -fx-text-fill: white;
+    -fx-content-display: center;
+    -fx-padding: 0;
+}
+
+.Button:hover{
+    -fx-text-fill: #fbc2c2;
+}
+
+#exitBtn{
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+}
+
+#exitBtn:hover{
+    -fx-font-size: 18px;
+    -fx-text-fill: #fbc2c2;
+}
+
+#playBtn{
+    -fx-font-size: 25px;
+}
+
+#playBtn{
+    -fx-font-size: 30px;
+}
+
+#playBtn:hover{
+    -fx-font-size: 35px;
+}
+
+#gameTitle{
+    -fx-font-size: 70px;
+    -fx-font-family: Impact;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.algo3CornerMsg{
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+}
+
+
