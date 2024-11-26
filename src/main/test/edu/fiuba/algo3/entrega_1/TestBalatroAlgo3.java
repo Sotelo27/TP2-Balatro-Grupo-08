@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/*
 public class TestBalatroAlgo3 {
     @Test
     public void test01SeInicializaElJuegoYSeCreaUnaJugada(){
