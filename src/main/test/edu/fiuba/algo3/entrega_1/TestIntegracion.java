@@ -187,9 +187,9 @@ public class TestIntegracion {
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente() {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        Carta cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
+        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
         jugador1.seleccionarCarta(this.cartaMock2);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(20);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(20,1);
         CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta());
         
         
@@ -202,7 +202,7 @@ public class TestIntegracion {
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
         // assert
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     @Test
@@ -211,9 +211,9 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
         CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new SinRestriccion());
-        Carta cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(55);
-        Carta carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,0));
+        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
+        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,0));
         // act
         jugador1.seleccionarCarta(cartaObjetivo);
         jugador1.seleccionarCarta(carta1);
@@ -224,7 +224,7 @@ public class TestIntegracion {
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
         // assert
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     @Test
@@ -236,7 +236,7 @@ public class TestIntegracion {
         CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,1));
         CartaDePoker carta2 = new CartaDePoker("5 de Picas", "Picas", "5", new Efecto(5,1));
         CartaDePoker carta3 = new CartaDePoker("5 de Trebol", "Trebol", "5", new Efecto(5,1));
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(840);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(840,1);
         // act
         jugador1.seleccionarCarta(carta1);
         jugador1.seleccionarCarta(carta2);
@@ -246,7 +246,7 @@ public class TestIntegracion {
         // [(5,1) + (5,1) + (5,1) + (30,3) ] * (1*8) = 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // assert
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     @Test
@@ -255,20 +255,20 @@ public class TestIntegracion {
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,SumaAMultiplicador());
         Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion("Straight")); // o new RestriccionACombinacion("Escalera")
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(1885);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
-        jugador1.seleccionarCarta(new Carta("As de Trebol", "Trebol", 1, new Efecto(11, 1)));
-        jugador1.seleccionarCarta(new Carta("2 de Trebol", "Trebol", 2, new Efecto(2, 1)));
-        jugador1.seleccionarCarta(new Carta("3 de Trebol", "Trebol", 3, new Efecto(3, 1)));
-        jugador1.seleccionarCarta(new Carta("4 de Trebol", "Trebol", 4, new Efecto(4, 1)));
-        jugador1.seleccionarCarta(new Carta("5 de Trebol", "Trebol", 5, new Efecto(5, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("As de Trebol", "Trebol", "1", new Efecto(11, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("2 de Trebol", "Trebol", "2", new Efecto(2, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("3 de Trebol", "Trebol", "3", new Efecto(3, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("4 de Trebol", "Trebol", "4", new Efecto(4, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("5 de Trebol", "Trebol", "5", new Efecto(5, 1)));
         // act
         jugador1.activarComodin(comodinx3);
         jugador1.realizarJugada(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
         // [(11,1) + (2,1) + (3,1) + (4,1) + (5,1) + (30,4)] * (1+12) =
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     //  Verificar que el jugador si posee un comodin que suma 10 puntos por descarte, al descartar sume la cantidad correcta. 
@@ -276,9 +276,9 @@ public class TestIntegracion {
     public void test10SeUsaUnComodinQueSuma10PuntosPorDescarteYFuncionaCorrectamente(){
         // arrrange
         Mejora mejoraSuma10Puntos = new Mejora(10,1,SumaPuntos());
-        Comodin comodinAlDescarte = new Comodin("Al Descarte", mejoraSuma10SiEsDescarte, new EsDescarte())
+        Comodin comodinAlDescarte = new Comodin("Al Descarte", mejoraSuma10SiEsDescarte, new EsDescarte());
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(10);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(10,1);
         // act
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinAlDescarte);
@@ -286,7 +286,7 @@ public class TestIntegracion {
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // assert  
         
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }   
 
     
@@ -303,7 +303,7 @@ public class TestIntegracion {
         Mejora suma1000Puntos = new Mejora(1000, 1, new SumaPuntos());
         MejoraAlAzar mejoraAlAzar = new MejoraAlAzar(1000, randomMock);
         Comodin comodinAlAzar = new Comodin("Al Descarte", suma1000Puntos, mejoraAlAzar);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(1000); // Supongamos que el puntaje inicial es 10
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(1000,1); // Supongamos que el puntaje inicial es 10
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
 
         // act
@@ -311,10 +311,10 @@ public class TestIntegracion {
         jugador1.activarComodin(comodinAlAzar);
         jugador1.realizarDescarte(rondaMock);
 
-        Puntaje puntajeObtenido = rondaMock.obtenerPuntaje();
+        PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
         // assert
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     //  El jugador activa un comodín con una combinación de efectos bonus de mano jugada + puntaje aumentado + activación aleatoria 
@@ -328,17 +328,17 @@ public class TestIntegracion {
         Comodin comodinAleatorio = new Comodin("+1000 puntos si racing sale campeon", new Efecto(1000,1, SumaPuntos()), , new MejoraAlAzar());
         Comodin comodinCombinado = new CombinacionDeComodines("Clubes Grandes", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(4030);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(4030,1);
 
         // ACT
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinCombinado);
         jugador1.realizarJugada(rondaMock);
-        Puntaje puntajeObtenido = rondaMock.obtenerPuntaje();
+        PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // [[[[ (5puntos*1) + (5puntos*1) ] + 1000puntos ] * 3 ] + 1000puntos] = 4030
 
         // assert
-        assertTrue(puntajeEsperado.esIgualA(puntajeObtenido));
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
     //  Verificar la lectura y posterior conversión a unidades del modelo de dominio del JSON 
