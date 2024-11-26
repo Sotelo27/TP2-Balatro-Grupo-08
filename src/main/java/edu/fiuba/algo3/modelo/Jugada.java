@@ -17,11 +17,12 @@ public class Jugada implements IMejorable, IAccion{
     public Jugada( List<CartaDePoker> seleccion) {
         this.cartas = seleccion;
         this.verificador = new VerificadorRoyalFlush();
-        this.efectoDeComodinesYTarots = new Efecto(0,1); // efecto nulo
+        this.efectoDeComodinesYTarots = new Efecto(0,0); // efecto nulo
         this.combinacion =  this.verificador.verificar(seleccion);
     };
 
-    public PuntajeJugada sumarAPuntaje(PuntajeJugada puntaje){
+    @Override
+    public void aplicaPuntajeDeAccion(PuntajeJugada puntaje){
 
         for(CartaDePoker carta: this.cartas) {
             carta.sumarAPuntajeJugada(puntaje);
@@ -30,7 +31,7 @@ public class Jugada implements IMejorable, IAccion{
         combinacionDePoker.aplicarPuntajeAPuntajeJugada(puntaje);
         this.efectoDeComodinesYTarots.aplicarAPuntaje(puntaje);
 
-        return puntaje;
+
     }
 
     public void aplicarTarots(List<IMejorador> tarots){
@@ -62,6 +63,7 @@ public class Jugada implements IMejorable, IAccion{
         //return !limites.quedanManosDisponibles();
         return false;
     }
+
 
 
 

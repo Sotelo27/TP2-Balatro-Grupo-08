@@ -32,7 +32,7 @@ public class Mano {
     }
 
     private boolean puedoAgregarCard(){
-        return (this.mano.size() <= 8);
+        return (this.mano.size() < 8);
     }
 
     public void seleccionarCarta(CartaDePoker cartaElegida){
@@ -66,6 +66,8 @@ public class Mano {
         for(Comodin comodin : comodines){
             comodin.mejorar(jugada);
         }
+
+        ronda.agregarAccion(jugada);
         return true;
     }
 

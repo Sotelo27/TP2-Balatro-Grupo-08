@@ -28,6 +28,12 @@ public class Descarte implements IAccion, IMejorable {
 		return limites.superaLimiteDeDescartes(this.cartas.size());
 	}
 
+	@Override
+	public void aplicaPuntajeDeAccion(PuntajeJugada puntaje){
+		this.efecto.aplicarAPuntaje(puntaje);
+
+	}
+
 
 
 }

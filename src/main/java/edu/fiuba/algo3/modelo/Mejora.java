@@ -9,7 +9,11 @@ public class Mejora{
 
     public Mejora() {}
 
-
+    public Mejora(int puntos, int multiplicador, IMejora mejora){
+        this.puntos = puntos;
+        this.multiplicador = multiplicador;
+        this.mejora = mejora;
+    }
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
