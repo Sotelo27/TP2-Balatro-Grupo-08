@@ -28,7 +28,7 @@ public class Mejora{
 
 
     public void seAplicaAPuntaje(PuntajeJugada puntajeJugada){
-        //this.mejora.seAplicaAPuntaje(puntaje, this.puntos, this.multiplicador);
+        this.mejora.seAplicaApuntaje(puntajeJugada, this.puntos, this.multiplicador);
     }
 
 
