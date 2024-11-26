@@ -23,7 +23,9 @@ public class CartaDeTarot implements IMejorador{
     public void mejorar(IMejorable mejorable){
         mejorable.siContieneAplicarMejora(this.sobre, this.ejemplar, this.mejora);
     }
-
+    public void activarSobre(CartaDePoker cartaObjetivo){
+        this.ejemplar = cartaObjetivo.getNombre();
+    }
 
 
     //Setters
