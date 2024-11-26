@@ -10,6 +10,7 @@ public class FourOfAKind extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(60,7);
         this.nombre = "poker";
+        this.setSumaPuntos();
     }
 
 }

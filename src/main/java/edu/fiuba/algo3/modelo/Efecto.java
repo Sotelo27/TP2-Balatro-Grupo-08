@@ -30,12 +30,11 @@ public class Efecto{
     public void recibirMejora(Mejora mejora) {
         this.mejoras.add(mejora);
     }
+    public void setMejora(Mejora mejora){
+        this.mejora = mejora;
+    }
 
     public void aplicarAPuntaje(PuntajeJugada puntajeJugada){
-        puntajeJugada.sumarPuntos(this.puntos);
-        puntajeJugada.sumarAMultiplicador(this.multiplicador);
-
-
         for(Mejora mejora : mejoras){
             mejora.seAplicaAPuntaje(puntajeJugada);
 

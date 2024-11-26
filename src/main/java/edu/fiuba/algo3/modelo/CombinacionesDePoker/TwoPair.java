@@ -9,7 +9,7 @@ public class TwoPair extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(20,2);
         this.nombre= "doble par";
-
+        this.setSumaPuntos();
     }
 
 }

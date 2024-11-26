@@ -14,6 +14,7 @@ public class RoyalFlush extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(100,8);
         this.nombre = "escalera real";
+        this.setSumaPuntos();
     }
 
 

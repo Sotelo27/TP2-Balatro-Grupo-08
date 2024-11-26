@@ -11,6 +11,7 @@ public class HighCard extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(5,1);
         this.nombre = "carta alta";
+        this.setSumaPuntos();
     }
 
 }

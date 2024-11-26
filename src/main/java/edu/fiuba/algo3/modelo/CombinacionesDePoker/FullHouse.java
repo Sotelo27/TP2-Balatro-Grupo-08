@@ -10,6 +10,7 @@ public class FullHouse extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(40,4);
         this.nombre = "full";
+        this.setSumaPuntos();
     }
 
 }

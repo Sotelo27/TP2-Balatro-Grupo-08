@@ -9,6 +9,7 @@ public class ThreeOfAKind extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(30,3);
         this.nombre = "trio";
+        this.setSumaPuntos();
     }
 
 }

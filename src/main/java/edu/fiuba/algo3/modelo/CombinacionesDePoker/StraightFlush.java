@@ -13,7 +13,7 @@ public class StraightFlush extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(100,8);
         this.nombre = "escalera de color";
-
+        this.setSumaPuntos();
     }
 
 

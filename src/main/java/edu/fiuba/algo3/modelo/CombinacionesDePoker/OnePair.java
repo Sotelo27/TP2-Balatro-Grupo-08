@@ -11,6 +11,7 @@ public class OnePair extends CombinacionDePoker {
         super(cartas);
         this.nombre =  "par";
         this.efecto = new Efecto(10,2);
+        this.setSumaPuntos();
     }
 
 

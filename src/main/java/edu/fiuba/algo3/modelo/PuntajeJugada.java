@@ -48,26 +48,11 @@ public class PuntajeJugada {
         this.multiplicador += cantidad;
     }
 
-
-
-   // public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {}
+   public void aplicarPuntajeAPuntajeJugada(PuntajeJugada puntajeJugada) {
+        this.puntos = puntajeJugada.getPuntos();
+   }
 
     public boolean esMenorQue(PuntajeJugada otroPuntaje){
-        System.out.println("Puntaje 1");
-        System.out.println(this.puntos*this.multiplicador);
-
-        System.out.println("puntaje 2:");
-        System.out.println(otroPuntaje.getPuntos());
-        return (this.puntos*this.multiplicador) < (otroPuntaje.getPuntos()); // no creo que funcione
-    }
-
-    public boolean esMayorQue(PuntajeJugada otroPuntaje){
         return (this.puntos*this.multiplicador) > (otroPuntaje.getPuntos()); // no creo que funcione
     }
-
-    public boolean esIgualQue(PuntajeJugada otroPuntaje){
-        return (this.puntos*this.multiplicador) == (otroPuntaje.getPuntos()); // no creo que funcione
-    }
-
-
 }

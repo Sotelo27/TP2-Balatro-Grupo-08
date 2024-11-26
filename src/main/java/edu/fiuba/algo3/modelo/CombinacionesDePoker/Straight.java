@@ -10,6 +10,7 @@ public class Straight extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(30,4);
         this.nombre = "escalera";
+        this.setSumaPuntos();
     }
 
 }

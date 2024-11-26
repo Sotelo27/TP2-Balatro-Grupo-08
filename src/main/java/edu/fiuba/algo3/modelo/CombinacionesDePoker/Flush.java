@@ -11,6 +11,7 @@ public class Flush extends CombinacionDePoker {
         super(cartas);
         this.efecto = new Efecto(35,2);
         this.nombre = "color";
+        this.setSumaPuntos();
     }
 
 
