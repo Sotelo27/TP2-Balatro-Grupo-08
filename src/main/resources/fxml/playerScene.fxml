@@ -14,11 +14,12 @@
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnNameSaver" layoutX="447.0" layoutY="189.0" mnemonicParsing="false" onAction="#click" prefHeight="19.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-padding: 0;" styleClass="mainButton" stylesheets="@../css/style.css" text="GUARDAR" textFill="WHITE">
+      <Button id="saveBtn" fx:id="btnNameSaver" layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#click" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@../css/style.css" text="GUARDAR">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Button>
       <Label layoutX="14.0" layoutY="369.0" text="Algoritmos 3 - FIUBA" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <Button id="goBackBtn" layoutX="469.0" layoutY="233.0" mnemonicParsing="false" onAction="#backToTitle" styleClass="Button" stylesheets="@../css/style.css" text="VOLVER" />
    </children>
 </AnchorPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
+   <children>
+      <TilePane layoutX="398.0" layoutY="456.0" prefHeight="235.0" prefWidth="841.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fx:id="firstCardOffert" fitHeight="235.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="scndCardOffert" fitHeight="235.0" fitWidth="175.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert" fitHeight="235.0" fitWidth="163.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert" fitHeight="232.0" fitWidth="162.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fifthCardOffert" fitHeight="229.0" fitWidth="164.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+   </children>
+</AnchorPane>

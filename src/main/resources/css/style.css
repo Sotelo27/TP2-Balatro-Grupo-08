@@ -33,6 +33,21 @@
     -fx-font-size: 35px;
 }
 
+#saveBtn{
+    -fx-font-size: 15px;
+}
+
+#saveBtn:hover{
+    -fx-font-size: 20px;
+}
+
+#goBackBtn{
+    -fx-font-size: 15px;
+}
+#goBackBtn:hover{
+    -fx-font-size: 17px;
+}
+
 #gameTitle{
     -fx-font-size: 70px;
     -fx-font-family: Impact;
@@ -43,6 +58,10 @@
 .algo3CornerMsg{
     -fx-text-fill: white;
     -fx-font-size: 10px;
+}
+
+.GeneralBackground{
+    -fx-background-color: black;
 }
 
 
