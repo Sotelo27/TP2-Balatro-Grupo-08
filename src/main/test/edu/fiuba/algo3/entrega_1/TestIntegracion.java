@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.CondicionesDeMejora.*;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.repositorios.*;
 import edu.fiuba.algo3.modelo.Mejoras.*;
-import edu.fiuba.algo3.modelo.CondicionDeMejoraParser;
+
 import java.util.Random;
 
 import org.junit.Before;
@@ -52,10 +53,10 @@ public class TestIntegracion {
 
     @Before
     public void setup() {
-        this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,1));
-        this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", new Efecto(5,1));
-        this.cartaMock3 = new CartaDePoker("5 de Diamantes", "Corazones", "5", new Efecto(5,1));
-        this.cartaMock4 = new CartaDePoker("5 de Diamantes", "Picas", "5", new Efecto(5,1));
+        this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
+        this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5,1);
+        this.cartaMock3 = new CartaDePoker("5 de Diamantes", "Corazones", "5", 5,1);
+        this.cartaMock4 = new CartaDePoker("5 de Diamantes", "Picas", "5", 5,1);
         this.cartaMock5 = mock(CartaDePoker.class);
         this.cartaMock6 = mock(CartaDePoker.class);
         this.cartaMock7 = mock(CartaDePoker.class);
@@ -79,9 +80,9 @@ public class TestIntegracion {
         this.dosPuntos.agregarPuntosYMultiplicador(2, 1);
         this.diezPuntos.agregarPuntosYMultiplicador(10, 1);
 
-        this.comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion());
-        this.comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion());
-        this.comodinSuma100 = new Comodin("Caminante", new Mejora(100, 1, new SumaPuntos()), new SinRestriccion());
+        this.comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
+        this.comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(), "", "");
+        this.comodinSuma100 = new Comodin("Caminante", new Mejora(100, 1, new SumaPuntos()), new SinRestriccion(), "", "");
     }
 
     @Test
@@ -147,8 +148,8 @@ public class TestIntegracion {
     @Test
     public void test05SeHaceLaMismaJugadaYSuPuntajeAlConstruirseDependeDeElOrdenDeLasCartas() {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        Comodin comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion());
-        Comodin comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion());
+        Comodin comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
+        Comodin comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(),"", "");
         
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
@@ -187,11 +188,11 @@ public class TestIntegracion {
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente() {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
+        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         jugador1.seleccionarCarta(this.cartaMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(20,1);
-        //CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(""),""); // modificar las restricciones
-        CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),"","");
+        CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", ""); // modificar las restricciones
+        //CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),"","");
 
         // act
         jugador1.activarTarot(tarotX2, cartaObjetivo);
@@ -210,11 +211,11 @@ public class TestIntegracion {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
-        //CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new SinRestriccion());
-        CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, "","");
-        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", new Efecto(5,0));
+        CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
+        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
+
         PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
-        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,0));
+        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5,0);
         // act
         jugador1.seleccionarCarta(cartaObjetivo);
         jugador1.seleccionarCarta(carta1);
@@ -233,10 +234,10 @@ public class TestIntegracion {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora multiplicaX8 = new Mejora(1, 8, new MultiplicaMultiplicador());
-        Comodin comodinx8 = new Comodin("X8", multiplicaX8, new SinRestriccion());
-        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", new Efecto(5,1));
-        CartaDePoker carta2 = new CartaDePoker("5 de Picas", "Picas", "5", new Efecto(5,1));
-        CartaDePoker carta3 = new CartaDePoker("5 de Trebol", "Trebol", "5", new Efecto(5,1));
+        Comodin comodinx8 = new Comodin("X8", multiplicaX8, new SinRestriccion(),"", "");
+        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5,1);
+        CartaDePoker carta2 = new CartaDePoker("5 de Picas", "Picas", "5", 5,1);
+        CartaDePoker carta3 = new CartaDePoker("5 de Trebol", "Trebol", "5", 5,1);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(840,1);
         // act
         jugador1.seleccionarCarta(carta1);
@@ -254,15 +255,15 @@ public class TestIntegracion {
     public void test09SeUsaUnComodinQueSeActivaCuandoSeJuegaUnaEscaleraYElPuntajeEsCorrecto() {
         // arrange
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,new SumaAMultiplicador());
-        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion("Straight")); // o new RestriccionACombinacion("Escalera")
+        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", ""); // o new RestriccionACombinacion("Escalera")
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
-        jugador1.seleccionarCarta(new CartaDePoker("As de Trebol", "Trebol", "1", new Efecto(11, 1)));
-        jugador1.seleccionarCarta(new CartaDePoker("2 de Trebol", "Trebol", "2", new Efecto(2, 1)));
-        jugador1.seleccionarCarta(new CartaDePoker("3 de Trebol", "Trebol", "3", new Efecto(3, 1)));
-        jugador1.seleccionarCarta(new CartaDePoker("4 de Trebol", "Trebol", "4", new Efecto(4, 1)));
-        jugador1.seleccionarCarta(new CartaDePoker("5 de Trebol", "Trebol", "5", new Efecto(5, 1)));
+        jugador1.seleccionarCarta(new CartaDePoker("As de Trebol", "Trebol", "1", 11, 1));
+        jugador1.seleccionarCarta(new CartaDePoker("2 de Trebol", "Trebol", "2", 2, 1));
+        jugador1.seleccionarCarta(new CartaDePoker("3 de Trebol", "Trebol", "3", 3, 1));
+        jugador1.seleccionarCarta(new CartaDePoker("4 de Trebol", "Trebol", "4", 4, 1));
+        jugador1.seleccionarCarta(new CartaDePoker("5 de Trebol", "Trebol", "5", 5, 1));
         // act
         jugador1.activarComodin(comodinx3);
         jugador1.realizarJugada(rondaMock);
@@ -277,7 +278,7 @@ public class TestIntegracion {
     public void test10SeUsaUnComodinQueSuma10PuntosPorDescarteYFuncionaCorrectamente(){
         // arrrange
         Mejora mejoraSuma10Puntos = new Mejora(10,1,new SumaPuntos());
-        Comodin comodinAlDescarte = new Comodin("Al Descarte", mejoraSuma10Puntos, new EsDescarte());
+        Comodin comodinAlDescarte = new Comodin("Al Descarte", mejoraSuma10Puntos, new EsDescarte(), "Descarte", "");
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(10,1);
         // act
@@ -302,8 +303,8 @@ public class TestIntegracion {
         when(randomMock.nextInt(1000)).thenReturn(0);
 
         Mejora suma1000Puntos = new Mejora(1000, 1, new SumaPuntos());
-        MejoraAlAzar mejoraAlAzar = new MejoraAlAzar(1000, randomMock);
-       // Comodin comodinAlAzar = new Comodin("Al Descarte", suma1000Puntos, mejoraAlAzar);
+        ActivarAlAzar mejoraAlAzar = new ActivarAlAzar(randomMock);
+        Comodin comodinAlAzar = new Comodin("Al Descarte", suma1000Puntos, mejoraAlAzar, "1 en", "1000");
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1000,1); // Supongamos que el puntaje inicial es 10
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
 
@@ -325,16 +326,18 @@ public class TestIntegracion {
         Random mockAleatorio = mock(Random.class);
         when(mockAleatorio.nextInt(1000)).thenReturn(0);
         // arrange
-        //Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada());
-        Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada());
-        Comodin comodinDeSiempre = new Comodin("+3 Mult. si Boca no juega a nada", new Mejora(1, 3, new SumaAMultiplicador()), new SinRestriccion() );
-        //Comodin comodinAleatorio = new Comodin("+1000 puntos si racing sale campeon", new Mejora(1000,1, new SumaPuntos()), new MejoraAlAzar(0,mockAleatorio));
+
+        // Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada());
+        Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada(),"Mano Jugada", "OnePair");
+        Comodin comodinDeSiempre = new Comodin("+3 Mult. si Boca no juega a nada", new Mejora(1, 3, new SumaAMultiplicador()), new SinRestriccion(), "", "" );
+        Comodin comodinAleatorio = new Comodin("+1000 puntos si racing sale campeon", new Mejora(1000,1, new SumaPuntos()), new ActivarAlAzar(mockAleatorio), "1 en", "100");
        // Comodin comodinCombinado = new CombinacionDeComodines("Clubes Grandes", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(4030,1);
 
         // ACT
         jugador1.seleccionarCarta(cartaMock1);
+        jugador1.seleccionarCarta(cartaMock2);
         //jugador1.activarComodin(comodinCombinado);
         jugador1.realizarJugada(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();

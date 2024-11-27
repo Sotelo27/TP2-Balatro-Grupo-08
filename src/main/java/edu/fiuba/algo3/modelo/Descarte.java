@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import 	edu.fiuba.algo3.modelo.Mejoras.*;
 import java.util.List;
-import java.util.ArrayList;
 
 
 public class Descarte implements IAccion, IMejorable {
@@ -36,5 +35,7 @@ public class Descarte implements IAccion, IMejorable {
 
 	public void aplicarMejora(Mejora mejora){}
 
-
+	public String getNombre(){
+		return "Descarte";
+	}
 }

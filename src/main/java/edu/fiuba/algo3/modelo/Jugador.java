@@ -29,8 +29,14 @@ public class Jugador {
     public void realizarDescarte(Ronda ronda){
         this.mano.realizarDescarte( ronda);
     }
+
+    public void activarTarot(CartaDeTarot tarot){
+        this.mano.activarTarot(tarot);
+        this.tarotsActivos.add(tarot);
+    }
+
     public void activarTarot(CartaDeTarot tarot, CartaDePoker cartaObjetivo){
-        //this.tarotsActivos.activarSobre(cartaObjetivo); Hay que buscar la carta correcta
+        this.mano.activarTarotSobreCarta(tarot, cartaObjetivo);
         this.tarotsActivos.add(tarot);
     }
     public void activarComodin(Comodin comodin){

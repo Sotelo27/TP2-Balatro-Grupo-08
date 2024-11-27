@@ -30,8 +30,6 @@ public class BalatroAlgo3{
     public void activarComodin(String nombre){
     }
 
-    public Puntaje verPuntajeDeRonda(){ return new Puntaje();}
-
     public void realizarJugada(){
         // this.jugador.realizarJugada(this.ronda);
     }

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Mejoras.IMejora;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +32,14 @@ public class Efecto{
     public void recibirMejora(Mejora mejora) {
         this.mejoras.add(mejora);
     }
-    public void setMejora(Mejora mejora){
-        //this.mejora = mejora;
+
+    public void setMejora(IMejora mejora){
+        this.mejoras.get(0).aniadirMejora(mejora);
     }
 
 
 
     public void aplicarAPuntaje(PuntajeJugada puntajeJugada){
-        puntajeJugada.sumarPuntos(this.puntos * this.multiplicador);
         //puntajeJugada.sumarAMultiplicador(this.multiplicador);
         for(Mejora mejora : mejoras){
             mejora.seAplicaAPuntaje(puntajeJugada);

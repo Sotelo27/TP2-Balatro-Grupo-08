@@ -76,4 +76,7 @@ public class PuntajeJugada {
         return (this.puntos*this.multiplicador) == (otroPuntaje.getPuntos()); // no creo que funcione
     }
 
+    public void sumarPuntaje(PuntajeJugada puntajeJugada) {
+        this.puntos += puntajeJugada.getPuntos();
+    }
 }

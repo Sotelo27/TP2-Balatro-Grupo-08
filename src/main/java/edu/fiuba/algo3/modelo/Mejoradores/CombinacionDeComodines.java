@@ -22,4 +22,5 @@ public class CombinacionDeComodines implements IMejorador{
 			comodin.mejorar(mejorable);
 		}
 	}
+
 }

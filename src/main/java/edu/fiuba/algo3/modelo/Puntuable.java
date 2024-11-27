@@ -7,8 +7,8 @@ public class Puntuable extends EstadoDeCarta {
     }
 
     @Override
-    public void aplicarResultadoAPuntaje(Efecto efecto,PuntajeJugada puntajeJugada){
-        efecto.aplicarAPuntaje(puntajeJugada);
+    public void aplicarResultadoAPuntaje(PuntajeJugada puntajeASumar, PuntajeJugada puntajeJugada){
+        puntajeJugada.sumarPuntaje(puntajeASumar);
     }
 
 }
