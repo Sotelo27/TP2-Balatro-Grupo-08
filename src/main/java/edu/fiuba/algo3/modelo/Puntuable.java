@@ -10,5 +10,6 @@ public class Puntuable extends EstadoDeCarta {
     public void aplicarResultadoAPuntaje(Efecto efecto,PuntajeJugada puntajeJugada){
         efecto.aplicarAPuntaje(puntajeJugada);
     }
+
 }
 

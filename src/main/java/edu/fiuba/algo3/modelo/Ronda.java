@@ -22,7 +22,7 @@ public class Ronda {
     }
 
     public PuntajeJugada obtenerPuntaje(){
-        PuntajeJugada puntaje = new PuntajeJugada(0,0);
+        PuntajeJugada puntaje = new PuntajeJugada(0,1);
         for(IAccion accion : this.accionesRalizadas){
             accion.aplicaPuntajeDeAccion(puntaje);
         }

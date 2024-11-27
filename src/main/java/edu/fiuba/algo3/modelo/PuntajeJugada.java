@@ -23,6 +23,12 @@ public class PuntajeJugada {
     public void multiplicarMultiplicador(int multiplicador) {
         this.multiplicador *= multiplicador;
     }
+    public void reemplazaPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+    public void reemplazaMultiplicador(int multiplicador) {
+        this.multiplicador = multiplicador;
+    }
     /*
     public void calcularPuntosCombinacion(CombinacionDePoker combinacionDePoker){
 
@@ -53,14 +59,20 @@ public class PuntajeJugada {
    }
 
     public boolean esMenorQue(PuntajeJugada otroPuntaje){
-        return (this.puntos*this.multiplicador) > (otroPuntaje.getPuntos()); // no creo que funcione
-    }
-
-    public boolean esMayorQue(PuntajeJugada otroPuntaje){
         return (this.puntos*this.multiplicador) < (otroPuntaje.getPuntos()); // no creo que funcione
     }
 
+    public boolean esMayorQue(PuntajeJugada otroPuntaje){
+        System.out.println(this.puntos*this.multiplicador);
+        System.out.println("La diferencia");
+        System.out.println(otroPuntaje.getPuntos());
+        return (this.puntos*this.multiplicador) > (otroPuntaje.getPuntos()); // no creo que funcione
+    }
+
     public boolean esIgualQue(PuntajeJugada otroPuntaje){
+        System.out.println(this.puntos*this.multiplicador);
+        System.out.println("La diferencia");
+        System.out.println(otroPuntaje.getPuntos());
         return (this.puntos*this.multiplicador) == (otroPuntaje.getPuntos()); // no creo que funcione
     }
 
