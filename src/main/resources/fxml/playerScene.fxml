@@ -8,13 +8,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.PlayerSceneController">
    <children>
-      <TextField layoutX="183.0" layoutY="188.0" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: grey;" />
+      <TextField fx:id="usernameField" layoutX="183.0" layoutY="188.0" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: white;" />
       <Label alignment="CENTER" layoutX="44.0" layoutY="190.0" prefHeight="22.0" prefWidth="125.0" style="-fx-text-alignment: center;" text="NOMBRE:" textFill="WHITE" AnchorPane.leftAnchor="44.0">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Button id="saveBtn" fx:id="btnNameSaver" layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#click" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@../css/style.css" text="GUARDAR">
+      <Button id="saveBtn" fx:id="btnNameSaver" layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#saveName" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@../css/style.css" text="GUARDAR">
          <font>
             <Font name="Impact" size="18.0" />
          </font>

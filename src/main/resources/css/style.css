@@ -1,5 +1,5 @@
 .Button{
-    -fx-background-color: tranparent;
+    -fx-background-color: transparent;
     -fx-font-size: 10px;
     -fx-font-family: Impact;
     -fx-text-fill: white;
@@ -62,6 +62,13 @@
 
 .GeneralBackground{
     -fx-background-color: black;
+}
+
+#shopTitle{
+    -fx-font-size: 100px;
+    -fx-font-family: Impact;
+    -fx-text-fill: white ;
+    -fx-alignment: center;
 }
 
 

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
    <children>
@@ -37,5 +41,24 @@
             </ImageView>
          </children>
       </TilePane>
+      <Pane prefHeight="720.0" prefWidth="370.0">
+         <children>
+            <VBox layoutX="-5.0" layoutY="-6.0" prefHeight="732.0" prefWidth="376.0">
+               <children>
+                  <HBox prefHeight="191.0" prefWidth="376.0">
+                     <children>
+                        <BorderPane prefHeight="191.0" prefWidth="381.0">
+                           <center>
+                              <Label id="shopTitle" prefHeight="147.0" prefWidth="300.0" stylesheets="@../css/style.css" text="SHOP" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="191.0" prefWidth="376.0" />
+                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="347.0" prefWidth="376.0" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

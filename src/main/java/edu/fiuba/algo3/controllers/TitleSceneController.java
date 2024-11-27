@@ -8,18 +8,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TitleScene {
+public class TitleSceneController {
     @FXML
     private Button playBtn;
     @FXML
     private Button exitBtn;
-    Stage stage;
+    private Stage stage;
     @FXML
     private AnchorPane mainPane;
 
     private SceneController switcher;
 
-    public TitleScene() {
+    public TitleSceneController() {
         this.switcher = new SceneController();
     }
 
@@ -31,7 +31,7 @@ public class TitleScene {
 
     @FXML
     void exitClicked(ActionEvent event) {
-        stage = (Stage) mainPane.getScene().getWindow();
+        this.stage = (Stage) mainPane.getScene().getWindow();
         System.out.println("Saliending");
         stage.close();
     }
