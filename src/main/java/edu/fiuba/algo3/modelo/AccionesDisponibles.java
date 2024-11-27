@@ -10,7 +10,7 @@ class AccionesDisponibles{
 	}
 
 	public boolean superaLimiteDeDescartes(int descartes){
-		return this.descartesDisponibles > descartes;
+		return this.descartesDisponibles < descartes;
 	}
 
 	public boolean quedanManosDisponibles(int manos){

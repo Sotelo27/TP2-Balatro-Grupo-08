@@ -260,7 +260,7 @@ public class TestIntegracion {
         when(mazoMock2.tomarCarta()).thenReturn(
                 carta1, carta2, carta3, carta4, carta5, cartaMock1 ,cartaMock2, cartaMock3);
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,new SumaAMultiplicador());
-        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", "escalera de color"); // o new RestriccionACombinacion("Escalera")
+        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", "escalera"); // o new RestriccionACombinacion("Escalera")
         Jugador jugador1 = new Jugador("jugador 1", mazoMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
@@ -316,7 +316,7 @@ public class TestIntegracion {
 
         // act
         jugador1.seleccionarCarta(cartaMock1);
-        //jugador1.activarComodin(comodinAlAzar);
+        jugador1.activarComodin(comodinAlAzar);
         jugador1.realizarDescarte(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();

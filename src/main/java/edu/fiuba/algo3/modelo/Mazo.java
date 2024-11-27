@@ -28,16 +28,6 @@ public class Mazo implements ITieneCartas {
         return cartas.remove(randomCard);
     }
 
-    public void realizarDescarte(Ronda ronda, Mano mano) {
-        
-        List<CartaDePoker> yaUtilizadas = mano.realizarDescarte(ronda);
-        
-        for(CartaDePoker carta : yaUtilizadas) {
-            //mano.recibirCard(cartas.remove(carta));
-            this.utilizadas.add(carta);
-        }
-    }
-
     public boolean tieneCartasSuficientes() {
         return (cartas.size() == 52);
     }
