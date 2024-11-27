@@ -55,8 +55,8 @@ public class TestIntegracion {
     public void setup() {
         this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5,1);
-        this.cartaMock3 = new CartaDePoker("5 de Diamantes", "Corazones", "5", 5,1);
-        this.cartaMock4 = new CartaDePoker("5 de Diamantes", "Picas", "5", 5,1);
+        this.cartaMock3 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5,1);
+        this.cartaMock4 = new CartaDePoker("5 de Picas", "Picas", "5", 5,1);
         this.cartaMock5 = mock(CartaDePoker.class);
         this.cartaMock6 = mock(CartaDePoker.class);
         this.cartaMock7 = mock(CartaDePoker.class);
@@ -188,14 +188,15 @@ public class TestIntegracion {
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente() {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
+        //CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         jugador1.seleccionarCarta(this.cartaMock2);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(20,1);
+        jugador1.seleccionarCarta(this.cartaMock1);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(35,1);
         CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", ""); // modificar las restricciones
         //CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),"","");
 
         // act
-        jugador1.activarTarot(tarotX2, cartaObjetivo);
+        jugador1.activarTarot(tarotX2, cartaMock2);
         // ahora cartaObejtivo suma 5*2 en vez de 5*1
         jugador1.realizarJugada(rondaMock);
         // 5 - 1(5 de Diamantes) + 5 - 1(carta alta)
@@ -212,16 +213,15 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
         CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
-        CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
 
         PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
-        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5,0);
+
         // act
-        jugador1.seleccionarCarta(cartaObjetivo);
-        jugador1.seleccionarCarta(carta1);
+        jugador1.seleccionarCarta(cartaMock1);
+        jugador1.seleccionarCarta(cartaMock2);
         // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1) 
         // 30 + 5 + 20 
-        jugador1.activarTarot(tarotx6, cartaObjetivo);
+        jugador1.activarTarot(tarotx6, cartaMock1);
         jugador1.realizarJugada(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
@@ -235,14 +235,11 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora multiplicaX8 = new Mejora(1, 8, new MultiplicaMultiplicador());
         Comodin comodinx8 = new Comodin("X8", multiplicaX8, new SinRestriccion(),"", "");
-        CartaDePoker carta1 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5,1);
-        CartaDePoker carta2 = new CartaDePoker("5 de Picas", "Picas", "5", 5,1);
-        CartaDePoker carta3 = new CartaDePoker("5 de Trebol", "Trebol", "5", 5,1);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(840,1);
         // act
-        jugador1.seleccionarCarta(carta1);
-        jugador1.seleccionarCarta(carta2);
-        jugador1.seleccionarCarta(carta3);
+        jugador1.seleccionarCarta(cartaMock3);
+        jugador1.seleccionarCarta(cartaMock4);
+        jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinx8);
         jugador1.realizarJugada(rondaMock);
         // [(5,1) + (5,1) + (5,1) + (30,3) ] * (1*8) = 
@@ -254,16 +251,25 @@ public class TestIntegracion {
     @Test
     public void test09SeUsaUnComodinQueSeActivaCuandoSeJuegaUnaEscaleraYElPuntajeEsCorrecto() {
         // arrange
+        Mazo mazoMock2 = mock(Mazo.class);
+        CartaDePoker carta1 = new CartaDePoker("As de Trebol", "Trebol", "1", 11, 1);
+        CartaDePoker carta2 = new CartaDePoker("2 de Corazones", "Corazones", "2", 2, 1);
+        CartaDePoker carta3 = new CartaDePoker("3 de Picas", "Picas", "3", 3, 1);
+        CartaDePoker carta4 = new CartaDePoker("4 de Diamantes", "Diamante", "4", 4, 1);
+        CartaDePoker carta5 = new CartaDePoker("5 de Picas", "Picas", "5", 5, 1);
+        when(mazoMock2.tomarCarta()).thenReturn(
+                carta1, carta2, carta3, carta4, carta5, cartaMock1 ,cartaMock2, cartaMock3);
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,new SumaAMultiplicador());
-        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", ""); // o new RestriccionACombinacion("Escalera")
-        Jugador jugador1 = new Jugador("jugador 1", mazoMock);
+        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", "escalera de color"); // o new RestriccionACombinacion("Escalera")
+        Jugador jugador1 = new Jugador("jugador 1", mazoMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
-        jugador1.seleccionarCarta(new CartaDePoker("As de Trebol", "Trebol", "1", 11, 1));
-        jugador1.seleccionarCarta(new CartaDePoker("2 de Trebol", "Trebol", "2", 2, 1));
-        jugador1.seleccionarCarta(new CartaDePoker("3 de Trebol", "Trebol", "3", 3, 1));
-        jugador1.seleccionarCarta(new CartaDePoker("4 de Trebol", "Trebol", "4", 4, 1));
-        jugador1.seleccionarCarta(new CartaDePoker("5 de Trebol", "Trebol", "5", 5, 1));
+
+        jugador1.seleccionarCarta(carta1);
+        jugador1.seleccionarCarta(carta2);
+        jugador1.seleccionarCarta(carta3);
+        jugador1.seleccionarCarta(carta4);
+        jugador1.seleccionarCarta(carta5);
         // act
         jugador1.activarComodin(comodinx3);
         jugador1.realizarJugada(rondaMock);
