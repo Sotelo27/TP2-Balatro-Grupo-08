@@ -71,4 +71,7 @@
     -fx-alignment: center;
 }
 
-
+.tarotCard{
+    -fx-border-color: white;
+    -fx-background-color: white;
+}

@@ -9,56 +9,142 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
    <children>
-      <TilePane layoutX="398.0" layoutY="456.0" prefHeight="235.0" prefWidth="841.0" style="-fx-background-color: black;">
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="473.0" prefHeight="191.0" prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
          <children>
-            <ImageView fx:id="firstCardOffert" fitHeight="235.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
                   <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="scndCardOffert" fitHeight="235.0" fitWidth="175.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="scndCardOffert" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
                   <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="fourthCardOffert" fitHeight="235.0" fitWidth="163.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert" fitHeight="232.0" fitWidth="162.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="fifthCardOffert" fitHeight="229.0" fitWidth="164.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/jokers/joker3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
                </image>
             </ImageView>
          </children>
       </TilePane>
       <Pane prefHeight="720.0" prefWidth="370.0">
          <children>
-            <VBox layoutX="-5.0" layoutY="-6.0" prefHeight="732.0" prefWidth="376.0">
+            <VBox layoutX="-5.0" layoutY="-6.0" prefHeight="745.0" prefWidth="376.0">
                <children>
                   <HBox prefHeight="191.0" prefWidth="376.0">
                      <children>
                         <BorderPane prefHeight="191.0" prefWidth="381.0">
                            <center>
-                              <Label id="shopTitle" prefHeight="147.0" prefWidth="300.0" stylesheets="@../css/style.css" text="SHOP" BorderPane.alignment="CENTER" />
+                              <Label id="shopTitle" prefHeight="145.0" prefWidth="358.0" stylesheets="@../css/style.css" text="SHOP" BorderPane.alignment="CENTER" />
                            </center>
+                           <top>
+                              <Pane prefHeight="15.0" prefWidth="376.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="9.0" prefWidth="376.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <left>
+                              <Pane prefHeight="166.0" prefWidth="14.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <Pane prefHeight="143.0" prefWidth="8.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </right>
                         </BorderPane>
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="191.0" prefWidth="376.0" />
-                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="347.0" prefWidth="376.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="128.0" prefWidth="344.0">
+                     <children>
+                        <Pane prefHeight="128.0" prefWidth="128.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="9.0" prefHeight="109.0" prefWidth="104.0" text="ROUND SCORE" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="109.0" prefWidth="109.0">
+                           <children>
+                              <ImageView fitHeight="48.0" fitWidth="39.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/pokerchips/blueChip.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label contentDisplay="CENTER" layoutX="-6.0" layoutY="29.0" prefHeight="64.0" prefWidth="188.0" text="00000" textFill="WHITE">
+                                 <font>
+                                    <Font size="46.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children></HBox>
+                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="402.0" prefWidth="376.0" />
                </children>
             </VBox>
          </children>
       </Pane>
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="28.0" prefHeight="191.0" prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <children>
+            <ImageView fx:id="firstCardOffert1" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="scndCardOffert1" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert1" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fifthCardOffert1" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert1" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="939.0" layoutY="244.0" prefHeight="202.0" prefWidth="302.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <children>
+            <ImageView fx:id="firstCardOffert11" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="scndCardOffert11" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+      <Label layoutX="394.0" layoutY="134.0" prefHeight="39.0" prefWidth="73.0" text="5/5" />
    </children>
 </AnchorPane>
