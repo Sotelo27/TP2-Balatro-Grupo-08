@@ -330,25 +330,25 @@ public class TestIntegracion {
     @Test
     public void test12SeUsaUnComodinDeEfectosCombinadoDeActivacionAleatoriaYFuncionaCorrectamente(){
         Random mockAleatorio = mock(Random.class);
-        when(mockAleatorio.nextInt(1000)).thenReturn(0);
+        when(mockAleatorio.nextInt(100)).thenReturn(0);
         // arrange
 
         // Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada());
-        Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada(),"Mano Jugada", "OnePair");
+        Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada(),"Mano Jugada", "par");
         Comodin comodinDeSiempre = new Comodin("+3 Mult. si Boca no juega a nada", new Mejora(1, 3, new SumaAMultiplicador()), new SinRestriccion(), "", "" );
-        Comodin comodinAleatorio = new Comodin("+1000 puntos si racing sale campeon", new Mejora(1000,1, new SumaPuntos()), new ActivarAlAzar(mockAleatorio), "1 en", "100");
-       // Comodin comodinCombinado = new CombinacionDeComodines("Clubes Grandes", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
+        Comodin comodinAleatorio = new Comodin("+500 puntos si racing sale campeon", new Mejora(500,1, new SumaPuntos()), new ActivarAlAzar(mockAleatorio), "1 en", "100");
+        CombinacionDeComodines comodinCombinado = new CombinacionDeComodines("Clubes Grandes", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(4030,1);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(6120,1);
 
         // ACT
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.seleccionarCarta(cartaMock2);
-        //jugador1.activarComodin(comodinCombinado);
+        jugador1.activarComodin(comodinCombinado);
         jugador1.realizarJugada(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
-        // [[[[ (5puntos*1) + (5puntos*1) ] + 1000puntos ] * 3 ] + 1000puntos] = 4030
-
+        // [[[[ (5puntos*1) + (5puntos*1) + (10,2) ] + 1000puntos ] * (1+3) ] + 500] = 4620
+        // [[[[ (5puntos*1) + (5puntos*1) + (10,2)] + 1000puntos + 500 ] * (1+3)  = 6120
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }

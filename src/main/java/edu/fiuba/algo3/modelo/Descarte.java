@@ -38,7 +38,9 @@ public class Descarte implements IAccion, IMejorable {
 		}
 	}
 
-	public void aplicarMejora(Mejora mejora){}
+	public void aplicarMejora(Mejora mejora){
+		this.mejoras.add(mejora);
+	}
 
 	public String getNombre(){
 		return "Descarte";

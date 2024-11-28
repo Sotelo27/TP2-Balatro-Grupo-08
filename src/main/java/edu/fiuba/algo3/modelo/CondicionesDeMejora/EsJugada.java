@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.IMejorable;
 
 public class EsJugada implements ICondicionMejora {
-    private final String contexto = "Descarte";
+    private final String contexto = "Jugada";
 
     public EsJugada() {}
 

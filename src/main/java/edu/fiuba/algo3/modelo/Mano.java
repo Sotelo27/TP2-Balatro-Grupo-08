@@ -42,27 +42,27 @@ public class Mano {
 
         this.seleccion.add(cartaElegida);
     }
-    public boolean realizarDescarte(Ronda ronda, List<Comodin> comodines){
+    public boolean realizarDescarte(Ronda ronda, List<IMejorador> comodines){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
 
         Descarte descarte = new Descarte(this.seleccion);
-        for(Comodin comodin : comodines){
+        for(IMejorador comodin : comodines){
                     comodin.mejorar(descarte);
         }
 
         return ronda.agregarAccion(descarte);
     }
 
-    public boolean realizarJugada(Ronda ronda, List<IMejorador> cartasDeTarot, List<Comodin> comodines){
+    public boolean realizarJugada(Ronda ronda, List<IMejorador> cartasDeTarot, List<IMejorador> comodines){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
         Jugada jugada = new Jugada(this.seleccion);
 
         jugada.aplicarTarots(cartasDeTarot);
-        for(Comodin comodin : comodines){
+        for(IMejorador comodin : comodines){
             comodin.mejorar(jugada);
         }
 
