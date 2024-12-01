@@ -9,7 +9,7 @@ class Efecto{
     + recibirMejora(mejora mejora)
 }
 interface IMejora{
-  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje)
+  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje, int puntos, int multiplicador)
 }
 class PuntajeJugada{
   - puntos : Int
@@ -26,29 +26,52 @@ class PuntajeJugada{
 }
 
 class MultiplicaMultiplicador implements IMejora{
-  - cantidad: int
+   
 }
 
 class MultiplicaPuntos implements IMejora{
-  - cantidad: int
+   
   }
 
 class SumaFichas implements IMejora{
-  - cantidad: int
+   
   }
 
 
 class SumaAMultiplicador implements IMejora{
-  - cantidad: int
+   
   }
 
 
 class SumaPuntos implements IMejora{
-  - cantidad: int
+   
   }
+  
+class CartaDeTarot{
+    - nombre : String
+    - descripcion : String
+    - mejora : Mejora
+    - condicionDeMejora : ICondicionDeMejora
+    - sobre : String
+    - ejemplar : String
+}
+  
+class Comodin{
+  -  nombre String
+  -  descripcion String
+  -  activacion: ICondicionMejora
+  -  efecto : Mejora
+  -  comodines : List<Comodin>
+}
+class Mejora{
+  - puntos: int 
+  - multiplicador : int 
+  + Mejora(int puntos, int multiplicador)
+}
+Mejora o-- IMejora
 Efecto o- "0..*" IMejora 
 IMejora .> PuntajeJugada :conoce
 
-Comodin o-- "1..*" IMejora
-Tarot o-- IMejora
+Comodin o-- Mejora
+Tarot o-- Mejora
 

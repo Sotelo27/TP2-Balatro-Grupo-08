@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,10 +16,15 @@ public class Ronda {
 
     public Ronda(){ }
 
-    public Puntaje calcularPuntaje(){
-        Puntaje puntaje = new Puntaje();
+    public Ronda(int numero, int manos, int descartes ){
+        this.limites = new AccionesDisponibles(manos, descartes);
+        this.accionesRalizadas = new ArrayList<IAccion>();
+    }
+
+    public PuntajeJugada obtenerPuntaje(){
+        PuntajeJugada puntaje = new PuntajeJugada(0,1);
         for(IAccion accion : this.accionesRalizadas){
-            // accion.sumarAPuntaje(puntaje);
+            accion.aplicaPuntajeDeAccion(puntaje);
         }
         return puntaje;
     }

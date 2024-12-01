@@ -1,29 +1,38 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
+import edu.fiuba.algo3.modelo.CreadorDeCondicion;
+import edu.fiuba.algo3.modelo.ICondicionMejora;
 import edu.fiuba.algo3.modelo.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
+import edu.fiuba.algo3.modelo.CartaDePoker;
 
 public class CartaDeTarot implements IMejorador{
     private String nombre;
     private String descripcion;
     private Mejora mejora;
+    private ICondicionMejora condicion;
     private String sobre;
     private String ejemplar;
 
+/*
+    public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion) {
+        this.condicion = condicion;
+        this.nombre = nombre;
+        this.mejora = mejora;
+    } */
 
-    public CartaDeTarot() {}
-
-    public CartaDeTarot(String nombre, Mejora mejora, String sobre, String ejemplar) {
+    public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion, String sobre, String ejemplar) {
         this.nombre = nombre;
         this.mejora = mejora;
         this.sobre = sobre;
         this.ejemplar = ejemplar;
+        this.condicion = condicion;
     }
 
     @Override
     public void mejorar(IMejorable mejorable){
-        mejorable.siContieneAplicarMejora(this.sobre, this.ejemplar, this.mejora);
-    }
 
+        condicion.aplicarMejora(mejorable, this.mejora, this.sobre, this.ejemplar);
+    }
 
 
     //Setters
@@ -36,7 +45,7 @@ public class CartaDeTarot implements IMejorador{
 
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
-    public void setEjemplar(String unEjemplar) {this.ejemplar = unEjemplar;}
+    public void setEjemplar(IMejorable unEjemplar) {this.ejemplar = unEjemplar.getNombre();}
 
 
 

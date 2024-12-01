@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.HashMap;
+import edu.fiuba.algo3.modelo.CondicionesDeMejora.ActivarAlAzar;
+import edu.fiuba.algo3.modelo.CondicionesDeMejora.EsDescarte;
+import edu.fiuba.algo3.modelo.CondicionesDeMejora.RestriccionACombinacion;
+import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
+
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class CondicionDeMejoraParser {
 
@@ -23,15 +26,15 @@ public class CondicionDeMejoraParser {
             Map activacionMap = (Map) activacion;
 
             if(activacionMap.containsKey("Mano Jugada")){
-                return new RestriccionACombinacion((String) activacionMap.get("Mano Jugada"));
+                return new RestriccionACombinacion();
             }
             if(activacionMap.containsKey("1 en")){
-                return new ActivarAlAzar((int) activacionMap.get("1 en"));
+                return new ActivarAlAzar((new Random()));
             }
 
 
         }
 
-        return new RestriccionACombinacion("Flush");
+        return new RestriccionACombinacion();
     }
 }

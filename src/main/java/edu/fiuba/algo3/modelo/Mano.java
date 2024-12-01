@@ -32,7 +32,7 @@ public class Mano {
     }
 
     private boolean puedoAgregarCard(){
-        return (this.mano.size() <= 8);
+        return (this.mano.size() < 8);
     }
 
     public void seleccionarCarta(CartaDePoker cartaElegida){
@@ -42,30 +42,31 @@ public class Mano {
 
         this.seleccion.add(cartaElegida);
     }
-    public List<CartaDePoker> realizarDescarte(Ronda ronda){
+    public boolean realizarDescarte(Ronda ronda, List<IMejorador> comodines){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
 
-       //Descarte descarte = new Descarte(this.seleccion);
-        //for(Comodin comodin : comodines){
-        //            comodin.mejorar(descarte);
-        //}
-        //
-        //return ronda.agregarAccion(descarte);
-        return this.seleccion;
+        Descarte descarte = new Descarte(this.seleccion);
+        for(IMejorador comodin : comodines){
+                    comodin.mejorar(descarte);
+        }
+
+        return ronda.agregarAccion(descarte);
     }
 
-    public boolean realizarJugada(Ronda ronda, List<IMejorador> cartasDeTarot, List<Comodin> comodines){
+    public boolean realizarJugada(Ronda ronda, List<IMejorador> cartasDeTarot, List<IMejorador> comodines){
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
         Jugada jugada = new Jugada(this.seleccion);
 
         jugada.aplicarTarots(cartasDeTarot);
-        for(Comodin comodin : comodines){
+        for(IMejorador comodin : comodines){
             comodin.mejorar(jugada);
         }
+
+        ronda.agregarAccion(jugada);
         return true;
     }
 
@@ -74,11 +75,13 @@ public class Mano {
 
         if (this.seleccion.size() == 1) {
             CartaDePoker cartaAMejorar = this.seleccion.get(0);
-            //cartaDeTarot.setEjemplar(cartaAMejorar.getNombre());
+            cartaDeTarot.setEjemplar(cartaAMejorar);
         }
-
     }
 
+    public void activarTarotSobreCarta(CartaDeTarot cartaDeTarot, CartaDePoker carta){
+        cartaDeTarot.setEjemplar(carta);
+    }
 
 
 

@@ -8,7 +8,7 @@ public class Jugador {
     private String nombre;
     private Ficha fichas;
     private Mano mano;
-    private List<Comodin> comodinesActivos;
+    private List<IMejorador> comodinesActivos;
     private List<IMejorador> tarotsActivos;
     private Mazo mazo;
 
@@ -27,12 +27,22 @@ public class Jugador {
         this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos);
     }
     public void realizarDescarte(Ronda ronda){
-        this.mano.realizarDescarte( ronda);
+        if(this.mano.realizarDescarte(ronda,this.comodinesActivos) ){
+            this.mano.recargarManoConMazo(this.mazo);
+        }
+
     }
+
     public void activarTarot(CartaDeTarot tarot){
+        this.mano.activarTarot(tarot);
         this.tarotsActivos.add(tarot);
     }
-    public void activarComodin(Comodin comodin){
-        this.comodinesActivos.add(comodin);
+
+    public void activarTarot(CartaDeTarot tarot, CartaDePoker cartaObjetivo){
+        this.mano.activarTarotSobreCarta(tarot, cartaObjetivo);
+        this.tarotsActivos.add(tarot);
+    }
+    public void activarComodin(IMejorador mejorador){
+        this.comodinesActivos.add(mejorador);
     }
 }
