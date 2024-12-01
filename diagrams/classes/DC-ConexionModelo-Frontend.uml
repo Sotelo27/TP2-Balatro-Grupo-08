@@ -1,0 +1,102 @@
+
+@startuml
+Class Algo3Balatro {
+  + Algo3Balatro(String NombreJugador, LectorDeJSON lectorDeJSON)
+  + iniciar()
+  + seleccionarCartaDePoker(string nombreDeCarta)
+  + activarTarotSobreSeleccionada(string nombreDelTarot)
+  + activarComodinSobreSeleccionada(string nombreDelComodin)
+  + verPuntajeDeRonda() : Puntaje
+  + realizarJugada()
+  + realizarDescarte()
+  
+  + agregarObserver(ModelObserver observador)  
+  + quitarObserver(ModelObserver observador)    
+  
+  + getCartasTienda(): List<String>
+  + getCartasEnMano(): List<String>
+  + getPuntajeDeRonda(): int 
+  + getMultiplicadorDeRonda(): int 
+}
+
+class JSONReader{
+  + readCartas()
+  + readCartasDeTarot()
+  + readComodines()
+  + readTiendas()
+}
+
+
+
+Interface ModelObservers{
+  {abstract} + update()
+}
+class BalatroController{
+  + newGame(string nombreDelJugador)
+  + exit()
+}
+class RoundSceneController extends BalatroController{
+  + seleccionarCarta(Sring nombreDeCarta)
+  + realizarDescarte()
+  + realizarJugada()
+  + activarComodinSobreSeleccionada(String nombreDeCarta)
+  + activarTarotSobreSeleccionada(String nombreDeCarta)
+}
+
+class ShopSceneController extends BalatroController{
+  + seleccionarCarta(Sring nombreDeCarta)
+}
+class ShopScene{
+  -rootSrc : "/fxml/shopScene.fxml"
+}
+class RoundScene{
+  -rootSrc : "/fxml/roundScene.fxml"
+}
+
+class TitleScene{
+  -rootSrc : "/fxml/titleScene.fxml"
+}
+
+class PlayerScene{
+  -rootSrc : "/fxml/playerScene.fxml"
+}
+
+class SceneController{
+  + switchToMainScene()
+  + switchToTitleScene()
+  + switchToPlayerScene()
+  + switchToRoundScene()
+}
+class PlayerSceneController{
+  + saveName()
+  + startGame()
+  + returnToTitle()
+}
+class TitleSceneController{
+  + start()
+  + exit()
+}
+Algo3Balatro --o BalatroController
+
+
+TitleSceneController --o TitleScene
+PlayerSceneController --o PlayerScene
+RoundSceneController --o RoundScene
+ShopSceneController --o ShopScene
+
+PlayerScene <.. SceneController
+TitleScene <.. SceneController
+RoundScene <.. SceneController
+ShopScene <.. SceneController
+
+Algo3Balatro o-- ModelObservers
+BalatroController .|> ModelObservers : para que implementen sus hijas
+
+JSONReader <... BalatroController
+JSONReader <.. Algo3Balatro
+
+JsonBalatroReader <.. JSONReader
+JsonComodinReader <.. JSONReader
+JsonTarotReader <.. JSONReader
+JsonMazoReader <.. JSONReader
+@enduml
