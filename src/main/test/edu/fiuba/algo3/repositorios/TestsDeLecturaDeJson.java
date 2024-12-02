@@ -1,5 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
-import edu.fiuba.algo3.repositorios.*;
+package edu.fiuba.algo3.repositorios;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import org.junit.Test;
 import java.io.IOException;

@@ -1,8 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.CondicionesDeMejora;
+import edu.fiuba.algo3.modelo.ICondicionMejora;
+import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
 
-public class RestriccionACarta implements ICondicionMejora{
+public class RestriccionACarta implements ICondicionMejora {
 
     private final String contexto = "carta";
     private String elemento;

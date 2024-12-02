@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.CondicionesDeMejora;
 import edu.fiuba.algo3.modelo.ICondicionMejora;
-import edu.fiuba.algo3.modelo.Mejora;
+import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
 public class EsDescarte implements ICondicionMejora {

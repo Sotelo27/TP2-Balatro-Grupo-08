@@ -1,9 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Parsers;
 
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.ActivarAlAzar;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.EsDescarte;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.RestriccionACombinacion;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
+import edu.fiuba.algo3.modelo.ICondicionMejora;
 
 import java.util.Map;
 import java.util.Random;

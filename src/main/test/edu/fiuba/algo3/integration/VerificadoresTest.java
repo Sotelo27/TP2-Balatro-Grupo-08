@@ -1,11 +1,9 @@
-package edu.fiuba.algo3.entrega_2;
+package edu.fiuba.algo3.integration;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import edu.fiuba.algo3.modelo.CombinacionesDePoker.*;
-import edu.fiuba.algo3.modelo.Verificadores.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.mockito.Mockito;
 

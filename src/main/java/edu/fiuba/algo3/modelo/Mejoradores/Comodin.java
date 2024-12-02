@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.*;
-
-import java.util.List;
+import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
 
 public class Comodin implements IMejorador{
     private String nombre;

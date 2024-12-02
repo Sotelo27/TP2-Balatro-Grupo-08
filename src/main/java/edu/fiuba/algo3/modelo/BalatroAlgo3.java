@@ -32,6 +32,7 @@ public class BalatroAlgo3{
 
     public void realizarJugada(){
         // this.jugador.realizarJugada(this.ronda);
+        // validar victoria de todas las rondas o la derrota en alguna para cambiar de estado
     }
 
     public void realizarDescarte(){

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Jugador {
     private String nombre;
-    private Ficha fichas;
     private Mano mano;
     private List<IMejorador> comodinesActivos;
     private List<IMejorador> tarotsActivos;

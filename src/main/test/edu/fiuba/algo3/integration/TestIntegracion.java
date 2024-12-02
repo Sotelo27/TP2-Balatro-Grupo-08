@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.integration;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.*;
 import edu.fiuba.algo3.modelo.Mejoradores.*;

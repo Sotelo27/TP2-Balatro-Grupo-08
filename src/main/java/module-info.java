@@ -19,4 +19,10 @@ module edu.fiuba.algo3 {
     opens edu.fiuba.algo3.controllers to  javafx.fxml;
     exports edu.fiuba.algo3.modelo.CondicionesDeMejora;
     opens edu.fiuba.algo3.modelo.CondicionesDeMejora to com.fasterxml.jackson.databind;
+    exports edu.fiuba.algo3.modelo.Parsers;
+    opens edu.fiuba.algo3.modelo.Parsers to com.fasterxml.jackson.databind;
+    exports edu.fiuba.algo3.modelo.EstadoDeCarta;
+    opens edu.fiuba.algo3.modelo.EstadoDeCarta to com.fasterxml.jackson.databind;
+    exports edu.fiuba.algo3.modelo.Mejoras;
+    opens edu.fiuba.algo3.modelo.Mejoras to com.fasterxml.jackson.databind;
 }

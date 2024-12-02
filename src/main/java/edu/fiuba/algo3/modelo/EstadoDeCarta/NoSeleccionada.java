@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.EstadoDeCarta;
 
 public class NoSeleccionada extends EstadoDeCarta {
     public NoSeleccionada() {
