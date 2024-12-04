@@ -10,6 +10,7 @@ public class Mazo implements ITieneCartas {
 
     public Mazo() {
         this.cartas = new ArrayList<>();
+        this.utilizadas = new ArrayList<>();
     }
 
     //Setters
@@ -24,8 +25,10 @@ public class Mazo implements ITieneCartas {
 
     @Override
     public CartaDePoker tomarCarta() {
-        int randomCard = new Random().nextInt(cartas.size());
-        return cartas.remove(randomCard);
+        int randomCard = new Random().nextInt(this.cartas.size());
+        CartaDePoker carta = cartas.get(randomCard);
+        this.utilizadas.add(carta);
+        return carta;
     }
 
     public boolean tieneCartasSuficientes() {

@@ -8,20 +8,23 @@ import java.util.List;
 public class BalatroAlgo3{
     private Jugador jugador;
     private List<Ronda> rondas;
+    private Ronda rondaActual;
     private Mazo mazo;
 
 
     public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
-
-         this.mazo.setMazo(creadorDeObjetos.construirMazo());
-         this.jugador = new Jugador(nombreDelJugador, mazo);
-         this.rondas = creadorDeObjetos.construirBalatro();
+        this.mazo = new Mazo();
+        this.mazo.setMazo(creadorDeObjetos.construirMazo());
+        this.jugador = new Jugador(nombreDelJugador, mazo);
+        this.rondas = creadorDeObjetos.construirRondas();
+        this.rondaActual = rondas.get(0);
     }
 
     public void iniciarJuego(){
     }
 
     public void seleccionarCartaDePoker(String nombre){
+        this.jugador.seleccionarCarta(nombre);
     }
 
     public void activarTarot(String nombre){
@@ -29,9 +32,14 @@ public class BalatroAlgo3{
 
     public void activarComodin(String nombre){
     }
-
+    public int obtenerPuntajeRonda(){
+        return this.rondaActual.obtenerPuntaje().asInt();
+    }
+    public List<String> getCartasEnMano(){
+        return jugador.getCartasEnMano();
+    }
     public void realizarJugada(){
-        // this.jugador.realizarJugada(this.ronda);
+        this.jugador.realizarJugada(this.rondaActual);
         // validar victoria de todas las rondas o la derrota en alguna para cambiar de estado
     }
 
@@ -39,4 +47,12 @@ public class BalatroAlgo3{
         // this.jugador.realizarDescarte(this.ronda)
     }
     public void setEstado(EstadoJuego estado){};
+
+    public List<String> getCartasSeleccionadas() {
+        return this. jugador.getCartasSeleccionadas();
+    }
+
+    public List<String> getCartasDeTienda() {
+        return this.rondaActual.getArticulosTienda();
+    }
 }

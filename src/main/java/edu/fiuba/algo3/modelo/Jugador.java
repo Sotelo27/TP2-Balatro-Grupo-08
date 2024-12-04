@@ -22,6 +22,11 @@ public class Jugador {
         this.mano.seleccionarCarta(cartasSeleccionada);
     }
 
+
+    public void seleccionarCarta(String  cartasSeleccionada){
+        this.mano.seleccionarCarta(cartasSeleccionada);
+    }
+
     public void realizarJugada(Ronda ronda){
         this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos);
     }
@@ -30,6 +35,9 @@ public class Jugador {
             this.mano.recargarManoConMazo(this.mazo);
         }
 
+    }
+    public List<String> getCartasEnMano(){
+        return this.mano.getCartas();
     }
 
     public void activarTarot(CartaDeTarot tarot){
@@ -43,5 +51,9 @@ public class Jugador {
     }
     public void activarComodin(IMejorador mejorador){
         this.comodinesActivos.add(mejorador);
+    }
+
+    public List<String> getCartasSeleccionadas() {
+        return this.mano.getSeleccionadas();
     }
 }

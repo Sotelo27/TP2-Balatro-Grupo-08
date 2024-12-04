@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.repositorios;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,13 +8,9 @@ import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.Tienda;
-import edu.fiuba.algo3.modelo.*;
 
-import java.io.File;
 import java.io.IOException;
-
-import java.io.File;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +18,14 @@ public class JsonBalatroReader {
     private static final String PATH = "json/balatro.json";
 
     public List<Ronda> readBalatro() throws IOException {
-        // Ruta al archivo
-        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
+        // Cargar el recurso como InputStream
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PATH);
+        if (inputStream == null) {
+            throw new IOException("El archivo " + PATH + " no se encuentra en el classpath.");
+        }
+
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(file);
+        JsonNode root = mapper.readTree(inputStream);
         List<Ronda> rondas = new ArrayList<>();
         List<CartaDeTarot> tarots = new ArrayList<>();
         JsonNode rondaNode = root.path("rondas");
@@ -42,6 +43,7 @@ public class JsonBalatroReader {
                 ronda.setManos(manos);
                 ronda.setDescartes(descartes);
                 ronda.setPuntajeASuperar(puntajeASuperar);
+
                 // Leer y asignar la tienda
                 JsonNode tiendaNode = rondaJson.path("tienda");
                 Tienda tienda = new Tienda();

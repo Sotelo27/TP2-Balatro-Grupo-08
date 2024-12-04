@@ -35,6 +35,11 @@ public class Mano {
         return (this.mano.size() < 8);
     }
 
+    public void seleccionarCarta(String cartaElegida){
+        CartaDePoker cartaSeleccionada = this.mano.stream().filter(carta -> carta.getNombre().equals(cartaElegida)).findFirst().get();
+        this.seleccion.add(cartaSeleccionada);
+    }
+
     public void seleccionarCarta(CartaDePoker cartaElegida){
         if(!this.mano.remove(cartaElegida)){
             throw new ErrorNoPuedeSelecionarCartasQueNoEstenEnMano("No se puede seleccionar una carta porque no esta en el mazo");
@@ -84,12 +89,19 @@ public class Mano {
     }
 
 
+    public List<String> getCartas() {
+        List<String> cartas = new ArrayList<>();
+        for(CartaDePoker carta : this.mano){
+            cartas.add(carta.getNombre());
+        }
+        return cartas;
+    }
 
-
-
-
-
-
-
-
+    public List<String> getSeleccionadas() {
+        List<String> cartas = new ArrayList<>();
+        for(CartaDePoker carta : this.seleccion){
+            cartas.add(carta.getNombre());
+        }
+        return cartas;
+    }
 }

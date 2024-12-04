@@ -21,7 +21,7 @@ public class LectorDeJSON {
         }
 
         public List<Ronda> construirBalatro() throws IOException {
-            JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
+            JsonBalatroReader jsonBalatroReader = new JsonBalatroReader(); // eliminar
             return jsonBalatroReader.readBalatro();
         }
 
@@ -40,4 +40,8 @@ public class LectorDeJSON {
             return jsonComodinReader.readCombinaciones();
         }
 
+    public List<Ronda> construirRondas() throws  IOException {
+        JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
+        return jsonBalatroReader.readBalatro();
+    }
 }

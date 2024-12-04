@@ -79,4 +79,9 @@ public class PuntajeJugada {
     public void sumarPuntaje(PuntajeJugada puntajeJugada) {
         this.puntos += puntajeJugada.getPuntos();
     }
+
+
+    public int asInt() {
+        return this.puntos*this.multiplicador;
+    }
 }
