@@ -19,4 +19,6 @@ public class ShopSceneController {
 
     @FXML
     private ImageView thrdCardOffert;
+
+
 }

@@ -5,21 +5,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class CombinacionDeComodines implements IMejorador{
-	private final List<Comodin> comodines;
-	private final String nombre;
-	private final String descripcion;
+	private  List<Comodin> comodines;
+	private  String nombre;
+	private  String descripcion;
 
-	@JsonCreator
-	public CombinacionDeComodines(@JsonProperty("nombre") String nombre,@JsonProperty("descripcion") String descripcion, @JsonProperty("comodines") List<Comodin> comodines) {
-		this.nombre = nombre;
-		this.comodines = comodines;
-		this.descripcion = descripcion;
+	public CombinacionDeComodines() {
+		
 	}
+
 	public CombinacionDeComodines(String nombre, List<Comodin> comodines) {
 		this.nombre = nombre;
 		this.comodines = comodines;
-		this.descripcion = "";
 	}
+
+	public void setComodines(List<Comodin> comodines) {
+		this.comodines = comodines;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	@Override
 	public void mejorar(IMejorable mejorable){
 		for (Comodin comodin: this.comodines){
@@ -27,4 +37,7 @@ public class CombinacionDeComodines implements IMejorador{
 		}
 	}
 
+    public String getNombre() {
+		return this.nombre;
+    }
 }

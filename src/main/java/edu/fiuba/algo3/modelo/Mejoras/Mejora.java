@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.modelo.Mejoras;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.fiuba.algo3.modelo.PuntajeJugada;
 
 public class Mejora{
 
+    @JsonProperty("puntos")
     private int puntos;
+    @JsonProperty("multiplicador")
     private int multiplicador;
     private IMejora mejora;
 
