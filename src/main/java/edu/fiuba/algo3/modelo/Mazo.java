@@ -10,6 +10,7 @@ public class Mazo implements ITieneCartas {
 
     public Mazo() {
         this.cartas = new ArrayList<>();
+        this.utilizadas = new ArrayList<>();
     }
 
     //Setters
@@ -24,18 +25,10 @@ public class Mazo implements ITieneCartas {
 
     @Override
     public CartaDePoker tomarCarta() {
-        int randomCard = new Random().nextInt(cartas.size());
-        return cartas.remove(randomCard);
-    }
-
-    public void realizarDescarte(Ronda ronda, Mano mano) {
-        
-        List<CartaDePoker> yaUtilizadas = mano.realizarDescarte(ronda);
-        
-        for(CartaDePoker carta : yaUtilizadas) {
-            //mano.recibirCard(cartas.remove(carta));
-            this.utilizadas.add(carta);
-        }
+        int randomCard = new Random().nextInt(this.cartas.size());
+        CartaDePoker carta = cartas.get(randomCard);
+        this.utilizadas.add(carta);
+        return carta;
     }
 
     public boolean tieneCartasSuficientes() {

@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 
 public class Ronda {
     private AccionesDisponibles limites;
@@ -13,12 +17,20 @@ public class Ronda {
     private Tienda tienda;
 
 
-    public Ronda(){ }
+    public Ronda(){
+        this.limites = new AccionesDisponibles(manos, descartes);
+        this.accionesRalizadas = new ArrayList<IAccion>();
+    }
 
-    public Puntaje calcularPuntaje(){
-        Puntaje puntaje = new Puntaje();
+    public Ronda(int numero, int manos, int descartes ){
+        this.limites = new AccionesDisponibles(manos, descartes);
+        this.accionesRalizadas = new ArrayList<IAccion>();
+    }
+
+    public PuntajeJugada obtenerPuntaje(){
+        PuntajeJugada puntaje = new PuntajeJugada(0,1);
         for(IAccion accion : this.accionesRalizadas){
-            // accion.sumarAPuntaje(puntaje);
+            accion.aplicaPuntajeDeAccion(puntaje);
         }
         return puntaje;
     }
@@ -42,5 +54,9 @@ public class Ronda {
 
     public void setTienda(Tienda tienda) {
         this.tienda = tienda;
+    }
+
+    public List<String> getArticulosTienda() {
+        return this.tienda.getItems();
     }
 }

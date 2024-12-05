@@ -3,23 +3,20 @@ import edu.fiuba.algo3.modelo.Mejoradores.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
-    List<Comodin> comodines;
+    Comodin comodines;
     List<CartaDeTarot> tarots;
-    List<CombinacionDeComodines> combinaciones;
+    CombinacionDeComodines combinaciones;
     CartaDePoker carta;
 
-    public List<Comodin> getComodines() {
-        return comodines;
-    }
-
-    public void setComodines(List<Comodin> comodines) {
+    public void setComodin(Comodin comodines) {
         this.comodines = comodines;
     }
 
-    public void setCombinaciones(List<CombinacionDeComodines> combinaciones) {
+    public void setCombinacion(CombinacionDeComodines combinaciones) {
         this.combinaciones = combinaciones;
     }
 
@@ -37,5 +34,16 @@ public class Tienda {
 
     public void setCarta(CartaDePoker carta) {
         this.carta = carta;
+    }
+
+    public List<String> getItems() {
+        List<String> items = new ArrayList<>();
+        items.add(comodines.getNombre());
+        for (CartaDeTarot tarot : tarots) {
+            items.add(tarot.getNombre());
+        }
+        items.add(combinaciones.getNombre());
+        items.add(carta.getNombre());
+        return items;
     }
 }

@@ -30,6 +30,7 @@ public class VerificadorRoyalFlush extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
+        ordenarPorNumero(cartas);
         if (esDeTipo(cartas)) {
             return new RoyalFlush(this.listaPuntuables);
         }

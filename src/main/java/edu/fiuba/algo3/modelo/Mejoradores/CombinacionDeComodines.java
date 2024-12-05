@@ -15,11 +15,16 @@ public class CombinacionDeComodines implements IMejorador{
 		this.comodines = comodines;
 		this.descripcion = descripcion;
 	}
-
+	public CombinacionDeComodines(String nombre, List<Comodin> comodines) {
+		this.nombre = nombre;
+		this.comodines = comodines;
+		this.descripcion = "";
+	}
 	@Override
 	public void mejorar(IMejorable mejorable){
 		for (Comodin comodin: this.comodines){
 			comodin.mejorar(mejorable);
 		}
 	}
+
 }

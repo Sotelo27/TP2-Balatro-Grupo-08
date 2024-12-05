@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.Estados;
 
-import edu.fiuba.algo3.modelo.Balatro;
+import edu.fiuba.algo3.modelo.BalatroAlgo3;
 
 public class EstadoRonda extends EstadoJuego{
-    public EstadoRonda(Balatro juego) {
+    public EstadoRonda(BalatroAlgo3 juego) {
         super(juego);
     }
 

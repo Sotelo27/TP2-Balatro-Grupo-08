@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+
 class AccionesDisponibles{
 	private int manosDisponibles;
 	private int descartesDisponibles;
@@ -9,7 +10,7 @@ class AccionesDisponibles{
 	}
 
 	public boolean superaLimiteDeDescartes(int descartes){
-		return this.descartesDisponibles > descartes;
+		return this.descartesDisponibles < descartes;
 	}
 
 	public boolean quedanManosDisponibles(int manos){
