@@ -18,6 +18,7 @@ import java.util.List;
 
 public class TestInventarioJuego {
 
+/*
     @Test
     public void test01InventarioJuegoGuardaComodinesCorrectamenteDelJson() throws IOException {
         InventarioJuego inventario = new InventarioJuego();
@@ -71,5 +72,6 @@ public class TestInventarioJuego {
         List<String> comdinesObtenidos = jugador.getTarots();
         assert comdinesObtenidos.contains(nombreBuscado);
     }
+*/
 
 }

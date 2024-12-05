@@ -9,6 +9,7 @@ public class Jugador {
     private Mano mano;
     private List<IMejorador> comodinesActivos;
     private List<IMejorador> tarotsActivos;
+    private List<IMejorador> activables;
     private Mazo mazo;
 
     public Jugador(String nombre, Mazo mazo){
@@ -17,6 +18,7 @@ public class Jugador {
         this.mano = new Mano(mazo);
         this.comodinesActivos = new ArrayList<>();
         this.tarotsActivos = new ArrayList<>();
+        this.activables = new ArrayList<>();
     }
     public void seleccionarCarta(CartaDePoker cartasSeleccionada){
         this.mano.seleccionarCarta(cartasSeleccionada);
@@ -58,5 +60,20 @@ public class Jugador {
 
     public List<String> getCartasSeleccionadas() {
         return this.mano.getSeleccionadas();
+    }
+
+
+    public void recibirActivable(IMejorador activable) throws ErrorSeExcedenLosLimitesDeActivables {
+        if (this.activables.size() < 2) {
+            this.activables.add(activable);
+        }
+        else{
+            throw new ErrorSeExcedenLosLimitesDeActivables("Demasiados activables sin utilizar");
+        }
+    }
+    public List<String> getActivables() {
+        List<String> activables = new ArrayList<>();
+        this.activables.forEach(activable -> activables.add(activable.getNombre()));
+        return activables;
     }
 }
