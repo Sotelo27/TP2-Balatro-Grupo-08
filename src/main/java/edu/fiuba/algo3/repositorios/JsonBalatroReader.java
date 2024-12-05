@@ -40,7 +40,6 @@ public class JsonBalatroReader {
                 ronda.setDescartes(descartes);
                 ronda.setPuntajeASuperar(puntajeASuperar);
 
-                // Leer y asignar la tienda mediante un método separado
                 Tienda tienda = leerTienda(rondaJson.path("tienda"), mapper);
                 ronda.setTienda(tienda);
 
