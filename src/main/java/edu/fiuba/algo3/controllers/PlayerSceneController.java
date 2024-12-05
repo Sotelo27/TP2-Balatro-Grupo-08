@@ -46,4 +46,12 @@ public class PlayerSceneController {
     void backToTitle(ActionEvent event) throws IOException {
         switcher.switchToMainScene(event);
     }
+
+    @FXML
+    void initialize() {}
+
+    @FXML
+    void seleccionarCarta(ActionEvent event) {
+
+    }
 }

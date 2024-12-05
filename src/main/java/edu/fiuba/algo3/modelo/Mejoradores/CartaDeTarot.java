@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.fiuba.algo3.modelo.ICondicionMejora;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;

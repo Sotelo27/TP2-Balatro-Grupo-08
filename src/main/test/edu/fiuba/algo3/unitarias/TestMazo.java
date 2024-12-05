@@ -19,7 +19,7 @@ public class TestMazo {
 //        for(int i= 0 ; i < 8; i++){
 //            cartasParaElMazo.add(new CartaDePoker());
 //        }
-//        mazo.setMazo(cartasParaElMazo);
+//        mazo.setCartas(cartasParaElMazo);
 //        Mano mano = new Mano(mazo);
 //        for(int i = 0 ; i < 4; i++){
 //            mano.seleccionarCarta((cartasParaElMazo.get(1)));
@@ -37,7 +37,7 @@ public class TestMazo {
 //        for(int i= 0 ; i < 8; i++){
 //            cartasParaElMazo.add(new CartaDePoker());
 //        }
-//        mazo.setMazo(cartasParaElMazo);
+//        mazo.setCartas(cartasParaElMazo);
 //        Mano mano = new Mano(mazo);
 //        for(int i = 0 ; i < 4; i++){
 //            mano.seleccionarCarta((cartasParaElMazo.get(1)));
