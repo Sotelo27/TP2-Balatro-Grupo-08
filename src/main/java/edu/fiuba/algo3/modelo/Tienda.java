@@ -1,50 +1,41 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.Mejoradores.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
-    List<Comodin> comodines;
-    List<CartaDeTarot> tarots;
-    CombinacionDeComodines combinaciones;
+    List<IMejorador> cartasEspeciales;
     CartaDePoker carta;
 
-    public void setComodin(List<Comodin> comodines) {
-        this.comodines = comodines;
-    }
-
-    public void setCombinacion(CombinacionDeComodines combinaciones) {
-        this.combinaciones = combinaciones;
-    }
-
-    public List<CartaDeTarot> getTarots() {
-        return tarots;
-    }
-
-    public void setTarots(List<CartaDeTarot> tarots) {
-        this.tarots = tarots;
-    }
+    public void setCartasEspeciales(List <IMejorador> cartasEspeciales) {this.cartasEspeciales = cartasEspeciales;}
 
     public CartaDePoker getCarta() {
         return carta;
     }
 
+   // public IMejorador getCarta() {
+        //return carta;
+    //}
+
+    public IMejorador seleccionarCartaEspecial(String cartaEspecial){
+        IMejorador cartaObtenida = null;
+        for (IMejorador especiales : cartasEspeciales) {
+            //if (especiales.tieneNombre(cartaEspecial)){
+                //cartaObtenida = especiales;
+            //}
+        }
+        return cartaObtenida;
+    };
+
     public void setCarta(CartaDePoker carta) {
         this.carta = carta;
     }
-
-    public List<String> getItems() {
+   public List<String> getItems() {
         List<String> items = new ArrayList<>();
-        for (Comodin comodin : comodines) {
-            items.add(comodin.getNombre());
+        for (IMejorador especiales : cartasEspeciales) {
+            //items.add(especiales.getNombre());
         }
-        for (CartaDeTarot tarot : tarots) {
-            items.add(tarot.getNombre());
-        }
-        items.add(combinaciones.getNombre());
         items.add(carta.getNombre());
         return items;
     }

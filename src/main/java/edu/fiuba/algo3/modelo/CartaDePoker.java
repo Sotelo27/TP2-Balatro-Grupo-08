@@ -49,14 +49,6 @@ public class CartaDePoker implements IMejorable {
         this.nombre = nombre;
     }
 
-    public void setPalo(String palo) {
-        this.palo = palo;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
@@ -68,11 +60,6 @@ public class CartaDePoker implements IMejorable {
     public String getNombre() {
         return this.nombre;
     }
-
-    public String getNumero() {
-        return this.numero;
-    }
-
 
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora) {
@@ -118,7 +105,6 @@ public class CartaDePoker implements IMejorable {
         return otraCarta.compararNumero(indiceEstaCarta);
     }
 
-
     public boolean suValorEsSiguiente(CartaDePoker otraCarta) {
         int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
         return otraCarta.suValorEsSiguiente(thisIndex);
@@ -128,12 +114,6 @@ public class CartaDePoker implements IMejorable {
         int thisIndex = ORDEN_NUMEROS.indexOf(this.numero);
         return indiceOtraCarta == thisIndex - 1;
     }
-
-   /* @Override
-    public String toString() {
-
-        return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable;
-    }*/
 
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;

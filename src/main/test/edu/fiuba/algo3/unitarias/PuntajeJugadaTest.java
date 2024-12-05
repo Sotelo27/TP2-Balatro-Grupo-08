@@ -70,7 +70,7 @@ public class PuntajeJugadaTest {
             PuntajeJugada puntaje2 = new PuntajeJugada(5,100);
 
             // assert
-            assertTrue(puntaje2.esIgualQue(puntaje2));
+            assertTrue(puntaje2.esIgualQue(puntaje1));
         }
 
         // @Test
