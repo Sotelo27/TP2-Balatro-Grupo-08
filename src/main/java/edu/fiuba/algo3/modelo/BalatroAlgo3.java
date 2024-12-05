@@ -10,13 +10,15 @@ public class BalatroAlgo3{
     private List<Ronda> rondas;
     private Ronda rondaActual;
     private Mazo mazo;
-
+    private InventarioTienda inventario;
 
     public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
         this.jugador = new Jugador(nombreDelJugador, mazo);
         this.rondas = creadorDeObjetos.construirRondas();
         this.rondaActual = rondas.get(0);
+        this.inventario = new InventarioTienda(creadorDeObjetos);
+
     }
 
     public void iniciarJuego(){
