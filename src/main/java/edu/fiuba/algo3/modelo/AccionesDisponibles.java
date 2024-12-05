@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-class AccionesDisponibles{
+public class AccionesDisponibles{
 	private int manosDisponibles;
 	private int descartesDisponibles;
 

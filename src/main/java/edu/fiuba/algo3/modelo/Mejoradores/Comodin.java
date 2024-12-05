@@ -54,7 +54,7 @@ public class Comodin implements IMejorador{
        // this.mejora.setMejora(parser.parse(descripcion));
 
     }
-
+    @Override
     public String getNombre() {
         return this.nombre;
     }

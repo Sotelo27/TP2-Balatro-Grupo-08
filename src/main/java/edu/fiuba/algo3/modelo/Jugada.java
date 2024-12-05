@@ -19,11 +19,11 @@ public class Jugada implements IMejorable, IAccion{
         this.cartas = seleccion;
         this.verificador = new VerificadorRoyalFlush();
         this.combinacion =  this.verificador.verificar(seleccion);
-        this.mejoras = new ArrayList();
+        this.mejoras = new ArrayList<Mejora>();
     };
 
     @Override
-    public void aplicaPuntajeDeAccion(PuntajeJugada puntaje){
+    public PuntajeJugada aplicaPuntajeDeAccion(PuntajeJugada puntaje){
 
         for(CartaDePoker carta: this.cartas) {
             carta.sumarAPuntajeJugada(puntaje);
@@ -34,7 +34,7 @@ public class Jugada implements IMejorable, IAccion{
             mejora.seAplicaAPuntaje(puntaje);
         }
 
-
+        return puntaje;
 
 
     }

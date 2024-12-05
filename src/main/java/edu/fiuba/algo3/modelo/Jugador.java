@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador {
+
     private String nombre;
     private Mano mano;
     private List<IMejorador> comodinesActivos;
@@ -76,4 +77,6 @@ public class Jugador {
         this.activables.forEach(activable -> activables.add(activable.getNombre()));
         return activables;
     }
+
+
 }

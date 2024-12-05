@@ -38,6 +38,8 @@ public class CartaDeTarot implements IMejorador{
         this.condicion = condicion;
     }
 
+
+
     @Override
     public void mejorar(IMejorable mejorable){
 
@@ -57,7 +59,7 @@ public class CartaDeTarot implements IMejorador{
 
     public void setEjemplar(IMejorable unEjemplar) {this.ejemplar = unEjemplar.getNombre();}
 
-
+    @Override
     public String getNombre() {
         return this.nombre;
     }

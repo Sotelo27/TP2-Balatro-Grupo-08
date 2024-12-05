@@ -113,7 +113,7 @@ public class TestBalatroAlgo3   {
 
     @Test
     public void test04SePuedeHacerUnaJugada() throws IOException {
-        Integer puntajeEsperado = 0;
+        int puntajeEsperado = 0;
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre",this.lectorDeJSONMock);
@@ -124,7 +124,7 @@ public class TestBalatroAlgo3   {
         juego.seleccionarCartaDePoker(this.carta2.getNombre());
         juego.realizarJugada();
 
-        Integer puntajeObtenido = juego.obtenerPuntajeRonda();
+        int puntajeObtenido = juego.obtenerPuntajeRonda();
 
         assert puntajeEsperado < puntajeObtenido;
     }

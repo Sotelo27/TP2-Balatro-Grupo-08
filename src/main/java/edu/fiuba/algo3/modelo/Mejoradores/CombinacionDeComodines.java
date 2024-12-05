@@ -35,7 +35,7 @@ public class CombinacionDeComodines implements IMejorador{
 			comodin.mejorar(mejorable);
 		}
 	}
-
+	@Override
     public String getNombre() {
 		return this.nombre;
     }
