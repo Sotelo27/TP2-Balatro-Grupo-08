@@ -25,7 +25,6 @@ public class JsonBalatroReader {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(file);
         List<Ronda> rondas = new ArrayList<>();
-        List<CartaDeTarot> tarots = new ArrayList<>();
         JsonNode rondaNode = root.path("rondas");
         if (rondaNode.isArray()) {
             for (JsonNode rondaJson : rondaNode) {
@@ -61,14 +60,15 @@ public class JsonBalatroReader {
                         }
                     }
                     JsonNode tarotsNode = tiendaNode.path("tarots");
+                    List<CartaDeTarot> tarots = new ArrayList<>();
                     if (tarotsNode.isArray()) {
                         for (JsonNode tarotNode : tarotsNode) {
                             CartaDeTarot tarot = mapper.convertValue(tarotNode, CartaDeTarot.class);
                             tarots.add(tarot);
                         }
                     }
+                    tienda.setTarots(tarots);
                 }
-                tienda.setTarots(tarots);
                 ronda.setTienda(tienda);
                 rondas.add(ronda);
             }
