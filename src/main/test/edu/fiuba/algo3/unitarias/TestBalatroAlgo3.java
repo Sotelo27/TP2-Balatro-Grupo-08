@@ -43,20 +43,20 @@ public class TestBalatroAlgo3   {
         this.carta1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
         this.carta2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5, 1);
         this.carta3 = new CartaDePoker("5 de Corazones", "Corazones", "5", 5, 1);
-        this.carta4 = new CartaDePoker("6 de Picas", "Picas", "6", 6, 1);
+        this.carta4 = new CartaDePoker("5 de Picas", "Picas", "5", 5, 1);
         this.carta5 = new CartaDePoker("6 de Diamantes", "Diamantes", "6", 6, 1);
         this.carta6 = new CartaDePoker("6 de Corazones", "Corazones", "6", 6, 1);
         this.carta7 = new CartaDePoker("6 de Treboles", "Treboles", "6", 6, 1);
         this.carta8 = new CartaDePoker("3 de Picas", "Picas", "3", 3, 1);
         this.cartas = Arrays.asList(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
         LectorDeJSON lectorDeJSONMock = mock(LectorDeJSON.class);
+        this.mazoMock = mock(Mazo.class);
 
-        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.cartas);
+        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
         Ronda rondaMock = mock(Ronda.class);
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(this.rondaMock));
-        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.cartas);
 
-        when(mazoMock.tomarCarta()).thenReturn(
+        when(this.mazoMock.tomarCarta()).thenReturn(
                 carta1, carta2, carta3, carta4, carta5,
                 carta6, carta7, carta8);
 
@@ -65,19 +65,14 @@ public class TestBalatroAlgo3   {
     public void test01seCreaUnaInstanciaDelJuegoConUnLectorDeJSONCorrectamente() throws IOException {
         // arrange
         Integer puntajeEsperado = 0;
-        LectorDeJSON constructor = mock(LectorDeJSON.class);
 
-        when(constructor.construirMazo()).thenReturn(this.cartas);
-        Ronda rondaMock = mock(Ronda.class);
-        when(constructor.construirRondas()).thenReturn(Arrays.asList(rondaMock));
-        List<String > cartasEsperadas = Arrays.asList( this.carta1.getNombre(), this.carta2.getNombre(), this.carta3.getNombre(), this.carta4.getNombre(),
-                this.carta5.getNombre(), this.carta6.getNombre(), this.carta7.getNombre(), this.carta8.getNombre());
+
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", constructor);
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON());
         Integer puntajeObtenido = juego.obtenerPuntajeRonda();
         List<String > cartasObtenidas = juego.getCartasEnMano();
 
-        assert cartasObtenidas.size() == cartasEsperadas.size();
+        assert cartasObtenidas.size() == 8;
         assert puntajeEsperado.equals(puntajeObtenido);
     }
 
@@ -105,13 +100,12 @@ public class TestBalatroAlgo3   {
         // arrange
         List<String> cartasEsperadas = Arrays.asList("item1", "item2", "item3", "item4", "item5");
         Ronda rondaMock = mock(Ronda.class);
+        when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaMock));
         when(rondaMock.getArticulosTienda()).thenReturn(Arrays.asList("item1", "item2", "item3", "item4", "item5"));
-        LectorDeJSON lectorDeJSON = mock(LectorDeJSON.class);
-        when(lectorDeJSON.construirRondas()).thenReturn(Arrays.asList(rondaMock));
-        when(lectorDeJSON.construirMazo()).thenReturn(this.cartas);
+
 
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", lectorDeJSON);
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
         List<String> cartasDeTienda = juego.getCartasDeTienda();
         // assert
         assert cartasDeTienda.equals(cartasEsperadas);
@@ -119,57 +113,61 @@ public class TestBalatroAlgo3   {
 
     @Test
     public void test04SePuedeHacerUnaJugada() throws IOException {
-
-
         Integer puntajeEsperado = 0;
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre",this.lectorDeJSONMock);
         when(this.rondaMock.obtenerPuntaje()).thenReturn(new PuntajeJugada(30,1));
-        List<String > cartasEnMano = juego.getCartasEnMano();
-        juego.seleccionarCartaDePoker(cartasEnMano.get(0));
-        juego.seleccionarCartaDePoker(cartasEnMano.get(1));
+
+
+        juego.seleccionarCartaDePoker(this.carta1.getNombre());
+        juego.seleccionarCartaDePoker(this.carta2.getNombre());
         juego.realizarJugada();
 
         Integer puntajeObtenido = juego.obtenerPuntajeRonda();
 
         assert puntajeEsperado < puntajeObtenido;
     }
-/*
+
     @Test
-    public void test05SePuedeHacerUnaJugadaYSeObtieneElPuntajeCorrectamente(){
+    public void test05SePuedeHacerUnaJugadaYSeObtieneElPuntajeCorrectamente() throws IOException {
         Integer puntajeEsperado = 30;
-        LectorDeJSON lectorDeJSON = mock(LectorDeJSON.class);
-        when(lectorDeJSON.construirMazo()).thenReturn(this.cartas);
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", lectorDeJSON);
+
+        Ronda rondaDePrueba = new Ronda(1, 3,3);
+        when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaDePrueba));
+        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
 
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-        Integer puntajeObtenido = juego.getPuntajeRonda();
+        Integer puntajeObtenido = juego.obtenerPuntajeRonda();
 
         assert puntajeEsperado.equals(puntajeObtenido);
     }
 
     @Test
-    public void test06UnJugadorRealizaVariasJugadasYSuPuntajeSeObtieneCorrectamente(){
+    public void test06UnJugadorRealizaVariasJugadasYSuPuntajeSeObtieneCorrectamente() throws IOException {
         Integer puntajeEsperado = 60;
-        LectorDeJSON lectorDeJSON = mock(LectorDeJSON.class);
-        when(lectorDeJSON.construirMazo()).thenReturn(this.cartas);
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", lectorDeJSON);
+
+        Ronda rondaDePrueba = new Ronda(1, 3,3);
+        when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaDePrueba));
+        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
 
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-
+        Integer puntaje1 = juego.obtenerPuntajeRonda();
 
         juego.seleccionarCartaDePoker(this.carta3.getNombre()); // 5 de Corazones
         juego.seleccionarCartaDePoker(this.carta4.getNombre()); // 5 de Picas
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-        Integer puntajeObtenido = juego.getPuntajeRonda();
+        Integer puntaje2 = juego.obtenerPuntajeRonda();
 
-        assert puntajeEsperado.equals(puntajeObtenido);
+        assert puntajeEsperado.equals(puntaje2);
     }
+/*
     @Test
     public void test07UnJugadorPierdeElJuego(){
         Ronda rondaMock = mock(Ronda.class);

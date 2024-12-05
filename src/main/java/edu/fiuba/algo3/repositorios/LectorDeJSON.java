@@ -15,15 +15,17 @@ import java.util.List;
 
 
 public class LectorDeJSON {
-        public List<CartaDePoker> construirMazo() throws IOException {
-            JsonMazoReader jsonMazoReader = new JsonMazoReader();
-            return jsonMazoReader.readMazo();
-        }
+    public Mazo construirMazo() throws IOException {
+        JsonMazoReader jsonMazoReader = new JsonMazoReader();
+        return jsonMazoReader.readMazo();
+    }
 
-        public List<Ronda> construirBalatro() throws IOException {
-            JsonBalatroReader jsonBalatroReader = new JsonBalatroReader(); // eliminar
-            return jsonBalatroReader.readBalatro();
-        }
+    public List<Ronda> construirRondas() throws  IOException {
+        JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
+        return jsonBalatroReader.readBalatro();
+    }
+
+/*
 
         public List<CartaDeTarot> construirTarots() throws IOException {
             JsonTarotReader jsonTarotReader = new JsonTarotReader();
@@ -39,9 +41,5 @@ public class LectorDeJSON {
             JsonComodinReader jsonComodinReader = new JsonComodinReader();
             return jsonComodinReader.readCombinaciones();
         }
-
-    public List<Ronda> construirRondas() throws  IOException {
-        JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
-        return jsonBalatroReader.readBalatro();
-    }
+*/
 }

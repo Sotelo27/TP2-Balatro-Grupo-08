@@ -52,11 +52,12 @@ public class Mano {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
 
-        Descarte descarte = new Descarte(this.seleccion);
+        Descarte descarte = new Descarte(new ArrayList<>(this.seleccion));
         for(IMejorador comodin : comodines){
                     comodin.mejorar(descarte);
         }
 
+        this.seleccion.clear();
         return ronda.agregarAccion(descarte);
     }
 
@@ -64,15 +65,15 @@ public class Mano {
         if (this.seleccion.isEmpty()) {
             throw new ErrorJugadaVacia("No hay cartas seleccionadas");
         }
-        Jugada jugada = new Jugada(this.seleccion);
+        Jugada jugada = new Jugada(new ArrayList<>(this.seleccion));
 
         jugada.aplicarTarots(cartasDeTarot);
         for(IMejorador comodin : comodines){
             comodin.mejorar(jugada);
         }
 
-        ronda.agregarAccion(jugada);
-        return true;
+        this.seleccion.clear();
+        return ronda.agregarAccion(jugada);
     }
 
 

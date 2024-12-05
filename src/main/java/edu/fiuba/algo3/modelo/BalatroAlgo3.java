@@ -13,8 +13,7 @@ public class BalatroAlgo3{
 
 
     public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
-        this.mazo = new Mazo();
-        this.mazo.setMazo(creadorDeObjetos.construirMazo());
+        this.mazo = creadorDeObjetos.construirMazo();
         this.jugador = new Jugador(nombreDelJugador, mazo);
         this.rondas = creadorDeObjetos.construirRondas();
         this.rondaActual = rondas.get(0);

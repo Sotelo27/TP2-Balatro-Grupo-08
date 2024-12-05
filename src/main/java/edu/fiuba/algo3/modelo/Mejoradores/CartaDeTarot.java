@@ -17,6 +17,7 @@ public class CartaDeTarot implements IMejorador{
         this.nombre = nombre;
         this.mejora = mejora;
     } */
+    public CartaDeTarot() {}
 
     public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion, String sobre, String ejemplar) {
         this.nombre = nombre;
@@ -46,6 +47,10 @@ public class CartaDeTarot implements IMejorador{
     public void setEjemplar(IMejorable unEjemplar) {this.ejemplar = unEjemplar.getNombre();}
 
 
+    public void setEjemplar(String unEjemplar) {this.ejemplar = unEjemplar;}
 
 
+    public String getNombre() {
+        return nombre;
+    }
 }

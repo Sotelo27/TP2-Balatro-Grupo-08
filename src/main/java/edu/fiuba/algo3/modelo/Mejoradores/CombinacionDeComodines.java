@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
-public class CombinacionDeComodines implements IMejorador{
+public class CombinacionDeComodines implements IMejorador {
 	private final List<Comodin> comodines;
 	private final String nombre;
 	private final String descripcion;
@@ -27,4 +27,7 @@ public class CombinacionDeComodines implements IMejorador{
 		}
 	}
 
+    public String getNombre() {
+		return nombre;
+    }
 }

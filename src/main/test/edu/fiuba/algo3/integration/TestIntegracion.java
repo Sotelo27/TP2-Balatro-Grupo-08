@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.repositorios.*;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
+import java.io.IOException;
 import java.util.Random;
 
 import org.junit.Before;
@@ -86,15 +87,11 @@ public class TestIntegracion {
     }
 
     @Test
-    public void test01SeCreaElMazoYEsteRecibeAlMenos8CartasParaComenzar() {
+    public void test01SeCreaElMazoYEsteRecibeAlMenos8CartasParaComenzar() throws IOException {
         JsonMazoReader constructor = new JsonMazoReader();
-        Mazo mazoParaJugador = new Mazo();
 
-        try {
-            mazoParaJugador.setMazo(constructor.readMazo());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Mazo mazoParaJugador = constructor.readMazo();
+
         assertTrue(mazoParaJugador.tieneCartasSuficientes());
     }
 

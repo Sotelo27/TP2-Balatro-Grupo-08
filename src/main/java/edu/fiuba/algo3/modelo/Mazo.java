@@ -8,8 +8,8 @@ public class Mazo implements ITieneCartas {
     private List<CartaDePoker> cartas;
     private List<CartaDePoker> utilizadas;
 
-    public Mazo() {
-        this.cartas = new ArrayList<>();
+    public Mazo(List<CartaDePoker> cartas) {
+        this.cartas = cartas;
         this.utilizadas = new ArrayList<>();
     }
 

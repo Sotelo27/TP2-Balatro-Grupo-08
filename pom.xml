@@ -9,7 +9,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit.jupiter.version>5.4.0</junit.jupiter.version>
-    <mockito-mockito-core-version>3.3.0</mockito-mockito-core-version>
+    <mockito-mockito-core-version>5.14.2</mockito-mockito-core-version>
     <maven-surefire-version>3.0.0-M3</maven-surefire-version>
     <archunit-version>0.21.0</archunit-version>
     <!--
@@ -151,9 +151,22 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-version}</version>
         <configuration>
-          <argLine>${argLine} -XX:MaxPermSize=256m</argLine>
+          <argLine>@{argLine} javaagent:${org.mockito:mockito-core:jar}</argLine>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

@@ -129,11 +129,11 @@ public class CartaDePoker implements IMejorable {
         return indiceOtraCarta == thisIndex - 1;
     }
 
-    @Override
+   /* @Override
     public String toString() {
 
         return this.numero + " of " + this.palo + "    " + this.estado.esPuntuable;
-    }
+    }*/
 
     public void changeState(EstadoDeCarta estadoDeCarta) {
         this.estado = estadoDeCarta;

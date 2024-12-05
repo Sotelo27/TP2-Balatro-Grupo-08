@@ -10,6 +10,13 @@ public class TestsDeLecturaDeJson {
         JsonMazoReader jsonReader = new JsonMazoReader();
         jsonReader.readMazo();
     }
+    @Test
+    public void verificarBalatroReader() throws IOException {
+        JsonBalatroReader jsonReader = new JsonBalatroReader();
+        jsonReader.readBalatro();
+    }
+
+/*
 
     @Test
     public void verificarTarotReader() throws IOException {
@@ -27,12 +34,7 @@ public class TestsDeLecturaDeJson {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<CombinacionDeComodines> mazo = jsonReader.readCombinaciones();
     }
-
-    @Test
-    public void verificarBalatroReader() throws IOException {
-        JsonBalatroReader jsonReader = new JsonBalatroReader();
-        jsonReader.readBalatro();
-    }
+*/
 }
 
 

@@ -28,7 +28,10 @@ public class Jugador {
     }
 
     public void realizarJugada(Ronda ronda){
-        this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos);
+        if (this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos)) {
+            this.mano.recargarManoConMazo(this.mazo);
+        }
+
     }
     public void realizarDescarte(Ronda ronda){
         if(this.mano.realizarDescarte(ronda,this.comodinesActivos) ){
