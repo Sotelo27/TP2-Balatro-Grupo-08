@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
-    Comodin comodines;
+    List<Comodin> comodines;
     List<CartaDeTarot> tarots;
     CombinacionDeComodines combinaciones;
     CartaDePoker carta;
 
-    public void setComodin(Comodin comodines) {
+    public void setComodin(List<Comodin> comodines) {
         this.comodines = comodines;
     }
 
@@ -38,7 +38,9 @@ public class Tienda {
 
     public List<String> getItems() {
         List<String> items = new ArrayList<>();
-        items.add(comodines.getNombre());
+        for (Comodin comodin : comodines) {
+            items.add(comodin.getNombre());
+        }
         for (CartaDeTarot tarot : tarots) {
             items.add(tarot.getNombre());
         }

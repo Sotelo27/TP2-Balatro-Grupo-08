@@ -54,6 +54,7 @@ public class JsonBalatroReader {
         if (!tiendaNode.isMissingNode()) {
             JsonNode comodinesNode = tiendaNode.path("comodines");
             if (comodinesNode.isArray()) {
+                List<Comodin> comodines = new ArrayList<>();
                 for (JsonNode comodinNode : comodinesNode) {
                     // Verificar si este comodín tiene otra lista de comodines
                     JsonNode subComodinesNode = comodinNode.path("comodines");
@@ -62,9 +63,10 @@ public class JsonBalatroReader {
                         tienda.setCombinacion(combinacionComodin);
                     } else {
                         Comodin comodin = mapper.convertValue(comodinNode, Comodin.class);
-                        tienda.setComodin(comodin);
+                        comodines.add(comodin);
                     }
                 }
+                tienda.setComodin(comodines);
             }
             JsonNode tarotsNode = tiendaNode.path("tarots");
             List<CartaDeTarot> tarots = new ArrayList<>();
