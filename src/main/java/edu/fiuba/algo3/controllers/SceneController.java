@@ -31,7 +31,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToShopScene(ActionEvent event, BalatroAlgo3 modelo) throws IOException {
+    public void switchToShopScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

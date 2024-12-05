@@ -11,24 +11,14 @@ import java.io.InputStream;
 import java.util.List;
 
 public class JsonMazoReader {
-    private static final String PATH = "json/mazo.json";
+    private static final String PATH = "src/test/resources/json/mazo.json";
 
     public List<CartaDePoker> readMazo() throws IOException {
-        // Carga el recurso como un InputStream
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PATH);
-        if (inputStream == null) {
-            throw new IOException("El archivo " + PATH + " no se encuentra en el classpath.");
-        }
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(inputStream);
-        JsonNode mazoNode = root.get("mazo");
-        if (mazoNode.isArray()) {
-            // Mapea el JSON directamente a una lista de objetos CartaDePoker
-            List<CartaDePoker> mazo = mapper.convertValue(mazoNode, new TypeReference<List<CartaDePoker>>() {});
-            return mazo;
-        }
-
-        throw new IOException("El nodo 'mazo' no es un arreglo.");
+        ObjectMapper objectMapper = new ObjectMapper();
+        // Leemos el archivo JSON y lo deserializamos en un objeto Mazo
+        File file = new File(PATH);  // Asumiendo que el archivo se llama "mazo.json"
+        Mazo mazo = objectMapper.readValue(file, Mazo.class);
+        // Imprimimos las cartas para verificar que se hayan leído correctamente
+        return mazo.getCartas();
     }
 }

@@ -31,6 +31,10 @@ public class Mazo implements ITieneCartas {
         return carta;
     }
 
+    public List<CartaDePoker> getCartas() {
+        return cartas;
+    }
+
     public boolean tieneCartasSuficientes() {
         return (cartas.size() == 52);
     }
