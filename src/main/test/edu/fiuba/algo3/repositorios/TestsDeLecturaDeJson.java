@@ -16,8 +16,6 @@ public class TestsDeLecturaDeJson {
         jsonReader.readBalatro();
     }
 
-/*
-
     @Test
     public void verificarTarotReader() throws IOException {
         JsonTarotReader jsonReader = new JsonTarotReader();
@@ -34,7 +32,6 @@ public class TestsDeLecturaDeJson {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<CombinacionDeComodines> mazo = jsonReader.readCombinaciones();
     }
-*/
 }
 
 
