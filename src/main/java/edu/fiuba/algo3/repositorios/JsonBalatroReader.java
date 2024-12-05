@@ -9,25 +9,22 @@ import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.Tienda;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsonBalatroReader {
-    private static final String PATH = "json/balatro.json";
+    private static final String PATH = "src/test/resources/json/balatro.json";
 
     public List<Ronda> readBalatro() throws IOException {
         // Cargar el recurso como InputStream
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PATH);
-        if (inputStream == null) {
-            throw new IOException("El archivo " + PATH + " no se encuentra en el classpath.");
-        }
+        File file = new File(PATH);
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(inputStream);
+        JsonNode root = mapper.readTree(file);
         List<Ronda> rondas = new ArrayList<>();
-        List<CartaDeTarot> tarots = new ArrayList<>();
         JsonNode rondaNode = root.path("rondas");
         if (rondaNode.isArray()) {
             for (JsonNode rondaJson : rondaNode) {
@@ -63,14 +60,15 @@ public class JsonBalatroReader {
                         }
                     }
                     JsonNode tarotsNode = tiendaNode.path("tarots");
+                    List<CartaDeTarot> tarots = new ArrayList<>();
                     if (tarotsNode.isArray()) {
                         for (JsonNode tarotNode : tarotsNode) {
                             CartaDeTarot tarot = mapper.convertValue(tarotNode, CartaDeTarot.class);
                             tarots.add(tarot);
                         }
                     }
+                    tienda.setTarots(tarots);
                 }
-                tienda.setTarots(tarots);
                 ronda.setTienda(tienda);
                 rondas.add(ronda);
             }

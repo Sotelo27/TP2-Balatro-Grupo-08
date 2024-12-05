@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
+   <children>
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="459.0" layoutY="469.0" prefColumns="8" prefHeight="152.0" prefRows="8" prefWidth="775.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <children>
+            <ImageView fx:id="fourthCardOffert" fitHeight="160.0" fitWidth="84.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert3" fitHeight="160.0" fitWidth="84.0" layoutX="409.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert31" fitHeight="160.0" fitWidth="84.0" layoutX="456.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert311" fitHeight="160.0" fitWidth="84.0" layoutX="503.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert3111" fitHeight="160.0" fitWidth="84.0" layoutX="550.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert31111" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert311111" fitHeight="160.0" fitWidth="84.0" layoutX="644.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthCardOffert311112" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+      <Pane prefHeight="720.0" prefWidth="370.0">
+         <children>
+            <VBox layoutX="-5.0" layoutY="-6.0" prefHeight="745.0" prefWidth="376.0">
+               <children>
+                  <HBox prefHeight="191.0" prefWidth="376.0">
+                     <children>
+                        <BorderPane prefHeight="191.0" prefWidth="381.0">
+                           <top>
+                              <Pane prefHeight="15.0" prefWidth="376.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="9.0" prefWidth="376.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <left>
+                              <Pane prefHeight="166.0" prefWidth="14.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <Pane prefHeight="143.0" prefWidth="8.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+                           </right>
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="18.0" layoutY="53.0" prefHeight="64.0" prefWidth="106.0" text="GOAL" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="50.0" />
+                                       </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" layoutX="148.0" layoutY="48.0" prefHeight="69.0" prefWidth="206.0" text="0000000" textFill="WHITE">
+                                       <font>
+                                          <Font size="46.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="128.0" prefWidth="344.0">
+                     <children>
+                        <Pane prefHeight="128.0" prefWidth="128.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="9.0" prefHeight="109.0" prefWidth="104.0" text="ROUND SCORE" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="109.0" prefWidth="109.0">
+                           <children>
+                              <ImageView fitHeight="48.0" fitWidth="39.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/pokerchips/blueChip.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label contentDisplay="CENTER" layoutX="-6.0" layoutY="29.0" prefHeight="64.0" prefWidth="188.0" text="00000" textFill="WHITE">
+                                 <font>
+                                    <Font size="46.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="402.0" prefWidth="376.0">
+                     <children>
+                        <VBox prefHeight="402.0" prefWidth="377.0">
+                           <children>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: black;">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="153.0" prefWidth="170.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.3" layoutX="11.0" layoutY="7.0" orientation="VERTICAL" prefHeight="145.0" prefWidth="175.0">
+                                            <items>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="163.0">
+                                                   <children>
+                                                      <Label layoutX="-5.0" layoutY="-7.0" prefHeight="51.0" prefWidth="187.0" style="-fx-font-family: IMPACT; -fx-alignment: center; -fx-background-color: black;" text="HANDS" textAlignment="CENTER" textFill="RED">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="185.0" style="-fx-background-color: black;">
+                                                   <children>
+                                                      <Label layoutX="68.0" layoutY="23.0" text="00" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="35.0" />
+                                                         </font></Label>
+                                                   </children>
+                                                </AnchorPane>
+                                            </items>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="153.0" prefWidth="138.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.3" layoutX="2.0" layoutY="10.0" orientation="VERTICAL" prefHeight="145.0" prefWidth="180.0">
+                                             <items>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="163.0" style="-fx-background-color: black;">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutX="22.0" layoutY="5.0" prefHeight="39.0" prefWidth="129.0" style="-fx-font-family: IMPACT; -fx-alignment: center;" text="DISCARDS" textAlignment="CENTER" textFill="RED">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="99.0" prefWidth="174.0" style="-fx-background-color: black;">
+                                                   <children>
+                                                      <Label layoutX="73.0" layoutY="25.0" text="00" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="35.0" />
+                                                         </font></Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
+                                       </children></AnchorPane>
+                                </items>
+                              </SplitPane>
+                              <SplitPane dividerPositions="0.5" prefHeight="251.0" prefWidth="377.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="245.0" prefWidth="136.0" style="-fx-background-color: black;">
+                                       <children>
+                                          <SplitPane dividerPositions="0.3" layoutX="5.0" layoutY="39.0" orientation="VERTICAL" prefHeight="165.0" prefWidth="176.0">
+                                             <items>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="163.0">
+                                                   <children>
+                                                      <Label layoutX="-5.0" layoutY="-7.0" prefHeight="51.0" prefWidth="187.0" style="-fx-font-family: IMPACT; -fx-alignment: center; -fx-background-color: black;" text="ROUND" textAlignment="CENTER" textFill="RED">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="111.0" prefWidth="159.0" style="-fx-background-color: black;">
+                                                   <children>
+                                                      <Label layoutX="59.0" layoutY="17.0" prefHeight="68.0" prefWidth="77.0" text="00" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="53.0" />
+                                                         </font></Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="232.0" prefWidth="158.0" style="-fx-background-color: black;">
+                                       <children>
+                                          <TilePane alignment="CENTER" layoutX="-8.0" layoutY="-3.0" prefHeight="246.0" prefWidth="188.0">
+                                             <children>
+                                                <ImageView fx:id="fourthCardOffert2" fitHeight="132.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </TilePane>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </VBox>
+                     </children></HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="667.0" layoutY="28.0" prefHeight="174.0" prefWidth="574.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <children>
+            <ImageView fx:id="thrdCardOffert131" fitHeight="160.0" fitWidth="100.0" layoutX="485.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert1311" fitHeight="160.0" fitWidth="100.0" layoutX="336.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert13111" fitHeight="160.0" fitWidth="100.0" layoutX="391.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert131111" fitHeight="160.0" fitWidth="100.0" layoutX="446.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thrdCardOffert1311111" fitHeight="160.0" fitWidth="100.0" layoutX="501.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jokers/joker2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+      <TilePane alignment="CENTER" hgap="20.0" layoutX="950.0" layoutY="255.0" prefHeight="165.0" prefWidth="291.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <children>
+            <ImageView fx:id="firstCardOffert11" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="scndCardOffert11" fitHeight="160.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+               <image>
+                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+               </image>
+            </ImageView>
+         </children>
+      </TilePane>
+      <Button layoutX="619.0" layoutY="638.0" mnemonicParsing="false" text="PLAY HAND">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="935.0" layoutY="638.0" mnemonicParsing="false" text="DISCARD">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

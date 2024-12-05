@@ -24,22 +24,4 @@ public class LectorDeJSON {
         JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
         return jsonBalatroReader.readBalatro();
     }
-
-/*
-
-        public List<CartaDeTarot> construirTarots() throws IOException {
-            JsonTarotReader jsonTarotReader = new JsonTarotReader();
-            return jsonTarotReader.readTarots();
-        }
-
-        public List<Comodin> construirComodins() throws IOException {
-            JsonComodinReader jsonComodinReader = new JsonComodinReader();
-            return jsonComodinReader.readComodines();
-        }
-
-        public List<CombinacionDeComodines> construirCombinaciones() throws IOException {
-            JsonComodinReader jsonComodinReader = new JsonComodinReader();
-            return jsonComodinReader.readCombinaciones();
-        }
-*/
 }

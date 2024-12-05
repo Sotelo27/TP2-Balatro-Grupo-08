@@ -56,7 +56,7 @@ public class Comodin implements IMejorador{
     }
 
     public String getNombre() {
-        return  this.nombre;
+        return this.nombre;
     }
     //public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 

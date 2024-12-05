@@ -17,6 +17,15 @@ public class CartaDeTarot implements IMejorador{
         this.nombre = nombre;
         this.mejora = mejora;
     } */
+
+    @JsonCreator
+    public CartaDeTarot(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("efecto") Mejora mejora, @JsonProperty("sobre") String sobre, @JsonProperty("ejemplar") String ejemplar){
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.sobre = sobre;
+        this.mejora = mejora;
+        this.ejemplar = ejemplar;
+    }
     public CartaDeTarot() {}
 
     public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion, String sobre, String ejemplar) {
@@ -47,10 +56,7 @@ public class CartaDeTarot implements IMejorador{
     public void setEjemplar(IMejorable unEjemplar) {this.ejemplar = unEjemplar.getNombre();}
 
 
-    public void setEjemplar(String unEjemplar) {this.ejemplar = unEjemplar;}
-
-
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 }
