@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
+import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ public class InventarioTienda {
     private List<Comodin> comodines;
     private List<CombinacionDeComodines> comodinesDeComodines;
     private List<CartaDeTarot> tarots;
+    private List<IMejorador> cartasEspeciales;
 
     public InventarioTienda(LectorDeJSON creadorDeObjetos)  throws IOException {
         this.comodines = creadorDeObjetos.construirComodines();

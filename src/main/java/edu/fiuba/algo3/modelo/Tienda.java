@@ -14,37 +14,13 @@ public class Tienda {
         this.carta = carta;
     }
 
-    public CartaDePoker getCarta() {
-        return carta;
-    }
-
-    public CartaDePoker seleccionarCartaPoker(String cartaPoker){
-        CartaDePoker cartaObtenida = null;
-        if (this.carta.getNombre() == cartaPoker) {
-            cartaObtenida = this.carta;
-        }
-        return cartaObtenida;
-    };
-
-    public IMejorador seleccionarCartaEspecial(String cartaEspecial){
-        IMejorador cartaObtenida = null;
-        for (IMejorador especiales : cartasEspeciales) {
-            if (especiales.getNombre() == cartaEspecial){
-                cartaObtenida = especiales;
-            }
-        }
-        return cartaObtenida;
-    };
-
-    public String seleccionarCarta(String cartaSeleccionada){
-        return cartaSeleccionada;
-    }
-
-   public List<String> getItems() {
+    public List<String> getItems() {
         List<String> items = new ArrayList<>();
         for (IMejorador especiales : cartasEspeciales) {
+            System.out.println(especiales.getNombre());
             items.add(especiales.getNombre());
         }
+        System.out.println(carta.getNombre());
         items.add(carta.getNombre());
         return items;
     }

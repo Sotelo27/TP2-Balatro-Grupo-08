@@ -18,7 +18,6 @@ public class BalatroAlgo3{
         this.rondas = creadorDeObjetos.construirRondas();
         this.rondaActual = rondas.get(0);
         this.inventario = new InventarioTienda(creadorDeObjetos);
-
     }
 
     public void iniciarJuego(){
@@ -33,12 +32,15 @@ public class BalatroAlgo3{
 
     public void activarComodin(String nombre){
     }
+
     public int obtenerPuntajeRonda(){
         return this.rondaActual.obtenerPuntaje().asInt();
     }
+
     public List<String> getCartasEnMano(){
         return jugador.getCartasEnMano();
     }
+
     public void realizarJugada(){
         this.jugador.realizarJugada(this.rondaActual);
         // validar victoria de todas las rondas o la derrota en alguna para cambiar de estado
@@ -47,13 +49,14 @@ public class BalatroAlgo3{
     public void realizarDescarte(){
         // this.jugador.realizarDescarte(this.ronda)
     }
+
     public void setEstado(EstadoJuego estado){};
 
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
     }
-
     public List<String> getCartasDeTienda() {
         return this.rondaActual.getArticulosTienda();
     }
+
 }

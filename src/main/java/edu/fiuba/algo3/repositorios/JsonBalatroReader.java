@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.Tienda;
 import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
+import edu.fiuba.algo3.modelo.CartaDePoker;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -74,6 +75,11 @@ public class JsonBalatroReader {
                 }
             }
             tienda.setCartasEspeciales(especiales);
+            JsonNode cartaNode = tiendaNode.path("carta");
+            if (cartaNode != null) {
+                CartaDePoker carta = mapper.convertValue(cartaNode, CartaDePoker.class);
+                tienda.setCarta(carta);
+            }
         }
         return tienda;
     }
