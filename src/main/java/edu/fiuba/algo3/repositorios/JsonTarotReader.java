@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class JsonTarotReader {
-    private static final String PATH = "json/tarots.json";
+    private static final String PATH = "src/test/resources/json/tarots.json";
     public List<CartaDeTarot> readTarots() throws IOException {
         // Ruta al archivo
-        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
+        File file = new File((PATH));
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(file);

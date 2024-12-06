@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class JsonComodinReader {
-    private static final String PATH = "json/comodines.json";
+    private static final String PATH = "src/test/resources/json/comodines.json";
     private final ObjectMapper mapper = new ObjectMapper();
 
     private JsonNode readJsonNode() throws IOException {
-        return mapper.readTree(new File(getClass().getClassLoader().getResource(PATH).getFile()));
+        return mapper.readTree(new File(PATH));
     }
 
     public List<Comodin> readComodines() throws IOException {
@@ -34,7 +34,7 @@ public class JsonComodinReader {
     }
     public List<CombinacionDeComodines> readCombinaciones() throws IOException {
         // Ruta al archivo
-        File file = new File(getClass().getClassLoader().getResource(PATH).getFile());
+        File file = new File((PATH));
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(file);
         JsonNode combinacionNode = root.get("Combinación").get("comodines");

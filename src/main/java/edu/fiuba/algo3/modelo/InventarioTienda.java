@@ -19,4 +19,31 @@ public class InventarioTienda {
         this.comodinesDeComodines = creadorDeObjetos.contruirCombinacionesComodin();
     }
 
+    public Comodin buscarComodinPorNombre(String nombre) {
+        for (Comodin comodin : comodines) {
+            if (comodin.getNombre().equals(nombre)) {
+                return comodin;
+            }
+        }
+        return null;
+    }
+
+    public CombinacionDeComodines buscarComodinesPorNombre(String nombre) {
+        for (CombinacionDeComodines combinacion : comodinesDeComodines) {
+            if (combinacion.getNombre().equals(nombre)) {
+                return combinacion;
+            }
+        }
+        return null;
+    }
+
+    public CartaDeTarot buscarCartaPorNombre(String nombre) {
+        for (CartaDeTarot cartaDeTarot : tarots) {
+            if (cartaDeTarot.getNombre().equals(nombre)) {
+                return cartaDeTarot;
+            }
+        }
+        return null;
+    }
+
 }

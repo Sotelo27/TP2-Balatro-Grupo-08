@@ -28,7 +28,7 @@ public class LectorDeJSON {
 
     public List<Comodin> construirComodines() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();
-       return jsonReader.readComodines();
+        return jsonReader.readComodines();
     }
     public List<CombinacionDeComodines> contruirCombinacionesComodin() throws IOException {
         JsonComodinReader jsonReader = new JsonComodinReader();

@@ -26,7 +26,7 @@ public class TestTienda {
         tienda.setCartasEspeciales(especiales);
         tienda.setCarta(cartaPoker);
         List<String> itemObtenidos = tienda.getItems();
-        List<String> itemEsperados = Arrays.asList("Comodinx4", "ComodinSuma");
+        List<String> itemEsperados = Arrays.asList("Comodinx4", "ComodinSuma","5 de Treboles");
         assert itemEsperados.equals(itemObtenidos);
     }
     /*
