@@ -56,8 +56,8 @@ public class TestRonda {
         List<CartaDePoker> listaMock = mock(List.class);
         when(listaMock.size()).thenReturn(1);
 
-        IAccion accion = new Jugada();
-        ronda.agregarAccion(accion);
+        //IAccion accion = new Jugada();
+        //ronda.agregarAccion(accion);
 
 
         PuntajeJugada puntajeObtenido = ronda.obtenerPuntaje();

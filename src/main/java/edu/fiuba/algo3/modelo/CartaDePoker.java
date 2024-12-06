@@ -45,6 +45,10 @@ public class CartaDePoker implements IMejorable {
         this.mejora = new Mejora() ;
     }
 
+    public void setPalo(String palo) {this.palo = palo;}
+
+    public void setNumero(String numero) {this.numero = numero;}
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
