@@ -14,7 +14,7 @@ public class VerificadorFlush extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        if (sonDelMismoTipo(cartas)){
+        if (sonDelMismoTipo(cartas) && cartas.size() == 5){
             agregarPuntuables(cartas);
             return true;
         }
@@ -23,11 +23,15 @@ public class VerificadorFlush extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        if (esDeTipo(cartas)){
+
+        if (esDeTipo(cartas) && cartas.size() == 5){
             return new Flush(this.listaPuntuables);
         }
         return pasarAlSiguiente(cartas);
     }
+
+
+
 
 
 

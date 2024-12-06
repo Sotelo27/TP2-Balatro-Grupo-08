@@ -13,7 +13,6 @@ public class VerificadorFullHouse extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        ordenarPorNumero(cartas);
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
 
         if (esDeTipo(cartas)){

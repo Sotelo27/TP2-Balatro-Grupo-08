@@ -24,8 +24,7 @@ public class VerificadorStraightFlush extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        ordenarPorNumero(cartas);
-        if (sonDelMismoTipo(cartas) && esSecuencia(cartas)) {
+        if (sonDelMismoTipo(cartas) && esSecuencia(cartas) && cartas.size() == 5) {
             agregarPuntuables(cartas);
             return true;
         }
@@ -33,8 +32,9 @@ public class VerificadorStraightFlush extends Verificador {
     }
 
 
-
-
 }
+
+
+
 
 

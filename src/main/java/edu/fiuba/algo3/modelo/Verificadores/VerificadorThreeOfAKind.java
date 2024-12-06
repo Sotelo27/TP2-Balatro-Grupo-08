@@ -15,7 +15,6 @@ public class VerificadorThreeOfAKind extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        ordenarPorNumero(cartas);
         if (esDeTipo(cartas)){
             return new ThreeOfAKind(listaPuntuables);
         }

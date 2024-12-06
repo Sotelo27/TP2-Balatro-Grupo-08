@@ -15,7 +15,6 @@ public class VerificadorTwoPair extends Verificador {
 
     @Override
     public CombinacionDePoker verificar(List<CartaDePoker> cartas) {
-        ordenarPorNumero(cartas);
         if (esDeTipo(cartas)){
             return new TwoPair(this.listaPuntuables);
         }
