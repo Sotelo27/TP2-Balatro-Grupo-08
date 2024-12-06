@@ -36,8 +36,8 @@ public class Tienda {
         return cartaObtenida;
     };
 
-    public void seleccionarCarta(String cartaSeleccionada){
-
+    public String seleccionarCarta(String cartaSeleccionada){
+        return cartaSeleccionada;
     }
 
    public List<String> getItems() {
