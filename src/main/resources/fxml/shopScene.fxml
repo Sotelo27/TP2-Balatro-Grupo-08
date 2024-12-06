@@ -13,34 +13,34 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
    <children>
-      <TilePane alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="473.0" prefHeight="191.0" prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
-         <children>
-            <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" onMouseClicked="#selectFirstCard" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
-               <image>
-                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="scndCardOffert" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectScndCard" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
-               <image>
-                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" onMouseClicked="#selectThirdCard" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/jokers/joker2.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0" onMouseClicked="#selectFourthCard" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/jokers/joker3.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" onMouseClicked="#selectFifthCard" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
-               </image>
-            </ImageView>
-         </children>
+      <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="473.0" prefHeight="191.0"
+                prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" onMouseClicked="#selectFirstCard"
+                    pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+            <image>
+
+            </image>
+         </ImageView>
+         <ImageView fx:id="scndCardOffert" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0"
+                    onMouseClicked="#selectScndCard" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+            <image>
+            </image>
+         </ImageView>
+         <ImageView fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0"
+                    onMouseClicked="#selectThirdCard" pickOnBounds="true" preserveRatio="true">
+            <image>
+            </image>
+         </ImageView>
+         <ImageView fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0"
+                    onMouseClicked="#selectFourthCard" pickOnBounds="true" preserveRatio="true">
+            <image>
+            </image>
+         </ImageView>
+         <ImageView fx:id="fourthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0"
+                    onMouseClicked="#selectFifthCard" pickOnBounds="true" preserveRatio="true">
+            <image>
+            </image>
+         </ImageView>
       </TilePane>
       <Pane prefHeight="720.0" prefWidth="370.0">
          <children>
@@ -106,12 +106,12 @@
          <children>
             <ImageView fitHeight="210.0" fitWidth="140.0" onMouseClicked="#selectFirstCard" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
-                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+                  <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
-                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+                  <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -126,7 +126,7 @@
             </ImageView>
             <ImageView fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Player%20Cards/King%20of%20Spades.png" />
+                  <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
          </children>
@@ -135,12 +135,12 @@
          <children>
             <ImageView fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
-                  <Image url="@../images/JojoTarots/0_OVATarot_TheFool.png" />
+                  <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
-                  <Image url="@../images/JojoTarots/1_OVATarot_TheMagician.png" />
+                  <Image url="@../images/jokers/joker2.png" />
                </image>
             </ImageView>
          </children>
