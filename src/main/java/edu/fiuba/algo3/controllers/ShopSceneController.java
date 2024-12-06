@@ -23,6 +23,8 @@ public class ShopSceneController implements Initializable {
     @FXML
     public AnchorPane shopPane;
 
+    @FXML ImageView choosedCard;
+
     @FXML
     private ImageView fifthCardOffert;
 
@@ -42,35 +44,46 @@ public class ShopSceneController implements Initializable {
     private TilePane cardOffersPane;
 
     private BalatroAlgo3 modelo;
+    private Integer selectedCard;
 
     @FXML
     void selectFirstCard(MouseEvent event) throws IOException {
-        comprarCarta(1);
+        //comprarCarta(1);
+        this.selectedCard = 0;
+        preSeleccionar(firstCardOffert);
         System.out.println("firstCardOffert selected");
     }
 
 
     @FXML
     void selectScndCard(MouseEvent event) throws IOException {
-        comprarCarta(2);
+        //comprarCarta(2);
+        this.selectedCard = 1;
+        preSeleccionar(scndCardOffert);
         System.out.println("scndCardOffert selected");
     }
 
     @FXML
     void selectThirdCard(MouseEvent event) throws IOException {
-        comprarCarta(3);
+        //comprarCarta(3);
+        this.selectedCard = 2;
+        preSeleccionar(thrdCardOffert);
         System.out.println("thirdCardOffert selected");
     }
 
     @FXML
     void selectFourthCard(MouseEvent event) throws IOException {
-        comprarCarta(4);
+        //comprarCarta(4);
+        this.selectedCard = 3;
+        preSeleccionar(fourthCardOffert);
         System.out.println("fourthCardOffert selected");
     }
 
     @FXML
     void selectFifthCard(MouseEvent event) throws IOException {
-        comprarCarta(5);
+        //comprarCarta(5);
+        this.selectedCard = 4;
+        preSeleccionar(fifthCardOffert);
         System.out.println("fifthCardOffert selected");
     }
 
@@ -81,8 +94,9 @@ public class ShopSceneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        this.selectedCard = 0;
     }
+
 
     private void cargarItemsDeTienda() {
         List<String > items = modelo.getCartasDeTienda();
@@ -105,10 +119,14 @@ public class ShopSceneController implements Initializable {
         return file ;
     }
 
+    private void preSeleccionar(ImageView cardOffert) {
+        choosedCard.setImage(cardOffert.getImage());
+    }
+
     private void comprarCarta(int posicion) throws IOException {
 //        String carta = modelo.getCartasDeTienda().get(posicion-1);
 //        modelo.seleccionarCartaDePoker(carta);
-        goNextStage();
+//        goNextStage();
     }
 
     private void goNextStage() throws IOException {
@@ -123,5 +141,11 @@ public class ShopSceneController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void comprarCarta(MouseEvent mouseEvent) throws IOException {
+        //String carta = modelo.getCartasDeTienda().get(this.selectedCard);
+        //modelo.seleccionarCartaDePoker(carta);
+        goNextStage();
     }
 }
