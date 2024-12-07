@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.unitarias;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
+import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
+import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 
 
@@ -98,15 +101,20 @@ public class TestBalatroAlgo3   {
     @Test
     public void test03SeObtieneCorrectamenteLaPrimeraTiendaDelJuego() throws IOException {
         // arrange
-        List<String> cartasEsperadas = Arrays.asList("item1", "item2", "item3", "item4", "item5");
+        Comodin comodin = new Comodin();
+        CartaDePoker carta = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
+        CombinacionDeComodines combinacion = new CombinacionDeComodines();
+        CartaDeTarot tarot = new CartaDeTarot();
+        List<IMostrable> cartasEsperadas = Arrays.asList(comodin, carta, combinacion);
+
         Ronda rondaMock = mock(Ronda.class);
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaMock));
-        when(rondaMock.getArticulosTienda()).thenReturn(Arrays.asList("item1", "item2", "item3", "item4", "item5"));
+        when(rondaMock.getArticulosTienda()).thenReturn(cartasEsperadas);
 
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
-        List<String> cartasDeTienda = juego.getCartasDeTienda();
+        List<IMostrable> cartasDeTienda = juego.getCartasDeTienda();
         // assert
         assert cartasDeTienda.equals(cartasEsperadas);
     }

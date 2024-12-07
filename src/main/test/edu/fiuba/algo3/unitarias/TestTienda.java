@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.unitarias;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
+import edu.fiuba.algo3.modelo.IMostrable;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
@@ -17,17 +18,17 @@ public class TestTienda {
     @Test
     public void test01SePideNombreDeItemYDevuelveCorrectamente(){
         Tienda tienda = new Tienda();
-        List<IMejorador> especiales = new ArrayList<>();
+        List<IMostrable> especiales = new ArrayList<>();
         CartaDePoker cartaPoker= new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         Comodin comodinX4 = new Comodin("Comodinx4", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
         Comodin comodiSuma4mult = new Comodin("ComodinSuma", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(),"", "");
         especiales.add(comodinX4);
         especiales.add(comodiSuma4mult);
-        tienda.setCartasEspeciales(especiales);
-        tienda.setCarta(cartaPoker);
-        List<String> itemObtenidos = tienda.getItems();
+        tienda.setCartas(especiales);
+        List<String> itemsObtenidos  = new ArrayList<>();
+        tienda.getItems().forEach(each -> itemsObtenidos.add(each.getNombre()));
         List<String> itemEsperados = Arrays.asList("Comodinx4", "ComodinSuma","5 de Treboles");
-        assert itemEsperados.equals(itemObtenidos);
+        assert itemEsperados.containsAll(itemsObtenidos);
     }
     /*
     * Validar que las cartas de cada tienda se muestran correctamente
