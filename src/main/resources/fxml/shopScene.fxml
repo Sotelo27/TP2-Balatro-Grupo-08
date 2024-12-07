@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,6 +12,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="shopPane" prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
    <children>
@@ -79,27 +82,29 @@
                <image>
                </image>
             </ImageView>
-            <ImageView fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
-               <image>
-               </image>
-            </ImageView>
-            <ImageView fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-               </image>
-            </ImageView>
-            <ImageView fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-               </image>
-            </ImageView>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="210.0" prefWidth="232.0">
+              <items>
+                  <Text fx:id="nombreObjeto" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="230.0">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="descripcionObjeto" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="237.9814453125" AnchorPane.topAnchor="30.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+              </items>
+            </SplitPane>
             <ImageView fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
             </ImageView>
          </children>
       </TilePane>
-      <TilePane fx:id="especialesEnMano" alignment="CENTER" hgap="10.0" layoutX="939.0" layoutY="244.0" prefHeight="202.0" prefWidth="302.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+      <TilePane fx:id="tarotsGuardados" alignment="CENTER" layoutX="-8.0" layoutY="-3.0" prefHeight="246.0" prefWidth="188.0">
          <children>
-            <ImageView fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard" >
+            <ImageView fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
                </image>
             </ImageView>
@@ -109,31 +114,25 @@
             </ImageView>
          </children>
       </TilePane>
-      <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="473.0" prefHeight="191.0"
-                prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
-         <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" onMouseClicked="#selectFirstCard"
-                    pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+      <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="490.0" layoutY="473.0" prefHeight="191.0" prefWidth="751.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+         <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" onMouseClicked="#selectFirstCard" pickOnBounds="true" preserveRatio="true">
             <image>
 
             </image>
          </ImageView>
-         <ImageView fx:id="scndCardOffert" fitHeight="197.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0"
-                    onMouseClicked="#selectScndCard" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+         <ImageView fx:id="scndCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectScndCard" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
          </ImageView>
-         <ImageView fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0"
-                    onMouseClicked="#selectThirdCard" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" onMouseClicked="#selectThirdCard" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
          </ImageView>
-         <ImageView fx:id="fourthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0"
-                    onMouseClicked="#selectFourthCard" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="fourthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="535.0" layoutY="10.0" onMouseClicked="#selectFourthCard" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
          </ImageView>
-         <ImageView fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0"
-                    onMouseClicked="#selectFifthCard" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" onMouseClicked="#selectFifthCard" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
          </ImageView>

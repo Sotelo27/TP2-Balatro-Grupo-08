@@ -1,6 +1,12 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.CartaDePoker;
+import edu.fiuba.algo3.modelo.IMostrable;
+import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
+import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
+import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
+import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +30,10 @@ public class ShopSceneController implements Initializable {
 
     @FXML
     public AnchorPane shopPane;
+
+    public TilePane tarotsGuardados;
+    public Text nombreObjeto;
+    public Text descripcionObjeto;
 
     @FXML ImageView choosedCard;
 
@@ -95,22 +107,26 @@ public class ShopSceneController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.selectedCard = 0;
+         // Escucha los cambios de tamaño del VBox
+         shopPane.layoutBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
+             Stage stage = (Stage) shopPane.getScene().getWindow();
+             stage.sizeToScene();
+         });
     }
 
 
     private void cargarItemsDeTienda() {
-        List<String > items = modelo.getCartasDeTienda();
+        List<IMostrable> items = modelo.getCartasDeTienda();
         Integer pos = 0;
         List<javafx.scene.Node> children = cardOffersPane.getChildren();
-        for ( String item : items ) {
+        for ( IMostrable item : items ) {
             ImageView imageView = (ImageView) children.get(pos);
-            imageView.setImage(new Image(getResourcePath(item)));
+            imageView.setImage(new Image(getResourcePath(item.getImagen()) ));
             pos ++;
         }
     }
 
-    private InputStream getResourcePath(String item) {
-        String path = "/images/cartas/" + item + ".png";
+    private InputStream getResourcePath(String path) {
         System.out.println(path);
         InputStream file = getClass().getResourceAsStream(path);
         if (file == null) {
@@ -121,12 +137,14 @@ public class ShopSceneController implements Initializable {
 
     private void preSeleccionar(ImageView cardOffert) {
         choosedCard.setImage(cardOffert.getImage());
+        nombreObjeto.setText(modelo.getCartasDeTienda().get(selectedCard).getNombre());
+        descripcionObjeto.setText(modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
     }
 
     private void comprarCarta(int posicion) throws IOException {
-//        String carta = modelo.getCartasDeTienda().get(posicion-1);
-//        modelo.seleccionarCartaDePoker(carta);
-//        goNextStage();
+        IMostrable carta = modelo.getCartasDeTienda().get(posicion-1);
+        modelo.seleccionarCartaDePoker(carta);
+        goNextStage();
     }
 
     private void goNextStage() throws IOException {
