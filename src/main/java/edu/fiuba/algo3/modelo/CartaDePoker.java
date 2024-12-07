@@ -81,7 +81,6 @@ public class CartaDePoker implements IMejorable, IMostrable {
         if (elemento.equals(this.nombre)) {
             this.mejora = mejora;
         }
-
     }
 
 

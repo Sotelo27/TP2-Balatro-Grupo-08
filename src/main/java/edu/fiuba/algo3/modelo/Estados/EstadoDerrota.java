@@ -1,25 +1,29 @@
 package edu.fiuba.algo3.modelo.Estados;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 
 public class EstadoDerrota extends EstadoJuego{
-    public EstadoDerrota(BalatroAlgo3 juego) {
-        super(juego);
+    public EstadoDerrota(BalatroAlgo3 juego, Stage escena) {
+        super(juego, escena);
+    }
+
+
+    @Override
+    public void empezar() {
+
     }
 
     @Override
-    public void mostrar() {
+    public void terminar() {
 
     }
 
     @Override
-    public void quedanRondas() {
-    }
-
-    @Override
-    public void noQuedanRondas() {
+    public void cambiar() {
 
     }
-
-
 }

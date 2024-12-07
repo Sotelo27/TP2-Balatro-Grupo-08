@@ -1,15 +1,17 @@
 @startuml
 state "EstadoRonda" as RondaActiva
-state "Transicion" as RondaTransicion
-state "Tienda" as Tienda
+state "EstadoTransicion" as RondaTransicion
+state "EstadoTienda" as Tienda
 state "EstadoDerrota" as Derrota
 state "EstadoVictoria" as Victoria
+state "EstadoInicio" as Inicio
 
-RondaActiva --> RondaTransicion: if quedanRondas
+RondaActiva --> RondaTransicion: if quedanRondas && if superaPuntaje
 RondaTransicion --> Tienda: if quedanRondas
 Tienda -->RondaActiva: if quedanRondas
+Inicio -->Tienda: if quedanRondas
 
-RondaActiva -right-> Derrota: if noSuperaPuntaje
-RondaActiva -right-> Victoria: if noQuedanRondas
+RondaActiva -right-> Derrota: if not superaPuntaje
+RondaActiva -right-> Victoria: if not quedanRondas
 
 @enduml
