@@ -2,13 +2,12 @@ package edu.fiuba.algo3.repositorios;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.fiuba.algo3.modelo.IMostrable;
+import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.Tienda;
-import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 import edu.fiuba.algo3.modelo.CartaDePoker;
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +51,7 @@ public class JsonBalatroReader {
 
     private Tienda leerTienda(JsonNode tiendaNode, ObjectMapper mapper) {
         Tienda tienda = new Tienda();
-        List<IMostrable> especiales = new ArrayList<>();
+        List<ICarta> especiales = new ArrayList<>();
         if (!tiendaNode.isMissingNode()) {
             JsonNode comodinesNode = tiendaNode.path("comodines");
             if (comodinesNode.isArray()) {

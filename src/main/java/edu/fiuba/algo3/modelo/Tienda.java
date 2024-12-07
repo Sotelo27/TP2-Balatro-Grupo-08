@@ -1,16 +1,17 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
-    List<IMostrable> cartas;
+    List<ICarta> cartas;
 
-    public void setCartas(List <IMostrable> cartasEspeciales) {this.cartas = cartasEspeciales;}
+    public void setCartas(List <ICarta> cartasEspeciales) {this.cartas = cartasEspeciales;}
 
-    public List<IMostrable> getItems() {
+    public List<ICarta> getItems() {
 
         return cartas;
+    }
+    public void comprar(IComprable carta, IComprador comprador) {
+        carta.asignarAComprador(comprador);
     }
 }

@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
-import edu.fiuba.algo3.modelo.IMostrable;
+import edu.fiuba.algo3.modelo.ICarta;
+import edu.fiuba.algo3.modelo.IComprable;
+import edu.fiuba.algo3.modelo.IComprador;
 import edu.fiuba.algo3.modelo.Mejoras.*;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
-public class CombinacionDeComodines implements IMejorador, IMostrable {
+public class CombinacionDeComodines implements IMejorador, ICarta, IComprable {
 	private  List<Comodin> comodines;
 	private  String nombre;
 	private  String descripcion;
@@ -49,5 +50,10 @@ public class CombinacionDeComodines implements IMejorador, IMostrable {
 	@Override
 	public String getImagen() {
 		return "/images/jokers/JokerCombinado.png";
+	}
+
+	@Override
+	public void asignarAComprador(IComprador comprador) {
+		comprador.comprarComodin(this);
 	}
 }

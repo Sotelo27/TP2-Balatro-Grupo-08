@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.fiuba.algo3.modelo.IComprable;
+import edu.fiuba.algo3.modelo.IComprador;
 import edu.fiuba.algo3.modelo.ICondicionMejora;
-import edu.fiuba.algo3.modelo.IMostrable;
+import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
-public class CartaDeTarot implements IMejorador, IMostrable {
+public class CartaDeTarot implements IMejorador, ICarta, IComprable {
     private String nombre;
     private String descripcion;
     private Mejora mejora;
@@ -73,5 +75,10 @@ public class CartaDeTarot implements IMejorador, IMostrable {
     @Override
     public String getImagen() {
         return "/images/JojoTarots/"+nombre+".png";
+    }
+
+    @Override
+    public void asignarAComprador(IComprador comprador) {
+        comprador.comprarCartaDeTarot(this);
     }
 }

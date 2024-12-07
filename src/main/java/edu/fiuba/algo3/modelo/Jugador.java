@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.modelo.Mejoras.*;
+import edu.fiuba.algo3.modelo.Verificadores.Verificador;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class Jugador {
+public class Jugador implements IComprador {
 
     private String nombre;
     private Mano mano;
@@ -30,11 +32,14 @@ public class Jugador {
         this.mano.seleccionarCarta(cartasSeleccionada);
     }
 
+    public void recargarMano(){
+        this.mano.recargarManoConMazo(mazo);
+    }
+
     public void realizarJugada(Ronda ronda){
         if (this.mano.realizarJugada(ronda, this.tarotsActivos, this.comodinesActivos)) {
             this.mano.recargarManoConMazo(this.mazo);
         }
-
     }
     public void realizarDescarte(Ronda ronda){
         if(this.mano.realizarDescarte(ronda,this.comodinesActivos) ){
@@ -42,6 +47,31 @@ public class Jugador {
         }
 
     }
+/*
+    public void activarCarta(IMostrable carta, IMostrable sobre){ // Balatro
+        switch (carta.esTipo()){
+            case CartaDeTarot{
+                carta.mejorar(sobre);
+            }
+            case CartaDePoker{
+                carta.reemplazar(sobre);
+            }
+        }
+
+        this.jugador.seleccionarCarta(sobre);
+        this.jugador.activarCarta(carta);
+    }
+
+
+
+
+    public void activarCarta(IMostrable carta){ //jugador
+        activables.forEach();
+        activarCarta(carta);
+    }
+*/
+
+
     public List<String> getCartasEnMano(){
         return this.mano.getCartas();
     }
@@ -79,4 +109,19 @@ public class Jugador {
     }
 
 
+    @Override
+    public void comprarCartaDeTarot(IComprable comprable) {
+        this.activables.add((IMejorador) comprable);
+    }
+
+    @Override
+    public void comprarComodin(IComprable comprable) {
+        this.comodinesActivos.add((IMejorador) comprable);
+    }
+
+    @Override
+    public void comprarCartaDePoker(IComprable comprable) {
+        this.mano.recibirCard((CartaDePoker) comprable);
+    }
 }
+

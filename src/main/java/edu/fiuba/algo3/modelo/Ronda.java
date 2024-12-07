@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 
 public class Ronda {
     private AccionesDisponibles limites;
@@ -56,7 +54,12 @@ public class Ronda {
         this.tienda = tienda;
     }
 
-    public List<IMostrable> getArticulosTienda() {
+    public List<ICarta> getArticulosTienda() {
         return this.tienda.getItems();
+    }
+
+    public void comprarConJugador(ICarta carta, Jugador jugador) {
+        tienda.comprar(carta, jugador);
+
     }
 }

@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.unitarias;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
-import edu.fiuba.algo3.modelo.IMostrable;
+import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
-import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.MultiplicaMultiplicador;
 import edu.fiuba.algo3.modelo.Mejoras.SumaAMultiplicador;
@@ -18,7 +17,7 @@ public class TestTienda {
     @Test
     public void test01SePideNombreDeItemYDevuelveCorrectamente(){
         Tienda tienda = new Tienda();
-        List<IMostrable> especiales = new ArrayList<>();
+        List<ICarta> especiales = new ArrayList<>();
         CartaDePoker cartaPoker= new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         Comodin comodinX4 = new Comodin("Comodinx4", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
         Comodin comodiSuma4mult = new Comodin("ComodinSuma", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(),"", "");

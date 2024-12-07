@@ -105,7 +105,7 @@ public class TestBalatroAlgo3   {
         CartaDePoker carta = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
         CombinacionDeComodines combinacion = new CombinacionDeComodines();
         CartaDeTarot tarot = new CartaDeTarot();
-        List<IMostrable> cartasEsperadas = Arrays.asList(comodin, carta, combinacion);
+        List<ICarta> cartasEsperadas = Arrays.asList(comodin, carta, combinacion);
 
         Ronda rondaMock = mock(Ronda.class);
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaMock));
@@ -114,7 +114,7 @@ public class TestBalatroAlgo3   {
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
-        List<IMostrable> cartasDeTienda = juego.getCartasDeTienda();
+        List<ICarta> cartasDeTienda = juego.getCartasDeTienda();
         // assert
         assert cartasDeTienda.equals(cartasEsperadas);
     }

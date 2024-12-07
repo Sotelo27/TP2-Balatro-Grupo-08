@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 
 import java.util.*;
 
-public class CartaDePoker implements IMejorable, IMostrable {
+public class CartaDePoker implements IMejorable, ICarta, IComprable {
 
     protected String numero;
     protected Mejora mejora;
@@ -137,5 +137,9 @@ public class CartaDePoker implements IMejorable, IMostrable {
         this.mejora = mejora;
     }
 
+    @Override
+    public void asignarAComprador(IComprador comprador) {
+        comprador.comprarCartaDePoker(this);
+    }
 }
 

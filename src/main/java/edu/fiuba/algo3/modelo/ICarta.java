@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public interface IMostrable {
+public interface ICarta {
     String getNombre();
 
     String getDescripcion();
