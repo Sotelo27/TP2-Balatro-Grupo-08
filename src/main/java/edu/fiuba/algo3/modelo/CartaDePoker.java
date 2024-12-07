@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 
 import java.util.*;
 
-public class CartaDePoker implements IMejorable {
+public class CartaDePoker implements IMejorable, IMostrable {
 
     protected String numero;
     protected Mejora mejora;
@@ -63,6 +63,16 @@ public class CartaDePoker implements IMejorable {
 
     public String getNombre() {
         return this.nombre;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return "Un "+ nombre + " comun y silvestre";
+    }
+
+    @Override
+    public String getImagen() {
+        return "/images/Player Cards/"+nombre+".png";
     }
 
     @Override

@@ -56,7 +56,7 @@ public class Ronda {
         this.tienda = tienda;
     }
 
-    public List<String> getArticulosTienda() {
+    public List<IMostrable> getArticulosTienda() {
         return this.tienda.getItems();
     }
 }

@@ -55,8 +55,10 @@ public class BalatroAlgo3{
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
     }
-    public List<String> getCartasDeTienda() {
+    public List<IMostrable> getCartasDeTienda() {
         return this.rondaActual.getArticulosTienda();
     }
 
+    public void seleccionarCartaDePoker(IMostrable carta) {
+    }
 }

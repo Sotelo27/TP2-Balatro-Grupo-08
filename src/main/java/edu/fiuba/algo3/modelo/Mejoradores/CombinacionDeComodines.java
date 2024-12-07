@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
+import edu.fiuba.algo3.modelo.IMostrable;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
-public class CombinacionDeComodines implements IMejorador{
+public class CombinacionDeComodines implements IMejorador, IMostrable {
 	private  List<Comodin> comodines;
 	private  String nombre;
 	private  String descripcion;
@@ -39,4 +40,14 @@ public class CombinacionDeComodines implements IMejorador{
     public String getNombre() {
 		return this.nombre;
     }
+
+	@Override
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	@Override
+	public String getImagen() {
+		return "/images/jokers/JokerCombinado.png";
+	}
 }

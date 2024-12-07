@@ -3,7 +3,7 @@ import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
 
-public class Comodin implements IMejorador{
+public class Comodin implements IMejorador, IMostrable{
     private String nombre;
     private String descripcion;
     private ICondicionMejora activacion; // parsear a IcondicionMejora
@@ -57,6 +57,16 @@ public class Comodin implements IMejorador{
     @Override
     public String getNombre() {
         return this.nombre;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    @Override
+    public String getImagen() {
+        return "/images/jokers/jokerSimple.png";
     }
     //public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.repositorios;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.fiuba.algo3.modelo.IMostrable;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
@@ -51,7 +52,7 @@ public class JsonBalatroReader {
 
     private Tienda leerTienda(JsonNode tiendaNode, ObjectMapper mapper) {
         Tienda tienda = new Tienda();
-        List<IMejorador> especiales = new ArrayList<>();
+        List<IMostrable> especiales = new ArrayList<>();
         if (!tiendaNode.isMissingNode()) {
             JsonNode comodinesNode = tiendaNode.path("comodines");
             if (comodinesNode.isArray()) {
@@ -74,12 +75,12 @@ public class JsonBalatroReader {
                     especiales.add(tarot);
                 }
             }
-            tienda.setCartasEspeciales(especiales);
             JsonNode cartaNode = tiendaNode.path("carta");
             if (cartaNode != null) {
                 CartaDePoker carta = mapper.convertValue(cartaNode, CartaDePoker.class);
-                tienda.setCarta(carta);
+                especiales.add(carta);
             }
+            tienda.setCartas(especiales);
         }
         return tienda;
     }
