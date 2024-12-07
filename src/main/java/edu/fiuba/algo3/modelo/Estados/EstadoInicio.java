@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Estados;
+import edu.fiuba.algo3.controllers.TitleSceneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,11 +18,23 @@ public class EstadoInicio extends EstadoJuego{
 
     @Override
     public void empezar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/titleScene.fxml"));
+            Parent root = loader.load();
+
+            TitleSceneController controlador = loader.getController();
+
+            this.escena.setScene(new Scene(root));
+            this.escena.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void terminar() {
+
 
     }
 
