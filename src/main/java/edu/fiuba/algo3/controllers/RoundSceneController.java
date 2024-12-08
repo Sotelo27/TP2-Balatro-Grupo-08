@@ -10,21 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
-import javafx.stage.Stage;
 
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class RoundSceneController implements Initializable{
@@ -172,6 +167,13 @@ public class RoundSceneController implements Initializable{
             playHandBtn.setDisable(true);
         } else {
             // Aquí va la lógica de realizar la jugada
+            System.out.println("Jugada:");
+            for (ImageView selectedCard : selectedCards) {
+                ICarta carta = (ICarta) selectedCard.getUserData();
+                System.out.println(carta.getNombre());
+                modelo.seleccionarCartaDePoker(carta.getNombre());
+            }
+
             modelo.realizarJugada();
 
             selectedCards.clear();
@@ -202,7 +204,7 @@ public class RoundSceneController implements Initializable{
         for ( ICarta items : comodines ) {
             ImageView imageView = (ImageView) children.get(pos);
             System.out.println(items.getImagen());
-            imageView.setImage(new Image(getResourcePath2(items.getImagen())));
+            imageView.setImage(new Image(getResourcePath(items.getImagen())));
             pos ++;
         }
     }
@@ -213,7 +215,7 @@ public class RoundSceneController implements Initializable{
         for ( ICarta items : especiales ) {
             ImageView imageView = (ImageView) children.get(pos);
             System.out.println(items.getImagen());
-            imageView.setImage(new Image(getResourcePath2(items.getImagen())));
+            imageView.setImage(new Image(getResourcePath(items.getImagen())));
             pos ++;
         }
     }
@@ -224,12 +226,13 @@ public class RoundSceneController implements Initializable{
         List<javafx.scene.Node> children = cartasEnMano.getChildren();
         for ( ICarta item : cartas ) {
             ImageView imageView = (ImageView) children.get(pos);
-            imageView.setImage(new Image(getResourcePath2(item.getImagen())));
+            imageView.setImage(new Image(getResourcePath(item.getImagen())));
+            imageView.setUserData(item);
             pos ++;
         }
     }
 
-    private InputStream getResourcePath2(String path) {
+    private InputStream getResourcePath(String path) {
         System.out.println(path);
         InputStream file = getClass().getResourceAsStream(path);
         if (file == null) {

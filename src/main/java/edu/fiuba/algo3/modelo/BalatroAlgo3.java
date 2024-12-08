@@ -48,7 +48,7 @@ public class BalatroAlgo3{
     }
 
     public void realizarDescarte(){
-        // this.jugador.realizarDescarte(this.ronda)
+        this.jugador.realizarDescarte(this.rondaActual);
     }
 
     public void setEstado(EstadoJuego estado){};
