@@ -75,7 +75,7 @@ public class TestBalatroAlgo3   {
         Integer puntajeObtenido = juego.obtenerPuntajeRonda();
         List<ICarta > cartasObtenidas = juego.getCartasEnMano();
 
-        assert cartasObtenidas.size() == 8;
+        assert cartasObtenidas.isEmpty();
         assert puntajeEsperado.equals(puntajeObtenido);
     }
 /*
@@ -126,12 +126,11 @@ public class TestBalatroAlgo3   {
         int puntajeEsperado = 0;
 
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre",this.lectorDeJSONMock);
-        when(this.rondaMock.obtenerPuntaje()).thenReturn(new PuntajeJugada(30,1));
-
-
-        juego.seleccionarCartaDePoker(this.carta1.getNombre());
-        juego.seleccionarCartaDePoker(this.carta2.getNombre());
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre",new LectorDeJSON());
+        juego.iniciarRonda();
+        List<ICarta> cartas = juego.getCartasEnMano();
+        juego.seleccionarCartaDePoker(cartas.get(0).getNombre());
+        juego.seleccionarCartaDePoker(cartas.get(1).getNombre());
         juego.realizarJugada();
 
         int puntajeObtenido = juego.obtenerPuntajeRonda();
@@ -147,7 +146,7 @@ public class TestBalatroAlgo3   {
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaDePrueba));
         when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
-
+        juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
@@ -164,12 +163,12 @@ public class TestBalatroAlgo3   {
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaDePrueba));
         when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
-
+        juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
         Integer puntaje1 = juego.obtenerPuntajeRonda();
-
+        juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta3.getNombre()); // 5 de Corazones
         juego.seleccionarCartaDePoker(this.carta4.getNombre()); // 5 de Picas
         juego.realizarJugada(); // par de 5 sin comodines ni tarot

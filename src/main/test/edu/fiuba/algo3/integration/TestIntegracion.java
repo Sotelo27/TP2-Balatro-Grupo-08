@@ -285,6 +285,7 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(10,1);
         // act
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinAlDescarte);
         jugador1.realizarDescarte(rondaMock);
@@ -354,5 +355,18 @@ public class TestIntegracion {
     //  <Crear un tests de constructor de objetos>
 
     //  Planteo inicial de interfaz gráfica (mockups/dibujos), pantalla donde se muestra una ronda
+    @Test
+    public void test13ElJugadorRecibeCiertasCartasYPuedeHacerUnaJugadaConLosNombresDeLasCartas() {
+        Jugador jugador1 = new Jugador("jugador 1", this.mazoMock);
+        jugador1.recargarMano();
+        jugador1.seleccionarCarta(this.cartaMock1.getNombre());
+        jugador1.seleccionarCarta(this.cartaMock2.getNombre());
+        jugador1.realizarJugada(rondaMock);
+        PuntajeJugada puntajeObtenido = this.rondaMock.obtenerPuntaje();
+
+        System.out.println(puntajeObtenido);
+
+        assertTrue(puntajeObtenido.esMayorQue(this.puntajeEnCero));
+    }
 
 }
