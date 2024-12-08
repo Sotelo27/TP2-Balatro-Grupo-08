@@ -32,6 +32,8 @@ public class Balatrucho extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Balatrucho-Fiuba");
         stage.setScene(scene);
+
+        stage.sizeToScene(); // Ajusta el tamaño de la ventana al tamaño de la escena
         stage.getIcons().add(icon);
         stage.show();
 

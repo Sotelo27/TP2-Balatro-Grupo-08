@@ -75,3 +75,38 @@
     -fx-border-color: white;
     -fx-background-color: white;
 }
+
+/* Estilo base para el contenedor de cartas */
+.cards-container {
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+/* Estilo para todas las cartas */
+.cards-container ImageView {
+    -fx-fit-width: 100;
+    -fx-fit-height: 150;
+    -fx-preserve-ratio: true;
+}
+
+/* Estilo para el StackPane contenedor de cada carta */
+.card-container {
+    -fx-min-width: 100;
+    -fx-min-height: 150;
+    -fx-pref-width: 100;
+    -fx-pref-height: 150;
+    -fx-max-width: 100;
+    -fx-max-height: 150;
+    -fx-alignment: center;
+}
+
+/* Opcional: Estilo para cartas seleccionadas */
+.selected-card {
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.5), 15, 0, 0, 0);
+}
+
+/* Opcional: Estilo para hover */
+.hover-effect {
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.3), 10, 0, 0, 0);
+}

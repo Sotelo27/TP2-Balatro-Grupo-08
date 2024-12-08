@@ -87,4 +87,6 @@ public class BalatroAlgo3{
     public String getNumeroRonda() {
         return rondaActual.getNumero();
     }
+
+
 }

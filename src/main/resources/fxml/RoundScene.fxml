@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="roundPane" prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.RoundSceneController">
    <children>
-      <TilePane fx:id="cartasEnMano" alignment="CENTER" hgap="10.0" layoutX="459.0" layoutY="469.0" prefColumns="8" prefHeight="152.0" prefRows="8" prefWidth="775.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+      <TilePane styleClass="cards-container" fx:id="cartasEnMano" alignment="CENTER" hgap="10.0" layoutX="459.0" layoutY="469.0" prefColumns="8" prefHeight="152.0" prefRows="8" prefWidth="775.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
          <children>
             <ImageView fx:id="fourthCardOffert" fitHeight="160.0" fitWidth="84.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
