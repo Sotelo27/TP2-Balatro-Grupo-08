@@ -133,7 +133,7 @@ public class RoundSceneController implements Initializable{
     private void iniciarBotones() {
         // Inicialmente deshabilitar el botón si la lista está vacía
         playHandBtn.setDisable(selectedCards.isEmpty());
-
+        doDiscardBtn.setDisable(selectedCards.isEmpty());
         playHandBtn.setOnAction(e -> {
             if (manos.getText().equals("0")) {
                 System.out.println("End game");
@@ -141,11 +141,31 @@ public class RoundSceneController implements Initializable{
                 realizarJugada();
             }
         });
+        doDiscardBtn.setOnAction(e -> {
+            if (descartes.getText().equals("0")) {
+                System.out.println("No quedan mas descartes");
+            } else {
+                realizarDescarte();
+            }
+        });
 
         // Listener para detectar cambios en la lista de cartas seleccionadas
         selectedCards.addListener((ListChangeListener.Change<? extends ImageView> change) -> {
             playHandBtn.setDisable(selectedCards.isEmpty());
+            doDiscardBtn.setDisable(selectedCards.isEmpty());
         });
+    }
+
+    private void realizarDescarte() {
+        if (selectedCards.isEmpty()) {
+            doDiscardBtn.setDisable(true);
+        } else {
+            // Aquí va la lógica de realizar la jugada
+            modelo.realizarDescarte();
+
+            selectedCards.clear();
+        }
+        iniciarTurno();
     }
     private void realizarJugada() {
         if (selectedCards.isEmpty()) {
@@ -154,9 +174,9 @@ public class RoundSceneController implements Initializable{
             // Aquí va la lógica de realizar la jugada
             modelo.realizarJugada();
 
-            // Después de realizar la jugada, puedes limpiar la lista o manejarla como necesites
             selectedCards.clear();
         }
+        iniciarTurno();
     }
 
 
