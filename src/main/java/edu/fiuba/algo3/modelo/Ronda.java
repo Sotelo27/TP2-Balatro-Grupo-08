@@ -64,8 +64,7 @@ public class Ronda {
     }
 
     public String getPuntajeObjetivo() {
-        String puntaje = String.valueOf(puntajeASuperar);
-        return puntaje;
+        return String.valueOf(puntajeASuperar);
     }
 
     public String getDescartesRestantes() {
