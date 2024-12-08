@@ -74,12 +74,12 @@ public class RoundSceneController implements Initializable{
     }
 
     private void cargarCartasEnMano() {
-        List<String> cartas = this.modelo.getCartasEnMano();
+        List<ICarta> cartas = this.modelo.getCartasEnMano();
         Integer pos = 0;
         List<javafx.scene.Node> children = cartasEnMano.getChildren();
-        for ( String item : cartas ) {
+        for ( ICarta item : cartas ) {
             ImageView imageView = (ImageView) children.get(pos);
-            imageView.setImage(new Image(getResourcePath(item)));
+            imageView.setImage(new Image(getResourcePath2(item.getImagen())));
             pos ++;
         }
     }

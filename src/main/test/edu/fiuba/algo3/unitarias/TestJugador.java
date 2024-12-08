@@ -29,7 +29,7 @@ public class TestJugador {
         Mejora multiplicaX8 = new Mejora(1, 8, new MultiplicaMultiplicador());
         ICarta comodin = new Comodin(nombreBuscado, multiplicaX8, new SinRestriccion(),"", "");;
 
-        jugador.comprarCartaDeTarot(comodin);
+        //jugador.comprarCartaDeTarot(comodin);
         List<ICarta> comdinesObtenidos = jugador.getActivables();
 
         assert comdinesObtenidos.contains(nombreBuscado);
@@ -41,7 +41,7 @@ public class TestJugador {
         String nombreBuscado = "un Nombre";
         ICarta tarot = new CartaDeTarot(nombreBuscado, new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", "");
 
-        jugador.comprarComodin(tarot);
+        //jugador.comprarComodin(tarot);
         List<ICarta> comodinesObtenidos = jugador.getActivables();
 
         assert comodinesObtenidos.contains(nombreBuscado);

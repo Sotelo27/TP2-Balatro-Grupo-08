@@ -72,7 +72,7 @@ public class Jugador implements IComprador {
 */
 
 
-    public List<String> getCartasEnMano(){
+    public List<ICarta> getCartasEnMano(){
         return this.mano.getCartas();
     }
 
@@ -104,29 +104,29 @@ public class Jugador implements IComprador {
     }
     public List<ICarta> getActivables() {
         List<ICarta> activables = new ArrayList<>();
-        this.activables.forEach(activable -> activables.add((ICarta)activable));
+        this.activables.forEach(activable -> activables.add(activable.getCarta()));
         return activables;
     }
 
 
     @Override
-    public void comprarCartaDeTarot(ICarta comprable) {
-        recibirActivable((IMejorador) comprable);
+    public void comprarCartaDeTarot(IMejorador comprable) {
+        recibirActivable(comprable);
     }
 
     @Override
-    public void comprarComodin(ICarta comprable) {
-        this.comodinesActivos.add((IMejorador) comprable);
+    public void comprarComodin(IMejorador comprable) {
+        this.comodinesActivos.add(comprable);
     }
 
     @Override
-    public void comprarCartaDePoker(ICarta comprable) {
-        this.mano.recibirCard((CartaDePoker) comprable);
+    public void comprarCartaDePoker(CartaDePoker comprable) {
+        this.mano.recibirCard(comprable);
     }
 
     public List<ICarta> getComodinesActivos() {
         List<ICarta> comodines = new ArrayList<>();
-        comodinesActivos.forEach(comodin -> comodines.add((ICarta)comodin));
+        comodinesActivos.forEach(comodin -> comodines.add(comodin.getCarta()));
         return comodines;
     }
 }

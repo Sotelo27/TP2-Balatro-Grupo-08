@@ -55,4 +55,9 @@ public class CombinacionDeComodines implements IMejorador, ICarta{
 	public void asignarAComprador(IComprador comprador) {
 		comprador.comprarComodin(this);
 	}
+
+	@Override
+	public ICarta getCarta(){
+		return this;
+	}
 }

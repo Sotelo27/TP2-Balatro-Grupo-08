@@ -49,6 +49,9 @@ public class CartaDeTarot implements IMejorador, ICarta{
         condicion.aplicarMejora(mejorable, this.mejora, this.sobre, this.ejemplar);
     }
 
+    public ICarta getCarta(){
+        return this;
+    }
 
     //Setters
 

@@ -37,7 +37,7 @@ public class BalatroAlgo3{
         return this.rondaActual.obtenerPuntaje().asInt();
     }
 
-    public List<String> getCartasEnMano(){
+    public List<ICarta> getCartasEnMano(){
         return jugador.getCartasEnMano();
     }
 

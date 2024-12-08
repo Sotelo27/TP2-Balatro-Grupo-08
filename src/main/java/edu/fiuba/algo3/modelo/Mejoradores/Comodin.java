@@ -75,6 +75,10 @@ public class Comodin implements IMejorador, ICarta{
     }
     //public void setComodines(List<Comodin> comodines) {this.comodines = comodines;}
 
+    @Override
+    public ICarta getCarta(){
+        return this;
+    }
 
 }
 

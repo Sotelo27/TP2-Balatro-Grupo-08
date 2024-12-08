@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
+
 public interface IComprador {
-    void comprarCartaDeTarot(ICarta comprable);
+    void comprarCartaDeTarot(IMejorador comprable);
 
-    void comprarComodin(ICarta comprable);
+    void comprarComodin(IMejorador comprable);
 
-    void comprarCartaDePoker(ICarta comprable);
+    void comprarCartaDePoker(CartaDePoker comprable);
 }

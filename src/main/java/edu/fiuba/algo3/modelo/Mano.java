@@ -89,11 +89,10 @@ public class Mano {
         cartaDeTarot.setEjemplar(carta);
     }
 
-
-    public List<String> getCartas() {
-        List<String> cartas = new ArrayList<>();
+    public List<ICarta> getCartas(){
+        List<ICarta> cartas = new ArrayList<>();
         for(CartaDePoker carta : this.mano){
-            cartas.add(carta.getNombre());
+            cartas.add(carta);
         }
         return cartas;
     }
