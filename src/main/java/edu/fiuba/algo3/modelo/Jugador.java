@@ -102,26 +102,32 @@ public class Jugador implements IComprador {
             throw new ErrorSeExcedenLosLimitesDeActivables("Demasiados activables sin utilizar");
         }
     }
-    public List<String> getActivables() {
-        List<String> activables = new ArrayList<>();
-        this.activables.forEach(activable -> activables.add(activable.getNombre()));
+    public List<ICarta> getActivables() {
+        List<ICarta> activables = new ArrayList<>();
+        this.activables.forEach(activable -> activables.add((ICarta)activable));
         return activables;
     }
 
 
     @Override
-    public void comprarCartaDeTarot(IComprable comprable) {
-        this.activables.add((IMejorador) comprable);
+    public void comprarCartaDeTarot(ICarta comprable) {
+        recibirActivable((IMejorador) comprable);
     }
 
     @Override
-    public void comprarComodin(IComprable comprable) {
+    public void comprarComodin(ICarta comprable) {
         this.comodinesActivos.add((IMejorador) comprable);
     }
 
     @Override
-    public void comprarCartaDePoker(IComprable comprable) {
+    public void comprarCartaDePoker(ICarta comprable) {
         this.mano.recibirCard((CartaDePoker) comprable);
+    }
+
+    public List<ICarta> getComodinesActivos() {
+        List<ICarta> comodines = new ArrayList<>();
+        comodinesActivos.forEach(comodin -> comodines.add((ICarta)comodin));
+        return comodines;
     }
 }
 

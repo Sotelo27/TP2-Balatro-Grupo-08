@@ -62,4 +62,12 @@ public class BalatroAlgo3{
     public void seleccionarCartaDeTienda(ICarta carta) {
         rondaActual.comprarConJugador(carta, jugador);
     }
+
+    public List<ICarta> getCartasActivables(){
+        return jugador.getActivables();
+    }
+
+    public List<ICarta> getComodinesActivos() {
+        return jugador.getComodinesActivos();
+    }
 }

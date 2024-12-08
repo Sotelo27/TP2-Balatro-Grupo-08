@@ -1,14 +1,14 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.fiuba.algo3.modelo.IComprable;
+
 import edu.fiuba.algo3.modelo.IComprador;
 import edu.fiuba.algo3.modelo.ICondicionMejora;
 import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
-public class CartaDeTarot implements IMejorador, ICarta, IComprable {
+public class CartaDeTarot implements IMejorador, ICarta{
     private String nombre;
     private String descripcion;
     private Mejora mejora;

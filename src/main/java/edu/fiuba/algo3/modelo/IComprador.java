@@ -2,9 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 
 public interface IComprador {
-    void comprarCartaDeTarot(IComprable comprable);
+    void comprarCartaDeTarot(ICarta comprable);
 
-    void comprarComodin(IComprable comprable);
+    void comprarComodin(ICarta comprable);
 
-    void comprarCartaDePoker(IComprable comprable);
+    void comprarCartaDePoker(ICarta comprable);
 }

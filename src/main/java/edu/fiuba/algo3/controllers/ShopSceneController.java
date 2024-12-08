@@ -1,12 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
-import edu.fiuba.algo3.modelo.CartaDePoker;
-import edu.fiuba.algo3.modelo.IMostrable;
-import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
-import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
-import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
-import edu.fiuba.algo3.modelo.Mejoras.IMejorador;
+import edu.fiuba.algo3.modelo.ICarta;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +14,6 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -116,10 +110,10 @@ public class ShopSceneController implements Initializable {
 
 
     private void cargarItemsDeTienda() {
-        List<IMostrable> items = modelo.getCartasDeTienda();
+        List<ICarta> items = modelo.getCartasDeTienda();
         Integer pos = 0;
         List<javafx.scene.Node> children = cardOffersPane.getChildren();
-        for ( IMostrable item : items ) {
+        for ( ICarta item : items ) {
             ImageView imageView = (ImageView) children.get(pos);
             imageView.setImage(new Image(getResourcePath(item.getImagen()) ));
             pos ++;
@@ -142,8 +136,8 @@ public class ShopSceneController implements Initializable {
     }
 
     private void comprarCarta(int posicion) throws IOException {
-        IMostrable carta = modelo.getCartasDeTienda().get(posicion-1);
-        modelo.seleccionarCartaDePoker(carta);
+        ICarta carta = modelo.getCartasDeTienda().get(posicion-1);
+        modelo.seleccionarCartaDeTienda(carta);
         goNextStage();
     }
 
@@ -162,8 +156,8 @@ public class ShopSceneController implements Initializable {
     }
 
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {
-        //String carta = modelo.getCartasDeTienda().get(this.selectedCard);
-        //modelo.seleccionarCartaDePoker(carta);
+        ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
+        modelo.seleccionarCartaDeTienda(carta);
         goNextStage();
     }
 }

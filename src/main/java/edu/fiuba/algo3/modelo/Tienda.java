@@ -11,7 +11,7 @@ public class Tienda {
 
         return cartas;
     }
-    public void comprar(IComprable carta, IComprador comprador) {
+    public void comprar(ICarta carta, IComprador comprador) {
         carta.asignarAComprador(comprador);
     }
 }

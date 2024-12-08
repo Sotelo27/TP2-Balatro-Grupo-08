@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
 import edu.fiuba.algo3.modelo.ICarta;
-import edu.fiuba.algo3.modelo.IComprable;
 import edu.fiuba.algo3.modelo.IComprador;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
 import java.util.List;
 
-public class CombinacionDeComodines implements IMejorador, ICarta, IComprable {
+public class CombinacionDeComodines implements IMejorador, ICarta{
 	private  List<Comodin> comodines;
 	private  String nombre;
 	private  String descripcion;

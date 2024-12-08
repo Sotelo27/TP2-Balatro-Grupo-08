@@ -3,7 +3,7 @@ import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
 
-public class Comodin implements IMejorador, ICarta, IComprable {
+public class Comodin implements IMejorador, ICarta{
     private String nombre;
     private String descripcion;
     private ICondicionMejora activacion; // parsear a IcondicionMejora

@@ -6,4 +6,7 @@ public interface ICarta {
     String getDescripcion();
 
     String getImagen();
+
+    void asignarAComprador(IComprador comprador);
+
 }

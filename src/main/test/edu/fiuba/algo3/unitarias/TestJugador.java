@@ -3,6 +3,7 @@ package edu.fiuba.algo3.unitarias;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.RestriccionACarta;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
 import edu.fiuba.algo3.modelo.ErrorSeExcedenLosLimitesDeActivables;
+import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Mazo;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
@@ -26,10 +27,10 @@ public class TestJugador {
         Jugador jugador = new Jugador("Joaquin", new Mazo());
         String nombreBuscado = "un Nombre";
         Mejora multiplicaX8 = new Mejora(1, 8, new MultiplicaMultiplicador());
-        IMejorador comodin = new Comodin(nombreBuscado, multiplicaX8, new SinRestriccion(),"", "");;
+        ICarta comodin = new Comodin(nombreBuscado, multiplicaX8, new SinRestriccion(),"", "");;
 
-        jugador.recibirActivable(comodin);
-        List<String> comdinesObtenidos = jugador.getActivables();
+        jugador.comprarCartaDeTarot(comodin);
+        List<ICarta> comdinesObtenidos = jugador.getActivables();
 
         assert comdinesObtenidos.contains(nombreBuscado);
     }
@@ -38,11 +39,11 @@ public class TestJugador {
     public void test02JugadorRecibe1ComodinCorrectamente() throws ErrorSeExcedenLosLimitesDeActivables {
         Jugador jugador = new Jugador("Joaquin", new Mazo());
         String nombreBuscado = "un Nombre";
-        IMejorador tarot = new CartaDeTarot(nombreBuscado, new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", "");
+        ICarta tarot = new CartaDeTarot(nombreBuscado, new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", "");
 
-        jugador.recibirActivable(tarot);
-        List<String> tarotsObtenidos = jugador.getActivables();
+        jugador.comprarComodin(tarot);
+        List<ICarta> comodinesObtenidos = jugador.getActivables();
 
-        assert tarotsObtenidos.contains(nombreBuscado);
+        assert comodinesObtenidos.contains(nombreBuscado);
     }
 }
