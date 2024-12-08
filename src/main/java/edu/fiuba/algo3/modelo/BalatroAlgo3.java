@@ -20,17 +20,18 @@ public class BalatroAlgo3{
         this.inventario = new InventarioTienda(creadorDeObjetos);
     }
 
-    public void iniciarJuego(){
+    public void iniciarRonda(){
+        jugador.recargarMano();
     }
 
     public void seleccionarCartaDePoker(String nombre){
         this.jugador.seleccionarCarta(nombre);
     }
 
-    public void activarTarot(String nombre){
+    public void activarTarot(String nombre,String sobre){
     }
 
-    public void activarComodin(String nombre){
+    public void activarComodin(String nombre,String sobre){
     }
 
     public int obtenerPuntajeRonda(){
@@ -69,5 +70,21 @@ public class BalatroAlgo3{
 
     public List<ICarta> getComodinesActivos() {
         return jugador.getComodinesActivos();
+    }
+
+    public String getPuntajeObjetivo() {
+        return rondaActual.getPuntajeObjetivo();
+    }
+
+    public String getDescartesRestantes() {
+        return rondaActual.getDescartesrestantes();
+    }
+
+    public String getManosRestantes() {
+        return rondaActual.getManosRestantes();
+    }
+
+    public String getNumeroRonda() {
+        return rondaActual.getNumero();
     }
 }

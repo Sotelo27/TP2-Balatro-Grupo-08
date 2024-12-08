@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.ICarta;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +19,9 @@ import java.util.ResourceBundle;
 
 public class RoundSceneController implements Initializable{
     @FXML public TilePane tarotsGuardados;
+    @FXML public Label puntosObjetivo;
+    @FXML public Label manos;
+    @FXML public Label descartes;
 
     @FXML TilePane comodinesActivos;
     @FXML private TilePane cartasEnMano;
@@ -30,8 +34,26 @@ public class RoundSceneController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setModelo(BalatroAlgo3 modelo){
+    public void setModelo(BalatroAlgo3 modelo) {
         this.modelo = modelo;
+        iniciarTurno();
+    }
+
+
+    private void iniciarTurno() {
+        modelo.iniciarRonda();
+        cargarImagenes();
+        cargarEtiquetas();
+    }
+
+    private void cargarEtiquetas() {
+        puntosObjetivo.setText(modelo.getPuntajeObjetivo());
+        descartes.setText(modelo.getDescartesRestantes());
+        manos.setText(modelo.getManosRestantes());
+        numeroRonda.setText(modelo.getNumeroRonda());
+    }
+
+    private void cargarImagenes() {
         cargarCartasEnMano();
         cargarTarotsGuardados();
         cargarComodinesActivos();

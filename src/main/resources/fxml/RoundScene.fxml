@@ -78,7 +78,7 @@
                                           <Font name="Impact" size="50.0" />
                                        </font>
                                     </Label>
-                                    <Label contentDisplay="CENTER" layoutX="148.0" layoutY="48.0" prefHeight="69.0" prefWidth="206.0" text="0000000" textFill="WHITE">
+                                    <Label fx:id="puntosObjetivo" contentDisplay="CENTER" layoutX="148.0" layoutY="48.0" prefHeight="69.0" prefWidth="206.0" text="0000000" textFill="WHITE">
                                        <font>
                                           <Font size="46.0" />
                                        </font>
@@ -141,7 +141,7 @@
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="185.0" style="-fx-background-color: black;">
                                                    <children>
-                                                      <Label layoutX="68.0" layoutY="23.0" text="00" textFill="WHITE">
+                                                      <Label fx:id="manos" layoutX="68.0" layoutY="23.0" text="00" textFill="WHITE">
                                                          <font>
                                                             <Font size="35.0" />
                                                          </font></Label>
@@ -166,7 +166,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="99.0" prefWidth="174.0" style="-fx-background-color: black;">
                                                    <children>
-                                                      <Label layoutX="73.0" layoutY="25.0" text="00" textFill="WHITE">
+                                                      <Label fx:id="descartes" layoutX="73.0" layoutY="25.0" text="00" textFill="WHITE">
                                                          <font>
                                                             <Font size="35.0" />
                                                          </font></Label>

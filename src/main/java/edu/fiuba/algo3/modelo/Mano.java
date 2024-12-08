@@ -11,8 +11,8 @@ public class Mano {
     private ArrayList<CartaDePoker> seleccion = new ArrayList<>();
 
 
-    public Mano(Mazo mazo){
-        this.recargarManoConMazo(mazo);
+    public Mano(){
+
     }
 
     public void recibirCard(CartaDePoker carta) {

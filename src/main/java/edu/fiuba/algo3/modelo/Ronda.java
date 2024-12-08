@@ -62,4 +62,8 @@ public class Ronda {
         tienda.comprar(carta, jugador);
 
     }
+
+    public String getPuntajeObjetivo() {
+        return puntajeASuperar;
+    }
 }
