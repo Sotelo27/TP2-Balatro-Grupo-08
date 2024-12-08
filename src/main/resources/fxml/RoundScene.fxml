@@ -194,7 +194,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="111.0" prefWidth="159.0" style="-fx-background-color: black;">
                                                    <children>
-                                                      <Label layoutX="59.0" layoutY="17.0" prefHeight="68.0" prefWidth="77.0" text="00" textFill="WHITE">
+                                                      <Label fx:id="numeroRonda" layoutX="59.0" layoutY="17.0" prefHeight="68.0" prefWidth="77.0" text="00" textFill="WHITE">
                                                          <font>
                                                             <Font size="53.0" />
                                                          </font></Label>

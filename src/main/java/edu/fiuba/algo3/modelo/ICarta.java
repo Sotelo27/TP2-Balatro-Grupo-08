@@ -9,4 +9,6 @@ public interface ICarta {
 
     void asignarAComprador(IComprador comprador);
 
+
+
 }

@@ -18,7 +18,7 @@ public class Jugador implements IComprador {
     public Jugador(String nombre, Mazo mazo){
         this.nombre = nombre;
         this.mazo = mazo;
-        this.mano = new Mano(mazo);
+        this.mano = new Mano();
         this.comodinesActivos = new ArrayList<>();
         this.tarotsActivos = new ArrayList<>();
         this.activables = new ArrayList<>();

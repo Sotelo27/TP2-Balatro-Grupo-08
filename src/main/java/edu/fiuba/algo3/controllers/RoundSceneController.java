@@ -22,6 +22,7 @@ public class RoundSceneController implements Initializable{
     @FXML public Label puntosObjetivo;
     @FXML public Label manos;
     @FXML public Label descartes;
+    @FXML public Label numeroRonda;
 
     @FXML TilePane comodinesActivos;
     @FXML private TilePane cartasEnMano;

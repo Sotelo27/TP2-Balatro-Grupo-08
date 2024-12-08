@@ -77,7 +77,7 @@ public class BalatroAlgo3{
     }
 
     public String getDescartesRestantes() {
-        return rondaActual.getDescartesrestantes();
+        return rondaActual.getDescartesRestantes();
     }
 
     public String getManosRestantes() {
