@@ -3,8 +3,12 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.ICarta;
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -29,6 +33,8 @@ public class RoundSceneController implements Initializable{
     @FXML public Label manos;
     @FXML public Label descartes;
     @FXML public Label numeroRonda;
+    public Button playHandBtn;
+    public Button doDiscardBtn;
 
     @FXML TilePane comodinesActivos;
     @FXML private TilePane cartasEnMano;
@@ -44,9 +50,8 @@ public class RoundSceneController implements Initializable{
     @FXML private ImageView card8;
 
     private BalatroAlgo3 modelo;
-    private List<ImageView> selectedCards = new ArrayList<>();
-    private final DropShadow hoverEffect = new DropShadow(10, Color.BLUE);
-    private final DropShadow selectedEffect = new DropShadow(15, Color.rgb(255, 0, 0, 0.5)); // Rojo claro semi-transparente
+    private ObservableList<ImageView> selectedCards = FXCollections.observableArrayList();
+
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
 
@@ -63,6 +68,7 @@ public class RoundSceneController implements Initializable{
             }
 
         });
+
         iniciarTurno();
     }
 
@@ -121,7 +127,38 @@ public class RoundSceneController implements Initializable{
         modelo.iniciarRonda();
         cargarImagenes();
         cargarEtiquetas();
+        iniciarBotones();
     }
+
+    private void iniciarBotones() {
+        // Inicialmente deshabilitar el botón si la lista está vacía
+        playHandBtn.setDisable(selectedCards.isEmpty());
+
+        playHandBtn.setOnAction(e -> {
+            if (manos.getText().equals("0")) {
+                System.out.println("End game");
+            } else {
+                realizarJugada();
+            }
+        });
+
+        // Listener para detectar cambios en la lista de cartas seleccionadas
+        selectedCards.addListener((ListChangeListener.Change<? extends ImageView> change) -> {
+            playHandBtn.setDisable(selectedCards.isEmpty());
+        });
+    }
+    private void realizarJugada() {
+        if (selectedCards.isEmpty()) {
+            playHandBtn.setDisable(true);
+        } else {
+            // Aquí va la lógica de realizar la jugada
+            modelo.realizarJugada();
+
+            // Después de realizar la jugada, puedes limpiar la lista o manejarla como necesites
+            selectedCards.clear();
+        }
+    }
+
 
     private void cargarEtiquetas() {
 

@@ -261,12 +261,12 @@
             </ImageView>
          </children>
       </TilePane>
-      <Button layoutX="619.0" layoutY="638.0" mnemonicParsing="false" text="PLAY HAND">
+      <Button fx:id="playHandBtn" layoutX="619.0" layoutY="638.0" mnemonicParsing="false" text="PLAY HAND">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="935.0" layoutY="638.0" mnemonicParsing="false" text="DISCARD">
+      <Button fx:id="doDiscardBtn" layoutX="935.0" layoutY="638.0" mnemonicParsing="false" text="DISCARD">
          <font>
             <Font size="18.0" />
          </font>
