@@ -30,6 +30,7 @@ public class Mazo implements ITieneCartas {
         if (!this.cartas.isEmpty()) {
             int randomCard = new Random().nextInt(this.cartas.size());
             CartaDePoker carta = cartas.get(randomCard);
+            this.cartas.remove(randomCard);
             this.utilizadas.add(carta);
             return carta;
         }

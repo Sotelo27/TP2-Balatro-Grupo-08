@@ -37,6 +37,7 @@ public class Mano {
 
     public void seleccionarCarta(String cartaElegida){
         CartaDePoker cartaSeleccionada = this.mano.stream().filter(carta -> carta.getNombre().equals(cartaElegida)).findFirst().get();
+        this.mano.remove(cartaSeleccionada);
         this.seleccion.add(cartaSeleccionada);
     }
 
