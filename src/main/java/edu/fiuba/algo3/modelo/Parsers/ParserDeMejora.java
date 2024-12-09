@@ -11,12 +11,10 @@ public class ParserDeMejora {
         String funcion = palabras[1];
 
         if (caracterSigno == '+') {
-            if (funcion.equals("puntos")) {
+            if (funcion.equals("puntos") || funcion.equals("fichas")) {
                 return new SumaPuntos();
             } else if (funcion.equals("Mult") || funcion.equals("multiplicacion") || palabras[2].equals("multiplicador")) {
                 return new SumaAMultiplicador();
-            } else if (funcion.equals("fichas")) {
-                return new SumaFichas();
             }
         } else if (caracterSigno == 'x') {
             if (funcion.equals("puntos")) {

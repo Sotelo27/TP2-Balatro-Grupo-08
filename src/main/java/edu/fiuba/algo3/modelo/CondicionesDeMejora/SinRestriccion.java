@@ -11,7 +11,7 @@ public class SinRestriccion implements ICondicionMejora {
     }
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
         mejorable.aplicarMejora(mejora);
     }
 }

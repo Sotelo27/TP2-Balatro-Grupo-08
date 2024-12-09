@@ -25,9 +25,9 @@ public class CondicionDeMejoraParser {
         }
         if(activacion instanceof Map ){
             Map activacionMap = (Map) activacion;
-
             if(activacionMap.containsKey("Mano Jugada")){
-                return new RestriccionACombinacion();
+                String valor = activacionMap.get("Mano Jugada").toString();
+                return new RestriccionACombinacion(valor);
             }
             if(activacionMap.containsKey("1 en")){
                 return new ActivarAlAzar((new Random()));
@@ -36,6 +36,6 @@ public class CondicionDeMejoraParser {
 
         }
 
-        return new RestriccionACombinacion();
+        return null;
     }
 }

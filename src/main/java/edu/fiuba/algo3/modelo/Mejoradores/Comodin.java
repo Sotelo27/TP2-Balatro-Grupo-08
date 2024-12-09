@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
 import edu.fiuba.algo3.modelo.Parsers.ParserDeMejora;
 
+import javax.swing.*;
+
 public class Comodin implements IMejorador, ICarta{
     private String nombre;
     private String descripcion;
@@ -21,20 +23,21 @@ public class Comodin implements IMejorador, ICarta{
         this.elemento = elemento;
     }
 
-    @Override
-    public void mejorar(IMejorable mejorable) {
-        //Por ahi hay que modificar para que se haga directamente adentro mejorable (Jugada, Descarte, Comb o Carta), Refactorizable
-        this.activacion.aplicarMejora(mejorable, this.efecto , this.contexto, this.elemento);
-        // }
-        // for(Comodin comodin : this.comodines) { <-- Esto va en combinacionDeComodines
-        //     comodin.mejorar(mejorable);
-        // }
-
-
+    public Comodin(String nombre, String descripcion, Mejora mejora, ICondicionMejora activacion){
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.efecto = mejora;
+        this.activacion = activacion;
     }
 
+    @Override
+    public void mejorar(IMejorable mejorable) {
+        ParserDeMejora parserDeMejora = new ParserDeMejora();
+        IMejora mejora = parserDeMejora.parseDescripcion(this.descripcion);
+        this.efecto.setMejora(mejora);
+        this.activacion.aplicarMejora(mejorable, this.efecto);
 
-
+    }
 
     //Setters solo para creacion
 
@@ -45,15 +48,12 @@ public class Comodin implements IMejorador, ICarta{
     public void setActivacion(Object activacion) {
         CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
         this.activacion = parserAIcondicionDeMejora.parsear(activacion);
+        //System.out.println(this.activacion);
 
     }
 
     public void setEfecto(Mejora mejora) { 
         this.efecto = mejora;
-        ParserDeMejora parserDeMejora = new ParserDeMejora();
-
-        this.efecto.setMejora(parserDeMejora.parseDescripcion(descripcion));
-
     }
     @Override
     public String getNombre() {

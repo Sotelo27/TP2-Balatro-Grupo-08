@@ -7,13 +7,15 @@ public class RestriccionACombinacion implements ICondicionMejora {
 
 
     private final String contexto = "Jugada";
+    private  String elemento;
 
-    public RestriccionACombinacion() {}
-
+    public RestriccionACombinacion(String elemento) {
+        this.elemento = elemento;
+    }
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
-        mejorable.siContieneAplicarMejora(this.contexto, elemento, mejora);
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
+        mejorable.siContieneAplicarMejora(this.contexto, this.elemento, mejora);
     }
 
 }

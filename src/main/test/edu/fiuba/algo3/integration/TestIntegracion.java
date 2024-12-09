@@ -110,12 +110,10 @@ public class TestIntegracion {
         jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
-
-        jugador1.activarComodin(this.comodinSuma100);
+        Comodin comodinSumaUn100 = new Comodin("Caminante", "+100 fichas", new Mejora(100, 1, null),new SinRestriccion());
+        jugador1.activarComodin(comodinSumaUn100);
         jugador1.realizarJugada(this.rondaMock);
         PuntajeJugada puntajeObtenido = this.rondaMock.obtenerPuntaje();
-
-        System.out.println(puntajeObtenido);
 
         assertTrue(puntajeObtenido.esMayorQue(this.puntajeEnCero));
     }
@@ -267,7 +265,8 @@ public class TestIntegracion {
         when(mazoMock2.tomarCarta()).thenReturn(
                 carta1, carta2, carta3, carta4, carta5, cartaMock1 ,cartaMock2, cartaMock3);
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,new SumaAMultiplicador());
-        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion(),"Mano Jugada", "escalera"); // o new RestriccionACombinacion("Escalera")
+        Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion("escalera"),"Mano Jugada", "escalera");// o new RestriccionACombinacion("Escalera")
+        comodinx3.setDescripcion("x3 Mult" );
         Jugador jugador1 = new Jugador("jugador 1", mazoMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
@@ -290,14 +289,13 @@ public class TestIntegracion {
     @Test 
     public void test10SeUsaUnComodinQueSuma10PuntosPorDescarteYFuncionaCorrectamente(){
         // arrrange
-        Mejora mejoraSuma10Puntos = new Mejora(10,1,new SumaPuntos());
-        Comodin comodinAlDescarte = new Comodin("Al Descarte", mejoraSuma10Puntos, new EsDescarte(), "Descarte", "");
+        Comodin comodinDescarte = new Comodin("Al Descarte", "x15 multiplicacion", new Mejora(0, 15, null),new EsDescarte());
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        PuntajeJugada puntajeEsperado = new PuntajeJugada(10,1);
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(0,15);
         // act
         jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
-        jugador1.activarComodin(comodinAlDescarte);
+        jugador1.activarComodin(comodinDescarte);
         jugador1.realizarDescarte(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // assert  

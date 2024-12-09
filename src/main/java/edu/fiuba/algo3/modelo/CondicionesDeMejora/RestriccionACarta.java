@@ -18,10 +18,7 @@ public class RestriccionACarta implements ICondicionMejora {
     }
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento){
-        mejorable.siContieneAplicarMejora(this.contexto,elemento,mejora);
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora){
+        mejorable.siContieneAplicarMejora(this.contexto,this.elemento,mejora);
     }
-
-
-    ;
 }
