@@ -98,6 +98,7 @@ public class TestIntegracion {
     @Test
     public void test02SeInicializaElJugadorYRecibe8Cartas() {
         Jugador jugador1 = new Jugador("jugador 1", this.mazoMock);
+        jugador1.recargarMano();
         verify(this.mazoMock, times(8)).tomarCarta();
     }
 
@@ -106,6 +107,7 @@ public class TestIntegracion {
     public void test03ElJugadorRecibeCiertasCartasYPuedeHacerUnaJugada() {
         Jugador jugador1 = new Jugador("jugador 1", this.mazoMock);
 
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
 
@@ -123,6 +125,7 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(520, 1);
 
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
         // cada carta suma 5 a puntos - (5,1)+(5,1)
@@ -147,7 +150,8 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Comodin comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
         Comodin comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(),"", "");
-        
+
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
         // se suman 2 cincos (5,1)+(5,1) 
@@ -185,9 +189,11 @@ public class TestIntegracion {
     public void test06UnJugadorSeleccionaUnaCartaLeAplicaUnTarotYSuJugadaDevuelveElPuntajeCorrectamente() {
         // arrange
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        //CartaDePoker cartaObjetivo = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
+
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock2);
         jugador1.seleccionarCarta(this.cartaMock1);
+
         PuntajeJugada puntajeEsperado = new PuntajeJugada(35,1);
         CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", ""); // modificar las restricciones
         //CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),"","");
@@ -207,19 +213,21 @@ public class TestIntegracion {
     @Test
     public void test07SeUtilizaUnTarotMultiplicadorx6EnUnaCartaYSuJugadaDevuelveElPuntajeCorrectamente() {
         // arrange
+
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
         CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
-
         PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
 
         // act
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.seleccionarCarta(cartaMock2);
         // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1) 
         // 30 + 5 + 20 
         jugador1.activarTarot(tarotx6, cartaMock1);
         jugador1.realizarJugada(rondaMock);
+
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
         // assert
@@ -233,7 +241,9 @@ public class TestIntegracion {
         Mejora multiplicaX8 = new Mejora(1, 8, new MultiplicaMultiplicador());
         Comodin comodinx8 = new Comodin("X8", multiplicaX8, new SinRestriccion(),"", "");
         PuntajeJugada puntajeEsperado = new PuntajeJugada(840,1);
+
         // act
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock3);
         jugador1.seleccionarCarta(cartaMock4);
         jugador1.seleccionarCarta(cartaMock1);
@@ -261,7 +271,7 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock2);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
-
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(carta1);
         jugador1.seleccionarCarta(carta2);
         jugador1.seleccionarCarta(carta3);
@@ -285,6 +295,7 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(10,1);
         // act
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinAlDescarte);
         jugador1.realizarDescarte(rondaMock);
@@ -312,6 +323,7 @@ public class TestIntegracion {
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
 
         // act
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.activarComodin(comodinAlAzar);
         jugador1.realizarDescarte(rondaMock);
@@ -339,6 +351,7 @@ public class TestIntegracion {
         PuntajeJugada puntajeEsperado = new PuntajeJugada(6120,1);
 
         // ACT
+        jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
         jugador1.seleccionarCarta(cartaMock2);
         jugador1.activarComodin(comodinCombinado);

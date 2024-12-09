@@ -8,8 +8,6 @@ import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import java.io.IOException;
 import java.util.List;
 
-
-
 public class LectorDeJSON {
     public Mazo construirMazo() throws IOException {
         JsonMazoReader jsonMazoReader = new JsonMazoReader();
