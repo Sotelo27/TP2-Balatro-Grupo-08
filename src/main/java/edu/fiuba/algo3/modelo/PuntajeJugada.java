@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.CombinacionesDePoker.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.List;
 
@@ -77,5 +79,14 @@ public class PuntajeJugada {
 
     public int asInt() {
         return this.puntos*this.multiplicador;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.puntos*this.multiplicador);
+    }
+
+    public StringProperty enObserbable() {
+        return new SimpleStringProperty(this.toString());
     }
 }

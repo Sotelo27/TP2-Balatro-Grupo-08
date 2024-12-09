@@ -111,7 +111,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label contentDisplay="CENTER" layoutX="-6.0" layoutY="29.0" prefHeight="64.0" prefWidth="188.0" text="00000" textFill="WHITE">
+                              <Label fx:id="puntajeRonda" contentDisplay="CENTER" layoutX="-6.0" layoutY="29.0" prefHeight="64.0" prefWidth="188.0" text="00000" textFill="WHITE">
                                  <font>
                                     <Font size="46.0" />
                                  </font>

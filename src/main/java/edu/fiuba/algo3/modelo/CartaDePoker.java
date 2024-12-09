@@ -25,6 +25,7 @@ public class CartaDePoker implements IMejorable, ICarta {
 
     //Setters
     public CartaDePoker() {
+        this.mejora = new Mejora();
     }
 
     public CartaDePoker(String nombre, String palo, String numero, int puntos, int multiplicador){

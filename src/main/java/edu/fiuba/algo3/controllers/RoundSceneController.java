@@ -31,6 +31,7 @@ public class RoundSceneController implements Initializable{
     @FXML public Label numeroRonda;
     public Button playHandBtn;
     public Button doDiscardBtn;
+    @FXML Label puntajeRonda;
 
     @FXML TilePane comodinesActivos;
     @FXML private TilePane cartasEnMano;
@@ -64,10 +65,9 @@ public class RoundSceneController implements Initializable{
             }
 
         });
-
+        //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
         iniciarTurno();
     }
-
     private void hacerSeleccionable(ImageView card) {
         card.setPickOnBounds(true);
 
@@ -79,7 +79,6 @@ public class RoundSceneController implements Initializable{
         ScaleTransition shrinkTransition = new ScaleTransition(Duration.millis(100), card);
         shrinkTransition.setToX(1.0);
         shrinkTransition.setToY(1.0);
-
 
         card.setOnMouseEntered(e -> {
             if (!selectedCards.contains(card)) {
@@ -93,6 +92,7 @@ public class RoundSceneController implements Initializable{
                 card.setEffect(null);
             }
         });
+
         card.setOnMouseClicked(event -> handleCardSelection(card));
     }
 
@@ -104,21 +104,27 @@ public class RoundSceneController implements Initializable{
             selectCard(card);
         } else {
             selectCard(card);
-        }}
+        }
+    }
 
     private void selectCard(ImageView card) {
-        selectedCards.add(card);
-        card.setScaleX(SCALE_FACTOR);
-        card.setScaleY(SCALE_FACTOR);
-        card.getStyleClass().add("selected-card");
+        if (!selectedCards.contains(card)) {
+            selectedCards.add(card);
+            card.setScaleX(SCALE_FACTOR);
+            card.setScaleY(SCALE_FACTOR);
+            card.getStyleClass().add("selected-card");
+        }
     }
 
     private void deselectCard(ImageView card) {
-        selectedCards.remove(card);
-        card.setScaleX(1.0);
-        card.setScaleY(1.0);
-        card.getStyleClass().remove("selected-card");
+        if (selectedCards.contains(card)) {
+            selectedCards.remove(card);
+            card.setScaleX(1.0);
+            card.setScaleY(1.0);
+            card.getStyleClass().remove("selected-card");
+        }
     }
+
     private void iniciarTurno() {
         modelo.iniciarRonda();
         iniciarBotones();
@@ -186,7 +192,7 @@ public class RoundSceneController implements Initializable{
         descartes.setText(modelo.getDescartesRestantes());
         manos.setText(modelo.getManosRestantes());
         numeroRonda.setText(modelo.getNumeroRonda());
-
+        puntajeRonda.setText(String.valueOf(modelo.obtenerPuntajeRonda()));
     }
 
     private void cargarImagenes() {
