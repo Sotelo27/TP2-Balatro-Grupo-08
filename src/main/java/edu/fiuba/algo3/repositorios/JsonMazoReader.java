@@ -1,14 +1,10 @@
 package edu.fiuba.algo3.repositorios;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.modelo.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
 public class JsonMazoReader {
     private static final String PATH = "src/test/resources/json/mazo.json";

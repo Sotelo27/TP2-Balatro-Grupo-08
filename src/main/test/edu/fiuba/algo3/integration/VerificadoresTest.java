@@ -183,14 +183,8 @@ public class VerificadoresTest {
         List <CartaDePoker> cartas = new ArrayList <>();
         CartaDePoker carta1 = new CartaDePoker("2 de Corazones", "Corazones", "2", 2,1);
         CartaDePoker carta2 = new CartaDePoker("2 de Corazones", "Corazones", "2", 2,1);
-        //CartaDePoker carta3 = new CartaDePoker("6 de Diamante", "Diamante", "6", 6,1);
-        //CartaDePoker carta4 = new CartaDePoker("10 de Corazones", "Corazones", "10", 10,1);
-        //CartaDePoker carta5 = new CartaDePoker("7 de Pica", "Pica", "7", 2,1);
         cartas.add(carta1);
         cartas.add(carta2);
-        //cartas.add(carta3);
-        //cartas.add(carta4);
-        //cartas.add(carta5);
         combinacionEncontrada = new VerificadorRoyalFlush().verificar(cartas);
         assertEquals(combinacionEsperada, combinacionEncontrada.devolverNombreCombinacion());
     }
@@ -201,15 +195,7 @@ public class VerificadoresTest {
         CombinacionDePoker combinacionEncontrada;
         List <CartaDePoker> cartas = new ArrayList <>();
         CartaDePoker carta1 = new CartaDePoker("7 de Corazones", "Corazones", "7", 7,1);
-        //CartaDePoker carta2 = new CartaDePoker("3 de Trebol", "Trebol", "3", 3,1);
-        //CartaDePoker carta3 = new CartaDePoker("6 de Diamante", "Diamante", "6", 6,1);
-        //CartaDePoker carta4 = new CartaDePoker("10 de Corazones", "Corazones", "10", 10,1);
-        //CartaDePoker carta5 = new CartaDePoker("2 de Pica", "Pica", "2", 2,1);
         cartas.add(carta1);
-        //cartas.add(carta2);
-        //cartas.add(carta3);
-        //cartas.add(carta4);
-        //cartas.add(carta5);
         combinacionEncontrada = new VerificadorRoyalFlush().verificar(cartas);
         assertEquals(combinacionEsperada, combinacionEncontrada.devolverNombreCombinacion());
     }

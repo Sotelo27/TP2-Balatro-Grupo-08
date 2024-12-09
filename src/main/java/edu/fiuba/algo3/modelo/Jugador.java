@@ -23,10 +23,10 @@ public class Jugador implements IComprador {
         this.tarotsActivos = new ArrayList<>();
         this.activables = new ArrayList<>();
     }
+
     public void seleccionarCarta(CartaDePoker cartasSeleccionada){
         this.mano.seleccionarCarta(cartasSeleccionada);
     }
-
 
     public void seleccionarCarta(String  cartasSeleccionada){
         this.mano.seleccionarCarta(cartasSeleccionada);
@@ -41,44 +41,16 @@ public class Jugador implements IComprador {
             this.mano.recargarManoConMazo(this.mazo);
         }
     }
+
     public void realizarDescarte(Ronda ronda){
         if(this.mano.realizarDescarte(ronda,this.comodinesActivos) ){
             this.mano.recargarManoConMazo(this.mazo);
         }
 
     }
-/*
-    public void activarCarta(IMostrable carta, IMostrable sobre){ // Balatro
-        switch (carta.esTipo()){
-            case CartaDeTarot{
-                carta.mejorar(sobre);
-            }
-            case CartaDePoker{
-                carta.reemplazar(sobre);
-            }
-        }
-
-        this.jugador.seleccionarCarta(sobre);
-        this.jugador.activarCarta(carta);
-    }
-
-
-
-
-    public void activarCarta(IMostrable carta){ //jugador
-        activables.forEach();
-        activarCarta(carta);
-    }
-*/
-
 
     public List<ICarta> getCartasEnMano(){
         return this.mano.getCartas();
-    }
-
-    public void activarTarot(CartaDeTarot tarot){
-        this.mano.activarTarot(tarot);
-        this.tarotsActivos.add(tarot);
     }
 
     public void activarTarot(CartaDeTarot tarot, CartaDePoker cartaObjetivo){
@@ -93,7 +65,6 @@ public class Jugador implements IComprador {
         return this.mano.getSeleccionadas();
     }
 
-
     public void recibirActivable(IMejorador activable) throws ErrorSeExcedenLosLimitesDeActivables {
         if (this.activables.size() < 2) {
             this.activables.add(activable);
@@ -107,7 +78,6 @@ public class Jugador implements IComprador {
         this.activables.forEach(activable -> activables.add(activable.getCarta()));
         return activables;
     }
-
 
     @Override
     public void comprarCartaDeTarot(IMejorador comprable) {
