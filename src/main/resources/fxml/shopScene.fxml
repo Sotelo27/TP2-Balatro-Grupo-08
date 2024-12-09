@@ -87,14 +87,14 @@
             </ImageView>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="210.0" prefWidth="232.0" style="-fx-background-color: black;">
               <items>
-                  <Text fx:id="nombreObjeto" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="230.0">
+                  <Text fx:id="nombreObjeto" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="230.0">
                      <font>
                         <Font name="Impact" size="31.0" />
                      </font>
                   </Text>
                   <Pane AnchorPane.topAnchor="30.0">
                      <children>
-                        <Text fx:id="descripcionObjeto" fill="WHITE" layoutX="2.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="CENTER" wrappingWidth="230.0">
+                        <Text fx:id="descripcionObjeto" fill="WHITE" layoutX="2.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" textOrigin="CENTER" wrappingWidth="230.0">
                            <font>
                               <Font name="Impact" size="13.0" />
                            </font>

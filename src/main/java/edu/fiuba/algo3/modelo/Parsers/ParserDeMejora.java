@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 public class ParserDeMejora {
 
-    public IMejora parseCondicion(String descripcion) {
+    public IMejora parseDescripcion(String descripcion) {
         String[] palabras = descripcion.split(" ");
         char caracterSigno = palabras[0].charAt(0);
         String funcion = palabras[1];

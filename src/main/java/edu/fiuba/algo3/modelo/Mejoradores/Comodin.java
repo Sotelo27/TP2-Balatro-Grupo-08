@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Mejoradores;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
+import edu.fiuba.algo3.modelo.Parsers.ParserDeMejora;
 
 public class Comodin implements IMejorador, ICarta{
     private String nombre;
@@ -48,10 +49,10 @@ public class Comodin implements IMejorador, ICarta{
     }
 
     public void setEfecto(Mejora mejora) { 
+        this.efecto = mejora;
+        ParserDeMejora parserDeMejora = new ParserDeMejora();
 
-        //ParserDeMejora parser= new ParserDeMejora();
-
-       // this.mejora.setMejora(parser.parse(descripcion));
+        this.efecto.setMejora(parserDeMejora.parseDescripcion(descripcion));
 
     }
     @Override
