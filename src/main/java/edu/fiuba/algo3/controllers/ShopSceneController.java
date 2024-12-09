@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.ICarta;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,46 +53,55 @@ public class ShopSceneController implements Initializable {
 
     private BalatroAlgo3 modelo;
     private Integer selectedCard;
+    private static final double SCALE_FACTOR = 1.1; // 10% más grande
+
+    void setBehaviour(ImageView card, int selectedPos){
+        card.setOnMouseEntered(e -> {
+            this.agrandarImagen(card);
+            this.selectedCard = selectedPos;
+            preSeleccionar(card);
+        });
+        card.setOnMouseExited(e -> {
+            this.achicarImagen(card);
+        });
+        card.setOnMouseClicked(e -> {
+            System.out.println(selectedPos);
+        });
+    }
 
     @FXML
-    void selectFirstCard(MouseEvent event) throws IOException {
+    void selectFirstCard(MouseEvent event)  {
         //comprarCarta(1);
-        this.selectedCard = 0;
-        preSeleccionar(firstCardOffert);
         System.out.println("firstCardOffert selected");
+        this.setBehaviour(firstCardOffert, 0);
     }
 
-
     @FXML
-    void selectScndCard(MouseEvent event) throws IOException {
+    void selectScndCard(MouseEvent event) {
         //comprarCarta(2);
-        this.selectedCard = 1;
-        preSeleccionar(scndCardOffert);
         System.out.println("scndCardOffert selected");
+        this.setBehaviour(scndCardOffert, 1);
     }
 
     @FXML
-    void selectThirdCard(MouseEvent event) throws IOException {
+    void selectThirdCard(MouseEvent event) {
         //comprarCarta(3);
-        this.selectedCard = 2;
-        preSeleccionar(thrdCardOffert);
         System.out.println("thirdCardOffert selected");
+        this.setBehaviour(thrdCardOffert, 2);
     }
 
     @FXML
-    void selectFourthCard(MouseEvent event) throws IOException {
+    void selectFourthCard(MouseEvent event){
         //comprarCarta(4);
-        this.selectedCard = 3;
-        preSeleccionar(fourthCardOffert);
         System.out.println("fourthCardOffert selected");
+        this.setBehaviour(fourthCardOffert, 3);
     }
 
     @FXML
-    void selectFifthCard(MouseEvent event) throws IOException {
+    void selectFifthCard(MouseEvent event) {
         //comprarCarta(5);
-        this.selectedCard = 4;
-        preSeleccionar(fifthCardOffert);
         System.out.println("fifthCardOffert selected");
+        this.setBehaviour(fifthCardOffert, 4);
     }
 
     public void setModelo(BalatroAlgo3 modelo) {
@@ -107,7 +118,6 @@ public class ShopSceneController implements Initializable {
              stage.sizeToScene();
          });
     }
-
 
     private void cargarItemsDeTienda() {
         List<ICarta> items = modelo.getCartasDeTienda();
@@ -130,9 +140,9 @@ public class ShopSceneController implements Initializable {
     }
 
     private void preSeleccionar(ImageView cardOffert) {
-        choosedCard.setImage(cardOffert.getImage());
-        nombreObjeto.setText(modelo.getCartasDeTienda().get(selectedCard).getNombre());
-        descripcionObjeto.setText(modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
+        this.choosedCard.setImage(cardOffert.getImage());
+        this.nombreObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getNombre());
+        this.descripcionObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
     }
 
     private void comprarCarta(int posicion) throws IOException {
@@ -159,5 +169,19 @@ public class ShopSceneController implements Initializable {
         ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
         modelo.seleccionarCartaDeTienda(carta);
         goNextStage();
+    }
+
+    private void achicarImagen(ImageView cardImage) {
+        ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);
+        scale.setToY(SCALE_FACTOR);
+        scale.setToX(SCALE_FACTOR);
+        scale.play();
+    }
+
+    private void agrandarImagen(ImageView cardImage) {
+        ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);
+        scale.setToX(1);
+        scale.setToY(1);
+        scale.play();
     }
 }
