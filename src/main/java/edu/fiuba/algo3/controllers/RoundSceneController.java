@@ -120,9 +120,9 @@ public class RoundSceneController implements Initializable{
     }
     private void iniciarTurno() {
         modelo.iniciarRonda();
+        iniciarBotones();
         cargarImagenes();
         cargarEtiquetas();
-        iniciarBotones();
     }
 
     private void iniciarBotones() {
@@ -152,18 +152,14 @@ public class RoundSceneController implements Initializable{
     }
 
     private void realizarDescarte() {
-        if (selectedCards.isEmpty()) {
-            doDiscardBtn.setDisable(true);
-        } else {
-            System.out.println("Descarte:");
-            for (ImageView card : selectedCards) {
-                ICarta carta = (ICarta) card.getUserData();
-                System.out.println(carta.getNombre());
-                modelo.seleccionarCartaDePoker(carta.getNombre());
-                deselectCard(card);
-            }
-            modelo.realizarDescarte();
+        System.out.println("Descarte:");
+        for (ImageView card : selectedCards) {
+            ICarta carta = (ICarta) card.getUserData();
+            System.out.println(carta.getNombre());
+            modelo.seleccionarCartaDePoker(carta.getNombre());
         }
+        selectedCards.clear();
+        modelo.realizarDescarte();
         iniciarTurno();
     }
     private void realizarJugada() {
@@ -176,8 +172,8 @@ public class RoundSceneController implements Initializable{
                 ICarta carta = (ICarta) card.getUserData();
                 System.out.println(carta.getNombre());
                 modelo.seleccionarCartaDePoker(carta.getNombre());
-                deselectCard(card);
             }
+            selectedCards.clear();
             modelo.realizarJugada();
         }
         iniciarTurno();

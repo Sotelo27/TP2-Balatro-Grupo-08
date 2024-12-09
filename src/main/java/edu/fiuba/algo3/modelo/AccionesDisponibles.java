@@ -22,7 +22,22 @@ public class AccionesDisponibles{
 	}
 
 	public void reducirManosDisponibles(){
-		this.manosDisponibles -= 1;
+		this.manosDisponibles--;
 	}
-	
+
+    public String getDescartesRestante() {
+		return String.valueOf(descartesDisponibles);
+    }
+
+	public String getManosRestantes() {
+		return String.valueOf(manosDisponibles);
+	}
+
+	public void setManos(int manos) {
+		manosDisponibles = manos;
+	}
+
+	public void setDescartes(int descartes) {
+		descartesDisponibles = descartes;
+	}
 }

@@ -44,11 +44,11 @@ public class Ronda {
 
     public void setNumero(int numero) { this.numero = numero;}
 
-    public void setManos(int manos) { this.manos = manos; }
+    public void setManos(int manos) { this.limites.setManos(manos); }
 
     public void setPuntajeASuperar(int puntajeASuperar) { this.puntajeASuperar = puntajeASuperar; }
 
-    public void setDescartes(int descartes) { this.descartes = descartes; }
+    public void setDescartes(int descartes) { this.limites.setDescartes(descartes); }
 
     public void setTienda(Tienda tienda) {
         this.tienda = tienda;
@@ -60,7 +60,6 @@ public class Ronda {
 
     public void comprarConJugador(ICarta carta, Jugador jugador) {
         tienda.comprar(carta, jugador);
-
     }
 
     public String getPuntajeObjetivo() {
@@ -68,11 +67,11 @@ public class Ronda {
     }
 
     public String getDescartesRestantes() {
-        return String.valueOf(descartes);
+        return limites.getDescartesRestante();
     }
 
     public String getManosRestantes() {
-        return String.valueOf(manos);
+        return limites.getManosRestantes();
     }
 
     public String getNumero() {
