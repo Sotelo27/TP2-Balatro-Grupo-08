@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
+import edu.fiuba.algo3.Services.ImageLoader;
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.ICarta;
 import javafx.animation.ScaleTransition;
@@ -189,53 +190,19 @@ public class RoundSceneController implements Initializable{
     }
 
     private void cargarImagenes() {
-        cargarCartasEnMano();
-        cargarTarotsGuardados();
-        cargarComodinesActivos();
+        cargarCartas(modelo.getCartasEnMano(), cartasEnMano);
+        cargarCartas(modelo.getCartasActivables(), tarotsGuardados);
+        cargarCartas(modelo.getComodinesActivos(), comodinesActivos);
     }
 
-    private void cargarComodinesActivos() {
-        List<ICarta> comodines = modelo.getComodinesActivos();
-        List<javafx.scene.Node> children = comodinesActivos.getChildren();
-        int pos = 0;
-        for ( ICarta items : comodines ) {
-            ImageView imageView = (ImageView) children.get(pos);
-            System.out.println(items.getImagen());
-            imageView.setImage(new Image(getResourcePath(items.getImagen())));
-            pos ++;
+    private void cargarCartas(List<ICarta> cartas, TilePane contenedor) {
+        List<javafx.scene.Node> children = contenedor.getChildren();
+        ImageLoader imageLoader = new ImageLoader();
+        for (int i = 0; i < cartas.size(); i++) {
+            ICarta carta = cartas.get(i);
+            ImageView imageView = (ImageView) children.get(i);
+            imageView.setImage(imageLoader.cargarImagen(carta.getImagen()));
+            imageView.setUserData(carta);
         }
     }
-    private void cargarTarotsGuardados() {
-        List<ICarta> especiales = modelo.getCartasActivables();
-        Integer pos = 0;
-        List<javafx.scene.Node> children = tarotsGuardados.getChildren();
-        for ( ICarta items : especiales ) {
-            ImageView imageView = (ImageView) children.get(pos);
-            System.out.println(items.getImagen());
-            imageView.setImage(new Image(getResourcePath(items.getImagen())));
-            pos ++;
-        }
-    }
-
-    private void cargarCartasEnMano() {
-        List<ICarta> cartas = this.modelo.getCartasEnMano();
-        Integer pos = 0;
-        List<javafx.scene.Node> children = cartasEnMano.getChildren();
-        for ( ICarta item : cartas ) {
-            ImageView imageView = (ImageView) children.get(pos);
-            imageView.setImage(new Image(getResourcePath(item.getImagen())));
-            imageView.setUserData(item);
-            pos ++;
-        }
-    }
-
-    private InputStream getResourcePath(String path) {
-        System.out.println(path);
-        InputStream file = getClass().getResourceAsStream(path);
-        if (file == null) {
-            return getClass().getResourceAsStream("/images/cartas/2 de Corazones.png");
-        }
-        return file;
-    }
-
 }
