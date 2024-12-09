@@ -69,36 +69,36 @@ public class TestBalatroAlgo3   {
         // arrange
         Integer puntajeEsperado = 0;
 
-
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON());
         Integer puntajeObtenido = juego.obtenerPuntajeRonda();
         List<ICarta > cartasObtenidas = juego.getCartasEnMano();
 
-        assert cartasObtenidas.size() == 8;
+        // assert
+        assert cartasObtenidas.size() == 0;
         assert puntajeEsperado.equals(puntajeObtenido);
     }
-/*
 
     @Test
     public void test02SeHaceLaSeleccionDeUnaCartaYSeObtieneCorrectamenteUnListadoDeEllas() throws IOException {
         // arrange
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
         List<ICarta> cartasEnMano;
-        List<ICarta> cartasObtenidas;
-        List<ICarta> cartasEsperadas = new ArrayList<>();
+        List<String> cartasObtenidas;
+        List<String> cartasEsperadas = new ArrayList<>();
+
         // act
         cartasEnMano = juego.getCartasEnMano();
 
-        for (int i = 0; i < 3; i++) {
-            juego.seleccionarCartaDePoker(cartasEnMano.get(i));
-            cartasEsperadas.add(cartasEnMano.get(i));
+        for (ICarta carta : cartasEnMano) {
+            juego.seleccionarCartaDePoker(carta.getNombre());
+            cartasEsperadas.add(carta.getNombre());
         }
         cartasObtenidas = juego.getCartasSeleccionadas();
+
         // assert
         assert cartasObtenidas.equals(cartasEsperadas);
     }
-*/
 
     @Test
     public void test03SeObtieneCorrectamenteLaPrimeraTiendaDelJuego() throws IOException {
@@ -113,34 +113,36 @@ public class TestBalatroAlgo3   {
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(Arrays.asList(rondaMock));
         when(rondaMock.getArticulosTienda()).thenReturn(cartasEsperadas);
 
-
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
         List<ICarta> cartasDeTienda = juego.getCartasDeTienda();
+
         // assert
         assert cartasDeTienda.equals(cartasEsperadas);
     }
 
     @Test
     public void test04SePuedeHacerUnaJugada() throws IOException {
+
+        // arrange
         int puntajeEsperado = 0;
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre",this.lectorDeJSONMock);
 
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre",this.lectorDeJSONMock);
+        juego.iniciarRonda();
         when(this.rondaMock.obtenerPuntaje()).thenReturn(new PuntajeJugada(30,1));
-
-
         juego.seleccionarCartaDePoker(this.carta1.getNombre());
         juego.seleccionarCartaDePoker(this.carta2.getNombre());
         juego.realizarJugada();
-
         int puntajeObtenido = juego.obtenerPuntajeRonda();
 
+        // assert
         assert puntajeEsperado < puntajeObtenido;
     }
 
     @Test
     public void test05SePuedeHacerUnaJugadaYSeObtieneElPuntajeCorrectamente() throws IOException {
+        // arrange
         Integer puntajeEsperado = 30;
 
         Ronda rondaDePrueba = new Ronda(1, 3,3);
@@ -148,16 +150,20 @@ public class TestBalatroAlgo3   {
         when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
 
+        // act
+        juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
         Integer puntajeObtenido = juego.obtenerPuntajeRonda();
 
+        // assert
         assert puntajeEsperado.equals(puntajeObtenido);
     }
 
     @Test
     public void test06UnJugadorRealizaVariasJugadasYSuPuntajeSeObtieneCorrectamente() throws IOException {
+        // arrange
         Integer puntajeEsperado = 60;
 
         Ronda rondaDePrueba = new Ronda(1, 3,3);
@@ -165,6 +171,8 @@ public class TestBalatroAlgo3   {
         when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", this.lectorDeJSONMock);
 
+        // act
+        juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
@@ -175,6 +183,7 @@ public class TestBalatroAlgo3   {
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
         Integer puntaje2 = juego.obtenerPuntajeRonda();
 
+        // assert
         assert puntajeEsperado.equals(puntaje2);
     }
 /*

@@ -77,15 +77,6 @@ public class Mano {
         return ronda.agregarAccion(jugada);
     }
 
-
-    public void activarTarot(CartaDeTarot cartaDeTarot){
-
-        if (this.seleccion.size() == 1) {
-            CartaDePoker cartaAMejorar = this.seleccion.get(0);
-            cartaDeTarot.setEjemplar(cartaAMejorar);
-        }
-    }
-
     public void activarTarotSobreCarta(CartaDeTarot cartaDeTarot, CartaDePoker carta){
         cartaDeTarot.setEjemplar(carta);
     }
