@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class BalatroAlgo3{
+    private EstadoJuego estado;
     private Jugador jugador;
     private List<Ronda> rondas;
     private Ronda rondaActual;
@@ -56,7 +57,13 @@ public class BalatroAlgo3{
         this.jugador.realizarDescarte(this.rondaActual);
     }
 
-    public void setEstado(EstadoJuego estado){};
+    public void setEstado(EstadoJuego nuevoEstado){
+        if (this.estado != null) {
+            this.estado.terminar();
+        }
+        this.estado = nuevoEstado;
+        this.estado.empezar();
+    };
 
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
