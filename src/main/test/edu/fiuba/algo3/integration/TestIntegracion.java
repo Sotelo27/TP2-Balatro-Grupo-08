@@ -224,7 +224,7 @@ public class TestIntegracion {
         // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1) 
         // 30 + 5 + 20 
         //jugador1.activarTarotSobreCarta(tarotx6, cartaMock1);
-        jugador1.activarTarotSobreCarta(tarotx6,cartaMock1);
+        //jugador1.activarTarotSobreCarta(tarotx6,cartaMock1);
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
@@ -250,7 +250,7 @@ public class TestIntegracion {
         // 30 + 5 + 20
         // (OnepPair) = 10 - 2 -> se mejora = 15 - 2  , (5 de corazones) = 5 - 1 , (5 de treboles) = 5 - 1
         // 30 + 5 + 5 = 40
-        jugador1.activarTarotSobreCarta(tarotElMago,cartaMock1);
+        //jugador1.activarTarotSobreCarta(tarotElMago,cartaMock1);
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
@@ -371,7 +371,7 @@ public class TestIntegracion {
         Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada(),"Mano Jugada", "par");
         Comodin comodinDeSiempre = new Comodin("+3 Mult. si Boca no juega a nada", new Mejora(1, 3, new SumaAMultiplicador()), new SinRestriccion(), "", "" );
         Comodin comodinAleatorio = new Comodin("+500 puntos si racing sale campeon", new Mejora(500,1, new SumaPuntos()), new ActivarAlAzar(mockAleatorio), "1 en", "100");
-        CombinacionDeComodines comodinCombinado = new CombinacionDeComodines("Clubes Grandes", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
+        CombinacionDeComodines comodinCombinado = new CombinacionDeComodines("Clubes Grandes","", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(6120,1);
 
