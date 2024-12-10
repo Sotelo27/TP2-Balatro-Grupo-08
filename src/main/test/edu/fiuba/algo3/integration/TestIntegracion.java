@@ -197,7 +197,7 @@ public class TestIntegracion {
         //CartaDeTarot tarotX2 = new CartaDeTarot("Justicia", new Mejora(1, 2,new MultiplicaMultiplicador()),"","");
 
         // act
-        jugador1.activarTarot(tarotX2, cartaMock2);
+        //jugador1.activarTarot(tarotX2, cartaMock2);
         // ahora cartaObejtivo suma 5*2 en vez de 5*1
         jugador1.realizarJugada(rondaMock);
         // 5 - 1(5 de Diamantes) + 5 - 1(carta alta)
@@ -213,9 +213,8 @@ public class TestIntegracion {
         // arrange
 
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
-        Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
-        //CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
-        CartaDeTarot tarotx6 = new CartaDeTarot("X6", "",efectox6,"carta","");
+        Mejora efectox6 = new Mejora(0, 6, null);
+        CartaDeTarot tarotx6 = new CartaDeTarot("X6", "cristal",efectox6,"carta","cualquiera");
         PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
 
         // act
@@ -224,11 +223,38 @@ public class TestIntegracion {
         jugador1.seleccionarCarta(cartaMock2);
         // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1) 
         // 30 + 5 + 20 
-        jugador1.activarTarot(tarotx6, cartaMock1);
+        //jugador1.activarTarotSobreCarta(tarotx6, cartaMock1);
+        jugador1.activarTarot(tarotx6);
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         
+        // assert
+        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
+    }
+
+    @Test
+    public void test15SeUtilizaUnTarotMultiplicadorx6EnUnaJugadaYSuJugadaDevuelveElPuntajeCorrectamente() {
+        // arrange
+
+        Jugador jugador1 = new Jugador("jugador 1", mazoMock);
+        Mejora efectoElMago = new Mejora(15, 2, null);
+        CartaDeTarot tarotElMago = new CartaDeTarot("ElMago", "",efectoElMago,"mano","par");
+        PuntajeJugada puntajeEsperado = new PuntajeJugada(40,1);
+
+        // act
+        jugador1.recargarMano();
+        jugador1.seleccionarCarta(cartaMock1);
+        jugador1.seleccionarCarta(cartaMock2);
+        // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1)
+        // 30 + 5 + 20
+        // (OnepPair) = 10 - 2 -> se mejora = 15 - 2  , (5 de corazones) = 5 - 1 , (5 de treboles) = 5 - 1
+        // 30 + 5 + 5 = 40
+        jugador1.activarTarot(tarotElMago);
+        jugador1.realizarJugada(rondaMock);
+
+        PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
+
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }

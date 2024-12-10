@@ -25,8 +25,9 @@ public class PuntajeJugada {
     public void multiplicarMultiplicador(int multiplicador) {
         this.multiplicador *= multiplicador;
     }
-    public void reemplazaPuntos(int puntos) {
+    public void reemplazaPuntos(int puntos,int multiplicador) {
         this.puntos = puntos;
+        this.multiplicador = multiplicador;
     }
     public void reemplazaMultiplicador(int multiplicador) {
         this.multiplicador = multiplicador;

@@ -10,6 +10,6 @@ public class ReemplazaPuntos implements IMejora{
 
     @Override
     public void seAplicaApuntaje(PuntajeJugada puntaje, int puntos, int multiplicador){
-        puntaje.reemplazaPuntos(multiplicador);
+        puntaje.reemplazaPuntos(puntos,multiplicador);
     }
 }

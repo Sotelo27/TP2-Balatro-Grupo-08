@@ -9,6 +9,8 @@ import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraTarot;
+import edu.fiuba.algo3.modelo.Parsers.ParserDeMejora;
+import edu.fiuba.algo3.modelo.Parsers.ParserDeMejoraTarot;
 
 public class CartaDeTarot implements IMejorador, ICarta{
     private String nombre;
@@ -18,36 +20,33 @@ public class CartaDeTarot implements IMejorador, ICarta{
     private String sobre;
     private String ejemplar;
 
-/*
-    public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion) {
-        this.condicion = condicion;
-        this.nombre = nombre;
-        this.mejora = mejora;
-    } */
-
     @JsonCreator
     public CartaDeTarot(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("efecto") Mejora mejora, @JsonProperty("sobre") String sobre, @JsonProperty("ejemplar") String ejemplar){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.sobre = sobre;
         this.mejora = mejora;
+        ParserDeMejoraTarot parserDeMejora = new ParserDeMejoraTarot();
+        IMejora efecto = parserDeMejora.parseDescripcion(descripcion);
+        this.mejora.setMejora(efecto);
         this.ejemplar = ejemplar;
+        CondicionDeMejoraTarot parserDeTarot = new CondicionDeMejoraTarot();
+        this.condicion = parserDeTarot.parsear(sobre,ejemplar);
     }
+
     public CartaDeTarot() {}
 
     public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion, String sobre, String ejemplar) {
         this.nombre = nombre;
         this.mejora = mejora;
+        this.mejora.setMejora(new ReemplazaPuntos());
         this.sobre = sobre;
         this.ejemplar = ejemplar;
         this.condicion = condicion;
     }
 
-
     @Override
     public void mejorar(IMejorable mejorable){
-        CondicionDeMejoraTarot parserDeTarot = new CondicionDeMejoraTarot();
-        this.condicion = parserDeTarot.parsear(sobre,ejemplar);
         this.condicion.aplicarMejora(mejorable, this.mejora);
     }
 
@@ -65,7 +64,11 @@ public class CartaDeTarot implements IMejorador, ICarta{
 
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
-    public void setEjemplar(IMejorable unEjemplar) {this.ejemplar = unEjemplar.getNombre();}
+    public void setEjemplar(IMejorable unEjemplar) {
+        this.ejemplar = unEjemplar.getNombre();
+        CondicionDeMejoraTarot parserDeTarot = new CondicionDeMejoraTarot();
+        this.condicion = parserDeTarot.parsear(sobre,ejemplar);
+    }
 
     @Override
     public String getNombre() {

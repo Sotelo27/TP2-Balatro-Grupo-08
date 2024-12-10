@@ -53,10 +53,15 @@ public class Jugador implements IComprador {
         return this.mano.getCartas();
     }
 
-    public void activarTarot(CartaDeTarot tarot, CartaDePoker cartaObjetivo){
+    public void activarTarotSobreCarta(CartaDeTarot tarot, CartaDePoker cartaObjetivo){
         this.mano.activarTarotSobreCarta(tarot, cartaObjetivo);
         this.tarotsActivos.add(tarot);
     }
+
+    public void activarTarot(CartaDeTarot tarot){
+        this.tarotsActivos.add(tarot);
+    }
+
     public void activarComodin(IMejorador mejorador){
         this.comodinesActivos.add(mejorador);
     }

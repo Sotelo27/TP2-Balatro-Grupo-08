@@ -21,7 +21,7 @@ public abstract class CombinacionDePoker implements IMejorable {
 
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
-        if (contexto.equals("Mano Jugada")){
+        if (contexto.equals("Jugada")){
             if (elemento.equals(this.nombre)){
                 this.mejora = mejora;
             }
