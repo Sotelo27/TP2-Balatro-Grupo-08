@@ -214,7 +214,8 @@ public class TestIntegracion {
 
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         Mejora efectox6 = new Mejora(0, 6, new MultiplicaMultiplicador());
-        CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
+        //CartaDeTarot tarotx6 = new CartaDeTarot("X6", efectox6, new RestriccionACarta(),"", "");
+        CartaDeTarot tarotx6 = new CartaDeTarot("X6", "",efectox6,"carta","");
         PuntajeJugada puntajeEsperado = new PuntajeJugada(55,1);
 
         // act
@@ -300,7 +301,7 @@ public class TestIntegracion {
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // assert  
         
-        assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
+         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }   
 
 

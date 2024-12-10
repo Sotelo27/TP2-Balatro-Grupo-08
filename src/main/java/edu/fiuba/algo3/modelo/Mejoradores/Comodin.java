@@ -48,8 +48,6 @@ public class Comodin implements IMejorador, ICarta{
     public void setActivacion(Object activacion) {
         CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
         this.activacion = parserAIcondicionDeMejora.parsear(activacion);
-        //System.out.println(this.activacion);
-
     }
 
     public void setEfecto(Mejora mejora) { 

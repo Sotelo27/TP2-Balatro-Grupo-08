@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.ICondicionMejora;
 import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.*;
+import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
+import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraTarot;
 
 public class CartaDeTarot implements IMejorador, ICarta{
     private String nombre;
@@ -42,11 +44,11 @@ public class CartaDeTarot implements IMejorador, ICarta{
     }
 
 
-
     @Override
     public void mejorar(IMejorable mejorable){
-
-        //condicion.aplicarMejora(mejorable, this.mejora, this.sobre, this.ejemplar);
+        CondicionDeMejoraTarot parserDeTarot = new CondicionDeMejoraTarot();
+        this.condicion = parserDeTarot.parsear(sobre,ejemplar);
+        this.condicion.aplicarMejora(mejorable, this.mejora);
     }
 
     public ICarta getCarta(){
