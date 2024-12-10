@@ -18,4 +18,7 @@ public class RestriccionACombinacion implements ICondicionMejora {
         mejorable.siContieneAplicarMejora(this.contexto, this.elemento, mejora);
     }
 
+    @Override
+    public void setElemento(IMejorable mejorable){ }
+
 }

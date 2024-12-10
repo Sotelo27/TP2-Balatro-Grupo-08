@@ -8,6 +8,8 @@ public class ParserDeMejoraTarot {
         String funcion = palabras[palabras.length - 1];
         if (funcion.equals("multicarta") || funcion.equals("acero") || funcion.equals("cristal")) {
             return new MultiplicaMultiplicador();
+        } else if(funcion.equals("piedra") || funcion.equals("bonificacion")) {
+            return new SumaPuntos();
         }
         return new ReemplazaPuntos();
     }

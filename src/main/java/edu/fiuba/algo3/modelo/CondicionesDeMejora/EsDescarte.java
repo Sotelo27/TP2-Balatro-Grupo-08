@@ -11,4 +11,6 @@ public class EsDescarte implements ICondicionMejora {
     public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
         mejorable.siContieneAplicarMejora(this.contexto,"", mejora);
     }
+    @Override
+    public void setElemento(IMejorable mejorable){ }
 }

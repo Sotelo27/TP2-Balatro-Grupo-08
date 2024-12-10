@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Mejoras.IMejorable;
 
 public class SinRestriccion implements ICondicionMejora {
 
-
     public SinRestriccion() {
     }
 
@@ -14,4 +13,7 @@ public class SinRestriccion implements ICondicionMejora {
     public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
         mejorable.aplicarMejora(mejora);
     }
+
+    @Override
+    public void setElemento(IMejorable mejorable){ }
 }

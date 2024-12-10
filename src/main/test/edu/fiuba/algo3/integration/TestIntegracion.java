@@ -224,7 +224,7 @@ public class TestIntegracion {
         // (OnePair)= 10 - 2 , (5 de Treboles)+tarotx6 = (5 - 6) , (5 de Corazones) = (5 - 1) 
         // 30 + 5 + 20 
         //jugador1.activarTarotSobreCarta(tarotx6, cartaMock1);
-        jugador1.activarTarot(tarotx6);
+        jugador1.activarTarotSobreCarta(tarotx6,cartaMock1);
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
@@ -250,7 +250,7 @@ public class TestIntegracion {
         // 30 + 5 + 20
         // (OnepPair) = 10 - 2 -> se mejora = 15 - 2  , (5 de corazones) = 5 - 1 , (5 de treboles) = 5 - 1
         // 30 + 5 + 5 = 40
-        jugador1.activarTarot(tarotElMago);
+        jugador1.activarTarotSobreCarta(tarotElMago,cartaMock1);
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();

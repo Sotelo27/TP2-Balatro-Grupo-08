@@ -23,4 +23,6 @@ public class ActivarAlAzar implements ICondicionMejora {
             mejorable.aplicarMejora(mejora);
         }
     }
+    @Override
+    public void setElemento(IMejorable mejorable){ }
 }

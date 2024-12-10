@@ -65,9 +65,8 @@ public class CartaDeTarot implements IMejorador, ICarta{
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
     public void setEjemplar(IMejorable unEjemplar) {
-        this.ejemplar = unEjemplar.getNombre();
-        CondicionDeMejoraTarot parserDeTarot = new CondicionDeMejoraTarot();
-        this.condicion = parserDeTarot.parsear(sobre,ejemplar);
+        //this.ejemplar = unEjemplar.getNombre();
+        this.condicion.setElemento(unEjemplar);
     }
 
     @Override

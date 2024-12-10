@@ -21,4 +21,11 @@ public class RestriccionACarta implements ICondicionMejora {
     public void aplicarMejora(IMejorable mejorable, Mejora mejora){
         mejorable.siContieneAplicarMejora(this.contexto,this.elemento,mejora);
     }
+
+    @Override
+    public void setElemento(IMejorable mejorable){
+        if(this.elemento == "cualquiera"){
+            this.elemento = mejorable.getNombre();
+        }
+    }
 }

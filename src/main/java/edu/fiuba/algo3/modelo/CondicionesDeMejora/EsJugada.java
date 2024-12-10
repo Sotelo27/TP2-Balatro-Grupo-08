@@ -15,4 +15,6 @@ public class EsJugada implements ICondicionMejora {
             mejorable.aplicarMejora(mejora);
         }
     }
+    @Override
+    public void setElemento(IMejorable mejorable){ }
 }
