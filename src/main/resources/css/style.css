@@ -116,9 +116,25 @@
 }
 
 .prepare-for-tarot {
-    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.5), 15, 0, 0, 0);
     -fx-animation: blink 1s infinite;
     -fx-border-color: gold;
     -fx-border-width: 2px;
+    /* Estilo para una carta habilitada */
+}
+.carta-habilitada {
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    -fx-opacity: 1.0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(195, 0, 255, 0.8), 10, 0.5, 0, 0);
+}
+
+/* Estilo para una carta inhabilitada */
+.carta-inhabilitada {
+    -fx-opacity: 0.8;
+    -fx-cursor: default ;
+}
+
+
 
 }

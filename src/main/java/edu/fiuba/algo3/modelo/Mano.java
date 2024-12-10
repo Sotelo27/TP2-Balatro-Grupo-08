@@ -90,6 +90,18 @@ public class Mano {
         return cartas;
     }
 
+    public void activarTarot(CartaDeTarot cartaDeTarot){
+        CartaDePoker cartaObjetivo = this.seleccion.get(0);
+        cartaDeTarot.setSobre(cartaObjetivo);
+        deseleccionar(cartaObjetivo);
+    }
+
+    private void deseleccionar(CartaDePoker cartaObjetivo) {
+        this.seleccion.remove(cartaObjetivo);
+        this.mano.add(cartaObjetivo);
+        System.out.println("Carta " + cartaObjetivo.getNombre() + " deseleccionada");
+    }
+
     public List<String> getSeleccionadas() {
         List<String> cartas = new ArrayList<>();
         for(CartaDePoker carta : this.seleccion){

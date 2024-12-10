@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,66 +14,67 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import edu.fiuba.algo3.controllers.PaneCarta?>
 <AnchorPane fx:id="roundPane" prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.RoundSceneController">
    <children>
       <TilePane fx:id="cartasEnMano" alignment="CENTER" hgap="10.0" layoutX="459.0" layoutY="469.0" prefColumns="8" prefHeight="152.0" prefRows="8" prefWidth="775.0" style="-fx-background-color: black; -fx-border-color: red;" styleClass="cards-container" vgap="10.0">
          <children>
-            <ImageView fx:id="fourthCardOffert" fitHeight="160.0" fitWidth="84.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <PaneCarta fx:id="fourthCardOffert" fitHeight="160.0" fitWidth="84.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert3" fitHeight="160.0" fitWidth="84.0" layoutX="409.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert3" fitHeight="160.0" fitWidth="84.0" layoutX="409.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert31" fitHeight="160.0" fitWidth="84.0" layoutX="456.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert31" fitHeight="160.0" fitWidth="84.0" layoutX="456.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert311" fitHeight="160.0" fitWidth="84.0" layoutX="503.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert311" fitHeight="160.0" fitWidth="84.0" layoutX="503.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert3111" fitHeight="160.0" fitWidth="84.0" layoutX="550.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert3111" fitHeight="160.0" fitWidth="84.0" layoutX="550.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert31111" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert31111" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert311111" fitHeight="160.0" fitWidth="84.0" layoutX="644.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert311111" fitHeight="160.0" fitWidth="84.0" layoutX="644.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="fourthCardOffert311112" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="fourthCardOffert311112" fitHeight="160.0" fitWidth="84.0" layoutX="597.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
+            </PaneCarta>
          </children>
       </TilePane>
       <Pane prefHeight="720.0" prefWidth="370.0">
@@ -127,11 +128,11 @@
                         </Pane>
                         <Pane prefHeight="109.0" prefWidth="109.0">
                            <children>
-                              <ImageView fitHeight="48.0" fitWidth="39.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                              <PaneCarta fitHeight="48.0" fitWidth="39.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/pokerchips/blueChip.png" />
                                  </image>
-                              </ImageView>
+                              </PaneCarta>
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
@@ -233,10 +234,10 @@
                                        <children>
                                           <TilePane alignment="CENTER" layoutX="-8.0" layoutY="-3.0" prefHeight="246.0" prefWidth="188.0">
                                              <children>
-                                                <ImageView fx:id="fourthCardOffert2" fitHeight="132.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                                <PaneCarta fx:id="fourthCardOffert2" fitHeight="132.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                    </image>
-                                                </ImageView>
+                                                </PaneCarta>
                                              </children>
                                           </TilePane>
                                        </children>
@@ -252,38 +253,41 @@
       </Pane>
       <TilePane fx:id="comodinesActivos" alignment="CENTER" hgap="10.0" layoutX="667.0" layoutY="28.0" prefHeight="174.0" prefWidth="574.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
          <children>
-            <ImageView fx:id="thrdCardOffert131" fitHeight="160.0" fitWidth="100.0" layoutX="485.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <PaneCarta fx:id="thrdCardOffert131" fitHeight="160.0" fitWidth="100.0" layoutX="485.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert1311" fitHeight="160.0" fitWidth="100.0" layoutX="336.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="thrdCardOffert1311" fitHeight="160.0" fitWidth="100.0" layoutX="336.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert13111" fitHeight="160.0" fitWidth="100.0" layoutX="391.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="thrdCardOffert13111" fitHeight="160.0" fitWidth="100.0" layoutX="391.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert131111" fitHeight="160.0" fitWidth="100.0" layoutX="446.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="thrdCardOffert131111" fitHeight="160.0" fitWidth="100.0" layoutX="446.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
-            </ImageView>
-            <ImageView fx:id="thrdCardOffert1311111" fitHeight="160.0" fitWidth="100.0" layoutX="501.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+            <PaneCarta fx:id="thrdCardOffert1311111" fitHeight="160.0" fitWidth="100.0" layoutX="501.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                </image>
-            </ImageView>
+            </PaneCarta>
          </children>
       </TilePane>
-      <TilePane fx:id="tarotsGuardados" alignment="CENTER" hgap="20.0" layoutX="950.0" layoutY="255.0" prefHeight="165.0" prefWidth="291.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+      <TilePane fx:id="tarotsGuardados" alignment="CENTER" hgap="20.0" layoutX="950.0" layoutY="255.0" prefHeight="165.0"  prefWidth="291.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
          <children>
-            <ImageView fx:id="firstCardOffert11" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+            <PaneCarta fx:id="firstCardOffert11" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
                </image>
-            </ImageView>
-            <ImageView fx:id="scndCardOffert11" fitHeight="160.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
+            </PaneCarta>
+            <PaneCarta fx:id="scndCardOffert11" fitHeight="160.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
                </image>
-            </ImageView>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </PaneCarta>
          </children>
       </TilePane>
       <Button fx:id="playHandBtn" layoutX="619.0" layoutY="638.0" mnemonicParsing="false" text="PLAY HAND">

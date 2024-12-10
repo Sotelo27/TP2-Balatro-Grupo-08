@@ -33,6 +33,9 @@ public class BalatroAlgo3{
         jugador.activarTarot(tarot,carta);
     }
 
+    public void activarTarot(ICarta tarot){
+        jugador.activarTarot(tarot);
+    }
     public void activarComodin(String nombre,String sobre){
     }
 

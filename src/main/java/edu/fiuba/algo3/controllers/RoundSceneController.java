@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
 import javafx.util.Duration;
@@ -37,18 +38,11 @@ public class RoundSceneController implements Initializable{
     @FXML private TilePane cartasEnMano;
 
     @FXML private AnchorPane roundPane;
-    @FXML private ImageView card1;
-    @FXML private ImageView card2;
-    @FXML private ImageView card3;
-    @FXML private ImageView card4;
-    @FXML private ImageView card5;
-    @FXML private ImageView card6;
-    @FXML private ImageView card7;
-    @FXML private ImageView card8;
+
 
     private BalatroAlgo3 modelo;
-    private ObservableList<ImageView> selectedCards = FXCollections.observableArrayList();
-    private ICarta tarotSeleccionado;
+    private ObservableList<PaneCarta> selectedCards = FXCollections.observableArrayList();
+    private ObservableList<PaneCarta> cartasActivables = FXCollections.observableArrayList();
 
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
@@ -60,36 +54,21 @@ public class RoundSceneController implements Initializable{
 
     public void setModelo(BalatroAlgo3 modelo) {
         this.modelo = modelo;
+        // hacer las cartas de la mano seleccionables
         cartasEnMano.getChildren().forEach(node -> {
             if (node instanceof ImageView) {
-                hacerImagenSeleccionable((ImageView) node);
-                node.setOnMouseClicked(event -> handleCardSelection((ImageView) node));
+                hacerImagenSeleccionable((PaneCarta) node);
+                node.setOnMouseClicked(event -> handleCardSelection((PaneCarta) node));
             }
-
-        tarotsGuardados.getChildren().forEach(tarot ->{
-            if (tarot instanceof ImageView) {
-                hacerImagenSeleccionable((ImageView) tarot);
-                tarot.setOnMouseClicked(event -> handleTarotActivation((ImageView) tarot));
-            }
-        });
         });
         //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
         iniciarTurno();
     }
 
-    private void handleTarotActivation(ImageView tarot) {
-        if (tarotSeleccionado == null) {
-            selectedCards.clear();
-            selectCard(tarot);
-            tarotSeleccionado = (ICarta) tarot.getUserData();
-            cartasEnMano.getStyleClass().add("prepare-for-tarot");
-            tarotsGuardados.getStyleClass().add("prepare-for-tarot");
-        } else {
-            deselectCard(tarot);
-            cartasEnMano.getStyleClass().remove("prepare-for-tarot");
-            tarotSeleccionado = null;
-        }
-
+    private void handleTarotActivation(PaneCarta tarot) {
+        activarTarot( tarot.getCarta());
+        tarotsGuardados.getChildren().remove(tarot);
+        makeTarotClickable(false);
     }
 
 
@@ -119,7 +98,7 @@ public class RoundSceneController implements Initializable{
         });
     }
 
-    private void handleCardSelection(ImageView card) {
+    private void handleCardSelection(PaneCarta card) {
 
         if (selectedCards.contains(card)) {
             deselectCard(card);
@@ -127,29 +106,42 @@ public class RoundSceneController implements Initializable{
             deselectCard(selectedCards.get(0));
             selectCard(card);
         } else {
-            if (tarotSeleccionado != null) {
-                ICarta cartaAMejorar = (ICarta) card.getUserData();
-                activarTarot(cartaAMejorar);
-                handleTarotActivation(card);
-                iniciarTurno();
-            }else {
-
-                selectCard(card);
-            }
+            cartasEnMano.getStyleClass().add("prepare-for-tarot");
+            makeTarotClickable(true);
+            selectCard(card);
         }
     }
 
-    private void deselectCards(TilePane tarotSeleccionado) {
-        for (Node node : new ArrayList<>(tarotSeleccionado.getChildren())) { // Usar una copia de la lista
-            if (node instanceof ImageView) {
-                deselectCard((ImageView) node);
+    private void makeTarotClickable(boolean value) {
+        if (value) {
+            // Agregar clase para estilo habilitado
 
-            }
+            // Hacer las cartas de tarot seleccionables
+            tarotsGuardados.getChildren().forEach(tarot -> {
+                if (tarot instanceof PaneCarta) {
+                    PaneCarta tarotImageView = (PaneCarta) tarot;
+                    tarotImageView.agrandar(SCALE_FACTOR);
+                    tarotImageView.setActive(true);
+                    tarotImageView.setOnMouseClicked(event -> handleTarotActivation(tarotImageView));
+                }
+            });
+        } else {
+
+            // Deshabilitar las cartas de tarot
+            tarotsGuardados.getChildren().forEach(tarot -> {
+                if (tarot instanceof PaneCarta) {
+                    PaneCarta tarotImageView = (PaneCarta) tarot;
+                    // Remover la capacidad de ser seleccionadas
+                    tarotImageView.agrandar(1.0);
+                    tarotImageView.setActive(false);
+                    tarotImageView.setOnMouseClicked(null);
+                }
+            });
         }
     }
 
 
-    private void selectCard(ImageView card) {
+    private void selectCard(PaneCarta card) {
         if (!selectedCards.contains(card)) {
             selectedCards.add(card);
             card.setScaleX(SCALE_FACTOR);
@@ -158,7 +150,7 @@ public class RoundSceneController implements Initializable{
         }
     }
 
-    private void deselectCard(ImageView card) {
+    private void deselectCard(PaneCarta card) {
         if (selectedCards.contains(card)) {
             selectedCards.remove(card);
             card.setScaleX(1.0);
@@ -167,19 +159,20 @@ public class RoundSceneController implements Initializable{
         }
     }
 
-    private void activarTarot(ICarta elemento){
+    private void activarTarot(ICarta tarot){
         System.out.println("Activar Tarot");
-        System.out.println(tarotSeleccionado.getNombre());
-        System.out.println(elemento.getNombre());
-        modelo.activarTarot(tarotSeleccionado, elemento);
+        System.out.println(tarot.getNombre());
+        ICarta carta = selectedCards.get(0).getCarta();
+        modelo.seleccionarCartaDePoker(carta.getNombre());
+        modelo.activarTarot(tarot);
     }
 
     private void realizarDescarte() {
         System.out.println("Descarte:");
-        for (ImageView card : new ArrayList<>(selectedCards)) { // Usar una copia de la lista
+        for (PaneCarta card : new ArrayList<>(selectedCards)) { // Usar una copia de la lista
             // Realiza operaciones con 'card'
             deselectCard(card);
-            ICarta cartaAMejorar = (ICarta) card.getUserData();
+            ICarta cartaAMejorar = card.getCarta();
             System.out.println(cartaAMejorar.getNombre());
             modelo.seleccionarCartaDePoker(cartaAMejorar.getNombre());
         }
@@ -195,8 +188,8 @@ public class RoundSceneController implements Initializable{
 
         }else {
             System.out.println("Jugada:");
-            for (ImageView card : new ArrayList<>(selectedCards)) {
-                ICarta carta = (ICarta) card.getUserData();
+            for (PaneCarta card : new ArrayList<>(selectedCards)) {
+                ICarta carta = card.getCarta();
                 System.out.println(carta.getNombre());
                 modelo.seleccionarCartaDePoker(carta.getNombre());
                 deselectCard(card);
@@ -239,6 +232,7 @@ public class RoundSceneController implements Initializable{
         selectedCards.addListener((ListChangeListener.Change<? extends ImageView> change) -> {
             playHandBtn.setDisable(selectedCards.isEmpty());
             doDiscardBtn.setDisable(selectedCards.isEmpty());
+            makeTarotClickable(!selectedCards.isEmpty());
         });
     }
 
@@ -259,12 +253,10 @@ public class RoundSceneController implements Initializable{
 
     private void cargarCartas(List<ICarta> cartas, TilePane contenedor) {
         List<javafx.scene.Node> children = contenedor.getChildren();
-        ImageLoader imageLoader = new ImageLoader();
         for (int i = 0; i < cartas.size(); i++) {
             ICarta carta = cartas.get(i);
-            ImageView imageView = (ImageView) children.get(i);
-            imageView.setImage(imageLoader.cargarImagen(carta.getImagen()));
-            imageView.setUserData(carta);
+            PaneCarta imageView = (PaneCarta) children.get(i);
+            imageView.setCarta(carta);
         }
     }
 }
