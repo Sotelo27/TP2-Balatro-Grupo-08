@@ -7,8 +7,8 @@ public class SumaFichas implements IMejora{
 	}
 
 	@Override
-	public void seAplicaApuntaje(PuntajeJugada puntaje, int puntos, int multiplicador){
-		puntaje.sumarFichas(puntos);
+	public void seAplicaApuntaje(PuntajeJugada puntaje, float puntos, float multiplicador){
+		puntaje.sumarPuntos(puntos);
 	}
 }
 

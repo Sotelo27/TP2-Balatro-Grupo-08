@@ -120,15 +120,13 @@ public class RoundSceneController implements Initializable{
     }
 
     private void handleCardSelection(ImageView card) {
+
         if (selectedCards.contains(card)) {
             deselectCard(card);
         } else if (selectedCards.size() >= 5) {
             deselectCard(selectedCards.get(0));
             selectCard(card);
         } else {
-            selectCard(card);
-        }
-    }
             if (tarotSeleccionado != null) {
                 ICarta cartaAMejorar = (ICarta) card.getUserData();
                 activarTarot(cartaAMejorar);

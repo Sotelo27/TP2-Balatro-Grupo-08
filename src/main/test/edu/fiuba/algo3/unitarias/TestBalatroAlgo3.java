@@ -71,7 +71,7 @@ public class TestBalatroAlgo3   {
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON());
-        Integer puntajeObtenido = juego.obtenerPuntajeRonda();
+        float puntajeObtenido = juego.obtenerPuntajeRonda();
         List<ICarta > cartasObtenidas = juego.getCartasEnMano();
 
         // assert
@@ -134,7 +134,7 @@ public class TestBalatroAlgo3   {
         juego.seleccionarCartaDePoker(this.carta1.getNombre());
         juego.seleccionarCartaDePoker(this.carta2.getNombre());
         juego.realizarJugada();
-        int puntajeObtenido = juego.obtenerPuntajeRonda();
+        float puntajeObtenido = juego.obtenerPuntajeRonda();
 
         // assert
         assert puntajeEsperado < puntajeObtenido;
@@ -155,7 +155,7 @@ public class TestBalatroAlgo3   {
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-        Integer puntajeObtenido = juego.obtenerPuntajeRonda();
+        float puntajeObtenido = juego.obtenerPuntajeRonda();
 
         // assert
         assert puntajeEsperado.equals(puntajeObtenido);
@@ -176,12 +176,12 @@ public class TestBalatroAlgo3   {
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-        Integer puntaje1 = juego.obtenerPuntajeRonda();
+        float puntaje1 = juego.obtenerPuntajeRonda();
 
         juego.seleccionarCartaDePoker(this.carta3.getNombre()); // 5 de Corazones
         juego.seleccionarCartaDePoker(this.carta4.getNombre()); // 5 de Picas
         juego.realizarJugada(); // par de 5 sin comodines ni tarot
-        Integer puntaje2 = juego.obtenerPuntajeRonda();
+        float puntaje2 = juego.obtenerPuntajeRonda();
 
         // assert
         assert puntajeEsperado.equals(puntaje2);

@@ -1,31 +1,27 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.CombinacionesDePoker.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.util.List;
-
 public class PuntajeJugada {
-    private int puntos;
-    private int multiplicador;
-    private int fichas;
+    private float puntos;
+    private float multiplicador;
+
 
     //la idea es que reciba un tipo de jugada en base a las cartas  que tenga
-    public PuntajeJugada(int puntos, int multiplicador) {
+    public PuntajeJugada(float puntos, float multiplicador) {
         this.puntos = puntos;
         this.multiplicador = multiplicador;
-        this.fichas = 0;
     }
 
-    public void agregarPuntosYMultiplicador(int puntos, int multiplicador) {
+    public void agregarPuntosYMultiplicador(float puntos, float multiplicador) {
         this.puntos += puntos;
         this.multiplicador += multiplicador;
     }
 
-    public void multiplicarMultiplicador(int multiplicador) {
+    public void multiplicarMultiplicador(float multiplicador) {
         this.multiplicador *= multiplicador;
     }
-    public void reemplazaPuntos(int puntos,int multiplicador) {
+    public void reemplazaPuntos(float puntos, float multiplicador) {
         this.puntos = puntos;
         this.multiplicador = multiplicador;
     }
@@ -37,23 +33,21 @@ public class PuntajeJugada {
 
     }
     */
-    private int getPuntos() {
+    private float getPuntos() {
         return this.puntos * this.multiplicador;
     }
 
-    public void sumarFichas(int cantidad){
-        this.fichas += cantidad;
-    }
 
-    public void multiplicarPuntos(int cantidad){
+
+    public void multiplicarPuntos(float cantidad){
         this.puntos *= cantidad;
     }
 
-    public void sumarPuntos(int puntos){
+    public void sumarPuntos(float puntos){
         this.puntos += puntos;
     }
 
-    public void sumarAMultiplicador(int cantidad){
+    public void sumarAMultiplicador(float cantidad){
         this.multiplicador += cantidad;
     }
 
@@ -78,8 +72,9 @@ public class PuntajeJugada {
     }
 
 
-    public int asInt() {
-        return this.puntos*this.multiplicador;
+    public int asInt()  {
+        float valor = this.puntos*this.multiplicador ;
+        return (int) valor;
     }
 
     @Override

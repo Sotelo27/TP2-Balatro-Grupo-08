@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.*;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +18,7 @@ public class BalatroAlgo3{
         this.jugador = new Jugador(nombreDelJugador, mazo);
         this.rondas = creadorDeObjetos.construirRondas();
         this.rondaActual = rondas.get(0);
-        this.inventario = new InventarioTienda(creadorDeObjetos);
+//        this.inventario = new InventarioTienda(creadorDeObjetos);
     }
 
     public void iniciarRonda(){
@@ -31,13 +29,14 @@ public class BalatroAlgo3{
         this.jugador.seleccionarCarta(nombre);
     }
 
-    public void activarTarot(String nombre,String sobre){
+    public void activarTarot(ICarta tarot, ICarta carta){
+        jugador.activarTarot(tarot,carta);
     }
 
     public void activarComodin(String nombre,String sobre){
     }
 
-    public int obtenerPuntajeRonda(){
+    public float obtenerPuntajeRonda(){
         return this.rondaActual.obtenerPuntaje().asInt();
     }
 

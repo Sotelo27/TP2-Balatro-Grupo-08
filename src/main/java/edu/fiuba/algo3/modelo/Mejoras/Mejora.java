@@ -6,9 +6,9 @@ import edu.fiuba.algo3.modelo.PuntajeJugada;
 public class Mejora{
 
     @JsonProperty("puntos")
-    private int puntos;
+    private float puntos;
     @JsonProperty("multiplicador")
-    private int multiplicador;
+    private float multiplicador;
     private IMejora mejora;
 
     public Mejora() {
@@ -23,11 +23,11 @@ public class Mejora{
         this.mejora = mejora;
     }
 
-    public void setPuntos(int puntos) {
+    public void setPuntos(float puntos) {
         this.puntos = puntos;
     }
 
-    public void setMultiplicador(int multiplicador) {
+    public void setMultiplicador(float multiplicador) {
         this.multiplicador = multiplicador;
     }
     public void setMejora(IMejora mejora) {

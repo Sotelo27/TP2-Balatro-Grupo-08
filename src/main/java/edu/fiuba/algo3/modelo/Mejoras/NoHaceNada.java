@@ -8,7 +8,7 @@ public class NoHaceNada implements IMejora {
     }
 
     @Override
-    public void seAplicaApuntaje(PuntajeJugada puntaje, int puntos, int multiplicador){
+    public void seAplicaApuntaje(PuntajeJugada puntaje, float puntos, float multiplicador){
     }
 
 }
