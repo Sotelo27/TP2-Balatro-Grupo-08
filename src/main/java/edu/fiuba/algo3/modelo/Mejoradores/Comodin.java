@@ -41,20 +41,10 @@ public class Comodin implements IMejorador, ICarta{
 
     }
 
-    //Setters solo para creacion
-
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion;}
-
-    public void setActivacion(Object activacion) {
-        CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
-        this.activacion = parserAIcondicionDeMejora.parsear(activacion);
+    public void setActivacion(ICondicionMejora activacion) {
+        this.activacion = activacion;
     }
 
-    public void setEfecto(Mejora mejora) {
-        this.efecto = mejora;
-    }
     @Override
     public String getNombre() {
         return this.nombre;

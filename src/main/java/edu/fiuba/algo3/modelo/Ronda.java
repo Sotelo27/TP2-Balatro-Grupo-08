@@ -14,6 +14,7 @@ public class Ronda {
     private int descartes;
     private int puntajeASuperar;
     private Tienda tienda;
+    private int turnos;
 
 
     public Ronda(){

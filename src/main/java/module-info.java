@@ -6,6 +6,7 @@ module edu.fiuba.algo3 {
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
     opens edu.fiuba.algo3.modelo to com.fasterxml.jackson.databind; //consultar
+    opens edu.fiuba.algo3.modelo.Mejoradores to com.fasterxml.jackson.databind;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.modelo;
     exports edu.fiuba.algo3.vistas;

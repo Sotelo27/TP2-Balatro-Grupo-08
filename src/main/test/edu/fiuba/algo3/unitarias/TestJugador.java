@@ -39,7 +39,7 @@ public class TestJugador {
     public void test02JugadorRecibe1ComodinCorrectamente() throws ErrorSeExcedenLosLimitesDeActivables {
         Jugador jugador = new Jugador("Joaquin", new Mazo());
         String nombreBuscado = "un Nombre";
-        IMejorador tarot = new CartaDeTarot(nombreBuscado, new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", "");
+        //IMejorador tarot = new CartaDeTarot(nombreBuscado, new Mejora(1, 2,new MultiplicaMultiplicador()),new RestriccionACarta(),"", "");
 
         //jugador.comprarComodin(tarot);
         List<ICarta> comodinesObtenidos = jugador.getActivables();

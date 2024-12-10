@@ -13,15 +13,15 @@ public class ParserDeMejora {
             funcion = palabras[1];
         }
         if (caracterSigno == '+') {
-            if (funcion.equals("puntos") || funcion.equals("fichas")) {
+            if (funcion.equals("puntos") || funcion.equals("fichas") || funcion.equals("puntos.")) {
                 return new SumaPuntos();
-            } else if (funcion.equals("Mult") || funcion.equals("multiplicacion") || palabras[2].equals("multiplicador") || funcion.equals("multiplicación")) {
+            } else {
                 return new SumaAMultiplicador();
             }
         } else if (caracterSigno == 'x') {
             if (funcion.equals("puntos")) {
                 return new MultiplicaPuntos();
-            } else if (funcion.equals("Mult") || funcion.equals("multiplicacion") || palabras[2].equals("multiplicador") || funcion.equals("multiplicación")) {
+            } else  {
                 return new MultiplicaMultiplicador();
             }
         }

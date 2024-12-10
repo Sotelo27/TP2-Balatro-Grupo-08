@@ -34,17 +34,6 @@ public class CartaDeTarot implements IMejorador, ICarta{
         this.condicion = parserDeTarot.parsear(sobre,ejemplar);
     }
 
-    public CartaDeTarot() {}
-
-    public CartaDeTarot(String nombre, Mejora mejora, ICondicionMejora condicion, String sobre, String ejemplar) {
-        this.nombre = nombre;
-        this.mejora = mejora;
-        this.mejora.setMejora(new ReemplazaPuntos());
-        this.sobre = sobre;
-        this.ejemplar = ejemplar;
-        this.condicion = condicion;
-    }
-
     @Override
     public void mejorar(IMejorable mejorable){
         this.condicion.aplicarMejora(mejorable, this.mejora,this.sobre,this.ejemplar);
@@ -56,20 +45,10 @@ public class CartaDeTarot implements IMejorador, ICarta{
 
     //Setters
 
-    public void setNombre(String unNombre) {this.nombre = unNombre;};
-
-    public void setDescripcion(String unaDescripcion) {this.descripcion = unaDescripcion;}
-
-    public void setEfecto(Mejora unaMejora) {this.mejora = unaMejora;}
-
-    public void setSobre(String unSobre) {this.sobre = unSobre;}
-
-    public void setEjemplar(IMejorable unEjemplar) {
-        this.ejemplar = unEjemplar.getNombre();
-    }
     public void setSobre(ICarta unMejorable) {
         this.ejemplar = unMejorable.getNombre();
     }
+
     @Override
     public String getNombre() {
         return this.nombre;

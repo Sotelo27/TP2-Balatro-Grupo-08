@@ -18,7 +18,7 @@ public class BalatroAlgo3{
         this.jugador = new Jugador(nombreDelJugador, mazo);
         this.rondas = creadorDeObjetos.construirRondas();
         this.rondaActual = rondas.get(0);
-//        this.inventario = new InventarioTienda(creadorDeObjetos);
+//      this.inventario = new InventarioTienda(creadorDeObjetos);
     }
 
     public void iniciarRonda(){
@@ -92,7 +92,6 @@ public class BalatroAlgo3{
     public String getNumeroRonda() {
         return rondaActual.getNumero();
     }
-
 
     public StringProperty puntajeObjetivoProperty() {
         return rondaActual.obtenerPuntajeObservable();
