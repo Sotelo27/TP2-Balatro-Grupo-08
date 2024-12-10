@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.modelo.Mejoradores;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraParser;
+import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraTarot;
 import edu.fiuba.algo3.modelo.Parsers.ParserDeMejora;
+import edu.fiuba.algo3.modelo.Parsers.ParserDeMejoraTarot;
 
 import javax.swing.*;
 
@@ -19,21 +23,20 @@ public class Comodin implements IMejorador, ICarta{
         this.efecto = mejora;
     }
 
-    public Comodin(String nombre, String descripcion, Mejora mejora, ICondicionMejora activacion){
+    @JsonCreator
+    public Comodin(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("activacion")Object activacion, @JsonProperty("efecto") Mejora mejora){
         this.nombre = nombre;
         this.descripcion = descripcion;
+        CondicionDeMejoraParser parserAIcondicionDeMejora= new CondicionDeMejoraParser();
+        this.activacion = parserAIcondicionDeMejora.parsear(activacion);
         this.efecto = mejora;
         ParserDeMejora parserDeMejora = new ParserDeMejora();
         IMejora efecto = parserDeMejora.parseDescripcion(descripcion);
         this.efecto.setMejora(efecto);
-        this.activacion = activacion;
     }
 
     @Override
     public void mejorar(IMejorable mejorable) {
-        ParserDeMejora parserDeMejora = new ParserDeMejora();
-        IMejora efecto = parserDeMejora.parseDescripcion(this.descripcion);
-        this.efecto.setMejora(efecto);
         this.activacion.aplicarMejora(mejorable, this.efecto,"","");
 
     }

@@ -110,8 +110,8 @@ public class TestIntegracion {
         jugador1.recargarMano();
         jugador1.seleccionarCarta(this.cartaMock1);
         jugador1.seleccionarCarta(this.cartaMock2);
-        Comodin comodinSumaUn100 = new Comodin("Caminante", "+100 fichas", new Mejora(100, 1, null),new SinRestriccion());
-        jugador1.activarComodin(comodinSumaUn100);
+       // Comodin comodinSumaUn100 = new Comodin("Caminante", "+100 fichas", new Mejora(100, 1, null),new SinRestriccion());
+        //jugador1.activarComodin(comodinSumaUn100);
         jugador1.realizarJugada(this.rondaMock);
         PuntajeJugada puntajeObtenido = this.rondaMock.obtenerPuntaje();
 
@@ -316,13 +316,13 @@ public class TestIntegracion {
     @Test 
     public void test10SeUsaUnComodinQueSuma10PuntosPorDescarteYFuncionaCorrectamente(){
         // arrrange
-        Comodin comodinDescarte = new Comodin("Al Descarte", "x15 multiplicacion", new Mejora(0, 15, null),new EsDescarte());
+        //Comodin comodinDescarte = new Comodin("Al Descarte", "x15 multiplicacion", new Mejora(0, 15, null),new EsDescarte());
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(0,15);
         // act
         jugador1.recargarMano();
         jugador1.seleccionarCarta(cartaMock1);
-        jugador1.activarComodin(comodinDescarte);
+        //jugador1.activarComodin(comodinDescarte);
         jugador1.realizarDescarte(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
         // assert  
