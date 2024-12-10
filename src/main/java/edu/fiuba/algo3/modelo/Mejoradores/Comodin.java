@@ -24,13 +24,16 @@ public class Comodin implements IMejorador, ICarta{
         this.descripcion = descripcion;
         this.efecto = mejora;
         ParserDeMejora parserDeMejora = new ParserDeMejora();
-        IMejora efecto = parserDeMejora.parseDescripcion(this.descripcion);
+        IMejora efecto = parserDeMejora.parseDescripcion(descripcion);
         this.efecto.setMejora(efecto);
         this.activacion = activacion;
     }
 
     @Override
     public void mejorar(IMejorable mejorable) {
+        ParserDeMejora parserDeMejora = new ParserDeMejora();
+        IMejora efecto = parserDeMejora.parseDescripcion(this.descripcion);
+        this.efecto.setMejora(efecto);
         this.activacion.aplicarMejora(mejorable, this.efecto,"","");
 
     }
@@ -46,7 +49,7 @@ public class Comodin implements IMejorador, ICarta{
         this.activacion = parserAIcondicionDeMejora.parsear(activacion);
     }
 
-    public void setEfecto(Mejora mejora) { 
+    public void setEfecto(Mejora mejora) {
         this.efecto = mejora;
     }
     @Override
