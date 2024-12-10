@@ -9,15 +9,20 @@ import java.util.Random;
 
 public class ActivarAlAzar implements ICondicionMejora {
     private Random intGenerator;
-    private String elemento;
+    private String rango;
 
     public ActivarAlAzar(Random intGenerator) {
         this.intGenerator = intGenerator;
     }
 
+    public ActivarAlAzar(String intGenerator) {
+        this.intGenerator = new Random();
+        this.rango = intGenerator;
+    }
+
     @Override
     public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
-        int valor = Integer.parseInt(elemento); // Convertir el String a int
+        int valor = Integer.parseInt(this.rango); // Convertir el String a int
         int random = this.intGenerator.nextInt( valor);
         if(random == 0) {
             mejorable.aplicarMejora(mejora);

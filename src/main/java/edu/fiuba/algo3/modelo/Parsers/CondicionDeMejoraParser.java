@@ -30,7 +30,8 @@ public class CondicionDeMejoraParser {
                 return new RestriccionACombinacion(valor);
             }
             if(activacionMap.containsKey("1 en")){
-                return new ActivarAlAzar((new Random()));
+                String valor = activacionMap.get("1 en").toString();
+                return new ActivarAlAzar(valor);
             }
 
 
