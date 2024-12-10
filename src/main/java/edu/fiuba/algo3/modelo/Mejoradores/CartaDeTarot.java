@@ -67,7 +67,9 @@ public class CartaDeTarot implements IMejorador, ICarta{
     public void setEjemplar(IMejorable unEjemplar) {
         this.ejemplar = unEjemplar.getNombre();
     }
-
+    public void setSobre(ICarta unMejorable) {
+        this.ejemplar = unMejorable.getNombre();
+    }
     @Override
     public String getNombre() {
         return this.nombre;

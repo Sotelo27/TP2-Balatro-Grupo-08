@@ -104,9 +104,21 @@
 /* Opcional: Estilo para cartas seleccionadas */
 .selected-card {
     -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.5), 15, 0, 0, 0);
+    -fx-animation: blink 1s infinite;
+    -fx-border-color: gold;
+    -fx-border-width: 2px;
+
 }
 
 /* Opcional: Estilo para hover */
 .hover-effect {
     -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.3), 10, 0, 0, 0);
+}
+
+.prepare-for-tarot {
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.5), 15, 0, 0, 0);
+    -fx-animation: blink 1s infinite;
+    -fx-border-color: gold;
+    -fx-border-width: 2px;
+
 }

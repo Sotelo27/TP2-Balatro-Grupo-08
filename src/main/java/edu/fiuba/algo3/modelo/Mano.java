@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoras.*;
-import edu.fiuba.algo3.modelo.Mejoradores.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,8 +78,8 @@ public class Mano {
         return ronda.agregarAccion(jugada);
     }
 
-    public void activarTarotSobreCarta(CartaDeTarot cartaDeTarot, CartaDePoker carta){
-        cartaDeTarot.setEjemplar(carta);
+    public void activarTarotSobreCarta(CartaDeTarot cartaDeTarot, ICarta carta){
+        cartaDeTarot.setSobre(carta);
     }
 
     public List<ICarta> getCartas(){

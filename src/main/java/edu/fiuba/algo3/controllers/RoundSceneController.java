@@ -9,17 +9,17 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 
 import javafx.util.Duration;
 
-import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,6 +48,7 @@ public class RoundSceneController implements Initializable{
 
     private BalatroAlgo3 modelo;
     private ObservableList<ImageView> selectedCards = FXCollections.observableArrayList();
+    private ICarta tarotSeleccionado;
 
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
@@ -61,14 +62,38 @@ public class RoundSceneController implements Initializable{
         this.modelo = modelo;
         cartasEnMano.getChildren().forEach(node -> {
             if (node instanceof ImageView) {
-                hacerSeleccionable((ImageView) node);
+                hacerImagenSeleccionable((ImageView) node);
+                node.setOnMouseClicked(event -> handleCardSelection((ImageView) node));
             }
 
+        tarotsGuardados.getChildren().forEach(tarot ->{
+            if (tarot instanceof ImageView) {
+                hacerImagenSeleccionable((ImageView) tarot);
+                tarot.setOnMouseClicked(event -> handleTarotActivation((ImageView) tarot));
+            }
+        });
         });
         //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
         iniciarTurno();
     }
-    private void hacerSeleccionable(ImageView card) {
+
+    private void handleTarotActivation(ImageView tarot) {
+        if (tarotSeleccionado == null) {
+            selectedCards.clear();
+            selectCard(tarot);
+            tarotSeleccionado = (ICarta) tarot.getUserData();
+            cartasEnMano.getStyleClass().add("prepare-for-tarot");
+            tarotsGuardados.getStyleClass().add("prepare-for-tarot");
+        } else {
+            deselectCard(tarot);
+            cartasEnMano.getStyleClass().remove("prepare-for-tarot");
+            tarotSeleccionado = null;
+        }
+
+    }
+
+
+    private void hacerImagenSeleccionable(ImageView card) {
         card.setPickOnBounds(true);
 
         // Configurar la transición de escalado
@@ -92,8 +117,6 @@ public class RoundSceneController implements Initializable{
                 card.setEffect(null);
             }
         });
-
-        card.setOnMouseClicked(event -> handleCardSelection(card));
     }
 
     private void handleCardSelection(ImageView card) {
@@ -106,6 +129,27 @@ public class RoundSceneController implements Initializable{
             selectCard(card);
         }
     }
+            if (tarotSeleccionado != null) {
+                ICarta cartaAMejorar = (ICarta) card.getUserData();
+                activarTarot(cartaAMejorar);
+                handleTarotActivation(card);
+                iniciarTurno();
+            }else {
+
+                selectCard(card);
+            }
+        }
+    }
+
+    private void deselectCards(TilePane tarotSeleccionado) {
+        for (Node node : new ArrayList<>(tarotSeleccionado.getChildren())) { // Usar una copia de la lista
+            if (node instanceof ImageView) {
+                deselectCard((ImageView) node);
+
+            }
+        }
+    }
+
 
     private void selectCard(ImageView card) {
         if (!selectedCards.contains(card)) {
@@ -123,6 +167,48 @@ public class RoundSceneController implements Initializable{
             card.setScaleY(1.0);
             card.getStyleClass().remove("selected-card");
         }
+    }
+
+    private void activarTarot(ICarta elemento){
+        System.out.println("Activar Tarot");
+        System.out.println(tarotSeleccionado.getNombre());
+        System.out.println(elemento.getNombre());
+        modelo.activarTarot(tarotSeleccionado, elemento);
+    }
+
+    private void realizarDescarte() {
+        System.out.println("Descarte:");
+        for (ImageView card : new ArrayList<>(selectedCards)) { // Usar una copia de la lista
+            // Realiza operaciones con 'card'
+            deselectCard(card);
+            ICarta cartaAMejorar = (ICarta) card.getUserData();
+            System.out.println(cartaAMejorar.getNombre());
+            modelo.seleccionarCartaDePoker(cartaAMejorar.getNombre());
+        }
+        selectedCards.clear();
+        modelo.realizarDescarte();
+        iniciarTurno();
+    }
+    private void realizarJugada() {
+        if (selectedCards.isEmpty()) {
+            playHandBtn.setDisable(true);
+        } else if (selectedCards.contains(tarotsGuardados)){
+            // Aquí va la lógica de realizar la jugada
+
+        }else {
+            System.out.println("Jugada:");
+            for (ImageView card : new ArrayList<>(selectedCards)) {
+                ICarta carta = (ICarta) card.getUserData();
+                System.out.println(carta.getNombre());
+                modelo.seleccionarCartaDePoker(carta.getNombre());
+                deselectCard(card);
+            }
+            selectedCards.clear();
+            modelo.realizarJugada();
+
+
+        }
+        iniciarTurno();
     }
 
     private void iniciarTurno() {
@@ -156,34 +242,6 @@ public class RoundSceneController implements Initializable{
             playHandBtn.setDisable(selectedCards.isEmpty());
             doDiscardBtn.setDisable(selectedCards.isEmpty());
         });
-    }
-
-    private void realizarDescarte() {
-        System.out.println("Descarte:");
-        for (ImageView card : selectedCards) {
-            ICarta carta = (ICarta) card.getUserData();
-            System.out.println(carta.getNombre());
-            modelo.seleccionarCartaDePoker(carta.getNombre());
-        }
-        selectedCards.clear();
-        modelo.realizarDescarte();
-        iniciarTurno();
-    }
-    private void realizarJugada() {
-        if (selectedCards.isEmpty()) {
-            playHandBtn.setDisable(true);
-        } else {
-            // Aquí va la lógica de realizar la jugada
-            System.out.println("Jugada:");
-            for (ImageView card : selectedCards) {
-                ICarta carta = (ICarta) card.getUserData();
-                System.out.println(carta.getNombre());
-                modelo.seleccionarCartaDePoker(carta.getNombre());
-            }
-            selectedCards.clear();
-            modelo.realizarJugada();
-        }
-        iniciarTurno();
     }
 
     private void cargarEtiquetas() {
