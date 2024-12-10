@@ -16,13 +16,11 @@ public class ActivarAlAzar implements ICondicionMejora {
     }
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
         int valor = Integer.parseInt(elemento); // Convertir el String a int
         int random = this.intGenerator.nextInt( valor);
         if(random == 0) {
             mejorable.aplicarMejora(mejora);
         }
     }
-    @Override
-    public void setElemento(IMejorable mejorable){ }
 }

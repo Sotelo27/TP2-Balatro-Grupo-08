@@ -47,7 +47,7 @@ public class CartaDeTarot implements IMejorador, ICarta{
 
     @Override
     public void mejorar(IMejorable mejorable){
-        this.condicion.aplicarMejora(mejorable, this.mejora);
+        this.condicion.aplicarMejora(mejorable, this.mejora,this.sobre,this.ejemplar);
     }
 
     public ICarta getCarta(){
@@ -65,8 +65,7 @@ public class CartaDeTarot implements IMejorador, ICarta{
     public void setSobre(String unSobre) {this.sobre = unSobre;}
 
     public void setEjemplar(IMejorable unEjemplar) {
-        //this.ejemplar = unEjemplar.getNombre();
-        this.condicion.setElemento(unEjemplar);
+        this.ejemplar = unEjemplar.getNombre();
     }
 
     @Override

@@ -8,9 +8,7 @@ public class EsDescarte implements ICondicionMejora {
     private final String contexto = "Descarte";
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
         mejorable.siContieneAplicarMejora(this.contexto,"", mejora);
     }
-    @Override
-    public void setElemento(IMejorable mejorable){ }
 }

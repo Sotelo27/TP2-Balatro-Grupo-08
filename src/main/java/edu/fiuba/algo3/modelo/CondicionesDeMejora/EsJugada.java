@@ -10,11 +10,9 @@ public class EsJugada implements ICondicionMejora {
     public EsJugada() {}
 
     @Override
-    public void aplicarMejora(IMejorable mejorable, Mejora mejora) {
+    public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
         if(mejorable.getNombre() == this.contexto){
             mejorable.aplicarMejora(mejora);
         }
     }
-    @Override
-    public void setElemento(IMejorable mejorable){ }
 }

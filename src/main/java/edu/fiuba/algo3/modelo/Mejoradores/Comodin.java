@@ -11,16 +11,12 @@ public class Comodin implements IMejorador, ICarta{
     private String descripcion;
     private ICondicionMejora activacion; // parsear a IcondicionMejora
     private Mejora efecto;
-    private String contexto;
-    private String elemento;
     public Comodin() {}
 
     public Comodin(String nombre, Mejora mejora, ICondicionMejora activacion, String contexto, String elemento) {
         this.nombre = nombre;
         this.activacion = activacion;
         this.efecto = mejora;
-        this.contexto = contexto;
-        this.elemento = elemento;
     }
 
     public Comodin(String nombre, String descripcion, Mejora mejora, ICondicionMejora activacion){
@@ -35,7 +31,7 @@ public class Comodin implements IMejorador, ICarta{
 
     @Override
     public void mejorar(IMejorable mejorable) {
-        this.activacion.aplicarMejora(mejorable, this.efecto);
+        this.activacion.aplicarMejora(mejorable, this.efecto,"","");
 
     }
 
