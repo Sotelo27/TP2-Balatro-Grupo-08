@@ -23,15 +23,11 @@ public class JsonTiendaReader {
                 for (JsonNode comodinNode : comodinesNode) {
                     // Verificar si este comodín tiene otra lista de comodines
                     JsonNode subComodinesNode = comodinNode.path("comodines");
-                    String nombre = comodinNode.path("nombre").asText();
-                    String descripcion = comodinNode.path("descripcion").asText();
-                    //System.out.println(nombre + " " + descripcion);
                     if (subComodinesNode.isArray()) {
+                        String nombre = comodinNode.path("nombre").asText();
+                        String descripcion = comodinNode.path("descripcion").asText();
                         List<Comodin> subComodines = new ArrayList<>();
                         for(JsonNode subComodinNode : subComodinesNode) {
-                           // String nombre2 = subComodinNode.path("nombre").asText();
-                            //String descripcion2 = subComodinesNode.path("descripcion").asText();
-                            //System.out.println(nombre2 + " " + descripcion2);
                             Comodin comodin = mapper.convertValue(subComodinNode, Comodin.class);
                             subComodines.add(comodin);
                         }

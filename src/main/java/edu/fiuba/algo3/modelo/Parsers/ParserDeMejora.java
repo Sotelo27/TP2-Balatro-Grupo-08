@@ -13,7 +13,7 @@ public class ParserDeMejora {
             funcion = palabras[1];
         }
         if (caracterSigno == '+') {
-            if (funcion.equals("puntos") || funcion.equals("fichas")) {
+            if (funcion.equals("puntos") || funcion.equals("fichas") || funcion.equals("puntos.")) {
                 return new SumaPuntos();
             } else {
                 return new SumaAMultiplicador();
