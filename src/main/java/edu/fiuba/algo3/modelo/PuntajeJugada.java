@@ -8,7 +8,7 @@ public class PuntajeJugada {
     private int multiplicador;
     private int fichas;
 
-    //la idea es que reciba un tipo de jugada en base a las cartas  que tenga
+    //la idea es que reciba un tipo de jugada en base a las cartas que tenga
     public PuntajeJugada(int puntos, int multiplicador) {
         this.puntos = puntos;
         this.multiplicador = multiplicador;

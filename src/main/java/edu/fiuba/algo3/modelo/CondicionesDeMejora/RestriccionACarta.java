@@ -23,5 +23,5 @@ public class RestriccionACarta implements ICondicionMejora {
     }
 
 
-    ;
+
 }

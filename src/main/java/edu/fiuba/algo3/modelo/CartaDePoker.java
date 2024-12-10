@@ -67,7 +67,6 @@ public class CartaDePoker implements IMejorable {
 
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora) {
-
         if (elemento.equals(this.nombre)) {
             this.mejora = mejora;
         }

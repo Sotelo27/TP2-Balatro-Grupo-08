@@ -8,6 +8,8 @@ public class Tienda {
     List<IMejorador> cartasEspeciales;
     CartaDePoker carta;
 
+
+
     public void setCartasEspeciales(List <IMejorador> cartasEspeciales) {this.cartasEspeciales = cartasEspeciales;}
 
     public void setCarta(CartaDePoker carta) {
@@ -20,8 +22,12 @@ public class Tienda {
             System.out.println(especiales.getNombre());
             items.add(especiales.getNombre());
         }
-        System.out.println(carta.getNombre());
-        items.add(carta.getNombre());
+
+        if(carta != null) {
+            System.out.println(carta.getNombre());
+            items.add(carta.getNombre());
+        }
+
         return items;
     }
 }

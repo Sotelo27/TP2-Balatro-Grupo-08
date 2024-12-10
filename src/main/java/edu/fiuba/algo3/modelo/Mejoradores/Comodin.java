@@ -10,6 +10,7 @@ public class Comodin implements IMejorador{
     private Mejora efecto;
     private String contexto;
     private String elemento;
+
     public Comodin() {}
 
     public Comodin(String nombre, Mejora mejora, ICondicionMejora activacion, String contexto, String elemento) {
