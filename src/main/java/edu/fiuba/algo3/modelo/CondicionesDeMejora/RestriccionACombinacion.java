@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Mejoras.*;
 public class RestriccionACombinacion implements ICondicionMejora {
 
 
-    private final String contexto = "Jugada";
+    private final String contexto = "Mano Jugada";
     private  String elemento;
 
     public RestriccionACombinacion(String elemento) {
@@ -15,6 +15,7 @@ public class RestriccionACombinacion implements ICondicionMejora {
 
     @Override
     public void aplicarMejora(IMejorable mejorable, Mejora mejora, String contexto, String elemento) {
+
         mejorable.siContieneAplicarMejora(this.contexto, this.elemento, mejora);
     }
 

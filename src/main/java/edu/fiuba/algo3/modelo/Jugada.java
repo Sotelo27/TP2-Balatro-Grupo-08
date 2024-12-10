@@ -50,8 +50,8 @@ public class Jugada implements IMejorable, IAccion{
 
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
-        if(contexto.equals("Jugada")){
-            this.combinacion.siContieneAplicarMejora("Mano Jugada", elemento, mejora);
+        if(contexto.equals("Mano Jugada")){
+            //this.combinacion.siContieneAplicarMejora("Mano Jugada", elemento, mejora);
             this.mejoras.add(mejora);
         }
 

@@ -106,7 +106,6 @@ public class TestBalatroAlgo3   {
         Comodin comodin = new Comodin();
         CartaDePoker carta = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
         CombinacionDeComodines combinacion = new CombinacionDeComodines();
-        CartaDeTarot tarot = new CartaDeTarot();
         List<ICarta> cartasEsperadas = Arrays.asList(comodin, carta, combinacion);
 
         Ronda rondaMock = mock(Ronda.class);
