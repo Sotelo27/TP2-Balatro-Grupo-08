@@ -85,8 +85,13 @@ public class SceneManager {
         }
     }
 
-    public void setSound(String soundPath){
-
+    // Nueva función para configurar el sonido de fondo
+    public void setBackgroundMusic(String musicPath) {
+        Media musicMedia = new Media(getClass().getResource(musicPath).toExternalForm());
+        MediaPlayer backgroundMusicPlayer = new MediaPlayer(musicMedia);
+        backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
+        backgroundMusicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
+        backgroundMusicPlayer.play();
     }
 
     public void show() {

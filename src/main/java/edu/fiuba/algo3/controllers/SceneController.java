@@ -39,7 +39,8 @@ public class SceneController {
     public void switchToRoundScene(MouseEvent event,BalatroAlgo3 modelo) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.setViewModel("/fxml/RoundScene.fxml",modelo); // Carga la vista inicial
+        sceneManager.setBackgroundMusic("/sounds/MainTheme.mp3");
+        sceneManager.setViewModel("/fxml/RoundScene.fxml",modelo);// Carga la vista inicial
         sceneManager.show();
     }
 }
