@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -19,6 +20,7 @@ public class SceneManager {
         this.stage = stage;
 
         // Configurar el video de fondo
+        Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
         String videoPath = getClass().getResource("/images/background.mp4").toExternalForm();
         Media media = new Media(videoPath);
         mediaPlayer = new MediaPlayer(media);
@@ -34,6 +36,7 @@ public class SceneManager {
         // Configurar el escenario inicial
         Scene scene = new Scene(rootPane, 1920, 1080);
         stage.setScene(scene);
+        stage.getIcons().add(icon);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
