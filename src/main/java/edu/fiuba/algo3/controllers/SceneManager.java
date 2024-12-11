@@ -22,7 +22,7 @@ public class SceneManager {
 
         // Configurar el video de fondo
         Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
-        String videoPath = getClass().getResource("/images/background.mp4").toExternalForm();
+        String videoPath = getClass().getResource("/images/BackGrounds/backgroundMain.mp4").toExternalForm();
         Media media = new Media(videoPath);
         mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer);
