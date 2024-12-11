@@ -25,20 +25,17 @@ public class PlayerSceneController implements Initializable {
 
     private SceneController switcher;
 
-
     @FXML
     private TextField usernameField;
     private String userName;
 
-    public PlayerSceneController(){
+    public PlayerSceneController() {
         switcher = new SceneController();
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
-
 
     @FXML
     void saveName(ActionEvent event) throws IOException {
@@ -47,11 +44,12 @@ public class PlayerSceneController implements Initializable {
         this.modelo = new BalatroAlgo3(this.userName, new LectorDeJSON());
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void saveNameAndStartGame(ActionEvent event) throws IOException {
         this.userName = usernameField.getText();
@@ -68,7 +66,6 @@ public class PlayerSceneController implements Initializable {
 
     @FXML
     void backToTitle(ActionEvent event) throws IOException {
-        switcher.switchToMainScene(event);
+        switcher.switchScene(event, "/fxml/titleScene.fxml");
     }
-
 }

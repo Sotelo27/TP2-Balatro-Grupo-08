@@ -26,13 +26,13 @@ public class TitleSceneController {
     @FXML
     void click(ActionEvent event) throws IOException {
         System.out.println("Iniciar Juego");
-        switcher.switchToPlayerScene(event);
+        switcher.switchScene(event, "/fxml/playerScene.fxml");
     }
 
     @FXML
     void exitClicked(ActionEvent event) {
         this.stage = (Stage) mainPane.getScene().getWindow();
-        System.out.println("Saliending");
+        System.out.println("Saliendo");
         stage.close();
     }
 }
