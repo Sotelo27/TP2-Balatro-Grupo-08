@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -54,6 +55,7 @@ public class ShopSceneController implements Initializable {
     private BalatroAlgo3 modelo;
     private Integer selectedCard;
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
+    private SceneController switcher;
 
     void setBehaviour(ImageView card, int selectedPos){
         card.setOnMouseEntered(e -> {
@@ -106,6 +108,7 @@ public class ShopSceneController implements Initializable {
 
     public void setModelo(BalatroAlgo3 modelo) {
         this.modelo = modelo;
+        switcher = new SceneController();
         cargarItemsDeTienda();
     }
 
@@ -145,31 +148,22 @@ public class ShopSceneController implements Initializable {
         this.descripcionObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
     }
 
-    private void comprarCarta(int posicion) throws IOException {
-        ICarta carta = modelo.getCartasDeTienda().get(posicion-1);
-        modelo.seleccionarCartaDeTienda(carta);
-        goNextStage();
-    }
-
-    private void goNextStage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
-            Parent round = loader.load();
-
-            RoundSceneController controller = loader.getController();
-            controller.setModelo(this.modelo);
-
-            shopPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void goNextStage(MouseEvent event) throws IOException {
+        switcher.switchToRoundScene(event);
     }
 
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {
         ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
         modelo.seleccionarCartaDeTienda(carta);
-        goNextStage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
+        Parent round = loader.load();
+        RoundSceneController controller = loader.getController();
+        controller.setModelo(this.modelo);
+        shopPane.getScene().setRoot(round);
+        goNextStage(mouseEvent);
     }
+
+
 
     private void achicarImagen(ImageView cardImage) {
         ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);
