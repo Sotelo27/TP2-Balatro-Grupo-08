@@ -119,8 +119,8 @@
     -fx-animation: blink 1s infinite;
     -fx-border-color: gold;
     -fx-border-width: 2px;
-    /* Estilo para una carta habilitada */
 }
+/* Estilo para una carta habilitada */
 .carta-habilitada {
     -fx-border-color: red;
     -fx-border-width: 2px;
@@ -134,7 +134,8 @@
     -fx-opacity: 0.8;
     -fx-cursor: default ;
 }
-
-
-
+.hover-descripcion {
+    -fx-background-color: yellow ;
+    -fx-text-fill: black ;
+    -fx-font-size: 14px ;
 }

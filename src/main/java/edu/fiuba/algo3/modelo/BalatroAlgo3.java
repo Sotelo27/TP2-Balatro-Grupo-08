@@ -103,4 +103,17 @@ public class BalatroAlgo3{
     public StringProperty puntajeObjetivoProperty() {
         return rondaActual.obtenerPuntajeObservable();
     }
+
+    public boolean rondaSuperada() {
+        if (this.rondaActual.estaSuperada()){
+            pasarDeRonda();
+            return true;
+        }
+        return false;
+    }
+
+    private void pasarDeRonda() {
+        rondas.remove(rondaActual);
+        this.rondaActual = rondas.get(0);
+    }
 }

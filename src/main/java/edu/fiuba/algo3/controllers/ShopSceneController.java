@@ -151,7 +151,7 @@ public class ShopSceneController implements Initializable {
         goNextStage();
     }
 
-    private void goNextStage() throws IOException {
+    private void goNextStage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
             Parent round = loader.load();

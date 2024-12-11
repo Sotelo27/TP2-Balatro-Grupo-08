@@ -11,7 +11,7 @@ public class EstadoRonda extends EstadoJuego {
         super(juego, escena);
     }
 
-    @Override
+     @Override
     public void empezar() {
 
     }
@@ -25,7 +25,6 @@ public class EstadoRonda extends EstadoJuego {
     public void cambiar() {
 
     }
-
 
 }
 

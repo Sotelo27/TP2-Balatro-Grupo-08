@@ -87,4 +87,8 @@ public class Ronda {
         }
         return puntaje.enObserbable();
     }
+
+    public boolean estaSuperada() {
+        return (this.manos == 0 && obtenerPuntaje().asInt() > puntajeASuperar);
+    }
 }
