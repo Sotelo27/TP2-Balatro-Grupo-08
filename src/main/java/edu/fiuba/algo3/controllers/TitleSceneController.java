@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
+import edu.fiuba.algo3.modelo.Estados.EstadoTransicion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TitleSceneController {
+public class TitleSceneController extends GameController{
     @FXML
     private Button playBtn;
     @FXML
@@ -26,7 +27,8 @@ public class TitleSceneController {
     @FXML
     void click(ActionEvent event) throws IOException {
         System.out.println("Iniciar Juego");
-        switcher.switchToPlayerScene(event);
+
+        this.modelo.setEstado(new EstadoTransicion());
     }
 
     @FXML

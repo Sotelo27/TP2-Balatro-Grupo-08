@@ -1,29 +1,22 @@
 package edu.fiuba.algo3.modelo.Estados;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IGameState;
+import edu.fiuba.algo3.modelo.IGameState;
+
+import java.io.IOException;
+
 
 public class EstadoTienda extends EstadoJuego {
-    public EstadoTienda(BalatroAlgo3 balatro, Stage escena) {
-        super(balatro, escena);
+
+
+    public EstadoTienda() {
     }
 
 
-    @Override
-    public void empezar() {
-
-    }
 
     @Override
-    public void terminar() {
-
-    }
-
-    @Override
-    public void cambiar() {
+    public void iniciar() throws IOException {
 
     }
 }
+

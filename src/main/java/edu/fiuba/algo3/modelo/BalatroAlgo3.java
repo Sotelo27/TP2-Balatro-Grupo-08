@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo;
+
+
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.*;
 import javafx.beans.property.StringProperty;
@@ -6,13 +8,14 @@ import javafx.beans.property.StringProperty;
 import java.io.IOException;
 import java.util.List;
 
-public class BalatroAlgo3{
+public class BalatroAlgo3 implements IGameState, IModelo{
     private EstadoJuego estado;
     private Jugador jugador;
     private List<Ronda> rondas;
     private Ronda rondaActual;
     private Mazo mazo;
     private InventarioTienda inventario;
+
 
     public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
@@ -21,6 +24,14 @@ public class BalatroAlgo3{
         this.rondaActual = rondas.get(0);
 //      this.inventario = new InventarioTienda(creadorDeObjetos);
     }
+
+    public BalatroAlgo3(LectorDeJSON creadorDeObjetos) throws IOException {
+        this.mazo = creadorDeObjetos.construirMazo();
+        this.rondas = creadorDeObjetos.construirRondas();
+        this.rondaActual = rondas.get(0);
+    }
+
+
 
     public void iniciarRonda(){
         jugador.recargarMano();
@@ -57,13 +68,6 @@ public class BalatroAlgo3{
         this.jugador.realizarDescarte(this.rondaActual);
     }
 
-    public void setEstado(EstadoJuego nuevoEstado){
-        if (this.estado != null) {
-            this.estado.terminar();
-        }
-        this.estado = nuevoEstado;
-        this.estado.empezar();
-    };
 
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
@@ -104,6 +108,7 @@ public class BalatroAlgo3{
         return rondaActual.obtenerPuntajeObservable();
     }
 
+    @Override
     public boolean rondaSuperada() {
         if (this.rondaActual.estaSuperada()){
             pasarDeRonda();
@@ -112,13 +117,45 @@ public class BalatroAlgo3{
         return false;
     }
 
+    @Override
+    public boolean estaListoParaJugar() {
+        return false;
+    }
+
+    @Override
+    public boolean noQuedanMasRondas() {
+        return false;
+    }
+
+    @Override
+    public boolean perdioRonda() {
+        return rondaActual.estaPerdida();
+    }
+
     private void pasarDeRonda() {
         rondas.remove(rondaActual);
         this.rondaActual = rondas.get(0);
         jugador.vaciarMano();
     }
 
-    public boolean perdioRonda() {
-        return rondaActual.estaPerdida();
+
+    @Override
+    public void setEstado(EstadoJuego nuevoEstado) throws IOException {
+        if (this.estado == null){
+            this.estado = nuevoEstado;
+        }else {
+            this.estado.cambiarA(nuevoEstado);
+        }
+        this.estado.iniciar();
+    };
+
+    @Override
+    public void iniciarJuego() {
+
+    }
+
+    @Override
+    public void setJugador(String jugador) {
+        this.jugador = new Jugador(jugador, mazo);
     }
 }

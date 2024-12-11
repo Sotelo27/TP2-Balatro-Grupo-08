@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.SystemInfo;
+import edu.fiuba.algo3.controllers.SceneController;
+import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.Estados.EstadoInicio;
+import edu.fiuba.algo3.repositorios.LectorDeJSON;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,20 +27,20 @@ public class Balatrucho extends Application {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
-        // Load FXML and set controller
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/titleScene.fxml"));
-        Parent root = loader.load();
+        SceneController switcher = new SceneController();
+        switcher.setStage(stage);
 
-        // Set the scene
-        Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Balatrucho-Fiuba");
-        stage.setScene(scene);
+        EstadoInicio estado = new EstadoInicio();
 
-        stage.sizeToScene(); // Ajusta el tamaño de la ventana al tamaño de la escena
-        stage.getIcons().add(icon);
+        BalatroAlgo3 modelo = new BalatroAlgo3(new LectorDeJSON());
+
+        estado.setModel(modelo);
+        estado.setSwitcher(switcher);
+
+        switcher.setGameState(modelo);
+
         stage.show();
-
+        modelo.setEstado(estado);
     }
 
     public static void main(String[] args) {

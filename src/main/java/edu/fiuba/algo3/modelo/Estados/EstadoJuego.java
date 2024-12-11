@@ -1,27 +1,29 @@
 package edu.fiuba.algo3.modelo.Estados;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import edu.fiuba.algo3.controllers.SceneController;
+import edu.fiuba.algo3.modelo.IGameState;
 import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import java.io.IOException;
+import java.util.Observer;
 
 public abstract class EstadoJuego {
-    protected BalatroAlgo3 juegoBalatro;
-    protected Stage escena;
+    protected IGameState gameState;
+    protected SceneController sceneController;
+    protected EstadoJuego estadoActual;
 
-
-    public EstadoJuego(BalatroAlgo3 juegoBalatro, Stage escena) {
-        this.juegoBalatro = juegoBalatro;
-        this.escena = escena;
+    public void setSwitcher(SceneController switcher){
+        this.sceneController = switcher;
     }
 
-    public abstract void empezar();
-    public abstract void terminar();
-    public abstract void cambiar();
+    public void setModel(IGameState modelo){
+        this.gameState = modelo;
+    }
 
+    public abstract void iniciar() throws IOException;
 
-
-
-
+    public void cambiarA(EstadoJuego nuevoEstado) {
+        this.estadoActual = nuevoEstado;
+        estadoActual.setSwitcher(sceneController);
+        estadoActual.setModel(this.gameState);
+    }
 }
