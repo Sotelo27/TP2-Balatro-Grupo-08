@@ -39,31 +39,12 @@ public class PlayerSceneController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-
-    @FXML
-    void saveName(ActionEvent event) throws IOException {
-        this.userName = usernameField.getText();
-        System.out.println(this.userName);
-        this.modelo = new BalatroAlgo3(this.userName, new LectorDeJSON());
-
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     @FXML
     void saveNameAndStartGame(ActionEvent event) throws IOException {
         this.userName = usernameField.getText();
         System.out.println(this.userName);
         this.modelo = new BalatroAlgo3(this.userName, new LectorDeJSON());
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/shopScene.fxml"));
-        Parent gameShopRoot = loader.load();
-        ShopSceneController controller = loader.getController();
-        controller.setModelo(this.modelo);
-
-        btnNameSaver.getScene().setRoot(gameShopRoot);
+        switcher.switchToShopScene(event,modelo);
     }
 
     @FXML

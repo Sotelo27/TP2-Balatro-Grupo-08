@@ -61,7 +61,7 @@
 }
 
 .GeneralBackground{
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 #shopTitle{

@@ -76,7 +76,7 @@
             </VBox>
          </children>
       </Pane>
-      <TilePane alignment="CENTER" hgap="10.0" layoutX="729.0" layoutY="30.0" prefHeight="212.0" prefWidth="512.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="729.0" layoutY="30.0" prefHeight="212.0" prefWidth="512.0" style="-fx-background-color: transparent; -fx-border-color: red;" vgap="10.0">
          <children>
             <ImageView fx:id="choosedCard" fitHeight="210.0" fitWidth="147.0" onMouseClicked="#comprarCarta" pickOnBounds="true" preserveRatio="true" styleClass="tarotCard">
                <image>
@@ -85,7 +85,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="210.0" prefWidth="232.0" style="-fx-background-color: black;">
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="210.0" prefWidth="232.0" style="-fx-background-color: transparent;">
               <items>
                   <Text fx:id="nombreObjeto" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="230.0">
                      <font>
@@ -105,7 +105,7 @@
             </SplitPane>
          </children>
       </TilePane>
-      <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="424.0" layoutY="463.0" prefHeight="222.0" prefWidth="817.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
+      <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="424.0" layoutY="463.0" prefHeight="222.0" prefWidth="817.0" style="-fx-background-color: transparent; -fx-border-color: red;" vgap="10.0">
          <ImageView fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0" onMouseEntered="#selectFirstCard" pickOnBounds="true" preserveRatio="true">
             <image>
 

@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.controllers;
+import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,6 +49,33 @@ public class SceneManager {
             Parent view = loader.load();
 
             // Reemplazar el contenido principal
+            if (rootPane.getChildren().size() > 1) {
+                rootPane.getChildren().remove(1); // Remueve la vista anterior
+            }
+            rootPane.getChildren().add(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setViewModel(String fxmlPath, BalatroAlgo3 modelo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent view = loader.load();
+
+            if (fxmlPath.equals("/fxml/shopScene.fxml")) {
+                // Si es la escena de Shop, pasa el modelo
+                ShopSceneController controller = loader.getController();
+                controller.setModelo(modelo);
+            }
+
+            if (fxmlPath.equals("/fxml/RoundScene.fxml")) {
+                // Si es la escena de Shop, pasa el modelo
+                RoundSceneController controller = loader.getController();
+                controller.setModelo(modelo);
+            }
+
+            // Reemplaza la vista actual
             if (rootPane.getChildren().size() > 1) {
                 rootPane.getChildren().remove(1); // Remueve la vista anterior
             }

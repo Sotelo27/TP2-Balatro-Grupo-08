@@ -71,6 +71,10 @@ public class ShopSceneController implements Initializable {
         });
     }
 
+    public void ShopSceneController(){
+        this.switcher = new SceneController();
+    }
+
     @FXML
     void selectFirstCard(MouseEvent event)  {
         //comprarCarta(1);
@@ -149,21 +153,14 @@ public class ShopSceneController implements Initializable {
     }
 
     private void goNextStage(MouseEvent event) throws IOException {
-        switcher.switchToRoundScene(event);
+        switcher.switchToRoundScene(event,this.modelo);
     }
 
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {
         ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
         modelo.seleccionarCartaDeTienda(carta);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
-        Parent round = loader.load();
-        RoundSceneController controller = loader.getController();
-        controller.setModelo(this.modelo);
-        shopPane.getScene().setRoot(round);
         goNextStage(mouseEvent);
     }
-
-
 
     private void achicarImagen(ImageView cardImage) {
         ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);

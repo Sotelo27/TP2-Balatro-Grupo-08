@@ -23,26 +23,23 @@ public class SceneController {
         sceneManager.show();
     }
 
-    public void switchToPlayerScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/playerScene.fxml"));
+    public void switchToPlayerScene(ActionEvent event) throws IOException {;
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         SceneManager sceneManager = new SceneManager(stage);
         sceneManager.setView("/fxml/playerScene.fxml"); // Carga la vista inicial
         sceneManager.show();
     }
 
-    public void switchToShopScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
+    public void switchToShopScene(ActionEvent event, BalatroAlgo3 modelo) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.setView("/fxml/shopScene.fxml"); // Carga la vista inicial
+        sceneManager.setViewModel("/fxml/shopScene.fxml", modelo); // Pasa el modelo a la vista
         sceneManager.show();
     }
-    public void switchToRoundScene(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/RoundScene.fxml"));
+    public void switchToRoundScene(MouseEvent event,BalatroAlgo3 modelo) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.setView("/fxml/RoundScene.fxml"); // Carga la vista inicial
+        sceneManager.setViewModel("/fxml/RoundScene.fxml",modelo); // Carga la vista inicial
         sceneManager.show();
     }
 }
