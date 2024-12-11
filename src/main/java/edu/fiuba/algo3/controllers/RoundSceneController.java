@@ -62,7 +62,7 @@ public class RoundSceneController implements Initializable{
         cartasEnMano.getChildren().forEach(node -> {
             if (node instanceof ImageView) {
                 hacerImagenSeleccionable((PaneCarta) node);
-                node.setOnMouseClicked(event -> handleCardSelection((PaneCarta) node));
+                node.setOnMouseClicked(e -> handleCardSelection((PaneCarta) node));
             }
         });
         //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
@@ -73,6 +73,7 @@ public class RoundSceneController implements Initializable{
         activarTarot( tarot.getCarta());
         tarotsGuardados.getChildren().remove(tarot);
         makeTarotClickable(false);
+        tarot.playClick();
     }
 
 
@@ -114,6 +115,7 @@ public class RoundSceneController implements Initializable{
             makeTarotClickable(true);
             selectCard(card);
         }
+        card.playClick();
     }
 
     private void makeTarotClickable(boolean value) {

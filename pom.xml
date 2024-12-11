@@ -74,6 +74,11 @@
       <artifactId>javafx-fxml</artifactId>
       <version>${javafx-version}</version>
     </dependency>
+      <dependency>
+          <groupId>org.jfxcore</groupId>
+          <artifactId>javafx-media</artifactId>
+          <version>18-ea+1</version>
+      </dependency>
   </dependencies>
 
   <profiles>

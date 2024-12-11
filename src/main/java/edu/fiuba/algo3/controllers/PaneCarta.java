@@ -1,15 +1,31 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.Services.ImageLoader;
+import edu.fiuba.algo3.Services.MediaMaker;
 import edu.fiuba.algo3.modelo.ICarta;
+import javafx.event.EventHandler;
+
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
+
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class PaneCarta extends ImageView {
-    ICarta carta;
-    private static final double SCALE_FACTOR = 1.1; // 10% más grande
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+
+import java.io.File;
+import java.io.InputStream;
+import java.net.URI;
+import java.util.Objects;
+import java.util.Random;
+
+public class PaneCarta extends ImageView implements EventHandler<MouseEvent> {
+    private static final Random RANDOM = new Random();
+    ICarta carta;
+    private static final String SOUND_PATH = "/sounds/click2.wav"; // Ruta al sonido
+    private Media sonidoClick;
     public PaneCarta () {
         super();
     }
@@ -19,6 +35,7 @@ public class PaneCarta extends ImageView {
         ImageLoader imageLoader = new ImageLoader();
         aniadirHoverDescripcion();
         this.setImage(imageLoader.cargarImagen(carta.getImagen()));
+        atachClickSound();
     }
 
     public ICarta getCarta() {
@@ -37,6 +54,13 @@ public class PaneCarta extends ImageView {
         this.setScaleY(scale);
     }
 
+    public void atachClickSound(){
+        // Cargar el archivo de sonido como un objeto Media
+        String path = Objects.requireNonNull(getClass().getResource(SOUND_PATH)).getPath();
+        Media sound = MediaMaker.make(path);
+        this.sonidoClick = sound;
+    }
+
     public void setActive(boolean value) {
         if (value) {
             this.getStyleClass().remove("carta-inhabilitada");
@@ -47,5 +71,36 @@ public class PaneCarta extends ImageView {
         }
     }
 
+    @Override
+    public void handle(MouseEvent event) {
+        // Verifica si el evento es un clic en la carta
+        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+            reproducirSonidoConPitch();
+            System.out.println("Clicked");
+        }
+    }
 
+    private void reproducirSonidoConPitch() {
+        try {
+            MediaPlayer mediaPlayer = new MediaPlayer(sonidoClick);
+
+            // Generar un pitch aleatorio en el rango 0.8 a 1.2
+            double pitch = 0.8 + RANDOM.nextDouble() * 0.4; // Rango: 0.8 a 1.2
+            mediaPlayer.setRate(pitch); // Ajusta el pitch del sonido
+
+            // Reproducir el sonido
+            mediaPlayer.play();
+
+            // Liberar recursos del MediaPlayer después de que termine el audio
+            mediaPlayer.setOnEndOfMedia(mediaPlayer::dispose);
+
+        } catch (Exception e) {
+            System.err.println("Error al reproducir sonido: " + e.getMessage());
+        }
+    }
+
+    public void playClick() {
+        reproducirSonidoConPitch();
+    }
 }
+
