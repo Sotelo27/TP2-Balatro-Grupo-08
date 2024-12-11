@@ -236,6 +236,7 @@
                                              <children>
                                                 <PaneCarta fx:id="fourthCardOffert2" fitHeight="132.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
+                                                      <Image url="@../images/Player Cards/Mazo.png" />
                                                    </image>
                                                 </PaneCarta>
                                              </children>

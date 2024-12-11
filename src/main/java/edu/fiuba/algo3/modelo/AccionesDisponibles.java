@@ -13,7 +13,7 @@ public class AccionesDisponibles{
 		return this.descartesDisponibles < descartes;
 	}
 
-	public boolean quedanManosDisponibles(int manos){
+	public boolean quedanManosDisponibles(){
 		return this.manosDisponibles > 0;
 	}
 

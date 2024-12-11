@@ -109,4 +109,8 @@ public class Mano {
         }
         return cartas;
     }
+
+    public void vaciar() {
+        this.mano.clear();
+    }
 }

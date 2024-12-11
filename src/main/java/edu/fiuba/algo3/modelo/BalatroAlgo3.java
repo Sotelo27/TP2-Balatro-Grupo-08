@@ -115,5 +115,10 @@ public class BalatroAlgo3{
     private void pasarDeRonda() {
         rondas.remove(rondaActual);
         this.rondaActual = rondas.get(0);
+        jugador.vaciarMano();
+    }
+
+    public boolean perdioRonda() {
+        return rondaActual.estaPerdida();
     }
 }

@@ -206,11 +206,29 @@ public class RoundSceneController implements Initializable{
     private void iniciarTurno() {
         if (modelo.rondaSuperada()){
             pasarATienda();
+            return;
+        } else if (modelo.perdioRonda()) {
+            pasarADerrota();
+            return;
         }
         modelo.iniciarRonda();
         iniciarBotones();
         cargarImagenes();
         cargarEtiquetas();
+    }
+
+    private void pasarADerrota() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sceneDerrota.fxml"));
+            Parent round = loader.load();
+
+            ResultController controller = loader.getController();
+            controller.setModelo(this.modelo);
+
+            roundPane.getScene().setRoot(round);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void pasarATienda() {

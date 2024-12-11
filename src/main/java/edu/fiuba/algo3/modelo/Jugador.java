@@ -113,5 +113,9 @@ public class Jugador implements IComprador {
         comodinesActivos.forEach(comodin -> comodines.add(comodin.getCarta()));
         return comodines;
     }
+
+    public void vaciarMano() {
+        this.mano.vaciar();
+    }
 }
 
