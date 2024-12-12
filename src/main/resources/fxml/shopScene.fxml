@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
+
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,9 +17,9 @@
 <?import edu.fiuba.algo3.controllers.PaneCarta?>
 <AnchorPane fx:id="shopPane" prefHeight="720.0" prefWidth="1263.0" styleClass="GeneralBackground" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ShopSceneController">
    <children>
-      <Pane prefHeight="720.0" prefWidth="370.0">
+      <Pane layoutX="36.0" prefHeight="720.0" prefWidth="370.0">
          <children>
-            <VBox layoutX="-5.0" layoutY="-6.0" prefHeight="729.0" prefWidth="378.0">
+            <VBox layoutX="10.0" layoutY="-9.0" prefHeight="720.0" prefWidth="352.0">
                <children>
                   <HBox prefHeight="191.0" prefWidth="376.0">
                      <children>
@@ -70,8 +71,22 @@
                               </Label>
                            </children>
                         </Pane>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="402.0" prefWidth="376.0">
+                     <children>
+                        <VBox alignment="BOTTOM_RIGHT" prefHeight="448.0" prefWidth="384.0">
+                           <children>
+                              <TilePane fx:id="tarotsGuardados" prefHeight="212.0" prefWidth="356.0">
+                                 <children>
+                                    <PaneCarta fitHeight="224.0" fitWidth="150.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            </PaneCarta>
+                                    <PaneCarta fitHeight="224.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </TilePane>
+                           </children>
+                        </VBox>
                      </children></HBox>
-                  <HBox layoutX="10.0" layoutY="201.0" prefHeight="402.0" prefWidth="376.0" />
                </children>
             </VBox>
          </children>
@@ -87,7 +102,7 @@
             </PaneCarta>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="210.0" prefWidth="232.0" style="-fx-background-color: black;">
               <items>
-                  <Text fx:id="nombreObjeto" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="230.0">
+                  <Text fx:id="nombreObjeto" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="230.0">
                      <font>
                         <Font name="Impact" size="31.0" />
                      </font>
@@ -106,7 +121,7 @@
          </children>
       </TilePane>
       <TilePane fx:id="cardOffersPane" alignment="CENTER" hgap="10.0" layoutX="424.0" layoutY="463.0" prefHeight="222.0" prefWidth="817.0" style="-fx-background-color: black; -fx-border-color: red;" vgap="10.0">
-         <PaneCarta fx:id="firstCardOffert" fitHeight="210.0" fitWidth="140.0"  pickOnBounds="true" preserveRatio="true">
+         <PaneCarta fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
             <image>
 
             </image>
@@ -114,28 +129,28 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </PaneCarta>
-         <PaneCarta fx:id="scndCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="10.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true">
+         <PaneCarta fitHeight="210.0" fitWidth="140.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
          </PaneCarta>
-         <PaneCarta fx:id="thrdCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true">
+         <PaneCarta fitHeight="210.0" fitWidth="140.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
          </PaneCarta>
-         <PaneCarta fx:id="fourthCardOffert" fitHeight="205.0" fitWidth="131.0" layoutX="535.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true">
+         <PaneCarta fitHeight="205.0" fitWidth="131.0" layoutX="535.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
          </PaneCarta>
-         <PaneCarta fx:id="fifthCardOffert" fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true">
+         <PaneCarta fitHeight="210.0" fitWidth="140.0" layoutX="360.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
             <cursor>
@@ -144,5 +159,5 @@
          </PaneCarta>
       </TilePane>
 
-   </children>
+         </children>
 </AnchorPane>

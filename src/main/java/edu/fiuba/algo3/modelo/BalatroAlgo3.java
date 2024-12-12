@@ -85,6 +85,7 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
 
     public void seleccionarCartaDeTienda(ICarta carta) {
+        jugador.vaciarMano();
         rondaActual.comprarConJugador(carta, jugador);
         update();
     }
@@ -149,7 +150,7 @@ public class BalatroAlgo3 implements IGameState, IModelo{
             this.rondaActual = rondas.get(0);
             rondas.remove(rondaActual);
         }
-        jugador.vaciarMano();
+
     }
 
 

@@ -144,8 +144,7 @@ public class RoundSceneController extends GameController implements Initializabl
     private void selectCard(PaneCarta card) {
         if (!selectedCards.contains(card)) {
             selectedCards.add(card);
-            card.setScaleX(SCALE_FACTOR);
-            card.setScaleY(SCALE_FACTOR);
+            card.agrandar(SCALE_FACTOR);
             card.getStyleClass().add("selected-card");
         }
     }
@@ -153,8 +152,7 @@ public class RoundSceneController extends GameController implements Initializabl
     private void deselectCard(PaneCarta card) {
         if (selectedCards.contains(card)) {
             selectedCards.remove(card);
-            card.setScaleX(1.0);
-            card.setScaleY(1.0);
+            card.agrandar(1.0);
             card.getStyleClass().remove("selected-card");
         }
     }
@@ -200,46 +198,12 @@ public class RoundSceneController extends GameController implements Initializabl
     }
 
     private void iniciarTurno() {
-/*        if (modelo.rondaSuperada()){
-            pasarATienda();
-            return;
-        } else if (modelo.perdioRonda()) {
-            pasarADerrota();
-            return;
-        }*/
         modelo.iniciarRonda();
         iniciarBotones();
         cargarImagenes();
         cargarEtiquetas();
     }
 
-    private void pasarADerrota() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/defeatScene.fxml"));
-            Parent round = loader.load();
-
-            ResultController controller = loader.getController();
-            //controller.setModelo(this.modelo);
-
-            roundPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void pasarATienda() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/shopScene.fxml"));
-            Parent round = loader.load();
-
-            ShopSceneController controller = loader.getController();
-            controller.setModelo(this.modelo);
-
-            roundPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void iniciarBotones() {
         // Inicialmente deshabilitar el botón si la lista está vacía

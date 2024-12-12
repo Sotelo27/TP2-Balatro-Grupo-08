@@ -27,16 +27,11 @@ import java.util.ResourceBundle;
 
 public class ShopSceneController extends GameController implements Initializable {
 
-    @FXML
-    public AnchorPane shopPane;
-
-    public TilePane tarotsGuardados;
-
     @FXML Text nombreObjeto, descripcionObjeto;
 
     @FXML PaneCarta choosedCard;
 
-    @FXML private TilePane cardOffersPane;
+    @FXML private TilePane cardOffersPane, tarotsGuardados;
 
     private IModelo modelo;
 
@@ -58,23 +53,25 @@ public class ShopSceneController extends GameController implements Initializable
     @Override
     public void setModelo(IModelo modelo) {
         this.modelo = modelo;
-        cargarItemsDeTienda();
+        cargarItems();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    private void cargarItemsDeTienda() {
-        List<ICarta> items = modelo.getCartasDeTienda();
-        Integer pos = 0;
-        List<javafx.scene.Node> children = cardOffersPane.getChildren();
-        for ( ICarta item : items ) {
-            PaneCarta imageView = (PaneCarta) children.get(pos);
-            imageView.setCarta(item);
-            setBehaviour(imageView);
-            pos ++;
-        }
+    private void cargarItems() {
+        List<ICarta> comprables = modelo.getCartasDeTienda();
+        cargarCartas(comprables, cardOffersPane);
+        List<ICarta> tarots = modelo.getCartasActivables();
+        cargarCartas(tarots,tarotsGuardados );
+
+        cardOffersPane.getChildren().forEach(cardPane -> {
+            if (cardPane instanceof PaneCarta) {
+                PaneCarta card = (PaneCarta) cardPane;
+                setBehaviour(card);
+            }
+        });
     }
 
     private void preSeleccionar(PaneCarta carta) {
@@ -90,5 +87,12 @@ public class ShopSceneController extends GameController implements Initializable
         modelo.seleccionarCartaDeTienda(selectedCard);
         modelo.update();
     }
-
+    private void cargarCartas(List<ICarta> cartas, TilePane contenedor) {
+        List<javafx.scene.Node> children = contenedor.getChildren();
+        for (int i = 0; i < cartas.size(); i++) {
+            ICarta carta = cartas.get(i);
+            PaneCarta imageView = (PaneCarta) children.get(i);
+            imageView.setCarta(carta);
+        }
+    }
 }
