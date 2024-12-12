@@ -15,8 +15,7 @@ public class VerificadorRoyalFlush extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        boolean cumpleLaCondicion = false;
-        List <String> secuenciaRoyalFlush = List.of("A","K","Q","J","10");
+        List <String> secuenciaRoyalFlush = List.of("As","Rey","Reina","Jota","10");
         int contadorSecuencia = 0;
         for (CartaDePoker carta : cartas) {
             if (!carta.soyDelMismoNumero(secuenciaRoyalFlush.get(contadorSecuencia))){

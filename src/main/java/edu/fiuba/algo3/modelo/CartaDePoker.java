@@ -20,7 +20,7 @@ public class CartaDePoker implements IMejorable, ICarta {
     protected PuntajeJugada puntaje;
 
     private static final List<String> ORDEN_NUMEROS = Arrays.asList(
-            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
+            "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jota", "Reina", "Rey", "As"
     );
 
     //Setters
