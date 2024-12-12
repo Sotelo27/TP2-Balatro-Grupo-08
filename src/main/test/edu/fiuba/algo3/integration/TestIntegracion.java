@@ -425,7 +425,4 @@ public class TestIntegracion {
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
-    //  Verificar la lectura y posterior conversión a unidades del modelo de dominio del JSON
-    //  <Crear un tests de constructor de objetos>
-
 }
