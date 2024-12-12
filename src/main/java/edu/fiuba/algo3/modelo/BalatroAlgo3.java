@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Estados.AbstractState;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.*;
 import javafx.beans.property.StringProperty;
@@ -33,7 +34,7 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
 
 
-    public void iniciarRonda(){
+    public void iniciarRonda() {
         jugador.recargarMano();
     }
 
@@ -72,6 +73,7 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
     }
+
     public List<ICarta> getCartasDeTienda() {
         return this.rondaActual.getArticulosTienda();
     }
@@ -140,18 +142,23 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
 
     @Override
-    public void setEstado(EstadoJuego nuevoEstado) throws IOException {
-        if (this.estado == null){
-            this.estado = nuevoEstado;
-        }else {
-            this.estado.cambiarA(nuevoEstado);
-        }
-        this.estado.iniciar();
+    public void setEstado(EstadoJuego nuevoEstado) {
+        this.estado = nuevoEstado;
     };
 
     @Override
-    public void iniciarJuego() {
+    public void cambiarDeEstado(AbstractState nuevoEstado) throws IOException {
+        this.estado.cambiarA(nuevoEstado);
+    }
 
+    @Override
+    public void update() {
+        this.estado.actualizar();
+    }
+
+    @Override
+    public void iniciarJuego() throws IOException {
+        this.estado.render();
     }
 
     @Override

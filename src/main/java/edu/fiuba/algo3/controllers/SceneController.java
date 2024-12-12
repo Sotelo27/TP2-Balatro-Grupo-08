@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
+import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.IGameState;
 import edu.fiuba.algo3.modelo.IModelo;
 import javafx.event.ActionEvent;
@@ -28,13 +29,18 @@ public class SceneController {
         this.modelo = modelo;
     }
 
-    public void cambiarAEscena(String path) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-        Parent escenaNueva = loader.load();
-        GameController gameController = loader.getController();
-        gameController.setModelo(this.modelo);
-        scene = new Scene(escenaNueva);
-        stage.setScene(scene);
+    public void cambiarAEscena(String path) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent escenaNueva = loader.load();
+            GameController gameController = loader.getController();
+            gameController.setModelo(this.modelo);
+            scene = new Scene(escenaNueva);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void switchToMainScene(ActionEvent event) throws IOException {
@@ -60,4 +66,5 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -1,29 +1,49 @@
 package edu.fiuba.algo3.modelo.Estados;
 import edu.fiuba.algo3.controllers.SceneController;
 import edu.fiuba.algo3.modelo.IGameState;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Observer;
 
-public abstract class EstadoJuego {
-    protected IGameState gameState;
-    protected SceneController sceneController;
-    protected EstadoJuego estadoActual;
+public class EstadoJuego {
+    private IGameState gameState;
 
-    public void setSwitcher(SceneController switcher){
-        this.sceneController = switcher;
+    private AbstractState estadoActual;
+    private SceneController switcher;
+
+    public EstadoJuego(SceneController switcher, AbstractState estadoInicial) {
+        this.switcher = switcher;
+        this.estadoActual = estadoInicial;
+        estadoInicial.setEstado(this.switcher, this);
     }
 
     public void setModel(IGameState modelo){
         this.gameState = modelo;
     }
 
-    public abstract void iniciar() throws IOException;
-
-    public void cambiarA(EstadoJuego nuevoEstado) {
+    public void cambiarA(AbstractState nuevoEstado) throws IOException {
         this.estadoActual = nuevoEstado;
-        estadoActual.setSwitcher(sceneController);
-        estadoActual.setModel(this.gameState);
+        nuevoEstado.setEstado(this.switcher, this);
+        estadoActual.render();
+    }
+
+
+    public void render() {
+
+        try {
+            this.estadoActual.render();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void actualizar() {
+
+        try {
+            this.estadoActual.actualizar();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

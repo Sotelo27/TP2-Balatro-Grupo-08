@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.Estados.EstadoTienda;
 import edu.fiuba.algo3.modelo.IModelo;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 import javafx.event.ActionEvent;
@@ -18,8 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlayerSceneController implements Initializable {
-    private IModelo modelo;
+public class PlayerSceneController extends GameController implements Initializable {
 
     @FXML
     private Button btnNameSaver;
@@ -41,22 +41,12 @@ public class PlayerSceneController implements Initializable {
     }
 
 
-    @FXML
-    void saveName(ActionEvent event) throws IOException {
-        this.userName = usernameField.getText();
-        System.out.println(this.userName);
-        this.modelo = new BalatroAlgo3(this.userName, new LectorDeJSON());
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     @FXML
     void saveNameAndStartGame(ActionEvent event) throws IOException {
         this.userName = usernameField.getText();
         this.modelo.setJugador(userName);
+        this.modelo.update();
     }
 
     @FXML

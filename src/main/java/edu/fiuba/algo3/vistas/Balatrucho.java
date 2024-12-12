@@ -4,6 +4,7 @@ import edu.fiuba.algo3.SystemInfo;
 import edu.fiuba.algo3.controllers.SceneController;
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.Estados.EstadoInicio;
+import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,20 +28,18 @@ public class Balatrucho extends Application {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
-        SceneController switcher = new SceneController();
-        switcher.setStage(stage);
-
-        EstadoInicio estado = new EstadoInicio();
-
         BalatroAlgo3 modelo = new BalatroAlgo3(new LectorDeJSON());
 
-        estado.setModel(modelo);
-        estado.setSwitcher(switcher);
-
+        SceneController switcher = new SceneController();
+        switcher.setStage(stage);
         switcher.setGameState(modelo);
 
-        stage.show();
-        modelo.setEstado(estado);
+        EstadoInicio estadoInicial = new EstadoInicio();
+        EstadoJuego estadoJuego = new EstadoJuego(switcher, estadoInicial);
+        modelo.setEstado(estadoJuego);
+        estadoJuego.render();
+
+
     }
 
     public static void main(String[] args) {

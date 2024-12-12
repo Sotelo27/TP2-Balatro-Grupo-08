@@ -28,7 +28,7 @@ public class TitleSceneController extends GameController{
     void click(ActionEvent event) throws IOException {
         System.out.println("Iniciar Juego");
 
-        this.modelo.setEstado(new EstadoTransicion());
+        this.modelo.update();
     }
 
     @FXML

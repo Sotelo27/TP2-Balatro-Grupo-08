@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.ICarta;
+import edu.fiuba.algo3.modelo.IModelo;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ShopSceneController implements Initializable {
+public class ShopSceneController extends GameController implements Initializable {
 
     @FXML
     public AnchorPane shopPane;
@@ -51,7 +52,7 @@ public class ShopSceneController implements Initializable {
     @FXML
     private TilePane cardOffersPane;
 
-    private BalatroAlgo3 modelo;
+    private IModelo modelo;
     private Integer selectedCard;
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
@@ -104,7 +105,8 @@ public class ShopSceneController implements Initializable {
         this.setBehaviour(fifthCardOffert, 4);
     }
 
-    public void setModelo(BalatroAlgo3 modelo) {
+    @Override
+    public void setModelo(IModelo modelo) {
         this.modelo = modelo;
         cargarItemsDeTienda();
     }
@@ -152,7 +154,7 @@ public class ShopSceneController implements Initializable {
     }
 
     private void goNextStage() {
-        try {
+/*        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
             Parent round = loader.load();
 
@@ -162,7 +164,7 @@ public class ShopSceneController implements Initializable {
             shopPane.getScene().setRoot(round);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {
