@@ -10,10 +10,6 @@ public class CombinacionDeComodines implements IMejorador, ICarta{
 	private  String nombre;
 	private  String descripcion;
 
-	public CombinacionDeComodines() {
-
-	}
-
 	public CombinacionDeComodines(String nombre,String descripcion, List<Comodin> comodines) {
 		this.nombre = nombre;
 		this.comodines = comodines;

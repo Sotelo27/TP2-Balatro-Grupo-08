@@ -38,14 +38,6 @@ public class CartaDePoker implements IMejorable, ICarta {
         this.multiplicador = multiplicador;
     }
 
-    public CartaDePoker(String nombre, String palo, String numero) {
-        this.estado = new NoSeleccionada();
-        this.nombre = nombre;
-        this.palo = palo;
-        this.numero = numero;
-        this.mejora = new Mejora() ;
-    }
-
     public void setPalo(String palo) {this.palo = palo;}
 
     public void setNumero(String numero) {this.numero = numero;}
