@@ -20,4 +20,31 @@ public interface IModelo {
     List<ICarta> getCartasDeTienda();
 
     void seleccionarCartaDeTienda(ICarta carta);
+
+    void seleccionarCartaDePoker(String nombre);
+
+    void activarTarot(ICarta tarot);
+
+    void realizarDescarte();
+
+    void realizarJugada();
+
+    
+    void iniciarRonda();
+
+    List<ICarta> getCartasEnMano();
+
+    List<ICarta> getCartasActivables();
+
+    List<ICarta> getComodinesActivos();
+
+    String getPuntajeObjetivo();
+
+    String getDescartesRestantes();
+
+    String getManosRestantes();
+
+    String getNumeroRonda();
+
+    float obtenerPuntajeRonda();
 }

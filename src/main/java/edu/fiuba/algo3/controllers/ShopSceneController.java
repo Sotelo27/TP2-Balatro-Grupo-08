@@ -170,7 +170,7 @@ public class ShopSceneController extends GameController implements Initializable
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {
         ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
         modelo.seleccionarCartaDeTienda(carta);
-        goNextStage();
+        modelo.update();
     }
 
     private void achicarImagen(ImageView cardImage) {

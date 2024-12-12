@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RoundSceneController implements Initializable{
+public class RoundSceneController extends GameController implements Initializable{
     @FXML public TilePane tarotsGuardados;
     @FXML public Label puntosObjetivo;
     @FXML public Label manos;
@@ -43,8 +43,6 @@ public class RoundSceneController implements Initializable{
 
     @FXML private AnchorPane roundPane;
 
-
-    private BalatroAlgo3 modelo;
     private ObservableList<PaneCarta> selectedCards = FXCollections.observableArrayList();
     private ObservableList<PaneCarta> cartasActivables = FXCollections.observableArrayList();
 
@@ -206,13 +204,13 @@ public class RoundSceneController implements Initializable{
     }
 
     private void iniciarTurno() {
-        if (modelo.rondaSuperada()){
+/*        if (modelo.rondaSuperada()){
             pasarATienda();
             return;
         } else if (modelo.perdioRonda()) {
             pasarADerrota();
             return;
-        }
+        }*/
         modelo.iniciarRonda();
         iniciarBotones();
         cargarImagenes();
@@ -225,7 +223,7 @@ public class RoundSceneController implements Initializable{
             Parent round = loader.load();
 
             ResultController controller = loader.getController();
-            controller.setModelo(this.modelo);
+            //controller.setModelo(this.modelo);
 
             roundPane.getScene().setRoot(round);
         } catch (IOException e) {
