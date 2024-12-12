@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Services.ImageLoader;
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.Estados.EstadoRonda;
 import edu.fiuba.algo3.modelo.ICarta;
+import edu.fiuba.algo3.modelo.IModelo;
 import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -54,7 +55,8 @@ public class RoundSceneController extends GameController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setModelo(BalatroAlgo3 modelo) {
+    @Override
+    public void setModelo(IModelo modelo) {
         this.modelo = modelo;
         // hacer las cartas de la mano seleccionables
         cartasEnMano.getChildren().forEach(node -> {
