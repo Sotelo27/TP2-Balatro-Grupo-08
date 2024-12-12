@@ -28,6 +28,7 @@ public class Jugada implements IMejorable, IAccion{
         for(CartaDePoker carta: this.cartas) {
             carta.sumarAPuntajeJugada(puntaje);
         }
+
         combinacion.sumarAPuntajeJugada(puntaje);
         for(Mejora mejora: this.mejoras) {
             mejora.seAplicaAPuntaje(puntaje);
