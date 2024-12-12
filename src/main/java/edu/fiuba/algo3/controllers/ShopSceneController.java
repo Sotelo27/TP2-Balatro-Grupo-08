@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -52,7 +53,7 @@ public class ShopSceneController extends GameController implements Initializable
     @FXML
     private TilePane cardOffersPane;
 
-    private IModelo modelo;
+    private BalatroAlgo3 modelo;
     private Integer selectedCard;
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
@@ -105,8 +106,7 @@ public class ShopSceneController extends GameController implements Initializable
         this.setBehaviour(fifthCardOffert, 4);
     }
 
-    @Override
-    public void setModelo(IModelo modelo) {
+    public void setModelo(BalatroAlgo3 modelo) {
         this.modelo = modelo;
         cargarItemsDeTienda();
     }

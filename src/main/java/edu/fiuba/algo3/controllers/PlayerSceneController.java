@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
-import edu.fiuba.algo3.modelo.Estados.EstadoTienda;
-import edu.fiuba.algo3.modelo.IModelo;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -44,27 +45,31 @@ public class SceneController {
     }
 
     public void switchToMainScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/titleScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SceneManager sceneManager = new SceneManager(stage);
+        sceneManager.setView("/fxml/titleScene.fxml"); // Carga la vista inicial
+        sceneManager.show();
     }
 
-    public void switchToPlayerScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/playerScene.fxml"));
+    public void switchToPlayerScene(ActionEvent event) throws IOException {;
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SceneManager sceneManager = new SceneManager(stage);
+        sceneManager.setView("/fxml/playerScene.fxml"); // Carga la vista inicial
+        sceneManager.show();
     }
 
-    public void switchToShopScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/shopScene.fxml"));
+    public void switchToShopScene(ActionEvent event, BalatroAlgo3 modelo) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SceneManager sceneManager = new SceneManager(stage);
+        sceneManager.setViewModel("/fxml/shopScene.fxml", modelo); // Pasa el modelo a la vista
+        sceneManager.show();
+    }
+    public void switchToRoundScene(MouseEvent event,BalatroAlgo3 modelo) throws IOException {
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        SceneManager sceneManager = new SceneManager(stage);
+        sceneManager.setBackgroundMusic("/sounds/MainTheme.mp3");
+        sceneManager.setViewModel("/fxml/RoundScene.fxml",modelo);// Carga la vista inicial
+        sceneManager.show();
     }
 
 }

@@ -7,20 +7,8 @@ import edu.fiuba.algo3.modelo.Estados.EstadoInicio;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-/**
- * JavaFX App
- */
 public class Balatrucho extends Application {
 
     @Override
