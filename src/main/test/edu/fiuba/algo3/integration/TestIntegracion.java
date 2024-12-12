@@ -316,7 +316,7 @@ public class TestIntegracion {
         when(randomMock.nextInt(1000)).thenReturn(0);
 
         Mejora suma1000Puntos = new Mejora(1000, 1, new SumaPuntos());
-        ICondicionMejora mejoraAlAzar= new ActivarAlAzar("1000");
+        ICondicionMejora mejoraAlAzar= new ActivarAlAzar("1000",randomMock);
         Comodin comodinAlAzar = new Comodin("Al Descarte", suma1000Puntos, mejoraAlAzar, "1 en", "1000");
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1000,1); // Supongamos que el puntaje inicial es 10
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
@@ -343,7 +343,7 @@ public class TestIntegracion {
         // Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada());
         Comodin comodinDeJugada = new Comodin("+1000 puntos x cada partido que Boca no juegue a nada", new Mejora(1000, 1, new SumaPuntos()), new EsJugada(),"Mano Jugada", "par");
         Comodin comodinDeSiempre = new Comodin("+3 Mult. si Boca no juega a nada", new Mejora(1, 3, new SumaAMultiplicador()), new SinRestriccion(), "", "" );
-        ICondicionMejora mejoraAlAzar= new ActivarAlAzar("100");
+        ICondicionMejora mejoraAlAzar= new ActivarAlAzar("100",mockAleatorio);
         Comodin comodinAleatorio = new Comodin("+500 puntos si racing sale campeon", new Mejora(500,1, new SumaPuntos()), mejoraAlAzar, "1 en", "100");
         CombinacionDeComodines comodinCombinado = new CombinacionDeComodines("Clubes Grandes","", Arrays.asList(comodinDeJugada, comodinDeSiempre, comodinAleatorio));
         Jugador jugador1 = new Jugador("jugador 1", mazoMock);
@@ -362,10 +362,6 @@ public class TestIntegracion {
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
 
-    //  Verificar la lectura y posterior conversión a unidades del modelo de dominio del JSON 
-    //  <Crear un tests de constructor de objetos>
-
-    //  Planteo inicial de interfaz gráfica (mockups/dibujos), pantalla donde se muestra una ronda
     @Test
     public void test13ElJugadorRecibeCiertasCartasYPuedeHacerUnaJugadaConLosNombresDeLasCartas() {
         Jugador jugador1 = new Jugador("jugador 1", this.mazoMock);
@@ -428,5 +424,8 @@ public class TestIntegracion {
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
+
+    //  Verificar la lectura y posterior conversión a unidades del modelo de dominio del JSON
+    //  <Crear un tests de constructor de objetos>
 
 }

@@ -70,7 +70,7 @@ public class TestBalatroAlgo3   {
         Integer puntajeEsperado = 0;
 
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON());
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON("src/test/resources/json/comodines.json"));
         float puntajeObtenido = juego.obtenerPuntajeRonda();
         List<ICarta > cartasObtenidas = juego.getCartasEnMano();
 

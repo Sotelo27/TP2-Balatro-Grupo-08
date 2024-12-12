@@ -31,7 +31,7 @@ public class CondicionDeMejoraParser {
             }
             if(activacionMap.containsKey("1 en")){
                 String valor = activacionMap.get("1 en").toString();
-                return new ActivarAlAzar(valor);
+                return new ActivarAlAzar(valor,new Random());
             }
 
 

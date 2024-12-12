@@ -19,7 +19,7 @@ public class Balatrucho extends Application {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
-        BalatroAlgo3 modelo = new BalatroAlgo3(new LectorDeJSON());
+        BalatroAlgo3 modelo = new BalatroAlgo3(new LectorDeJSON("src/test/resources/json/balatro.json"));
 
         SceneManager switcher = new SceneManager(stage, modelo);
 

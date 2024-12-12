@@ -28,23 +28,6 @@ public class LectorDeJSON {
         }
     }
 
-    public LectorDeJSON(){
-
-    }
-
-    public void obtenerInformacionDe(String seccion) {
-        JsonNode jsonArray = nodoBusqueda.path(seccion);
-        try {
-            if ("rondas".equals(seccion)) {
-                construirRondas();
-            } else {
-                //return mapper.readValue(jsonArray.traverse(), new TypeReference<List<CartaDTO>>() {});
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Mazo construirMazo() throws IOException {
         JsonMazoReader jsonMazoReader = new JsonMazoReader();
         return jsonMazoReader.readMazo();
@@ -52,7 +35,7 @@ public class LectorDeJSON {
 
     public List<Ronda> construirRondas() throws  IOException {
         JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
-        return jsonBalatroReader.readBalatro();
+        return jsonBalatroReader.readBalatro(nodoBusqueda,mapper);
     }
 
     public List<CartaDeTarot> construirTarots() throws IOException {
