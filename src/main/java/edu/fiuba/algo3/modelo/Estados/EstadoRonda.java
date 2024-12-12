@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.Estados;
 
 import edu.fiuba.algo3.modelo.IGameState;
-import edu.fiuba.algo3.modelo.IGameState;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -14,21 +12,22 @@ public class EstadoRonda extends AbstractState {
     }
 
     @Override
-    void render() throws IOException {
+    void render()  {
         this.switcher.cambiarAEscena("/fxml/roundScene.fxml");
-
     }
 
     @Override
-    void actualizar() throws IOException {
-        // si ronda esta superada:
-        this.estadoJuego.cambiarA(new EstadoTransicion() );
+    void actualizar(IGameState modelo) {
+        if (modelo.ganoJuego()) {
+            this.estadoJuego.cambiarA(new EstadoVictoria());
 
-        // si no quedan mas rondas:
-        // this.estadoJuego.cambiarA(new EstadoDerrota() );
+        } else if (modelo.perdioRonda()){
+            this.estadoJuego.cambiarA(new EstadoDerrota() );
 
+        } else if (modelo.rondaSuperada()){
+            this.estadoJuego.cambiarA(new EstadoTransicion() );
+        }
     }
-
 
 }
 

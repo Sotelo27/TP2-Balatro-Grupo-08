@@ -5,7 +5,5 @@ public interface IGameState {
 
     boolean rondaSuperada();
 
-    boolean estaListoParaJugar();
-
-    boolean noQuedanMasRondas();
+    boolean ganoJuego();
 }

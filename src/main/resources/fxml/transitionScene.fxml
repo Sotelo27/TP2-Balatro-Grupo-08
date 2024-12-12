@@ -8,7 +8,7 @@
 
 <Pane prefHeight="720.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TransitionController">
    <children>
-      <AnchorPane layoutX="332.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <AnchorPane layoutX="332.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;">
           <children>
               <!-- Título de Game Over -->
               <Label alignment="CENTER" layoutX="100.0" layoutY="100.0" prefHeight="50.0" prefWidth="400.0" style="-fx-text-alignment: center;" text="RONDA SUPERADA" textFill="#2cff00">

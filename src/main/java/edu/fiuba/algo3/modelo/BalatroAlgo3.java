@@ -17,7 +17,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     private Mazo mazo;
     private InventarioTienda inventario;
 
-
     public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
         this.jugador = new Jugador(nombreDelJugador, mazo);
@@ -29,7 +28,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     public BalatroAlgo3(LectorDeJSON creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
         this.rondas = creadorDeObjetos.construirRondas();
-        this.rondaActual = rondas.get(0);
     }
 
 
@@ -66,19 +64,30 @@ public class BalatroAlgo3 implements IGameState, IModelo{
         this.estado.reiniciar();
     }
 
+    @Override
+    public void iniciarJuego() {
+        pasarDeRonda();
+    }
+
     public List<ICarta> getCartasEnMano(){
         return jugador.getCartasEnMano();
     }
 
     public void realizarJugada(){
         this.jugador.realizarJugada(this.rondaActual);
-        // validar victoria de todas las rondas o la derrota en alguna para cambiar de estado
+        update();
     }
 
     public void realizarDescarte(){
         this.jugador.realizarDescarte(this.rondaActual);
+        update();
     }
 
+
+    public void seleccionarCartaDeTienda(ICarta carta) {
+        rondaActual.comprarConJugador(carta, jugador);
+        update();
+    }
 
     public List<String> getCartasSeleccionadas() {
         return this. jugador.getCartasSeleccionadas();
@@ -86,10 +95,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
     public List<ICarta> getCartasDeTienda() {
         return this.rondaActual.getArticulosTienda();
-    }
-
-    public void seleccionarCartaDeTienda(ICarta carta) {
-        rondaActual.comprarConJugador(carta, jugador);
     }
 
     public List<ICarta> getCartasActivables(){
@@ -130,23 +135,20 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     }
 
     @Override
-    public boolean estaListoParaJugar() {
-        return false;
+    public boolean ganoJuego() {
+        return ((rondas.isEmpty()) && (rondaActual.estaSuperada()));
     }
 
-    @Override
-    public boolean noQuedanMasRondas() {
-        return false;
-    }
-
-    @Override
+     @Override
     public boolean perdioRonda() {
         return rondaActual.estaPerdida();
     }
 
     private void pasarDeRonda() {
-        rondas.remove(rondaActual);
-        this.rondaActual = rondas.get(0);
+        if (!rondas.isEmpty()){
+            this.rondaActual = rondas.get(0);
+            rondas.remove(rondaActual);
+        }
         jugador.vaciarMano();
     }
 
@@ -156,20 +158,12 @@ public class BalatroAlgo3 implements IGameState, IModelo{
         this.estado = nuevoEstado;
     };
 
-    @Override
-    public void cambiarDeEstado(AbstractState nuevoEstado) throws IOException {
-        this.estado.cambiarA(nuevoEstado);
-    }
 
     @Override
     public void update() {
-        this.estado.actualizar();
+        this.estado.actualizar(this);
     }
 
-    @Override
-    public void iniciarJuego() throws IOException {
-        this.estado.render();
-    }
 
     @Override
     public void setJugador(String jugador) {

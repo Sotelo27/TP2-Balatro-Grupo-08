@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.controllers;
 
-import edu.fiuba.algo3.Services.ImageLoader;
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
-import edu.fiuba.algo3.modelo.Estados.EstadoRonda;
 import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.IModelo;
 import javafx.animation.ScaleTransition;
@@ -12,13 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
 import javafx.util.Duration;
@@ -65,7 +60,6 @@ public class RoundSceneController extends GameController implements Initializabl
                 node.setOnMouseClicked(e -> handleCardSelection((PaneCarta) node));
             }
         });
-        //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
         iniciarTurno();
     }
 
@@ -221,7 +215,7 @@ public class RoundSceneController extends GameController implements Initializabl
 
     private void pasarADerrota() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sceneDerrota.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/defeatScene.fxml"));
             Parent round = loader.load();
 
             ResultController controller = loader.getController();

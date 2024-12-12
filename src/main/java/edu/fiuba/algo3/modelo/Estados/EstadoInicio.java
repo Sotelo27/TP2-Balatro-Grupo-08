@@ -1,10 +1,6 @@
 package edu.fiuba.algo3.modelo.Estados;
 
 import edu.fiuba.algo3.modelo.IGameState;
-import edu.fiuba.algo3.modelo.IGameState;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 
 public class EstadoInicio extends AbstractState {
@@ -20,7 +16,7 @@ public class EstadoInicio extends AbstractState {
     }
 
     @Override
-    void actualizar() {
+    void actualizar(IGameState modelo) {
         this.estadoJuego.cambiarA(new EstadoCreandoPartida() );
     }
 }

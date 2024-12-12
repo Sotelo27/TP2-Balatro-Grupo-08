@@ -2,41 +2,45 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.effect.DropShadow?>
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="GeneralBackground" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TitleSceneController">
+<Pane prefHeight="720.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TitleSceneController">
    <children>
-      <Button id="playBtn" layoutX="270.0" layoutY="229.0" mnemonicParsing="false" onAction="#click" styleClass="Button" stylesheets="@../css/style.css" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font name="Press Start 2P" size="22.0" />
-         </font>
-         <effect>
-            <DropShadow radius="10.0" offsetX="4.0" offsetY="4.0" color="BLACK" />
-         </effect>
-      </Button>
-      <Button fx:id="exitBtn" id="exitBtn" contentDisplay="CENTER" layoutX="291.0" layoutY="320.0" mnemonicParsing="false" onAction="#exitClicked" styleClass="Button" stylesheets="@../css/style.css" text="SALIR" textAlignment="CENTER">
-         <font>
-            <Font name="Press Start 2P" size="16.0" />
-         </font>
-         <effect>
-            <DropShadow radius="10.0" offsetX="4.0" offsetY="4.0" color="BLACK" />
-         </effect>
-      </Button>
-      <Label id="gameTitle" alignment="CENTER" layoutX="-19.0" layoutY="86.0" prefHeight="86.0" prefWidth="643.0" stylesheets="@../css/style.css" text="BALATRO" textFill="BLACK">
-         <font>
-            <Font name="Press Start 2P" size="56.0" />
-         </font>
-         <effect>
-            <DropShadow radius="10.0" offsetX="4.0" offsetY="4.0" color="BLACK" />
-         </effect>
-      </Label>
-      <Label layoutX="14.0" layoutY="369.0" styleClass="algo3CornerMsg" stylesheets="@../css/style.css" text="Algoritmos 3 - FIUBA" textFill="BLACK">
+      <Label layoutX="14.0" layoutY="691.0" styleClass="algo3CornerMsg" stylesheets="@../css/style.css" text="Algoritmos 3 - FIUBA" textFill="BLACK">
          <font>
             <Font name="Press Start 2P" size="12.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="mainPane" layoutX="332.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="GeneralBackground">
+         <children>
+            <Button id="playBtn" layoutX="270.0" layoutY="229.0" mnemonicParsing="false" onAction="#click" styleClass="Button" stylesheets="@../css/style.css" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font name="Press Start 2P" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow color="BLACK" offsetX="4.0" offsetY="4.0" radius="10.0" />
+               </effect>
+            </Button>
+            <Button id="exitBtn" fx:id="exitBtn" contentDisplay="CENTER" layoutX="291.0" layoutY="320.0" mnemonicParsing="false" onAction="#exitClicked" styleClass="Button" stylesheets="@../css/style.css" text="SALIR" textAlignment="CENTER">
+               <font>
+                  <Font name="Press Start 2P" size="16.0" />
+               </font>
+               <effect>
+                  <DropShadow color="BLACK" offsetX="4.0" offsetY="4.0" radius="10.0" />
+               </effect>
+            </Button>
+            <Label id="gameTitle" alignment="CENTER" layoutX="-19.0" layoutY="86.0" prefHeight="86.0" prefWidth="643.0" stylesheets="@../css/style.css" text="BALATRO" textFill="BLACK">
+               <font>
+                  <Font name="Press Start 2P" size="56.0" />
+               </font>
+               <effect>
+                  <DropShadow color="BLACK" offsetX="4.0" offsetY="4.0" radius="10.0" />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
-
+</Pane>

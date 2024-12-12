@@ -22,41 +22,26 @@ public class EstadoJuego {
     }
 
     public void cambiarA(AbstractState nuevoEstado){
-
-        try {
-            this.estadoActual = nuevoEstado;
-            nuevoEstado.setEstado(this.switcher, this);
-            estadoActual.render();
-        } catch (IOException e) {
-            System.out.println("Error al cambiar el estado");
-            throw new RuntimeException(e);
-        }
+        this.estadoActual = nuevoEstado;
+        nuevoEstado.setEstado(this.switcher, this);
+        estadoActual.render();
     }
 
 
     public void render() {
-
-        try {
-            this.estadoActual.render();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.estadoActual.render();
     }
 
-    public void actualizar() {
-
-        try {
-            this.estadoActual.actualizar();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void actualizar(IGameState modelo) {
+        this.estadoActual.actualizar(modelo);
     }
 
     public void terminar() {
-        this.switcher.close();
+        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
     }
 
     public void reiniciar() {
-        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
+        this.switcher.cambiarAEscena("/fxml/playerScene.fxml");
     }
+
 }

@@ -7,13 +7,12 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IModelo {
-    public void iniciarJuego() throws IOException;
+
+    //public void iniciarJuego() throws IOException;
 
     public void setJugador(String jugador);
 
     void setEstado(EstadoJuego estado) throws IOException;
-
-    void cambiarDeEstado(AbstractState estado) throws IOException;
 
     void update();
 
@@ -51,4 +50,6 @@ public interface IModelo {
     void terminar();
 
     void reiniciar();
+
+    void iniciarJuego();
 }

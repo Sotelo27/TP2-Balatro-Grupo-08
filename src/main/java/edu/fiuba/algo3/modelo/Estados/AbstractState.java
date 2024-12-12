@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Estados;
 
 import edu.fiuba.algo3.controllers.SceneManager;
+import edu.fiuba.algo3.modelo.IGameState;
 
 import java.io.IOException;
 
@@ -13,9 +14,9 @@ abstract public class AbstractState {
     public AbstractState() {
     }
 
-    abstract void render() throws IOException;
+    abstract void render();
 
-    abstract void actualizar() throws IOException;
+    abstract void actualizar(IGameState modelo);
 
     public void setEstado(SceneManager switcher, EstadoJuego estadoJuego) {
         this.switcher = switcher;
