@@ -17,15 +17,16 @@ public class ResultController {
         // Lógica para reiniciar el juego
         System.out.println("Reiniciando el juego...");
         // Cambiar a la escena del juego
-        switcher.switchToMainScene(event);
+
+        switcher.switchToPlayerScene(event);
     }
 
     @FXML
-    public void backToMainMenu() {
+    public void backToMainMenu(ActionEvent event) throws IOException {
         // Lógica para volver al menú principal
         System.out.println("Volviendo al menú principal...");
         // Cambiar a la escena del menú principal
-
+        switcher.switchToMainScene(event);
     }
 
     public void setModelo(BalatroAlgo3 modelo) {
