@@ -98,9 +98,18 @@ public class Jugador implements IComprador {
         recibirActivable(comprable);
     }
 
+    public void recibirComodin(IMejorador comodin) throws ErrorSeExcedenLosLimitesDeActivables {
+        if (this.comodinesActivos.size() < 5) {
+            this.comodinesActivos.add(comodin);
+        }
+        else{
+            throw new ErrorSeExcedenLosLimitesDeActivables("Demasiados activables sin utilizar");
+        }
+    }
+
     @Override
     public void comprarComodin(IMejorador comprable) {
-        this.comodinesActivos.add(comprable);
+        recibirComodin(comprable);
     }
 
     @Override
