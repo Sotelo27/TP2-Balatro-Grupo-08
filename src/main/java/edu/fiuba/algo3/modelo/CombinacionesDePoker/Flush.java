@@ -10,7 +10,7 @@ public class Flush extends CombinacionDePoker {
     public Flush(List<CartaDePoker> cartas) {
         super(cartas);
         this.puntos = 35;
-        this.multiplicador = 2;
+        this.multiplicador = 4;
         this.nombre = "color";
     }
 

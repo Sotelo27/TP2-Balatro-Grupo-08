@@ -28,7 +28,7 @@ public class VerificadorThreeOfAKind extends Verificador {
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
         for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
             if (entry.getValue() == 3){
-                agregarPuntuables(entry.getKey());
+                agregarPuntuables(cartas);
                 cumpleLaCondicion = true;
             }
             else{
