@@ -22,10 +22,10 @@ public class EstadoRonda extends AbstractState {
     @Override
     void actualizar() throws IOException {
         // si ronda esta superada:
-        this.estadoJuego.cambiarA(new EstadoTienda() );
+        this.estadoJuego.cambiarA(new EstadoTransicion() );
 
         // si no quedan mas rondas:
-        // this.estadoJuego.cambiarA(new EstadoTienda() );
+        // this.estadoJuego.cambiarA(new EstadoDerrota() );
 
     }
 

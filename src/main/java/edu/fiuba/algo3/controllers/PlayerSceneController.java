@@ -25,13 +25,13 @@ public class PlayerSceneController extends GameController implements Initializab
 
 
     @FXML
-    void saveNameAndStartGame(ActionEvent event) throws IOException {
+    void saveNameAndStartGame(ActionEvent event) {
         this.modelo.setJugador(usernameField.getText());
         this.modelo.update();
     }
 
     @FXML
-    void backToTitle(ActionEvent event) throws IOException {
+    void backToTitle(ActionEvent event) {
         this.modelo.reiniciar();
     }
 

@@ -14,11 +14,11 @@ public class EstadoTransicion extends AbstractState {
 
     @Override
     void render() {
-        this.switcher.cambiarAEscena("/fxml/playerScene.fxml");
+        this.switcher.cambiarAEscena("/fxml/transitionScene.fxml");
     }
 
     @Override
-    void actualizar() throws IOException {
+    void actualizar()  {
         this.estadoJuego.cambiarA(new EstadoTienda() );
     }
 

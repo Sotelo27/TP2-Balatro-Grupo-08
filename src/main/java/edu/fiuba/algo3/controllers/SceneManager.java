@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.controllers;
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
 import edu.fiuba.algo3.modelo.IModelo;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -18,7 +15,8 @@ import java.io.IOException;
 public class SceneManager {
     private final Stage stage;
     private final StackPane rootPane; // Contenedor principal
-    private final MediaPlayer mediaPlayer;
+    private final MediaPlayer backgroundPlayer;
+    private MediaPlayer musicPlayer;
     private final IModelo modelo;
 
     public SceneManager(Stage stage, IModelo modelo) {
@@ -27,15 +25,21 @@ public class SceneManager {
 
         // Crear el contenedor principal
         rootPane = new StackPane();
+
         try {
             // Configura el icono
             Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
+            stage.getIcons().add(icon);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
+        try {
             //Configurar el video de fondo
             String videoPath = getClass().getResource("/images/BackGrounds/backgroundMain.mp4").toExternalForm();
             Media media = new Media(videoPath);
-            mediaPlayer = new MediaPlayer(media);
-            MediaView mediaView = new MediaView(mediaPlayer);
+            backgroundPlayer = new MediaPlayer(media);
+            MediaView mediaView = new MediaView(backgroundPlayer);
             mediaView.setPreserveRatio(true);
             mediaView.fitWidthProperty().bind(stage.widthProperty());
             mediaView.fitHeightProperty().bind(stage.heightProperty());
@@ -49,8 +53,8 @@ public class SceneManager {
         Scene scene = new Scene(rootPane, 1263, 720);
         stage.setTitle("Balatrucho 3");
         stage.setScene(scene);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        backgroundPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        backgroundPlayer.play();
     }
 
     public void cambiarAEscena(String fxmlPath) {
@@ -77,10 +81,14 @@ public class SceneManager {
     // Nueva función para configurar el sonido de fondo
     public void setBackgroundMusic(String musicPath) {
         Media musicMedia = new Media(getClass().getResource(musicPath).toExternalForm());
-        MediaPlayer backgroundMusicPlayer = new MediaPlayer(musicMedia);
-        backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
-        backgroundMusicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
-        backgroundMusicPlayer.play();
+        musicPlayer = new MediaPlayer(musicMedia);
+        musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
+        musicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
+        musicPlayer.play();
+        System.out.println("Musica cargada");
+        stage.setOnCloseRequest(event -> {
+            musicPlayer.stop();
+        });
     }
 
     public void show() {

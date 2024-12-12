@@ -13,12 +13,12 @@ public class EstadoTienda extends AbstractState  {
     }
 
     @Override
-    void render() throws IOException {
+    void render()  {
         this.switcher.cambiarAEscena("/fxml/shopScene.fxml");
     }
 
     @Override
-    void actualizar() throws IOException {
+    void actualizar(){
         this.estadoJuego.cambiarA(new EstadoRonda() );
 
     }

@@ -9,9 +9,6 @@ import java.io.IOException;
 
 public class EstadoInicio extends AbstractState {
 
-
-    private EstadoJuego estadoActual;
-
     public EstadoInicio() {
     }
 
@@ -19,11 +16,12 @@ public class EstadoInicio extends AbstractState {
     @Override
     void render() {
         this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
+        this.switcher.setBackgroundMusic("/sounds/MainTheme.mp3");
     }
 
     @Override
-    void actualizar() throws IOException {
-        this.estadoJuego.cambiarA(new EstadoTransicion() );
+    void actualizar() {
+        this.estadoJuego.cambiarA(new EstadoCreandoPartida() );
     }
 }
 

@@ -21,10 +21,16 @@ public class EstadoJuego {
         this.gameState = modelo;
     }
 
-    public void cambiarA(AbstractState nuevoEstado) throws IOException {
-        this.estadoActual = nuevoEstado;
-        nuevoEstado.setEstado(this.switcher, this);
-        estadoActual.render();
+    public void cambiarA(AbstractState nuevoEstado){
+
+        try {
+            this.estadoActual = nuevoEstado;
+            nuevoEstado.setEstado(this.switcher, this);
+            estadoActual.render();
+        } catch (IOException e) {
+            System.out.println("Error al cambiar el estado");
+            throw new RuntimeException(e);
+        }
     }
 
 
