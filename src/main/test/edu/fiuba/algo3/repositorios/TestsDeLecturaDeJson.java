@@ -32,6 +32,13 @@ public class TestsDeLecturaDeJson {
         JsonComodinReader jsonReader = new JsonComodinReader();
         List<CombinacionDeComodines> mazo = jsonReader.readCombinaciones();
     }
+
+    @Test
+    public void verificaCombinacioneReader() throws IOException {
+        LectorDeJSON lectorDeJSON = new LectorDeJSON("src/test/resources/json/balatro.json");
+        lectorDeJSON.obtenerInformacionDe("rondas");
+    }
+
 }
 
 
