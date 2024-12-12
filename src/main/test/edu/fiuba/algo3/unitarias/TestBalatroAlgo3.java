@@ -64,19 +64,19 @@ public class TestBalatroAlgo3   {
                 carta6, carta7, carta8);
 
     }
-        @Test
+    @Test
     public void test01seCreaUnaInstanciaDelJuegoConUnLectorDeJSONCorrectamente() throws IOException {
         // arrange
-        Integer puntajeEsperado = 0;
+        float puntajeEsperado = 0;
 
         // act
-        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON("src/test/resources/json/comodines.json"));
+        BalatroAlgo3 juego = new BalatroAlgo3("un nombre", new LectorDeJSON("src/test/resources/json/balatro.json"));
         float puntajeObtenido = juego.obtenerPuntajeRonda();
-        List<ICarta > cartasObtenidas = juego.getCartasEnMano();
+        List<ICarta> cartasObtenidas = juego.getCartasEnMano();
 
         // assert
         assert cartasObtenidas.size() == 0;
-        assert puntajeEsperado.equals(puntajeObtenido);
+        assert Float.compare(puntajeEsperado, puntajeObtenido) == 0;
     }
 
     @Test
