@@ -1,11 +1,15 @@
 package edu.fiuba.algo3.integration;
+import edu.fiuba.algo3.controllers.SceneManager;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.*;
+import edu.fiuba.algo3.modelo.Estados.*;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.repositorios.*;
 import edu.fiuba.algo3.modelo.Mejoras.*;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.junit.Before;
@@ -423,6 +427,115 @@ public class TestIntegracion {
         System.out.println(rondaMock.obtenerPuntaje());
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
+    }
+
+    @Test
+    public void test16ElJugadorJuegaSusManosSinLlegarAlPuntajeObjetivoYPierdeElJuego() throws IllegalAccessException, NoSuchFieldException, IOException {
+
+        // arrange
+        LectorDeJSON mockLector = mock(LectorDeJSON.class);
+        when(mockLector.construirMazo()).thenReturn(mazoMock);
+        rondaMock = mock(Ronda.class);
+        when(mockLector.construirRondas()).thenReturn(new ArrayList<>(Arrays.asList(rondaMock)));
+
+        when(rondaMock.estaPerdida()).thenReturn(true);
+
+        IModelo modelo = new BalatroAlgo3(mockLector);
+
+        // Crear instancia de EstadoJuego
+        AbstractState estadoInicial = new EstadoRonda();
+        SceneManager dummyManager = mock(SceneManager.class);
+        EstadoJuego estadoEnJuego = new EstadoJuego(dummyManager, estadoInicial);
+        modelo.setEstado(estadoEnJuego);
+
+        // act
+        modelo.setJugador("nombre");
+        modelo.iniciarJuego();
+        modelo.iniciarRonda();
+        modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
+        modelo.realizarJugada();
+
+        // Acceder al atributo privado usando reflexión
+        Field atributoEstadoActual = EstadoJuego.class.getDeclaredField("estadoActual");
+        atributoEstadoActual.setAccessible(true); // Permite acceso a campos privados
+        Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
+
+        // Validar que es una instancia del tipo EstadoDerrota
+        assertTrue(estado instanceof EstadoDerrota);
+    }
+
+
+    @Test
+    public void test16ElJugadorJuegaSusManosYLlegaAlPuntajeObjetivoGanandoElJuego() throws IOException, NoSuchFieldException, IllegalAccessException {
+
+        // arrange
+        LectorDeJSON mockLector = mock(LectorDeJSON.class);
+        when(mockLector.construirMazo()).thenReturn(mazoMock);
+        rondaMock = mock(Ronda.class);
+        when(mockLector.construirRondas()).thenReturn(new ArrayList<>(Arrays.asList(rondaMock))); // una copia porque sino es inmutasble
+
+        when(rondaMock.estaSuperada()).thenReturn(true);
+
+        IModelo modelo = new BalatroAlgo3(mockLector);
+
+        // Crear instancia de EstadoJuego
+        AbstractState estadoInicial = new EstadoRonda();
+        SceneManager dummyManager = mock(SceneManager.class);
+        EstadoJuego estadoEnJuego = new EstadoJuego(dummyManager, estadoInicial);
+        modelo.setEstado(estadoEnJuego);
+
+        // act
+        modelo.setJugador("nombre");
+        modelo.iniciarJuego();
+        modelo.iniciarRonda();
+        modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
+        modelo.realizarJugada();
+
+        // Acceder al atributo privado usando reflexión
+        Field atributoEstadoActual = EstadoJuego.class.getDeclaredField("estadoActual");
+        atributoEstadoActual.setAccessible(true); // Permite acceso a campos privados
+        Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
+
+        // Validar que es una instancia del tipo EstadoTienda
+        assertTrue(estado instanceof EstadoVictoria);
+
+    }
+
+    @Test
+    public void test17ElJugadorJuegaSusManosYPasaDeRondaATransicion() throws IOException, NoSuchFieldException, IllegalAccessException {
+
+        // arrange
+        LectorDeJSON mockLector = mock(LectorDeJSON.class);
+        when(mockLector.construirMazo()).thenReturn(mazoMock);
+        rondaMock = mock(Ronda.class);
+        rondaMock2 = mock(Ronda.class);
+        when(mockLector.construirRondas()).thenReturn(new ArrayList<>(Arrays.asList(rondaMock, rondaMock2)));
+
+        when(rondaMock.estaSuperada()).thenReturn(true);
+
+        IModelo modelo = new BalatroAlgo3(mockLector);
+
+        // Crear instancia de EstadoJuego
+        AbstractState estadoInicial = new EstadoRonda();
+        SceneManager dummyManager = mock(SceneManager.class);
+        EstadoJuego estadoEnJuego = new EstadoJuego(dummyManager, estadoInicial);
+        modelo.setEstado(estadoEnJuego);
+
+        // act
+        modelo.setJugador("nombre");
+        modelo.iniciarJuego();
+        modelo.iniciarRonda();
+        modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
+        modelo.realizarJugada();
+
+        // Acceder al atributo privado usando reflexión
+        Field atributoEstadoActual = EstadoJuego.class.getDeclaredField("estadoActual");
+        atributoEstadoActual.setAccessible(true); // Permite acceso a campos privados
+        Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
+
+        // Validar que es una instancia del tipo EstadoTienda
+        assertTrue(estado instanceof EstadoTransicion);
+
     }
 
 }
