@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,89 +31,34 @@ public class ShopSceneController extends GameController implements Initializable
     public AnchorPane shopPane;
 
     public TilePane tarotsGuardados;
-    public Text nombreObjeto;
-    public Text descripcionObjeto;
 
-    @FXML ImageView choosedCard;
+    @FXML Text nombreObjeto, descripcionObjeto;
 
-    @FXML
-    private ImageView fifthCardOffert;
+    @FXML PaneCarta choosedCard;
 
-    @FXML
-    private ImageView firstCardOffert;
-
-    @FXML
-    private ImageView fourthCardOffert;
-
-    @FXML
-    private ImageView scndCardOffert;
-
-    @FXML
-    private ImageView thrdCardOffert;
-
-    @FXML
-    private TilePane cardOffersPane;
+    @FXML private TilePane cardOffersPane;
 
     private IModelo modelo;
 
-    private Integer selectedCard;
-    private static final double SCALE_FACTOR = 1.1; // 10% más grande
+    private ICarta selectedCard;
 
-    void setBehaviour(ImageView card, int selectedPos){
+    void setBehaviour(PaneCarta card){
         card.setOnMouseEntered(e -> {
-            this.agrandarImagen(card);
-            this.selectedCard = selectedPos;
-            preSeleccionar(card);
+            card.agrandar(1.1);
         });
         card.setOnMouseExited(e -> {
-            this.achicarImagen(card);
+            card.agrandar(1.0);
         });
         card.setOnMouseClicked(e -> {
-            System.out.println(selectedPos);
+            preSeleccionar(card);
+            card.playClick();
         });
-    }
-
-    @FXML
-    void selectFirstCard(MouseEvent event)  {
-        //comprarCarta(1);
-        System.out.println("firstCardOffert selected");
-        this.setBehaviour(firstCardOffert, 0);
-    }
-
-    @FXML
-    void selectScndCard(MouseEvent event) {
-        //comprarCarta(2);
-        System.out.println("scndCardOffert selected");
-        this.setBehaviour(scndCardOffert, 1);
-    }
-
-    @FXML
-    void selectThirdCard(MouseEvent event) {
-        //comprarCarta(3);
-        System.out.println("thirdCardOffert selected");
-        this.setBehaviour(thrdCardOffert, 2);
-    }
-
-    @FXML
-    void selectFourthCard(MouseEvent event){
-        //comprarCarta(4);
-        System.out.println("fourthCardOffert selected");
-        this.setBehaviour(fourthCardOffert, 3);
-    }
-
-    @FXML
-    void selectFifthCard(MouseEvent event) {
-        //comprarCarta(5);
-        System.out.println("fifthCardOffert selected");
-        this.setBehaviour(fifthCardOffert, 4);
     }
 
     @Override
     public void setModelo(IModelo modelo) {
         this.modelo = modelo;
         cargarItemsDeTienda();
-        this.selectedCard = 0;
-
     }
 
     @Override
@@ -124,44 +70,25 @@ public class ShopSceneController extends GameController implements Initializable
         Integer pos = 0;
         List<javafx.scene.Node> children = cardOffersPane.getChildren();
         for ( ICarta item : items ) {
-            ImageView imageView = (ImageView) children.get(pos);
-            imageView.setImage(new Image(getResourcePath(item.getImagen()) ));
+            PaneCarta imageView = (PaneCarta) children.get(pos);
+            imageView.setCarta(item);
+            setBehaviour(imageView);
             pos ++;
         }
     }
 
-    private InputStream getResourcePath(String path) {
-        System.out.println(path);
-        InputStream file = getClass().getResourceAsStream(path);
-        if (file == null) {
-            return getClass().getResourceAsStream("/images/cartas/2 de Corazones.png");
-        }
-        return file ;
+    private void preSeleccionar(PaneCarta carta) {
+
+        selectedCard = carta.getCarta();
+        this.choosedCard.setImage(carta.getImage());
+        this.nombreObjeto.setText(selectedCard.getNombre());
+        this.descripcionObjeto.setText(selectedCard.getDescripcion());
     }
 
-    private void preSeleccionar(ImageView cardOffert) {
-        this.choosedCard.setImage(cardOffert.getImage());
-        this.nombreObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getNombre());
-        this.descripcionObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
-    }
-
-    public void comprarCarta(MouseEvent mouseEvent) throws IOException {
-        ICarta carta = modelo.getCartasDeTienda().get(this.selectedCard);
-        modelo.seleccionarCartaDeTienda(carta);
+    public void comprarCarta(MouseEvent mouseEvent){
+        choosedCard.playClick();
+        modelo.seleccionarCartaDeTienda(selectedCard);
         modelo.update();
     }
 
-    private void achicarImagen(ImageView cardImage) {
-        ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);
-        scale.setToY(SCALE_FACTOR);
-        scale.setToX(SCALE_FACTOR);
-        scale.play();
-    }
-
-    private void agrandarImagen(ImageView cardImage) {
-        ScaleTransition scale = new ScaleTransition(Duration.millis(100), cardImage);
-        scale.setToX(1);
-        scale.setToY(1);
-        scale.play();
-    }
 }
