@@ -5,6 +5,8 @@
     -fx-text-fill: white;
     -fx-content-display: center;
     -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.5, 4, 4);
+
 }
 
 .Button:hover{
@@ -74,6 +76,11 @@
 .tarotCard{
     -fx-border-color: white;
     -fx-background-color: white;
+}
+
+.light-shadow{
+    -fx-effect: dropshadow(gaussian, black, 10, 0.5, 4, 4);
+
 }
 
 /* Estilo base para el contenedor de cartas */

@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class SceneController {
     private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     public void switchToMainScene(ActionEvent event) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
