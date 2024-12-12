@@ -33,7 +33,7 @@ public class VerificadorTwoPair extends Verificador {
                 }
                 else{primerPar = true;
                 }
-                agregarPuntuables(entry.getKey());
+                agregarPuntuables(cartas);
             }
             else {
                 this.listaPuntuables.addAll(entry.getKey());

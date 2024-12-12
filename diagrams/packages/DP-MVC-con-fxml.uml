@@ -1,0 +1,99 @@
+package algo3{
+package Controller{
+class SceneManager{
++ SceneManager(Stage stage, IModelo modelo)
++ cambiarAEscena(String fxmlPath)
++ setBackgroundMusic(String musicPath)
++ show();
+
+}
+abstract GameController{
++ setModelo(IModelo modelo)
+}
+
+Class PaneCarta{
+- random : Random 
+- click : Media
++ setCarta(ICarta carta)
++ getCarta(ICarta carta)
++ playClick()
++ aniadirHoverDescripcion()
++ agrandar(float scale)
+}
+PaneCarta <- GameController : configura y utiliza
+SceneManager -> GameController: le setea el modelo
+}
+
+
+package modelo.Juego{
+class BalatroAlgo3{
+
+}
+
+interface ICarta{
++ getNombre(): String
++ getDescripcion(): String
++ getImagen(): String
++ asignarAComprador()
+}
+
+interface IModelo {
+    {abstract} + update(): void
+    {abstract} + setJugador(String jugador)    
+    {abstract} + seleccionarCartaDeTienda(ICarta carta): void
+    {abstract} + seleccionarCartaDePoker(String nombre): void
+    {abstract} + activarTarot(ICarta tarot): void
+    {abstract} + realizarDescarte(): void
+    {abstract} + realizarJugada(): void
+    {abstract} + iniciarRonda(): void
+    {abstract} + terminar(): void
+    {abstract} + reiniciar(): void
+    {abstract} + iniciarJuego(): void
+    
+    {abstract} + getCartasDeTienda(): List<ICarta>
+    {abstract} + getCartasEnMano(): List<ICarta>
+    {abstract} + getCartasActivables(): List<ICarta>
+    {abstract} + getComodinesActivos(): List<ICarta>
+    {abstract} + getPuntajeObjetivo(): String
+    {abstract} + getDescartesRestantes(): String
+    {abstract} + getManosRestantes(): String
+    {abstract} + getNumeroRonda(): String
+    {abstract} + obtenerPuntajeRonda(): float
+}
+
+ICarta <- BalatroAlgo3 : utiliza y conoce
+BalatroAlgo3 .|> IModelo : implementa
+}
+
+package Services{
+class ImageLoader{
+{static} + cargarImagen(String path): Image 
+}
+class MediaMaker{
+{static} + make(String path): Media 
+}
+}
+IModelo <-- GameController : utiliza
+IModelo <.. SceneManager : guarda una referencia
+ICarta <.. GameController : utiliza
+
+ICarta --o PaneCarta
+PaneCarta --> MediaMaker
+PaneCarta -> ImageLoader
+}
+package fmxl {
+class FXMLLoader{
++ FXMLLoader(String fxmlPath)
++ load() : Parent
++ getController(): GameController
+}
+}
+
+package javafx.scene.image{
+class ImagePane{
++ setImage(Image image)
+}
+}
+
+PaneCarta ---|> ImagePane : extiende de
+SceneManager ---> FXMLLoader : utiliza para cargar

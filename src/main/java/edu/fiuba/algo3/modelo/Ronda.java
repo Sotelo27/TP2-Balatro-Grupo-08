@@ -93,6 +93,6 @@ public class Ronda {
     }
 
     public boolean estaPerdida() {
-        return (!this.limites.quedanManosDisponibles() && obtenerPuntaje().asInt() < puntajeASuperar);
+        return ((this.accionesRalizadas.size() == 5) && obtenerPuntaje().asInt() < puntajeASuperar);
     }
 }
