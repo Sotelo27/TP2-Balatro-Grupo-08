@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.repositorios;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.modelo.*;
@@ -8,29 +9,40 @@ import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LectorDeJSON {
-    private File archivo;
-
+    private JsonNode nodoBusqueda;
+    private ObjectMapper mapper;
 
     public LectorDeJSON(String path) {
-        this.archivo = new File(path);
+        mapper = new ObjectMapper();
+        try(FileReader reader = new FileReader(new File(path))){
+            nodoBusqueda = mapper.readTree(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public LectorDeJSON(){
 
     }
 
-    public <T> List<T> obtenerInformacionDe(String seccion) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(this.archivo);
-        JsonNode rondaNode = root.path("seccion");
-
-        return null;
+    public void obtenerInformacionDe(String seccion) {
+        JsonNode jsonArray = nodoBusqueda.path(seccion);
+        try {
+            if ("rondas".equals(seccion)) {
+                construirRondas();
+            } else {
+                //return mapper.readValue(jsonArray.traverse(), new TypeReference<List<CartaDTO>>() {});
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Mazo construirMazo() throws IOException {

@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.BalatroAlgo3;
-import edu.fiuba.algo3.modelo.IGameState;
-import edu.fiuba.algo3.modelo.IModelo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -71,5 +69,4 @@ public class SceneController {
         sceneManager.setViewModel("/fxml/RoundScene.fxml",modelo);// Carga la vista inicial
         sceneManager.show();
     }
-
 }

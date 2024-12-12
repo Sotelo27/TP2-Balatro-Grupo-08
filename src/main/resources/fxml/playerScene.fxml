@@ -3,23 +3,37 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="GeneralBackground" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.PlayerSceneController">
+<AnchorPane prefHeight="720.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.PlayerSceneController">
    <children>
-      <TextField fx:id="usernameField" layoutX="183.0" layoutY="188.0" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: white;" />
-      <Label alignment="CENTER" layoutX="44.0" layoutY="190.0" prefHeight="22.0" prefWidth="125.0" style="-fx-text-alignment: center;" text="NOMBRE:" textFill="WHITE" AnchorPane.leftAnchor="44.0">
-         <font>
-            <Font name="Impact" size="18.0" />
-         </font>
-      </Label>
-      <Button id="saveBtn" fx:id="btnNameSaver" layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#saveNameAndStartGame" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@../css/style.css" text="GUARDAR">
-         <font>
-            <Font name="Impact" size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="14.0" layoutY="369.0" text="Algoritmos 3 - FIUBA" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
-      <Button id="goBackBtn" layoutX="469.0" layoutY="233.0" mnemonicParsing="false" onAction="#backToTitle" styleClass="Button" stylesheets="@../css/style.css" text="VOLVER" />
+      
+      <Label text="Algoritmos 3 - FIUBA" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+
+      <AnchorPane layoutX="332.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="GeneralBackground">
+         <children>
+            <TextField fx:id="usernameField" layoutX="183.0" layoutY="188.0" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: white;" styleClass="light-shadow" />
+            <Label alignment="CENTER" layoutX="44.0" layoutY="190.0" prefHeight="22.0" prefWidth="125.0" style="-fx-text-alignment: center;" text="NOMBRE:" textFill="WHITE" AnchorPane.leftAnchor="44.0">
+               <font>
+                  <Font name="Impact" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="BLACK" offsetX="4.0" offsetY="4.0" radius="10.0" />
+               </effect>
+            </Label>
+            <Button id="saveBtn" fx:id="btnNameSaver" layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#saveNameAndStartGame" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@../css/style.css" text="GUARDAR">
+               <font>
+                  <Font name="Impact" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="BLACK" offsetX="4.0" offsetY="4.0" radius="10.0" />
+               </effect>
+            </Button>
+            <Button id="goBackBtn" layoutX="469.0" layoutY="233.0" mnemonicParsing="false" onAction="#backToTitle" styleClass="Button" stylesheets="@../css/style.css" text="VOLVER"  />
+
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

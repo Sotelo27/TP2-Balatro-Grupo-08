@@ -26,7 +26,7 @@ public class SceneManager {
         Media media = new Media(videoPath);
         mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer);
-        mediaView.setPreserveRatio(false);
+        mediaView.setPreserveRatio(true);
         mediaView.fitWidthProperty().bind(stage.widthProperty());
         mediaView.fitHeightProperty().bind(stage.heightProperty());
 
@@ -35,7 +35,8 @@ public class SceneManager {
         rootPane.getChildren().add(mediaView);
 
         // Configurar el escenario inicial
-        Scene scene = new Scene(rootPane, 1920, 1080);
+        Scene scene = new Scene(rootPane, 1263, 720);
+        stage.setTitle("Balatrucho 3");
         stage.setScene(scene);
         stage.getIcons().add(icon);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -50,7 +51,7 @@ public class SceneManager {
 
             // Reemplazar el contenido principal
             if (rootPane.getChildren().size() > 1) {
-                rootPane.getChildren().remove(1); // Remueve la vista anterior
+                rootPane.getChildren().set(1, view); // Reemplaza solo el contenido superpuesto
             }
             rootPane.getChildren().add(view);
         } catch (IOException e) {
@@ -77,7 +78,7 @@ public class SceneManager {
 
             // Reemplaza la vista actual
             if (rootPane.getChildren().size() > 1) {
-                rootPane.getChildren().remove(1); // Remueve la vista anterior
+                rootPane.getChildren().set(1, view); // Reemplaza solo el contenido superpuesto
             }
             rootPane.getChildren().add(view);
         } catch (IOException e) {
