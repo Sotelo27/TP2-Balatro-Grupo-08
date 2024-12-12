@@ -9,14 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TitleSceneController extends GameController{
-    @FXML
-    private Button playBtn;
-    @FXML
-    private Button exitBtn;
-    private Stage stage;
-    @FXML
-    private AnchorPane mainPane;
-
 
     public TitleSceneController() {
     }
@@ -32,6 +24,7 @@ public class TitleSceneController extends GameController{
     void exitClicked(ActionEvent event) {
         this.modelo.terminar();
         System.out.println("Saliending");
-        stage.close();
+
+        System.exit(0);
     }
 }
