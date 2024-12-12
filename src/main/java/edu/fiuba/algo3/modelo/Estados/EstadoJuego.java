@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.Estados;
-import edu.fiuba.algo3.controllers.SceneController;
+
+import edu.fiuba.algo3.controllers.SceneManager;
 import edu.fiuba.algo3.modelo.IGameState;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -10,9 +9,9 @@ public class EstadoJuego {
     private IGameState gameState;
 
     private AbstractState estadoActual;
-    private SceneController switcher;
+    private final SceneManager switcher;
 
-    public EstadoJuego(SceneController switcher, AbstractState estadoInicial) {
+    public EstadoJuego(SceneManager switcher, AbstractState estadoInicial) {
         this.switcher = switcher;
         this.estadoActual = estadoInicial;
         estadoInicial.setEstado(this.switcher, this);
@@ -45,5 +44,13 @@ public class EstadoJuego {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void terminar() {
+        this.switcher.close();
+    }
+
+    public void reiniciar() {
+        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
     }
 }

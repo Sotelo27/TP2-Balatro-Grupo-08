@@ -53,7 +53,8 @@ public class ShopSceneController extends GameController implements Initializable
     @FXML
     private TilePane cardOffersPane;
 
-    private BalatroAlgo3 modelo;
+    private IModelo modelo;
+
     private Integer selectedCard;
     private static final double SCALE_FACTOR = 1.1; // 10% más grande
 
@@ -106,19 +107,16 @@ public class ShopSceneController extends GameController implements Initializable
         this.setBehaviour(fifthCardOffert, 4);
     }
 
-    public void setModelo(BalatroAlgo3 modelo) {
+    @Override
+    public void setModelo(IModelo modelo) {
         this.modelo = modelo;
         cargarItemsDeTienda();
+        this.selectedCard = 0;
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.selectedCard = 0;
-         // Escucha los cambios de tamaño del VBox
-         shopPane.layoutBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
-             Stage stage = (Stage) shopPane.getScene().getWindow();
-             stage.sizeToScene();
-         });
     }
 
     private void cargarItemsDeTienda() {
@@ -145,26 +143,6 @@ public class ShopSceneController extends GameController implements Initializable
         this.choosedCard.setImage(cardOffert.getImage());
         this.nombreObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getNombre());
         this.descripcionObjeto.setText(this.modelo.getCartasDeTienda().get(selectedCard).getDescripcion());
-    }
-
-    private void comprarCarta(int posicion) throws IOException {
-        ICarta carta = modelo.getCartasDeTienda().get(posicion-1);
-        modelo.seleccionarCartaDeTienda(carta);
-        goNextStage();
-    }
-
-    private void goNextStage() {
-/*        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoundScene.fxml"));
-            Parent round = loader.load();
-
-            RoundSceneController controller = loader.getController();
-            controller.setModelo(this.modelo);
-
-            shopPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public void comprarCarta(MouseEvent mouseEvent) throws IOException {

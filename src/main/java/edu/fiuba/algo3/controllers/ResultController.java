@@ -6,19 +6,13 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class ResultController {
-    private SceneController switcher;
-    public ResultController(){
-        this.switcher = new SceneController();
-    }
+public class ResultController extends GameController{
 
     @FXML
     public void restartGame(ActionEvent event) throws IOException {
         // Lógica para reiniciar el juego
         System.out.println("Reiniciando el juego...");
-        // Cambiar a la escena del juego
-
-        switcher.switchToPlayerScene(event);
+        //this.modelo.reiniciar();
     }
 
     @FXML
@@ -26,10 +20,7 @@ public class ResultController {
         // Lógica para volver al menú principal
         System.out.println("Volviendo al menú principal...");
         // Cambiar a la escena del menú principal
-        switcher.switchToMainScene(event);
+        this.modelo.update();
     }
 
-    public void setModelo(BalatroAlgo3 modelo) {
-
-    }
 }

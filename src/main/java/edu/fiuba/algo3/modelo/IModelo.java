@@ -47,4 +47,8 @@ public interface IModelo {
     String getNumeroRonda();
 
     float obtenerPuntajeRonda();
+
+    void terminar();
+
+    void reiniciar();
 }

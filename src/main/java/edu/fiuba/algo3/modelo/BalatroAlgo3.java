@@ -56,6 +56,16 @@ public class BalatroAlgo3 implements IGameState, IModelo{
         return this.rondaActual.obtenerPuntaje().asInt();
     }
 
+    @Override
+    public void terminar() {
+        this.estado.terminar();
+    }
+
+    @Override
+    public void reiniciar() {
+        this.estado.reiniciar();
+    }
+
     public List<ICarta> getCartasEnMano(){
         return jugador.getCartasEnMano();
     }
