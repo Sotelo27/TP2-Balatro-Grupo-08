@@ -27,7 +27,7 @@ public class VerificadorOnePair extends Verificador {
         Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
         for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
             if (entry.getValue() == 2 ){
-                agregarPuntuables(entry.getKey());
+                agregarPuntuables(cartas);
                 cumpleLaCondicion = true;
             }
             else{
