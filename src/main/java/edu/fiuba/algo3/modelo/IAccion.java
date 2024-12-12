@@ -5,6 +5,6 @@ public interface IAccion {
 
     boolean superaLimites(AccionesDisponibles limites);
 
-    void aplicaPuntajeDeAccion(PuntajeJugada puntaje);
+    PuntajeJugada aplicaPuntajeDeAccion(PuntajeJugada puntaje);
 
 }

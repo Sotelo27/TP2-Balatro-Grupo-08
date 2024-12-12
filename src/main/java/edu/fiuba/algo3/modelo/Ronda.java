@@ -30,7 +30,8 @@ public class Ronda {
     public PuntajeJugada obtenerPuntaje(){
         PuntajeJugada puntaje = new PuntajeJugada(0,1);
         for(IAccion accion : this.accionesRalizadas){
-            accion.aplicaPuntajeDeAccion(puntaje);
+            //Lo hago asi para el mock de accion en las pruebas de ronda
+            puntaje = accion.aplicaPuntajeDeAccion(puntaje);
         }
         return puntaje;
     }

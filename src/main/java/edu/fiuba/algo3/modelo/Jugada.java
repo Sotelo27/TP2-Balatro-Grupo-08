@@ -23,7 +23,7 @@ public class Jugada implements IMejorable, IAccion{
     };
 
     @Override
-    public void aplicaPuntajeDeAccion(PuntajeJugada puntaje){
+    public PuntajeJugada aplicaPuntajeDeAccion(PuntajeJugada puntaje){
 
         for(CartaDePoker carta: this.cartas) {
             carta.sumarAPuntajeJugada(puntaje);
@@ -33,6 +33,8 @@ public class Jugada implements IMejorable, IAccion{
         for(Mejora mejora: this.mejoras) {
             mejora.seAplicaAPuntaje(puntaje);
         }
+
+        return puntaje;
 
 
 

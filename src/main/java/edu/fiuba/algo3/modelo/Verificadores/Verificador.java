@@ -29,6 +29,6 @@ public abstract class Verificador implements MetodosLista {
             carta.changeState(new Puntuable());
             this.listaPuntuables.addAll(cartasAPuntuar);
         }
-        ;
+
     }
 }

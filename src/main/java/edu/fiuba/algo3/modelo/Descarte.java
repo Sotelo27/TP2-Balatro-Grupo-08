@@ -30,12 +30,14 @@ public class Descarte implements IAccion, IMejorable {
 	}
 
 	@Override
-	public void aplicaPuntajeDeAccion(PuntajeJugada puntaje){
+	public PuntajeJugada aplicaPuntajeDeAccion(PuntajeJugada puntaje){
 		//this.efecto.aplicarAPuntaje(puntaje);
 		//PuntajeJugada puntajeEnCero = new PuntajeJugada(0,1);
 		for(Mejora mejora: this.mejoras) {
 			mejora.seAplicaAPuntaje(puntaje);
 		}
+
+		return puntaje;
 	}
 
 	public void aplicarMejora(Mejora mejora){
