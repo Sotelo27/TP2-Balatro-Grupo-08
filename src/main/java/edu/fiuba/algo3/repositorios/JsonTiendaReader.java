@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.ICarta;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
+import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Tienda;
 import edu.fiuba.algo3.modelo.CartaDePoker;
 
@@ -28,6 +29,10 @@ public class JsonTiendaReader {
                         String descripcion = comodinNode.path("descripcion").asText();
                         List<Comodin> subComodines = new ArrayList<>();
                         for(JsonNode subComodinNode : subComodinesNode) {
+                            String nombreSub = subComodinNode.path("nombre").asText();
+                            String descripcionSub = subComodinNode.path("descripcion").asText();
+                            Object activasion = subComodinNode.path("activasion").asText();
+                            //Mejora efecto = mapper.convertValue(subComodinNode, Mejora.class);
                             Comodin comodin = mapper.convertValue(subComodinNode, Comodin.class);
                             subComodines.add(comodin);
                         }

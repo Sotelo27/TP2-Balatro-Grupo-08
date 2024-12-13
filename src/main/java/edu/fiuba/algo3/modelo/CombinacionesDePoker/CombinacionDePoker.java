@@ -17,8 +17,6 @@ public abstract class CombinacionDePoker implements IMejorable {
         this.cartas = cartas;
     }
 
-
-
     @Override
     public void siContieneAplicarMejora(String contexto, String elemento, Mejora mejora){
         if (contexto.equals("Mano Jugada")){

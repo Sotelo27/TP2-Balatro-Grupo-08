@@ -1,31 +1,18 @@
 package edu.fiuba.algo3.modelo.Estados;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IGameState;
 
-public class EstadoVictoria extends EstadoJuego {
-    public EstadoVictoria(BalatroAlgo3 juego, Stage escena) {
+import java.io.IOException;
 
-        super(juego, escena);
-    }
-
+public class EstadoVictoria extends AbstractState {
     @Override
-    public void empezar() {
+    void render() {
+        this.switcher.cambiarAEscena("/fxml/victoryScene.fxml");
 
     }
 
     @Override
-    public void terminar() {
-
+    void actualizar(IGameState modelo) {
+        this.estadoJuego.cambiarA(new EstadoInicio());
     }
-
-    @Override
-    public void cambiar() {
-
-    }
-
-
 }

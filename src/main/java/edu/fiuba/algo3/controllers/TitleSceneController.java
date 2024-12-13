@@ -8,31 +8,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TitleSceneController {
-    @FXML
-    private Button playBtn;
-    @FXML
-    private Button exitBtn;
-    private Stage stage;
-    @FXML
-    private AnchorPane mainPane;
-
-    private SceneController switcher;
+public class TitleSceneController extends GameController{
 
     public TitleSceneController() {
-        this.switcher = new SceneController();
     }
 
     @FXML
     void click(ActionEvent event) throws IOException {
         System.out.println("Iniciar Juego");
-        switcher.switchToPlayerScene(event);
+
+        this.modelo.update();
     }
 
     @FXML
     void exitClicked(ActionEvent event) {
-        this.stage = (Stage) mainPane.getScene().getWindow();
+        this.modelo.terminar();
         System.out.println("Saliending");
-        stage.close();
+
+        System.exit(0);
     }
 }

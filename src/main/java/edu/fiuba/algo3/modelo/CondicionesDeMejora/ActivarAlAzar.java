@@ -11,13 +11,9 @@ public class ActivarAlAzar implements ICondicionMejora {
     private Random intGenerator;
     private String rango;
 
-    public ActivarAlAzar(Random intGenerator) {
-        this.intGenerator = intGenerator;
-    }
-
-    public ActivarAlAzar(String intGenerator) {
-        this.intGenerator = new Random();
-        this.rango = intGenerator;
+    public ActivarAlAzar(String rango,Random generador) {
+        this.intGenerator = generador;
+        this.rango = rango;
     }
 
     @Override

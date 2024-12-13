@@ -1,27 +1,45 @@
 package edu.fiuba.algo3.modelo.Estados;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IGameState;
+import edu.fiuba.algo3.modelo.ISwitcher;
 
-public abstract class EstadoJuego {
-    protected BalatroAlgo3 juegoBalatro;
-    protected Stage escena;
+public class EstadoJuego {
+    private IGameState gameState;
 
+    private AbstractState estadoActual;
+    private final ISwitcher switcher;
 
-    public EstadoJuego(BalatroAlgo3 juegoBalatro, Stage escena) {
-        this.juegoBalatro = juegoBalatro;
-        this.escena = escena;
+    public EstadoJuego(ISwitcher switcher, AbstractState estadoInicial) {
+        this.switcher = switcher;
+        this.estadoActual = estadoInicial;
+        estadoInicial.setEstado(this.switcher, this);
     }
 
-    public abstract void empezar();
-    public abstract void terminar();
-    public abstract void cambiar();
+    public void setModel(IGameState modelo){
+        this.gameState = modelo;
+    }
+
+    public void cambiarA(AbstractState nuevoEstado){
+        this.estadoActual = nuevoEstado;
+        nuevoEstado.setEstado(this.switcher, this);
+        estadoActual.render();
+    }
 
 
+    public void render() {
+        this.estadoActual.render();
+    }
 
+    public void actualizar(IGameState modelo) {
+        this.estadoActual.actualizar(modelo);
+    }
 
+    public void terminar() {
+        cambiarA(new EstadoInicio());
+    }
+
+    public void reiniciar() {
+        cambiarA(new EstadoCreandoPartida());
+    }
 
 }

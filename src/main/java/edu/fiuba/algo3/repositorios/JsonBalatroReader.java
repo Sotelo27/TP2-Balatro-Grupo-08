@@ -11,21 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonBalatroReader {
-    private static final String PATH = "src/test/resources/json/balatro.json";
     private final JsonTiendaReader tiendaReader;
 
     public JsonBalatroReader() {
         this.tiendaReader = new JsonTiendaReader();
     }
 
-    public List<Ronda> readBalatro() throws IOException {
+    public List<Ronda> readBalatro(JsonNode nodoBusqueda, ObjectMapper mapper) throws IOException {
         // Cargar el recurso como InputStream
-        File file = new File(PATH);
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(file);
         List<Ronda> rondas = new ArrayList<>();
-        JsonNode rondaNode = root.path("rondas");
+        JsonNode rondaNode = nodoBusqueda.path("rondas");
         if (rondaNode.isArray()) {
             for (JsonNode rondaJson : rondaNode) {
                 Ronda ronda = new Ronda();

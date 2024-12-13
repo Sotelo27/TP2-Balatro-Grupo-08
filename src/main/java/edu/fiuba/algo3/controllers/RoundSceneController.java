@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
-import edu.fiuba.algo3.Services.ImageLoader;
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
-import edu.fiuba.algo3.modelo.Estados.EstadoRonda;
 import edu.fiuba.algo3.modelo.ICarta;
+import edu.fiuba.algo3.modelo.IModelo;
 import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -11,13 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
 import javafx.util.Duration;
@@ -28,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RoundSceneController implements Initializable{
+public class RoundSceneController extends GameController implements Initializable{
     @FXML public TilePane tarotsGuardados;
     @FXML public Label puntosObjetivo;
     @FXML public Label manos;
@@ -43,8 +39,6 @@ public class RoundSceneController implements Initializable{
 
     @FXML private AnchorPane roundPane;
 
-
-    private BalatroAlgo3 modelo;
     private ObservableList<PaneCarta> selectedCards = FXCollections.observableArrayList();
     private ObservableList<PaneCarta> cartasActivables = FXCollections.observableArrayList();
 
@@ -56,7 +50,8 @@ public class RoundSceneController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setModelo(BalatroAlgo3 modelo) {
+    @Override
+    public void setModelo(IModelo modelo) {
         this.modelo = modelo;
         // hacer las cartas de la mano seleccionables
         cartasEnMano.getChildren().forEach(node -> {
@@ -65,7 +60,6 @@ public class RoundSceneController implements Initializable{
                 node.setOnMouseClicked(e -> handleCardSelection((PaneCarta) node));
             }
         });
-        //puntajeRonda.textProperty().bind(modelo.puntajeObjetivoProperty());
         iniciarTurno();
     }
 
@@ -150,8 +144,7 @@ public class RoundSceneController implements Initializable{
     private void selectCard(PaneCarta card) {
         if (!selectedCards.contains(card)) {
             selectedCards.add(card);
-            card.setScaleX(SCALE_FACTOR);
-            card.setScaleY(SCALE_FACTOR);
+            card.agrandar(SCALE_FACTOR);
             card.getStyleClass().add("selected-card");
         }
     }
@@ -159,8 +152,7 @@ public class RoundSceneController implements Initializable{
     private void deselectCard(PaneCarta card) {
         if (selectedCards.contains(card)) {
             selectedCards.remove(card);
-            card.setScaleX(1.0);
-            card.setScaleY(1.0);
+            card.agrandar(1.0);
             card.getStyleClass().remove("selected-card");
         }
     }
@@ -206,46 +198,12 @@ public class RoundSceneController implements Initializable{
     }
 
     private void iniciarTurno() {
-        if (modelo.rondaSuperada()){
-            pasarATienda();
-            return;
-        } else if (modelo.perdioRonda()) {
-            pasarADerrota();
-            return;
-        }
         modelo.iniciarRonda();
         iniciarBotones();
         cargarImagenes();
         cargarEtiquetas();
     }
 
-    private void pasarADerrota() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sceneDerrota.fxml"));
-            Parent round = loader.load();
-
-            ResultController controller = loader.getController();
-            controller.setModelo(this.modelo);
-
-            roundPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void pasarATienda() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/shopScene.fxml"));
-            Parent round = loader.load();
-
-            ShopSceneController controller = loader.getController();
-            controller.setModelo(this.modelo);
-
-            roundPane.getScene().setRoot(round);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void iniciarBotones() {
         // Inicialmente deshabilitar el botón si la lista está vacía

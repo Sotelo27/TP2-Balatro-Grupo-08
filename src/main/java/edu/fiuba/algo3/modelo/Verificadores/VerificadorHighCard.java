@@ -26,17 +26,19 @@ public class VerificadorHighCard extends Verificador {
 
     @Override
     public boolean esDeTipo(List<CartaDePoker> cartas) {
-        boolean condicionSeCumple = false;
-        Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
-        for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
-            if(!condicionSeCumple){
-                condicionSeCumple = true;
-                agregarPuntuables(entry.getKey());
-            }
-            else{
-                this.listaPuntuables.addAll(entry.getKey());
-            }
-        }
+        boolean condicionSeCumple = true;
+        agregarPuntuables(cartas);
+        //ordenarPorNumero(cartas);
+        //Map<List<CartaDePoker>, Integer> gruposDeCoincidenciasNumero = contarPorNumero(cartas);
+        //for (Map.Entry<List<CartaDePoker>, Integer> entry : gruposDeCoincidenciasNumero.entrySet()){
+            //if(!condicionSeCumple){
+                //condicionSeCumple = true;
+                //agregarPuntuables(entry.getKey());
+            //}
+            //else{
+                //this.listaPuntuables.addAll(entry.getKey());
+            //}
+        //}
         return condicionSeCumple;
     }
 

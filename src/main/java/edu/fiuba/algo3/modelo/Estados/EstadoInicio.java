@@ -1,57 +1,23 @@
 package edu.fiuba.algo3.modelo.Estados;
-import edu.fiuba.algo3.controllers.TitleSceneController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IGameState;
 
 
-public class EstadoInicio extends EstadoJuego{
+public class EstadoInicio extends AbstractState {
+
+    public EstadoInicio() {
+    }
 
 
-    public EstadoInicio(BalatroAlgo3 juegoBalatro, Stage escena) {
-
-        super(juegoBalatro, escena);
+    @Override
+    void render() {
+        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
+        this.switcher.setBackgroundMusic("/sounds/MainTheme.mp3");
     }
 
     @Override
-    public void empezar() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/titleScene.fxml"));
-            Parent root = loader.load();
-
-            TitleSceneController controlador = loader.getController();
-
-            this.escena.setScene(new Scene(root));
-            this.escena.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    void actualizar(IGameState modelo) {
+        this.estadoJuego.cambiarA(new EstadoCreandoPartida() );
     }
-
-    @Override
-    public void terminar() {
-
-
-    }
-
-    @Override
-    public void cambiar() {
-
-    }
-
-
-    public void ejecutar(BalatroAlgo3 juegoBalatro) {
-        juegoBalatro.setEstado(new EstadoTienda(this.juegoBalatro, this.escena));
-    }
-
-    public boolean esEstadoFinal() {
-        return false;
-    }
-
-
 }
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IModelo;
+import edu.fiuba.algo3.modelo.ISwitcher;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,90 +13,92 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneManager {
+public class SceneManager implements ISwitcher {
     private final Stage stage;
     private final StackPane rootPane; // Contenedor principal
-    private final MediaPlayer mediaPlayer;
+    private final MediaPlayer backgroundPlayer;
+    private MediaPlayer musicPlayer;
+    private final IModelo modelo;
 
-    public SceneManager(Stage stage) {
+    public SceneManager(Stage stage, IModelo modelo) {
         this.stage = stage;
-
-        // Configurar el video de fondo
-        Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
-        String videoPath = getClass().getResource("/images/BackGrounds/backgroundMain.mp4").toExternalForm();
-        Media media = new Media(videoPath);
-        mediaPlayer = new MediaPlayer(media);
-        MediaView mediaView = new MediaView(mediaPlayer);
-        mediaView.setPreserveRatio(true);
-        mediaView.fitWidthProperty().bind(stage.widthProperty());
-        mediaView.fitHeightProperty().bind(stage.heightProperty());
+        this.modelo = modelo;
 
         // Crear el contenedor principal
         rootPane = new StackPane();
-        rootPane.getChildren().add(mediaView);
+
+        try {
+            // Configura el icono
+            Image icon = new Image(getClass().getResourceAsStream("/images/mainIcon.png"));
+            stage.getIcons().add(icon);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            //Configurar el video de fondo
+            String videoPath = getClass().getResource("/images/BackGrounds/backgroundMain.mp4").toExternalForm();
+            Media media = new Media(videoPath);
+            backgroundPlayer = new MediaPlayer(media);
+            MediaView mediaView = new MediaView(backgroundPlayer);
+            mediaView.setPreserveRatio(true);
+            mediaView.fitWidthProperty().bind(stage.widthProperty());
+            mediaView.fitHeightProperty().bind(stage.heightProperty());
+            rootPane.getChildren().add(mediaView);
+        } catch (Exception e) {
+            System.out.println("El fondo o el icono no se encontraron");
+            throw new RuntimeException(e);
+        }
 
         // Configurar el escenario inicial
         Scene scene = new Scene(rootPane, 1263, 720);
         stage.setTitle("Balatrucho 3");
         stage.setScene(scene);
-        stage.getIcons().add(icon);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        backgroundPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        backgroundPlayer.play();
     }
 
-    public void setView(String fxmlPath) {
+    @Override
+    public void cambiarAEscena(String fxmlPath) {
         try {
             // Cargar la nueva vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent view = loader.load();
 
+            GameController gameController = loader.getController();
+            gameController.setModelo(this.modelo);
+
             // Reemplazar el contenido principal
             if (rootPane.getChildren().size() > 1) {
                 rootPane.getChildren().set(1, view); // Reemplaza solo el contenido superpuesto
+            } else{
+                rootPane.getChildren().add(view);
             }
-            rootPane.getChildren().add(view);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setViewModel(String fxmlPath, BalatroAlgo3 modelo) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent view = loader.load();
-
-            if (fxmlPath.equals("/fxml/shopScene.fxml")) {
-                // Si es la escena de Shop, pasa el modelo
-                ShopSceneController controller = loader.getController();
-                controller.setModelo(modelo);
-            }
-
-            if (fxmlPath.equals("/fxml/RoundScene.fxml")) {
-                // Si es la escena de Shop, pasa el modelo
-                RoundSceneController controller = loader.getController();
-                controller.setModelo(modelo);
-            }
-
-            // Reemplaza la vista actual
-            if (rootPane.getChildren().size() > 1) {
-                rootPane.getChildren().set(1, view); // Reemplaza solo el contenido superpuesto
-            }
-            rootPane.getChildren().add(view);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    @Override
     // Nueva función para configurar el sonido de fondo
     public void setBackgroundMusic(String musicPath) {
         Media musicMedia = new Media(getClass().getResource(musicPath).toExternalForm());
-        MediaPlayer backgroundMusicPlayer = new MediaPlayer(musicMedia);
-        backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
-        backgroundMusicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
-        backgroundMusicPlayer.play();
+        musicPlayer = new MediaPlayer(musicMedia);
+        musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
+        musicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
+        musicPlayer.play();
+        System.out.println("Musica cargada");
+        stage.setOnCloseRequest(event -> {
+            musicPlayer.stop();
+        });
     }
 
     public void show() {
         stage.show();
+    }
+
+    public void close() {
+        this.stage.close();
     }
 }

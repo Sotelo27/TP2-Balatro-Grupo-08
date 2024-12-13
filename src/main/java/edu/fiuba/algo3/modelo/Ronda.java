@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javafx.beans.property.StringProperty;
 
 public class Ronda {
     private AccionesDisponibles limites;
@@ -80,19 +79,11 @@ public class Ronda {
         return String.valueOf(numero);
     }
 
-    public StringProperty obtenerPuntajeObservable() {
-        PuntajeJugada puntaje = new PuntajeJugada(0,1);
-        for(IAccion accion : this.accionesRalizadas){
-            puntaje = accion.aplicaPuntajeDeAccion(puntaje);
-        }
-        return puntaje.enObserbable();
-    }
-
     public boolean estaSuperada() {
         return (obtenerPuntaje().asInt() > puntajeASuperar);
     }
 
     public boolean estaPerdida() {
-        return (!this.limites.quedanManosDisponibles() && obtenerPuntaje().asInt() < puntajeASuperar);
+        return ((this.accionesRalizadas.size() == 5) && obtenerPuntaje().asInt() < puntajeASuperar);
     }
 }

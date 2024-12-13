@@ -26,7 +26,7 @@ public class Descarte implements IAccion, IMejorable {
 	}
 	@Override
 	public boolean superaLimites(AccionesDisponibles limites){
-		return limites.superaLimiteDeDescartes(this.cartas.size());
+		return limites.superaLimiteDeDescartes(1);
 	}
 
 	@Override

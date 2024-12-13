@@ -1,31 +1,33 @@
 package edu.fiuba.algo3.modelo.Estados;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import edu.fiuba.algo3.modelo.BalatroAlgo3;
+import edu.fiuba.algo3.modelo.IGameState;
 
-public class EstadoRonda extends EstadoJuego {
-    public EstadoRonda(BalatroAlgo3 juego, Stage escena) {
-        super(juego, escena);
-    }
+import java.io.IOException;
 
-     @Override
-    public void empezar() {
 
+public class EstadoRonda extends AbstractState {
+
+
+    public EstadoRonda() {
     }
 
     @Override
-    public void terminar() {
-
+    void render()  {
+        this.switcher.cambiarAEscena("/fxml/roundScene.fxml");
     }
 
     @Override
-    public void cambiar() {
+    void actualizar(IGameState modelo) {
+        if (modelo.ganoJuego()) {
+            this.estadoJuego.cambiarA(new EstadoVictoria());
 
+        } else if (modelo.perdioRonda()){
+            this.estadoJuego.cambiarA(new EstadoDerrota() );
+
+        } else if (modelo.rondaSuperada()){
+            this.estadoJuego.cambiarA(new EstadoTransicion() );
+        }
     }
 
 }
-
 

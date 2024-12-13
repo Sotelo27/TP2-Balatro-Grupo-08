@@ -38,16 +38,16 @@ public class VerificadoresTest {
     @Test
     public void test02RoyalFlushSeEncuentra(){
         String combinacionEsperada = "escalera real";
-        CombinacionDePoker combinacionEncontrada = Mockito.mock(CombinacionDePoker.class);
+        CombinacionDePoker combinacionEncontrada ;
         List <CartaDePoker> cartasMockeadas = new ArrayList <>();
 
         List <CartaDePoker> cartas = new ArrayList <>();
 
-        CartaDePoker carta1 = new CartaDePoker("A de Corazones", "Corazones", "A", 8,1);
-        CartaDePoker carta2 = new CartaDePoker("K de Corazones", "Corazones", "K", 2,1);
+        CartaDePoker carta1 = new CartaDePoker("A de Corazones", "Corazones", "As", 8,1);
+        CartaDePoker carta2 = new CartaDePoker("K de Corazones", "Corazones", "Rey", 2,1);
         CartaDePoker carta3 = new CartaDePoker("10 de Corazones", "Corazones", "10", 10,1);
-        CartaDePoker carta4 = new CartaDePoker("Q de Corazones", "Corazones", "Q", 7,1);
-        CartaDePoker carta5 = new CartaDePoker("J de Corazones", "Corazones", "J", 8,1);
+        CartaDePoker carta4 = new CartaDePoker("Q de Corazones", "Corazones", "Reina", 7,1);
+        CartaDePoker carta5 = new CartaDePoker("J de Corazones", "Corazones", "Jota", 8,1);
         cartas.add(carta1);
         cartas.add(carta2);
         cartas.add(carta3);

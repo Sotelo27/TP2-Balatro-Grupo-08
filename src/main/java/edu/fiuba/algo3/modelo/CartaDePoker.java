@@ -20,7 +20,7 @@ public class CartaDePoker implements IMejorable, ICarta {
     protected PuntajeJugada puntaje;
 
     private static final List<String> ORDEN_NUMEROS = Arrays.asList(
-            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
+            "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jota", "Reina", "Rey", "As"
     );
 
     //Setters
@@ -36,14 +36,6 @@ public class CartaDePoker implements IMejorable, ICarta {
         this.mejora = new Mejora() ;
         this.puntos = puntos;
         this.multiplicador = multiplicador;
-    }
-
-    public CartaDePoker(String nombre, String palo, String numero) {
-        this.estado = new NoSeleccionada();
-        this.nombre = nombre;
-        this.palo = palo;
-        this.numero = numero;
-        this.mejora = new Mejora() ;
     }
 
     public void setPalo(String palo) {this.palo = palo;}
