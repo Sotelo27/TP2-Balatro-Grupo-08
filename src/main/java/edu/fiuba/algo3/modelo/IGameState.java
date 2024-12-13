@@ -6,4 +6,6 @@ public interface IGameState {
     boolean rondaSuperada();
 
     boolean ganoJuego();
+
+    void cargarContenido();
 }

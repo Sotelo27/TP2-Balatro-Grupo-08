@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
-import edu.fiuba.algo3.repositorios.*;
-import javafx.beans.property.StringProperty;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,14 +11,17 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     private List<Ronda> rondas;
     private Ronda rondaActual;
     private Mazo mazo;
-
+    private final IGameLoader gameLoader;
 
     public BalatroAlgo3(IGameLoader creadorDeObjetos) throws IOException {
-        this.mazo = creadorDeObjetos.construirMazo();
-        this.rondas = creadorDeObjetos.construirRondas();
+        gameLoader = creadorDeObjetos;
     }
 
+    private void cargarElementos() {
+        this.mazo = gameLoader.construirMazo();
+        this.rondas = gameLoader.construirRondas();
 
+    }
 
     public void iniciarRonda() {
         jugador.recargarMano();
@@ -34,10 +34,10 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     public void activarTarot(ICarta tarot, ICarta carta){
         jugador.activarTarot(tarot,carta);
     }
-
     public void activarTarot(ICarta tarot){
         jugador.activarTarot(tarot);
     }
+
     public void activarComodin(String nombre,String sobre){
     }
 
@@ -127,7 +127,12 @@ public class BalatroAlgo3 implements IGameState, IModelo{
         return ((rondas.isEmpty()) && (rondaActual.estaSuperada()));
     }
 
-     @Override
+    @Override
+    public void cargarContenido() {
+        cargarElementos();
+    }
+
+    @Override
     public boolean perdioRonda() {
         return rondaActual.estaPerdida();
     }
