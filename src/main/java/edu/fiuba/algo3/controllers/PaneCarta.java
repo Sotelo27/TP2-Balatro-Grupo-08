@@ -76,7 +76,6 @@ public class PaneCarta extends ImageView implements EventHandler<MouseEvent> {
         // Verifica si el evento es un clic en la carta
         if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
             reproducirSonidoConPitch();
-            System.out.println("Clicked");
         }
     }
 
@@ -95,7 +94,6 @@ public class PaneCarta extends ImageView implements EventHandler<MouseEvent> {
             mediaPlayer.setOnEndOfMedia(mediaPlayer::dispose);
 
         } catch (Exception e) {
-            System.err.println("Error al reproducir sonido: " + e.getMessage());
         }
     }
 

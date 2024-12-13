@@ -99,7 +99,6 @@ public class Mano {
     private void deseleccionar(CartaDePoker cartaObjetivo) {
         this.seleccion.remove(cartaObjetivo);
         this.mano.add(cartaObjetivo);
-        System.out.println("Carta " + cartaObjetivo.getNombre() + " deseleccionada");
     }
 
     public List<String> getSeleccionadas() {

@@ -46,7 +46,6 @@ public class SceneManager implements ISwitcher {
             mediaView.fitHeightProperty().bind(stage.heightProperty());
             rootPane.getChildren().add(mediaView);
         } catch (Exception e) {
-            System.out.println("El fondo o el icono no se encontraron");
             throw new RuntimeException(e);
         }
 
@@ -88,7 +87,6 @@ public class SceneManager implements ISwitcher {
         musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
         musicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
         musicPlayer.play();
-        System.out.println("Musica cargada");
         stage.setOnCloseRequest(event -> {
             musicPlayer.stop();
         });

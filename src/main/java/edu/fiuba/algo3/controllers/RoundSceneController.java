@@ -158,20 +158,16 @@ public class RoundSceneController extends GameController implements Initializabl
     }
 
     private void activarTarot(ICarta tarot){
-        System.out.println("Activar Tarot");
-        System.out.println(tarot.getNombre());
         ICarta carta = selectedCards.get(0).getCarta();
         modelo.seleccionarCartaDePoker(carta.getNombre());
         modelo.activarTarot(tarot);
     }
 
     private void realizarDescarte() {
-        System.out.println("Descarte:");
         for (PaneCarta card : new ArrayList<>(selectedCards)) { // Usar una copia de la lista
             // Realiza operaciones con 'card'
             deselectCard(card);
             ICarta cartaAMejorar = card.getCarta();
-            System.out.println(cartaAMejorar.getNombre());
             modelo.seleccionarCartaDePoker(cartaAMejorar.getNombre());
         }
         selectedCards.clear();
@@ -182,10 +178,8 @@ public class RoundSceneController extends GameController implements Initializabl
         if (selectedCards.isEmpty() || modelo.getManosRestantes().equals("0")) {
             playHandBtn.setDisable(true);
         } else {
-            System.out.println("Jugada:");
             for (PaneCarta card : new ArrayList<>(selectedCards)) {
                 ICarta carta = card.getCarta();
-                System.out.println(carta.getNombre());
                 modelo.seleccionarCartaDePoker(carta.getNombre());
                 deselectCard(card);
             }
@@ -211,14 +205,12 @@ public class RoundSceneController extends GameController implements Initializabl
         doDiscardBtn.setDisable(selectedCards.isEmpty());
         playHandBtn.setOnAction(e -> {
             if (manos.getText().equals("0")) {
-                System.out.println("End game");
             } else {
                 realizarJugada();
             }
         });
         doDiscardBtn.setOnAction(e -> {
             if (descartes.getText().equals("0")) {
-                System.out.println("No quedan mas descartes");
             } else {
                 realizarDescarte();
             }
