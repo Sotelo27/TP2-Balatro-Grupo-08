@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 
-import edu.fiuba.algo3.modelo.Estados.AbstractState;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.repositorios.*;
 import javafx.beans.property.StringProperty;
@@ -17,13 +16,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     private Mazo mazo;
     private InventarioTienda inventario;
 
-    public BalatroAlgo3(String nombreDelJugador, LectorDeJSON creadorDeObjetos) throws IOException {
-        this.mazo = creadorDeObjetos.construirMazo();
-        this.jugador = new Jugador(nombreDelJugador, mazo);
-        this.rondas = creadorDeObjetos.construirRondas();
-        this.rondaActual = rondas.get(0);
-//      this.inventario = new InventarioTienda(creadorDeObjetos);
-    }
 
     public BalatroAlgo3(LectorDeJSON creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
