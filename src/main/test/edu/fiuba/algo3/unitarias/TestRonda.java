@@ -56,8 +56,11 @@ public class TestRonda {
         List<CartaDePoker> listaMock = mock(List.class);
         when(listaMock.size()).thenReturn(1);
 
-        //IAccion accion = new Jugada();
-        //ronda.agregarAccion(accion);
+        IAccion accionMock = mock(IAccion.class);
+        when(accionMock.aplicaPuntajeDeAccion(any(PuntajeJugada.class))).thenReturn(esperada);
+        when(accionMock.superaLimites(any(AccionesDisponibles.class))).thenReturn(false);
+        doNothing().when(accionMock).actualizarAcciones(any());
+        ronda.agregarAccion(accionMock);
 
 
         PuntajeJugada puntajeObtenido = ronda.obtenerPuntaje();
@@ -65,15 +68,4 @@ public class TestRonda {
         assert(puntajeObtenido.esIgualQue(esperada));
 
     }
-
-
-
-/*
-*
-*
-*
-*
-* Validar que las rondas pueden ser superadas luego de alcanzar el puntaje obtenido
-* Validar que la tienda de cada Ronda puede ser utilizada correctamente
-* */
 }
