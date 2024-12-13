@@ -81,7 +81,6 @@ public class TestBalatroAlgo3   {
         // act
         BalatroAlgo3 juego = new BalatroAlgo3(new LectorDeJSON("src/test/resources/json/balatro.json"));
         juego.setJugador("Un nombre");
-        juego.iniciarJuego();
         juego.iniciarRonda();
         float puntajeObtenido = juego.obtenerPuntajeRonda();
         List<ICarta > cartasObtenidas = juego.getCartasEnMano();
@@ -128,7 +127,6 @@ public class TestBalatroAlgo3   {
         // act
         BalatroAlgo3 juego = new BalatroAlgo3(this.lectorDeJSONMock);
         juego.setJugador("Un nombre");
-        juego.iniciarJuego();
         List<ICarta> cartasDeTienda = juego.getCartasDeTienda();
 
         // assert
@@ -145,7 +143,6 @@ public class TestBalatroAlgo3   {
         juego.setJugador("Un nombre");
 
         // act
-        juego.iniciarJuego();
         juego.iniciarRonda();
         when(this.rondaMock.obtenerPuntaje()).thenReturn(new PuntajeJugada(30,1));
         juego.seleccionarCartaDePoker(this.carta1.getNombre());
@@ -172,7 +169,6 @@ public class TestBalatroAlgo3   {
         juego.setJugador("Un nombre");
 
         // act
-        juego.iniciarJuego();
         juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes
@@ -198,7 +194,6 @@ public class TestBalatroAlgo3   {
         juego.setJugador("Un nombre");
 
         // act
-        juego.iniciarJuego();
         juego.iniciarRonda();
         juego.seleccionarCartaDePoker(this.carta1.getNombre()); // 5 de Treboles
         juego.seleccionarCartaDePoker(this.carta2.getNombre()); // 5 de Diamantes

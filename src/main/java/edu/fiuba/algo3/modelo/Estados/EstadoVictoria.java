@@ -13,7 +13,6 @@ public class EstadoVictoria extends AbstractState {
 
     @Override
     void actualizar(IGameState modelo) {
-        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
-
+        this.estadoJuego.cambiarA(new EstadoInicio());
     }
 }

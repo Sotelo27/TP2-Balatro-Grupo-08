@@ -450,7 +450,6 @@ public class TestIntegracion {
 
         // act
         modelo.setJugador("nombre");
-        modelo.iniciarJuego();
         modelo.iniciarRonda();
         modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
         modelo.realizarJugada();
@@ -486,7 +485,6 @@ public class TestIntegracion {
 
         // act
         modelo.setJugador("nombre");
-        modelo.iniciarJuego();
         modelo.iniciarRonda();
         modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
         modelo.realizarJugada();
@@ -523,7 +521,6 @@ public class TestIntegracion {
 
         // act
         modelo.setJugador("nombre");
-        modelo.iniciarJuego();
         modelo.iniciarRonda();
         modelo.seleccionarCartaDePoker(cartaMock1.getNombre());
         modelo.realizarJugada();

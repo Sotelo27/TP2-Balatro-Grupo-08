@@ -17,7 +17,6 @@ public class EstadoInicio extends AbstractState {
 
     @Override
     void actualizar(IGameState modelo) {
-        modelo.cargarContenido();
         this.estadoJuego.cambiarA(new EstadoCreandoPartida() );
     }
 }

@@ -15,12 +15,13 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
     public BalatroAlgo3(IGameLoader creadorDeObjetos) throws IOException {
         gameLoader = creadorDeObjetos;
+        cargarElementos();
     }
 
     private void cargarElementos() {
         this.mazo = gameLoader.construirMazo();
         this.rondas = gameLoader.construirRondas();
-
+        pasarDeRonda();
     }
 
     public void iniciarRonda() {
@@ -53,11 +54,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     @Override
     public void reiniciar() {
         this.estado.reiniciar();
-    }
-
-    @Override
-    public void iniciarJuego() {
-        pasarDeRonda();
     }
 
     public List<ICarta> getCartasEnMano(){

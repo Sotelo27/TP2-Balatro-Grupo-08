@@ -35,11 +35,11 @@ public class EstadoJuego {
     }
 
     public void terminar() {
-        this.switcher.cambiarAEscena("/fxml/titleScene.fxml");
+        cambiarA(new EstadoInicio());
     }
 
     public void reiniciar() {
-        this.switcher.cambiarAEscena("/fxml/playerScene.fxml");
+        cambiarA(new EstadoCreandoPartida());
     }
 
 }

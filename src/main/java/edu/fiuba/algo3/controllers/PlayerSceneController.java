@@ -27,8 +27,8 @@ public class PlayerSceneController extends GameController implements Initializab
     @FXML
     void saveNameAndStartGame(ActionEvent event) {
         this.modelo.setJugador(usernameField.getText());
-        this.modelo.iniciarJuego();
         this.modelo.update();
+
     }
 
     @FXML

@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface IModelo {
 
-    //public void iniciarJuego() throws IOException;
 
     public void setJugador(String jugador);
 
@@ -51,5 +50,4 @@ public interface IModelo {
 
     void reiniciar();
 
-    void iniciarJuego();
 }
