@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.repositorios;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.modelo.*;
@@ -12,10 +11,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class LectorDeJSON {
+public class LectorDeJSON implements IGameLoader{
     private JsonNode nodoBusqueda;
     private ObjectMapper mapper;
 
@@ -28,14 +26,24 @@ public class LectorDeJSON {
         }
     }
 
-    public Mazo construirMazo() throws IOException {
+    @Override
+    public Mazo construirMazo() {
         JsonMazoReader jsonMazoReader = new JsonMazoReader();
-        return jsonMazoReader.readMazo();
+        try {
+            return jsonMazoReader.readMazo();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public List<Ronda> construirRondas() throws  IOException {
+    @Override
+    public List<Ronda> construirRondas(){
         JsonBalatroReader jsonBalatroReader = new JsonBalatroReader();
-        return jsonBalatroReader.readBalatro(nodoBusqueda,mapper);
+        try {
+            return jsonBalatroReader.readBalatro(nodoBusqueda,mapper);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<CartaDeTarot> construirTarots() throws IOException {
@@ -51,4 +59,5 @@ public class LectorDeJSON {
         JsonComodinReader jsonReader = new JsonComodinReader();
         return jsonReader.readCombinaciones();
     }
+
 }

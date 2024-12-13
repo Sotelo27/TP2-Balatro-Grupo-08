@@ -14,10 +14,9 @@ public class BalatroAlgo3 implements IGameState, IModelo{
     private List<Ronda> rondas;
     private Ronda rondaActual;
     private Mazo mazo;
-    private InventarioTienda inventario;
 
 
-    public BalatroAlgo3(LectorDeJSON creadorDeObjetos) throws IOException {
+    public BalatroAlgo3(IGameLoader creadorDeObjetos) throws IOException {
         this.mazo = creadorDeObjetos.construirMazo();
         this.rondas = creadorDeObjetos.construirRondas();
     }
@@ -112,10 +111,6 @@ public class BalatroAlgo3 implements IGameState, IModelo{
 
     public String getNumeroRonda() {
         return rondaActual.getNumero();
-    }
-
-    public StringProperty puntajeObjetivoProperty() {
-        return rondaActual.obtenerPuntajeObservable();
     }
 
     @Override

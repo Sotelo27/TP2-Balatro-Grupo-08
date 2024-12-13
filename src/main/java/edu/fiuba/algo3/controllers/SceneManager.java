@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.IModelo;
+import edu.fiuba.algo3.modelo.ISwitcher;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneManager {
+public class SceneManager implements ISwitcher {
     private final Stage stage;
     private final StackPane rootPane; // Contenedor principal
     private final MediaPlayer backgroundPlayer;
@@ -57,6 +58,7 @@ public class SceneManager {
         backgroundPlayer.play();
     }
 
+    @Override
     public void cambiarAEscena(String fxmlPath) {
         try {
             // Cargar la nueva vista
@@ -78,6 +80,7 @@ public class SceneManager {
         }
     }
 
+    @Override
     // Nueva función para configurar el sonido de fondo
     public void setBackgroundMusic(String musicPath) {
         Media musicMedia = new Media(getClass().getResource(musicPath).toExternalForm());

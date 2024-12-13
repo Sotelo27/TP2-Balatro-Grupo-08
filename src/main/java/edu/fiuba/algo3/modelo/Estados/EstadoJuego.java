@@ -1,17 +1,15 @@
 package edu.fiuba.algo3.modelo.Estados;
 
-import edu.fiuba.algo3.controllers.SceneManager;
 import edu.fiuba.algo3.modelo.IGameState;
-
-import java.io.IOException;
+import edu.fiuba.algo3.modelo.ISwitcher;
 
 public class EstadoJuego {
     private IGameState gameState;
 
     private AbstractState estadoActual;
-    private final SceneManager switcher;
+    private final ISwitcher switcher;
 
-    public EstadoJuego(SceneManager switcher, AbstractState estadoInicial) {
+    public EstadoJuego(ISwitcher switcher, AbstractState estadoInicial) {
         this.switcher = switcher;
         this.estadoActual = estadoInicial;
         estadoInicial.setEstado(this.switcher, this);

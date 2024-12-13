@@ -1,6 +1,4 @@
 package edu.fiuba.algo3.modelo;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class PuntajeJugada {
     private float puntos;
@@ -82,7 +80,4 @@ public class PuntajeJugada {
         return String.valueOf(this.puntos*this.multiplicador);
     }
 
-    public StringProperty enObserbable() {
-        return new SimpleStringProperty(this.toString());
-    }
 }
