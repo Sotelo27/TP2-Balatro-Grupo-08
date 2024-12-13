@@ -73,17 +73,6 @@ public class PuntajeJugadaTest {
             assertTrue(puntaje2.esIgualQue(puntaje1));
         }
 
-        // @Test
-        // public void test06SeAplicaUnPuntajeSobreOtroPuntajeYEsteSeSuman(){
-        //     // arrange
-        //     PuntajeJugada puntaje1 = new PuntajeJugada(50,10);
-        //     PuntajeJugada puntaje2 = new PuntajeJugada(10,5);
-        //     PuntajeJugada puntajeEsperado = new PuntajeJugada(60,5);
-        //     // act
-        //     puntaje1.aplicarPuntajeAPuntajeJugada(puntaje2)
-        //     // assert
-        //     assertTrue(puntaje2.esIgualQue(puntaje2));
-        //}
 }
 
 

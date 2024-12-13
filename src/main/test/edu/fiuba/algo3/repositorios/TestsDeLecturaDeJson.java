@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.repositorios;
+import edu.fiuba.algo3.modelo.Mazo;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.modelo.Ronda;
 import org.junit.Test;
@@ -22,29 +23,57 @@ import java.util.Arrays;
 
 public class TestsDeLecturaDeJson {
 
-    private LectorDeJSON lectorDeJSON;
-    private List<Ronda> rondas;
+    @Test
+    public void verificarQueSePudieronLeerTodasLasRondasDeBalatro() throws IOException {
+        //Arrange
+        LectorDeJSON lectorDeJSON = new LectorDeJSON("src/test/resources/json/balatro.json");
 
-    @Before
-    public void setUp()  {
-        try{
-            this.lectorDeJSON = new LectorDeJSON("src/test/resources/json/balatro.json");
-            this.rondas = lectorDeJSON.construirRondas();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //Assert
+
+        List<Ronda> rondas = lectorDeJSON.construirRondas();
+
+        // Assert
+        assertEquals("Se deberian haber leido 8 rondas en total",8,rondas.size());
     }
 
     @Test
-    public void verificarQueSePudoLeerElArchivoYNoEsNulo() throws IOException {
+    public void verificarQueElTamanioMazoEsElCorrecto() throws IOException {
+        // Arrange
+        JsonMazoReader mazoReader = new JsonMazoReader();
+
+        // Act
+        Mazo mazo = mazoReader.readMazo();
+
         // Assert
-        assertNotNull("La lista de rondas no debería ser nula", this.rondas);
+        assertEquals("Debe haber 52 cartas en el mazo",52,mazo.getCartas().size());
+
+
     }
 
     @Test
-    public void verificarQueElTamanioEsElCorrecto()  {
+    public void verificarQueSeLeyeroTodosLosComodines() throws IOException {
+        // Arrange
+        JsonComodinReader comodinReader = new JsonComodinReader();
+
+        // Act
+        List<Comodin> comodines = comodinReader.readComodines();
+
         // Assert
-        assertEquals("Valor",8,this.rondas.size());
+        assertEquals("Debe haber 52 cartas en el mazo",33,comodines.size());
+
+
+    }
+    @Test
+    public void verificarQueSeLeyoTodosLosTarots() throws IOException {
+        // Arrange
+        JsonTarotReader tarotReader = new JsonTarotReader();
+
+        // Act
+        List<CartaDeTarot> tarots = tarotReader.readTarots();
+
+        // Assert
+        assertEquals("Debe haber 52 cartas en el mazo",15,tarots.size());
+
 
     }
 
