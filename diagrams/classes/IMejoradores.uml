@@ -1,0 +1,81 @@
+
+interface IMejorador {
+  {abstract}+ mejorar( IMejorable mejorable)
+}
+
+class CombinacionDeComodines{
+  - nombre : string 
+  - descripcion : string 
+  + CombinacionDeComodines(nombre, descripcion, List<Comodin>)
+}
+Class CartaDeTarot implements IMejorador{
+    - nombre : string 
+    - descripcion : string 
+    + Tarot(nombre, descripcion, Mejora mejora, ICondicion condicion)
+}
+
+
+class Comodin implements IMejorador{
+    - nombre : string 
+    - descripcion : string
+    + Comodin(nombre, descripcion, Mejora mejora, ICondicion condicion)
+    + aplicarEfecto(IMejorable mejorable) :
+}
+
+class ActivarAlAzar implements ICondicion{
+    - probabilidad: int
+    - random : Random 
+    + ActivarAlAzar(int probabilidad, Random random)
+}
+
+
+class RestriccionACarta implements ICondicion{
+    - contexto : string 
+    - elemento : string 
+    + RestriccionACarta(String nombreDeLaCarta)
+}
+class RestriccionACombinacion implements ICondicion{
+    - final contexto : string 
+    - elemento : string 
+    + RestriccionACombinacion(string elemento)
+}
+class SinRestriccion implements ICondicion{
+    + SinRestriccion()
+}
+class EsDescarte{
+    - contexto : string 
+    + EsDescarte()
+}
+class EsUnaJugada {
+    + EsUnaJugada()
+}
+
+interface IMejorable{
+  {abstract}+ siContieneAplicarMejora(string contexto, string elemento, Mejora mejora)
+  {abstract}+ recibirMejora(Mejora mejora)
+}
+
+class Mejora{
+- puntos: float 
+- multiplicador : float
+- mejora: IMejora
++ Mejora(float puntos, float multiplicador, IMejora mejora)
+  + seAplicarAPuntaje(PuntajeJugada puntaje)
+}
+
+interface ICondicion {
+    {abstract}+ aplicarMejora(IMejorable mejorable, Mejora mejora)
+}
+
+CombinacionDeComodines o-- "1..2" Comodin 
+IMejorador <|.. CombinacionDeComodines
+Mejora --o CartaDeTarot
+Mejora  --o Comodin 
+EsDescarte .|> ICondicion
+ICondicion <|. EsUnaJugada
+CartaDeTarot o-- ICondicion
+Comodin o-- ICondicion
+IMejorable <.. IMejorador : conoce
+
+@enduml
+

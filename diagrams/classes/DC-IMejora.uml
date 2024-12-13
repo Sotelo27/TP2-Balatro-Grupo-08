@@ -1,77 +1,55 @@
 
-class Efecto{
-    - puntos : Int
-    - multiplicador : Int
-    - mejoras : List<Mejora>
-    + Efecto(puntos, multiplicador)
-    + Efecto(puntos, multiplicador, multiplicadorDeMultiplicador)
-    + aplicarAPuntaje(Puntaje puntaje)
-    + recibirMejora(mejora mejora)
-}
-interface IMejora{
-  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje, int puntos, int multiplicador)
-}
+
 class PuntajeJugada{
-  - puntos : Int
-  - multiplicador: int 
-  - fichas: int
-  + Puntaje()
-  + Puntaje(Int puntos,Int multiplicador)
-  + sumarFichas(int cantidad)
+  - puntos : float
+  - multiplicador: float
+  + Puntaje(float puntos, float multiplicador)
+  
   + sumarPuntos(Int cantidad)
   + sumarAMultiplicador(Int cantidad)
   + multiplicarPuntos(Int cantidad)
   + multiplicarMultiplicador(int cantidad)
   + esMenorQue(Puntaje otroPuntaje): bool
+  + agregarPuntosYMultiplicador(float puntos, float multiplicador)
+  + sumarPuntaje(PuntajeJugada)
+}
+
+package Mejora {
+
+interface IMejora{
+  {abstract}  + aplicarAPuntaje(PuntajeJugada puntaje, int puntos, int multiplicador)
 }
 
 class MultiplicaMultiplicador implements IMejora{
-   
+  +MultiplicaMultiplicador()
 }
 
 class MultiplicaPuntos implements IMejora{
-   
+  + MultiplicaPuntos()
   }
-
-class SumaFichas implements IMejora{
-   
-  }
-
 
 class SumaAMultiplicador implements IMejora{
-   
+  + sumarAMultiplicador()
   }
 
 
 class SumaPuntos implements IMejora{
-   
+  + SumaPuntos()
   }
-  
-class CartaDeTarot{
-    - nombre : String
-    - descripcion : String
-    - mejora : Mejora
-    - condicionDeMejora : ICondicionDeMejora
-    - sobre : String
-    - ejemplar : String
+
+class SumaPuntaje implements IMejora{
++ SumaPuntaje()
 }
   
-class Comodin{
-  -  nombre String
-  -  descripcion String
-  -  activacion: ICondicionMejora
-  -  efecto : Mejora
-  -  comodines : List<Comodin>
-}
 class Mejora{
   - puntos: int 
   - multiplicador : int 
   + Mejora(int puntos, int multiplicador)
+  + setMejora(IMejora)
+  + seAplicaAPuntaje(PuntajeJugada puntaje)
 }
-Mejora o-- IMejora
-Efecto o- "0..*" IMejora 
-IMejora .> PuntajeJugada :conoce
+Mejora o-- IMejora : tiene un
 
-Comodin o-- Mejora
-Tarot o-- Mejora
+}
+PuntajeJugada <. IMejora : utiliza
 
