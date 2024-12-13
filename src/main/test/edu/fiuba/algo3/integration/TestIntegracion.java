@@ -330,7 +330,6 @@ public class TestIntegracion {
         jugador1.activarComodin(comodinAlAzar);
         jugador1.realizarDescarte(rondaMock);
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
-        System.out.println(rondaMock.obtenerPuntaje());
         
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
@@ -375,8 +374,6 @@ public class TestIntegracion {
         jugador1.realizarJugada(rondaMock);
         PuntajeJugada puntajeObtenido = this.rondaMock.obtenerPuntaje();
 
-        System.out.println(puntajeObtenido);
-
         assertTrue(puntajeObtenido.esMayorQue(this.puntajeEnCero));
     }
 
@@ -402,7 +399,6 @@ public class TestIntegracion {
         jugador1.realizarJugada(rondaMock);
 
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
-        System.out.println(rondaMock.obtenerPuntaje());
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
@@ -424,7 +420,6 @@ public class TestIntegracion {
         jugador1.realizarJugada(rondaMock);
         // [(5,1) + (5,1) + (5,1) + (30,3) ] * (1*8) =
         PuntajeJugada puntajeObtenido = rondaMock.obtenerPuntaje();
-        System.out.println(rondaMock.obtenerPuntaje());
         // assert
         assertTrue(puntajeEsperado.esIgualQue(puntajeObtenido));
     }
