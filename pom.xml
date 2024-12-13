@@ -10,7 +10,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <junit.jupiter.version>5.4.0</junit.jupiter.version>
     <mockito-mockito-core-version>5.14.2</mockito-mockito-core-version>
-    <maven-surefire-version>3.0.0-M3</maven-surefire-version>
+    <maven-surefire-version>3.0.0</maven-surefire-version>
     <archunit-version>1.0.1</archunit-version>
     <!--
     Therefore, we are very proud to announce the availability of JavaFX 17-ea+8 for MacOS AArch64, also known as the Apple M1. You can now download the JavaFX SDK for this platform from our JavaFX Download Page. Ref.: https://gluonhq.com/javafx-for-apple-m1/
@@ -152,9 +152,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-version}</version>
-        <configuration>
-          <argLine>@{argLine} javaagent:${org.mockito:mockito-core:jar}</argLine>
-        </configuration>
+
       </plugin>
 
       <plugin>
@@ -172,7 +170,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.2</version>
+        <version>0.8.12</version>
         <executions>
           <execution>
             <goals>
