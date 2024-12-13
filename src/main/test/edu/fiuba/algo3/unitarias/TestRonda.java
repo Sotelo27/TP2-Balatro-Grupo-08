@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestRonda {
-// validar que los puntajes se muestran correctamente luego de cada jugada
     @Test
     public void test01LosPuntajesSeMuestranCorrectamenteLuegoDeCadaJugada() {
         PuntajeJugada esperada = new PuntajeJugada(10, 10);
