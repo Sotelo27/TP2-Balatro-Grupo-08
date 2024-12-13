@@ -55,9 +55,6 @@ public class LectorDeJSON implements IGameLoader{
         JsonComodinReader jsonReader = new JsonComodinReader();
         return jsonReader.readComodines();
     }
-    public List<CombinacionDeComodines> contruirCombinacionesComodin() throws IOException {
-        JsonComodinReader jsonReader = new JsonComodinReader();
-        return jsonReader.readCombinaciones();
-    }
+
 
 }

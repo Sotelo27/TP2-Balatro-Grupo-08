@@ -29,10 +29,6 @@ public class JsonTiendaReader {
                         String descripcion = comodinNode.path("descripcion").asText();
                         List<Comodin> subComodines = new ArrayList<>();
                         for(JsonNode subComodinNode : subComodinesNode) {
-                            String nombreSub = subComodinNode.path("nombre").asText();
-                            String descripcionSub = subComodinNode.path("descripcion").asText();
-                            Object activasion = subComodinNode.path("activasion").asText();
-                            //Mejora efecto = mapper.convertValue(subComodinNode, Mejora.class);
                             Comodin comodin = mapper.convertValue(subComodinNode, Comodin.class);
                             subComodines.add(comodin);
                         }

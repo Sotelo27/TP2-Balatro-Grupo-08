@@ -32,16 +32,30 @@ public class JsonComodinReader {
         }
         return allComodines;
     }
+
     public List<CombinacionDeComodines> readCombinaciones() throws IOException {
         // Ruta al archivo
         File file = new File((PATH));
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(file);
         JsonNode combinacionNode = root.get("Combinación").get("comodines");
+        List<CombinacionDeComodines> combinaciones = new ArrayList<>();
         if (combinacionNode != null && combinacionNode.isArray()) {
             // Mapea el JSON directamente a una lista de objetos Tarot
-            List<CombinacionDeComodines> combinaciones = mapper.convertValue(combinacionNode,  new TypeReference<List<CombinacionDeComodines>>() {});
-
+            for (JsonNode comodinNode : combinacionNode) {
+                // Verificar si este comodín tiene otra lista de comodines
+                JsonNode subComodinesNode = comodinNode.path("comodines");
+                if (subComodinesNode.isArray()) {
+                    String nombre = comodinNode.path("nombre").asText();
+                    String descripcion = comodinNode.path("descripcion").asText();
+                    List<Comodin> subComodines = new ArrayList<>();
+                    for (JsonNode subComodinNode : subComodinesNode) {
+                        Comodin comodin = mapper.convertValue(subComodinNode, Comodin.class);
+                        subComodines.add(comodin);
+                    }
+                    CombinacionDeComodines combinacionComodin = new CombinacionDeComodines(nombre, descripcion, subComodines);
+                }
+            }
             return combinaciones;
         }
 
