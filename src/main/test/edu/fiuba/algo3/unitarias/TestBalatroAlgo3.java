@@ -3,29 +3,34 @@ package edu.fiuba.algo3.unitarias;
 import edu.fiuba.algo3.controllers.SceneManager;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Estados.AbstractState;
+import edu.fiuba.algo3.modelo.Estados.EstadoDerrota;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
 import edu.fiuba.algo3.modelo.Estados.EstadoRonda;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
+
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+
+import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static org.mockito.Mockito.*;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+
 
 public class TestBalatroAlgo3   {
     @Mock
@@ -44,7 +49,7 @@ public class TestBalatroAlgo3   {
     private CartaDePoker carta7;
     private CartaDePoker carta8;
     private EstadoJuego estadoEnJuego;
-    @Before
+    @BeforeEach
     public void setup() throws IOException {
         this.carta1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
         this.carta2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5, 1);
@@ -56,14 +61,14 @@ public class TestBalatroAlgo3   {
         this.carta8 = new CartaDePoker("3 de Picas", "Picas", "3", 3, 1);
 //        LectorDeJSON lectorDeJSONMock = mock(LectorDeJSON.class);
         this.mazoMock = mock(Mazo.class);
-        when(this.mazoMock.tomarCarta()).thenReturn(
+        lenient().when(mazoMock.tomarCarta()).thenReturn(
                 carta1, carta2, carta3, carta4, carta5,
                 carta6, carta7, carta8);
 
-        when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
+        lenient().when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
 //        Ronda rondaMock = mock(Ronda.class);
         List<Ronda> rondas = Arrays.asList(this.rondaMock);
-        when(this.lectorDeJSONMock.construirRondas()).thenReturn(new ArrayList<>(rondas));
+        lenient().when(this.lectorDeJSONMock.construirRondas()).thenReturn(new ArrayList<>(rondas));
 
 
 
@@ -77,9 +82,11 @@ public class TestBalatroAlgo3   {
     public void test01seCreaUnaInstanciaDelJuegoConUnLectorDeJSONCorrectamente() throws IOException {
         // arrange
         float puntajeEsperado = 0;
+        EstadoJuego estado = mock(EstadoJuego.class);
 
         // act
         BalatroAlgo3 juego = new BalatroAlgo3(new LectorDeJSON("src/test/resources/json/balatro.json"));
+        juego.setEstado(estado);
         juego.setJugador("Un nombre");
         juego.iniciarRonda();
         float puntajeObtenido = juego.obtenerPuntajeRonda();

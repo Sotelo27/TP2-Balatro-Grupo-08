@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.Parsers.CondicionDeMejoraTarot;
 import edu.fiuba.algo3.modelo.Parsers.ParserDeMejora;
 import edu.fiuba.algo3.modelo.Parsers.ParserDeMejoraTarot;
 
-import javax.swing.*;
 
 public class Comodin implements IMejorador, ICarta{
     private String nombre;

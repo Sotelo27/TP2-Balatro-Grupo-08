@@ -12,17 +12,23 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+
+
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import org.mockito.Mock;
+
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.List;
 import java.util.Arrays;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 
 public class TestIntegracion {
     @Mock
@@ -41,21 +47,17 @@ public class TestIntegracion {
     private CartaDePoker cartaMock2;
     private CartaDePoker cartaMock3;
     private CartaDePoker cartaMock4;
-    private CartaDePoker cartaMock5;
-    private CartaDePoker cartaMock6;
-    private CartaDePoker cartaMock7;
-    private CartaDePoker cartaMock8;
-    private CartaDePoker cartaMock9;
+    @Mock
+    private CartaDePoker cartaMock6, cartaMock5, cartaMock7, cartaMock8, cartaMock9;
 
     private Comodin comodinX4;
     private Comodin comodinSuma100;
-    private Comodin comodiSuma4mult;
 
     private PuntajeJugada puntajeEnCero;
     private PuntajeJugada dosPuntos;
     private PuntajeJugada diezPuntos;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5,1);
@@ -73,7 +75,7 @@ public class TestIntegracion {
         this.cartasMocks = Arrays.asList(cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8, cartaMock9);
 
-        when(mazoMock.tomarCarta()).thenReturn(
+        lenient().when(mazoMock.tomarCarta()).thenReturn(
                 cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8, cartaMock9);
 
@@ -85,7 +87,6 @@ public class TestIntegracion {
         this.diezPuntos.agregarPuntosYMultiplicador(10, 1);
 
         this.comodinX4 = new Comodin("Comodin", new Mejora(1, 4, new MultiplicaMultiplicador() ), new SinRestriccion(), "", "");
-        this.comodiSuma4mult = new Comodin("Comodin", new Mejora(1, 4, new SumaAMultiplicador() ), new SinRestriccion(), "", "");
         this.comodinSuma100 = new Comodin("Caminante", new Mejora(100, 1, new SumaPuntos()), new SinRestriccion(), "", "");
     }
 
@@ -259,18 +260,18 @@ public class TestIntegracion {
     @Test
     public void test09SeUsaUnComodinQueSeActivaCuandoSeJuegaUnaEscaleraYElPuntajeEsCorrecto() {
         // arrange
-        Mazo mazoMock2 = mock(Mazo.class);
+
         CartaDePoker carta1 = new CartaDePoker("As de Trebol", "Trebol", "1", 11, 1);
         CartaDePoker carta2 = new CartaDePoker("2 de Corazones", "Corazones", "2", 2, 1);
         CartaDePoker carta3 = new CartaDePoker("3 de Picas", "Picas", "3", 3, 1);
         CartaDePoker carta4 = new CartaDePoker("4 de Diamantes", "Diamante", "4", 4, 1);
         CartaDePoker carta5 = new CartaDePoker("5 de Picas", "Picas", "5", 5, 1);
-        when(mazoMock2.tomarCarta()).thenReturn(
+        when(mazoMock.tomarCarta()).thenReturn(
                 carta1, carta2, carta3, carta4, carta5, cartaMock1 ,cartaMock2, cartaMock3);
         Mejora mejoraMas12Multiplicador = new Mejora(1,12,new SumaAMultiplicador());
         Comodin comodinx3 = new Comodin("X3", mejoraMas12Multiplicador, new RestriccionACombinacion("escalera"),"Mano Jugada", "escalera");// o new RestriccionACombinacion("Escalera")
         //comodinx3.setDescripcion("x3 Mult" );
-        Jugador jugador1 = new Jugador("jugador 1", mazoMock2);
+        Jugador jugador1 = new Jugador("jugador 1", mazoMock);
         PuntajeJugada puntajeEsperado = new PuntajeJugada(1885,1);
 
         jugador1.recargarMano();
@@ -455,7 +456,7 @@ public class TestIntegracion {
         Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
 
         // Validar que es una instancia del tipo EstadoDerrota
-        assertTrue(estado instanceof EstadoDerrota);
+        assertTrue( estado instanceof EstadoDerrota);
     }
 
 
@@ -490,7 +491,7 @@ public class TestIntegracion {
         Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
 
         // Validar que es una instancia del tipo EstadoTienda
-        assertTrue(estado instanceof EstadoVictoria);
+        assertTrue( estado instanceof EstadoVictoria);
 
     }
 
@@ -526,7 +527,7 @@ public class TestIntegracion {
         Object estado = atributoEstadoActual.get(estadoEnJuego); // Usar spyEstado aquí
 
         // Validar que es una instancia del tipo EstadoTienda
-        assertTrue(estado instanceof EstadoTransicion);
+        assertTrue( estado instanceof EstadoTransicion);
 
     }
 

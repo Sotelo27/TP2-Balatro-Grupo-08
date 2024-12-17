@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.unitarias;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.mockito.Mockito;
+
 import edu.fiuba.algo3.modelo.*;
 
 

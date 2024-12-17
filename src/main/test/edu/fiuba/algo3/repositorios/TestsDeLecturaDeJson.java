@@ -4,22 +4,11 @@ import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.modelo.Ronda;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-import java.io.IOException;
-import java.util.Random;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import java.io.IOException;
 import java.util.List;
-import java.util.Arrays;
+
+import static org.junit.Assert.*;
 
 public class TestsDeLecturaDeJson {
 
