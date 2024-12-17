@@ -12,7 +12,7 @@ NC='\033[0m' # Sin color
 echo -e "${GREEN}Iniciando la compilación y ejecución de pruebas...${NC}"
 
 # Compilación en paralelo con 1 hilo por núcleo de CPU
-mvn -T 1C clean
+mvn -T 1C clean install
 
 # Verificar el resultado de las pruebas
 if [ $? -eq 0 ]; then
