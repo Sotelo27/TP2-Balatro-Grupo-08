@@ -26,6 +26,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install -DskipTests
+
   analyze:
     name: Run CodeQL Analysis
     runs-on: ubuntu-22.04
