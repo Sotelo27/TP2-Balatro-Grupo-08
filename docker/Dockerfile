@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-11 as base
+FROM maven:3.9.0-eclipse-temurin-23 as base
 WORKDIR /app
 COPY pom.xml ./
 RUN mvn install
