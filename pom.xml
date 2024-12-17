@@ -20,7 +20,7 @@
 
     Replace the line below by: <javafx-version>18.0.2</javafx-version>
     -->
-    <javafx-version>18.0.2</javafx-version>
+    <javafx-version>21</javafx-version>
     <main-class>edu.fiuba.algo3.Main</main-class>
   </properties>
 
