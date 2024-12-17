@@ -6,8 +6,8 @@
   <version>0.0.1</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>23</maven.compiler.source>
+    <maven.compiler.target>23</maven.compiler.target>
     <junit.jupiter.version>5.4.0</junit.jupiter.version>
     <mockito-mockito-core-version>5.14.2</mockito-mockito-core-version>
     <maven-surefire-version>3.0.0</maven-surefire-version>
@@ -75,9 +75,9 @@
       <version>${javafx-version}</version>
     </dependency>
       <dependency>
-          <groupId>org.jfxcore</groupId>
+          <groupId>org.openjfx</groupId>
           <artifactId>javafx-media</artifactId>
-          <version>18-ea+1</version>
+          <version>${javafx-version}</version>
       </dependency>
   </dependencies>
 
