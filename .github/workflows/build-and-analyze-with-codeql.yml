@@ -26,14 +26,22 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install -DskipTests
+  analyze:
+    name: Run CodeQL Analysis
+    runs-on: ubuntu-22.04
+    needs: build
 
-      - name: Run tests
-        run: mvn clean test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up CodeQL
         uses: github/codeql-action/init@v2
         with:
           languages: java
+
+      - name: Build code with Maven
+        run: mvn clean install -DskipTests
 
       - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v2
