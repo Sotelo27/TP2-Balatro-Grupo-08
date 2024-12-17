@@ -59,10 +59,25 @@ public class TestsDeLecturaDeJson {
         List<Comodin> comodines = comodinReader.readComodines();
 
         // Assert
-        assertEquals("Debe haber 28 cartas en el mazo",28,comodines.size());
+        assertEquals("Debe haber 28 cartas comodin",28,comodines.size());
 
 
     }
+
+    @Test
+    public void verificarQueSeLeyeroTodasLasCombinacionComodines() throws IOException {
+        // Arrange
+        JsonComodinReader comodinReader = new JsonComodinReader();
+
+        // Act
+        List<CombinacionDeComodines> comodines = comodinReader.readCombinaciones();
+
+        // Assert
+        assertEquals("Debe haber 5 combinacionesDeComodines",5,comodines.size());
+
+
+    }
+
     @Test
     public void verificarQueSeLeyoTodosLosTarots() throws IOException {
         // Arrange
@@ -72,7 +87,7 @@ public class TestsDeLecturaDeJson {
         List<CartaDeTarot> tarots = tarotReader.readTarots();
 
         // Assert
-        assertEquals("Debe haber 15 cartas en el mazo",15,tarots.size());
+        assertEquals("Debe haber 15 cartas Tarot",15,tarots.size());
 
 
     }
