@@ -9,7 +9,7 @@
        - name: Start services
          run: scripts/start_services.sh
        - name: Run test suite
-         run: docker-compose -f docker/docker-compose.yaml exec -T app bash scripts/build.sh
+         run: docker compose -f docker/docker-compose.yaml exec -T app bash scripts/build.sh
        - name: Upload coverage report
          uses: codecov/codecov-action@v2
 
