@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.Services.ImageLoader;
-import edu.fiuba.algo3.Services.MediaMaker;
+
 import edu.fiuba.algo3.modelo.ICarta;
 import javafx.event.EventHandler;
 
