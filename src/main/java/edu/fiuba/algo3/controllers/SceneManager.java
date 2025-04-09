@@ -37,7 +37,7 @@ public class SceneManager implements ISwitcher {
 
         try {
             //Configurar el video de fondo
-            String videoPath = getClass().getResource("/images/BackGrounds/backgroundMain.mp4").toExternalForm();
+            String videoPath = getClass().getResource("/images/BackGrounds/backGroundMain.mp4").toExternalForm();
             Media media = new Media(videoPath);
             backgroundPlayer = new MediaPlayer(media);
             MediaView mediaView = new MediaView(backgroundPlayer);
@@ -83,15 +83,33 @@ public class SceneManager implements ISwitcher {
     @Override
     // Nueva función para configurar el sonido de fondo
     public void setBackgroundMusic(String musicPath) {
-        Media musicMedia = new Media(getClass().getResource(musicPath).toExternalForm());
-        musicPlayer = new MediaPlayer(musicMedia);
-        musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
-        musicPlayer.setVolume(100);  // Ajusta el volumen, si es necesario
-        musicPlayer.play();
-        System.out.println("Musica cargada");
-        stage.setOnCloseRequest(event -> {
-            musicPlayer.stop();
-        });
+        java.net.URL resourceUrl = getClass().getResource(musicPath);
+        if (resourceUrl != null) {
+            String externalForm = resourceUrl.toExternalForm();
+            System.out.println("URL de la música: " + externalForm);
+            Media musicMedia = new Media(externalForm);
+            musicMedia.setOnError(() -> {
+                System.err.println("Error al cargar el archivo de música: " + externalForm) ;
+                System.err.println("Error de Media: " + musicMedia.getError());
+            });
+
+            musicPlayer = new MediaPlayer(musicMedia);
+            musicPlayer.setOnError(() -> {
+                System.err.println("Error al reproducir la música.");
+                System.err.println("Error de MediaPlayer: " + musicPlayer.getError());
+            });
+            musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);  // Reproducir indefinidamente
+            musicPlayer.setVolume(1.0);  // Volumen al máximo
+            musicPlayer.play();
+            System.out.println("Musica cargada");
+            stage.setOnCloseRequest(event -> {
+                if (musicPlayer != null) {
+                    musicPlayer.stop();
+                }
+            });
+        } else {
+            System.err.println("Error: No se encontró el archivo de música en la ruta: " + musicPath);
+        }
     }
 
     public void show() {
