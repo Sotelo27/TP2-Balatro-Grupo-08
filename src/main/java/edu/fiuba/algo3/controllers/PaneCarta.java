@@ -56,9 +56,8 @@ public class PaneCarta extends ImageView implements EventHandler<MouseEvent> {
 
     public void atachClickSound(){
         // Cargar el archivo de sonido como un objeto Media
-        String path = Objects.requireNonNull(getClass().getResource(SOUND_PATH)).getPath();
-        Media sound = MediaMaker.make(path);
-        this.sonidoClick = sound;
+        String path = getClass().getResource(SOUND_PATH).toExternalForm();
+        this.sonidoClick = new Media(path);
     }
 
     public void setActive(boolean value) {
