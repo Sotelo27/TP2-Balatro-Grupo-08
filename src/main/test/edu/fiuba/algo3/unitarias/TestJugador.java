@@ -2,25 +2,22 @@ package edu.fiuba.algo3.unitarias;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.EsDescarte;
-import edu.fiuba.algo3.modelo.CondicionesDeMejora.RestriccionACarta;
 import edu.fiuba.algo3.modelo.CondicionesDeMejora.SinRestriccion;
 import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.modelo.Mejoras.*;
-import edu.fiuba.algo3.repositorios.JsonMazoReader;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
-import java.util.List;
+
 import java.util.Arrays;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -63,7 +60,7 @@ public class TestJugador {
     private PuntajeJugada dosPuntos;
     private PuntajeJugada diezPuntos;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5,1);
@@ -81,6 +78,7 @@ public class TestJugador {
         this.cartasMocks = Arrays.asList(cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8, cartaMock9);
 
+        this.mazoMock = mock(Mazo.class);
         when(mazoMock.tomarCarta()).thenReturn(
                 cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8, cartaMock9);
@@ -130,17 +128,18 @@ public class TestJugador {
         assert tarotsObtenidos.size() == 1;
     }
 
-    @Test(expected = ErrorSeExcedenLosLimitesDeActivables.class)
+    @Test
     public void test03JugadorTiene2ActivablesTarotYNoPuedeComprarMas() {
         Jugador jugador = new Jugador("Joaquin", new Mazo());
-        String nombreBuscado = "Justicia";
 
         jugador.comprarCartaDeTarot(tarot);
         jugador.comprarCartaDeTarot(tarotMundo);
-        jugador.comprarCartaDeTarot(tarotMuerte);
+        Assertions.assertThrows(ErrorSeExcedenLosLimitesDeActivables.class, () -> {
+            jugador.comprarCartaDeTarot(tarotMuerte);
+        });
     }
 
-    @Test (expected = ErrorSeExcedenLosLimitesDeActivables.class)
+    @Test
     public void test04JugadorCompra5ComodinesYNoPuedeComprarMas(){
         Jugador jugador = new Jugador("Sotelo", new Mazo());
         jugador.comprarComodin(comodinSuma100);
@@ -148,7 +147,9 @@ public class TestJugador {
         jugador.comprarComodin(comodiSuma4mult);
         jugador.comprarComodin(comodinX5);
         jugador.comprarComodin(comodiSuma10Descarte);
-        jugador.comprarComodin(comodinSuma10);
+        Assertions.assertThrows(ErrorSeExcedenLosLimitesDeActivables.class, () -> {
+            jugador.comprarComodin(comodinSuma10);
+        });
     }
 
     @Test

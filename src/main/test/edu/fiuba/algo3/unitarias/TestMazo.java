@@ -1,21 +1,17 @@
 package edu.fiuba.algo3.unitarias;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Mejoradores.CartaDeTarot;
-import edu.fiuba.algo3.modelo.Mejoras.Mejora;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-import java.util.List;
+
 import java.util.Arrays;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -37,7 +33,7 @@ public class TestMazo {
     private CartaDePoker cartaMock7;
     private CartaDePoker cartaMock8;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.cartaMock1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5,1);
         this.cartaMock2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5,1);
@@ -51,6 +47,7 @@ public class TestMazo {
         this.cartasMocks = Arrays.asList(cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8);
 
+        this.mazoMock = mock(Mazo.class);
         when(mazoMock.tomarCarta()).thenReturn(
                 cartaMock1, cartaMock2, cartaMock3, cartaMock4, cartaMock5,
                 cartaMock6, cartaMock7, cartaMock8);

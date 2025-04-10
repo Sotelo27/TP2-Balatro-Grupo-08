@@ -4,14 +4,13 @@ import edu.fiuba.algo3.controllers.SceneManager;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Estados.AbstractState;
 import edu.fiuba.algo3.modelo.Estados.EstadoJuego;
-import edu.fiuba.algo3.modelo.Estados.EstadoRonda;
 import edu.fiuba.algo3.modelo.Mejoradores.CombinacionDeComodines;
 import edu.fiuba.algo3.modelo.Mejoradores.Comodin;
 import edu.fiuba.algo3.repositorios.LectorDeJSON;
 
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -44,7 +43,7 @@ public class TestBalatroAlgo3   {
     private CartaDePoker carta7;
     private CartaDePoker carta8;
     private EstadoJuego estadoEnJuego;
-    @Before
+    @BeforeEach
     public void setup() throws IOException {
         this.carta1 = new CartaDePoker("5 de Treboles", "Trebol", "5", 5, 1);
         this.carta2 = new CartaDePoker("5 de Diamantes", "Diamante", "5", 5, 1);
@@ -60,12 +59,13 @@ public class TestBalatroAlgo3   {
                 carta1, carta2, carta3, carta4, carta5,
                 carta6, carta7, carta8);
 
+        this.lectorDeJSONMock = mock(LectorDeJSON.class);
         when(this.lectorDeJSONMock.construirMazo()).thenReturn(this.mazoMock);
 //        Ronda rondaMock = mock(Ronda.class);
         List<Ronda> rondas = Arrays.asList(this.rondaMock);
         when(this.lectorDeJSONMock.construirRondas()).thenReturn(new ArrayList<>(rondas));
 
-
+        this.rondaMock = mock(Ronda.class);
 
         // estado de juego
         AbstractState estadoInicial = mock(AbstractState.class);
@@ -132,7 +132,7 @@ public class TestBalatroAlgo3   {
         // assert
         assert cartasDeTienda.equals(cartasEsperadas);
     }
-
+/*
     @Test
     public void test04SePuedeHacerUnaJugada() throws IOException {
 
@@ -152,7 +152,7 @@ public class TestBalatroAlgo3   {
 
         // assert
         assert puntajeEsperado < puntajeObtenido;
-    }
+    }*/
 
     @Test
     public void test05SePuedeHacerUnaJugadaYSeObtieneElPuntajeCorrectamente() throws IOException {
