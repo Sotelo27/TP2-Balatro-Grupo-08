@@ -10,7 +10,7 @@
     <maven.compiler.target>23</maven.compiler.target>
     <junit.jupiter.version>5.4.0</junit.jupiter.version>
     <mockito-mockito-core-version>5.14.2</mockito-mockito-core-version>
-    <maven-surefire-version>3.0.0</maven-surefire-version>
+    <maven-surefire-version>3.5.3</maven-surefire-version>
     <archunit-version>1.0.1</archunit-version>
     <!--
     Therefore, we are very proud to announce the availability of JavaFX 17-ea+8 for MacOS AArch64, also known as the Apple M1. You can now download the JavaFX SDK for this platform from our JavaFX Download Page. Ref.: https://gluonhq.com/javafx-for-apple-m1/
@@ -20,6 +20,17 @@
     <javafx-version>23</javafx-version>
     <main-class>edu.fiuba.algo3.Main</main-class>
   </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.jupiter.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
@@ -47,14 +58,8 @@
       <version>${javafx-version}</version>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
+      <artifactId>mockito-junit-jupiter</artifactId>
       <version>${mockito-mockito-core-version}</version>
       <scope>test</scope>
     </dependency>
