@@ -2,24 +2,13 @@ package edu.fiuba.algo3.repositorios;
 import edu.fiuba.algo3.modelo.Mazo;
 import edu.fiuba.algo3.modelo.Mejoradores.*;
 import edu.fiuba.algo3.modelo.Ronda;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.io.IOException;
-import java.util.Random;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
-import java.util.List;
-import java.util.Arrays;
 
 public class TestsDeLecturaDeJson {
 
@@ -33,7 +22,7 @@ public class TestsDeLecturaDeJson {
         List<Ronda> rondas = lectorDeJSON.construirRondas();
 
         // Assert
-        assertEquals("Se deberian haber leido 8 rondas en total",8,rondas.size());
+        Assertions.assertEquals(8, rondas.size(), "Se deberian haber leido 8 rondas en total");
     }
 
     @Test
@@ -45,7 +34,7 @@ public class TestsDeLecturaDeJson {
         Mazo mazo = mazoReader.readMazo();
 
         // Assert
-        assertEquals("Debe haber 52 cartas en el mazo",52,mazo.getCartas().size());
+        Assertions.assertEquals(52, mazo.getCartas().size(), "Debe haber 52 cartas en el mazo");
 
 
     }
@@ -59,7 +48,7 @@ public class TestsDeLecturaDeJson {
         List<Comodin> comodines = comodinReader.readComodines();
 
         // Assert
-        assertEquals("Debe haber 28 cartas comodin",28,comodines.size());
+        Assertions.assertEquals(28, comodines.size(), "Debe haber 28 cartas comodin");
 
 
     }
@@ -73,7 +62,7 @@ public class TestsDeLecturaDeJson {
         List<CombinacionDeComodines> comodines = comodinReader.readCombinaciones();
 
         // Assert
-        assertEquals("Debe haber 5 combinacionesDeComodines",5,comodines.size());
+        Assertions.assertEquals(5, comodines.size(), "Debe haber 5 combinacionesDeComodines");
 
 
     }
@@ -87,7 +76,7 @@ public class TestsDeLecturaDeJson {
         List<CartaDeTarot> tarots = tarotReader.readTarots();
 
         // Assert
-        assertEquals("Debe haber 15 cartas Tarot",15,tarots.size());
+        Assertions.assertEquals(15, tarots.size(), "Debe haber 15 cartas Tarot");
 
 
     }

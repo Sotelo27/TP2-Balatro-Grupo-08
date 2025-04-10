@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Mejoras.Mejora;
 import edu.fiuba.algo3.modelo.Mejoras.MultiplicaMultiplicador;
 import edu.fiuba.algo3.modelo.Mejoras.SumaAMultiplicador;
 import edu.fiuba.algo3.modelo.Tienda;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.CartaDePoker;
 
 import java.util.ArrayList;

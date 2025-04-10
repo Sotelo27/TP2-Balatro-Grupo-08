@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.integration;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Verificadores.VerificadorRoyalFlush;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.CombinacionesDePoker.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
