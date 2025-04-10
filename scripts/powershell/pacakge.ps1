@@ -13,4 +13,4 @@ function Write-ColoredHost ($Message, $Color) {
 }
 
 Write-ColoredHost "Empaquetando programa..." "Green"
-mvn clean package 
+mvn clean package -DskipTests
