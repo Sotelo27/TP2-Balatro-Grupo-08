@@ -7,7 +7,7 @@
        - name: Checkout repository
          uses: actions/checkout@v2
        - name: Start services
-         run: scripts/start_services.sh
+         run: scripts/bash/start_services.sh
        - name: Run test suite
          run: docker compose -f docker/docker-compose.yaml exec -T app bash scripts/bash/build.sh
        - name: Upload coverage report
